@@ -1,0 +1,186 @@
+/*#ballsstrikesoutstable{
+	border:none;
+	width:900px;
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+}*/
+
+#field{
+	position:relative;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #000;
+	background-image: url('../images/field.jpg');
+	background-repeat:no-repeat;
+	height: 650px;
+	width: auto;
+}
+
+#runneronfirst{
+	position:relative;
+	top: -125px;
+	left: 720px;
+	height:56px;
+	width:56px;
+}
+
+#runneronfirstimagecontainer{
+	position:relative;
+	top: 20px;
+	left: 703px;
+	height:41px;
+	width:44px;
+}
+
+#runneronfirstimage
+{
+    height:50px;
+    width:50px;
+    position: relative;
+    top: -15px
+}
+
+#runneronsecond{
+	position:relative;
+	top: 25px;
+	left: 422px;
+	height:56px;
+	width:56px;
+}
+
+#runneronsecondimagecontainer{
+	position:relative;
+	top: 79px;
+	left: 374px;
+	height:41px;
+	width:44px;
+}
+
+#runneronsecondimage
+{
+    height:50px;
+    width:50px;
+    position: relative;
+    top: -25px;
+}
+
+#runneronthird{
+	position:relative;
+	top: 15px;
+	left: 125px;
+	height:56px;
+	width:56px;
+}
+
+#runneronthirdimagecontainer{
+	position:relative;
+	top: -125px;
+	left: 139px;
+	height:41px;
+	width:44px;
+}
+
+#runneronthirdimage
+{
+    height:50px;
+    width:50px;
+}
+
+#pitcher{
+	position:relative;
+	top: -40px;
+	left: 412.5px;
+	height:75px;
+	width:75px;
+}
+
+#pitcherimagecontainer{
+	position:relative;
+	top: 45px;
+	left: 409px;
+	height:100px;
+	width:82px;
+}
+
+#catcher{
+	height:38px;
+	left:429px;
+	position:relative;
+	top:-167px;
+	width:44px;
+}
+
+#catcherimagecontainer{
+	position:relative;
+	top: -75px;
+	left: 409px;
+	height:100px;
+	width:82px;
+}
+
+#hitter {
+    height: 36px;
+    left: 414px;
+    position: relative;
+    top: -94px;
+    width: 74px;
+}
+
+#lh_hitterimage{
+	height:70px;
+	left:544px;
+	position:relative;
+	top:-33px;
+	width:70px;
+}
+
+#rh_hitterimage{
+	height:70px;
+	left:276px;
+	position:relative;
+	top:-136px;
+	width:70px;
+}
+
+#away_team_ondeck_hitterimage {
+    height: 70px;
+    left: 41px;
+    position: relative;
+    top: -289px;
+    width: 70px;
+}
+
+#home_team_ondeck_hitterimage {
+    height: 70px;
+    left: 786px;
+    position: relative;
+    top: -219px;
+    width: 70px;
+}
+
+#pitcherimage {
+    height: 70px;
+    left: 8px;
+    position: relative;
+    top: 35px;
+    width: 70px;
+}
+
+#catcherimage {
+    height: 70px;
+    left: 8px;
+    position: relative;
+    top: 35px;
+    width: 70px;
+}
+
+#hitterimage {
+    height: 70px;
+    left: 8px;
+}
+
+#ondeckhitterimage{
+    height: 70px;
+    width: 70px;
+}

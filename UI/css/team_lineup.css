@@ -1,0 +1,53 @@
+.teamlineuptable {
+border-collapse:collapse;
+font-size:0.8em;
+position:relative;
+text-align:left;
+width:100%;
+background:#DDD;
+}
+
+.teamlineuptable tr{
+height:38px;
+}
+
+.teamlineuptable th{
+color:#FFFFFF;
+}
+
+.teamlineuptable select{
+font-size:0.8em;
+}
+
+.teamlineupcontent {
+    border: 3px solid #3B3B3B;
+    width: 195px;
+}
+
+.teamlineuptableheadercolumn1 {
+	width:20px;
+}
+
+.teamlineuptableheadercolumn2 {
+	width:100%;
+}
+
+.teamlineupheaderRow{
+	background-color:#3b3b3b;
+	border-bottom:1px solid #666666;
+	height:25px;
+	color:#CCC;
+}
+
+.teamlineupfooterRow{
+	background-color:#3B3B3B;
+	height:25px;
+}
+
+.batterselect {
+height:1em;
+position:relative;
+top:-4px;
+width:100%;
+z-index:2;
+}

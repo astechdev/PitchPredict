@@ -1,0 +1,94 @@
+<?php
+/*
+ * Created on Feb 24, 2009
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+
+	function insert_single_database_item($tableName, $firstColumnName, $firstElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName) VALUES ('$firstElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_two_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName) VALUES ('$firstElement', '$secondElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_three_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName, $thirdColumnName) VALUES ('$firstElement', '$secondElement', '$thirdElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_four_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName, $thirdColumnName, $fourthColumnName) VALUES ('$firstElement', '$secondElement', '$thirdElement', '$fourthElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_five_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName, $thirdColumnName, $fourthColumnName, $fifthColumnName) VALUES ('$firstElement', '$secondElement', '$thirdElement', '$fourthElement', '$fifthElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_six_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName, $thirdColumnName, $fourthColumnName, $fifthColumnName, $sixthColumnName) VALUES ('$firstElement', '$secondElement', '$thirdElement', '$fourthElement', '$fifthElement', '$sixthElement')";
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+	function insert_thirtythree_database_items($tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement, $ninthColumnName, $ninthElement, $tenthColumnName, $tenthElement, $eleventhColumnName, $eleventhElement, $twelfthColumnName, $twelfthElement, $thirteenthColumnName, $thirteenthElement, $fourteenthColumnName, $fourteenthElement, $fifteenthColumnName, $fifteenthElement, $sixteenthColumnName, $sixteenthElement, $seventeenthColumnName, $seventeenthElement, $eighteenthColumnName, $eighteenthElement, $ninteenthColumnName, $ninteenthElement, $twentiethColumnName, $twentiethElement, $twentyfirstColumnName, $twentyfirstElement, $twentysecondColumnName, $twentysecondElement, $twentythirdColumnName, $twentythirdElement, $twentyfourthColumnName, $twentyfourthElement, $twentyfifthColumnName, $twentyfifthElement, $twentysixthColumnName, $twentysixthElement, $twentyseventhColumnName, $twentyseventhElement, $twentyeighthColumnName, $twentyeighthElement, $twentyninthColumnName, $twentyninthElement, $thirtiethColumnName, $thirtiethElement, $thirtiethfirstColumnName, $thirtiethfirstElement, $thirtiethsecondColumnName, $thirtiethsecondElement, $thirtieththirdColumnName, $thirtieththirdElement)
+	{
+		$insert = "INSERT INTO $tableName ($firstColumnName, $secondColumnName, $thirdColumnName, $fourthColumnName, $fifthColumnName, $sixthColumnName, $seventhColumnName, $eighthColumnName, $ninthColumnName, $tenthColumnName, $eleventhColumnName, $twelfthColumnName, $thirteenthColumnName, $fourteenthColumnName, $fifteenthColumnName, $sixteenthColumnName, $seventeenthColumnName, $eighteenthColumnName, $ninteenthColumnName, $twentiethColumnName, $twentyfirstColumnName, $twentysecondColumnName, $twentythirdColumnName, $twentyfourthColumnName, $twentyfifthColumnName, $twentysixthColumnName, $twentyseventhColumnName, $twentyeighthColumnName, $twentyninthColumnName, $thirtiethColumnName, $thirtiethfirstColumnName, $thirtiethsecondColumnName, $thirtieththirdColumnName) VALUES ('$firstElement', '$secondElement', '$thirdElement', '$fourthElement', '$fifthElement', '$sixthElement', '$seventhElement', '$eighthElement', '$ninthElement', '$tenthElement', '$eleventhElement', '$twelfthElement', '$thirteenthElement', '$fourteenthElement', '$fifteenthElement', '$sixteenthElement', '$seventeenthElement', '$eighteenthElement', '$ninteenthElement', '$twentiethElement', '$twentyfirstElement', '$twentysecondElement', '$twentythirdElement', '$twentyfourthElement', '$twentyfifthElement', '$twentysixthElement', '$twentyseventhElement', '$twentyeighthElement', '$twentyninthElement', '$thirtiethElement', '$thirtiethfirstElement', '$thirtiethsecondElement', '$thirtieththirdElement')";
+		//mysql_query($insert) or die('Error inserting. '.mysql_error());
+		$result = mysql_query($insert);
+
+		if(!$result)
+		{
+			echo "insert: $insert";
+			throw new Exception('Mysql Error. '.mysql_error());
+		}
+	}
+
+?>

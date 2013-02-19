@@ -1,0 +1,33 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />   
+        
+        <!-- Full version of jQuery -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js" type="text/javascript"></script>
+        
+        <script type="text/javascript">
+            $.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getTeams.php?YearToQuery=2009', function(data) {
+                
+                var teamsMap = [];
+
+                $.each(data, function(key, val) {
+                  teamsMap.push('<li id="' + key + '">' + val + '</li>');
+                });
+
+                $('<ul/>', {
+                  'class': 'my-new-list',
+                  html: teamsMap.join('')
+                }).appendTo('body');
+            });
+        </script>
+            
+    </head>
+    <body>
+    </body>
+</html>

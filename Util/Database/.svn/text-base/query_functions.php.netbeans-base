@@ -1,0 +1,222 @@
+<?php
+/*
+ * COPYRIGHT    2009 AsTech Development
+ *
+ *
+ * DESRIPTION:  This file contains the functions that retrieves the specified
+ *              database item from the specified database table, for the
+ *              specified column names and column values.
+ *
+ *              Function gets the database item for the specified table
+ *              column and element
+ *
+ *              ColumnName = Name field that user picks as a value, ordered by
+ *              this field.
+ *
+ *              Element = Value of the ColumnName we are using as search
+ *              criteria.
+ *
+ *              tableName = Name of MySQL table containing the database item.
+ *
+ *              databaseItemName = Name of the database item that we want the
+ *              value for.
+ *
+ * SOFTWARE HISTORY:
+ *
+ *   13FEB09    S. Aslan
+ *              Initial Coding.
+ */
+
+ 	//include './Util/Exception.php';
+
+	function query_single_database_item_single_parameter($databaseItemName, $tableName, $firstColumnName, $firstElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement'";
+
+			$result = mysql_query($query);
+
+			if(!$result)
+			{
+				throw new Exception('Mysql Error. '.mysql_error());
+			}
+
+			$dbResultCounter = 0;
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+				$dbResultCounter = $dbResultCounter + 1;
+			}
+
+			if($dbResultCounter == 0)
+			{
+             	throw new Exception('Mysql returned 0 results.');
+			}
+
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_two_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement'AND $secondColumnName = '$secondElement'";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_three_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement'AND $secondColumnName = '$secondElement'AND $thirdColumnName = '$thirdElement'";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_four_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND $fourthColumnName = '$fourthElement'";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_five_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement'";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_six_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement)
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement'";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_seven_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement)
+
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement')";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_eight_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement)
+
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement')";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_nine_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement, $ninthColumnName, $ninthElement)
+
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement' AND $ninthColumnName = '$ninthElement')";
+			$result = mysql_query($query) or throwException('The current database item has not been entered yet.'.mysql_error());
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+			}
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_ten_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement, $ninthColumnName, $ninthElement, $tenthColumnName, $tenthElement)
+
+		{
+			$databaseItemValue = NULL;
+
+			$query = "SELECT $databaseItemName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement' AND $ninthColumnName = '$ninthElement' AND $tenthColumnName = '$tenthElement')";
+//echo "query: $query";
+			$result = mysql_query($query);
+
+			if(!$result)
+			{
+				echo "query: $query";
+				throw new Exception('Mysql Error. '.mysql_error());
+			}
+
+			$dbResultCounter = 0;
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+				$dbResultCounter = $dbResultCounter + 1;
+			}
+
+			if($dbResultCounter == 0)
+			{
+				echo "dbResultCounter == 0, query: $query";
+             	throw new Exception('Mysql returned 0 results.');
+			}
+
+			return $databaseItemValue;
+		}
+
+	function query_single_database_item_thirtythree_parameters($databaseItemName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement,
+$ninthColumnName, $ninthElement, $tenthColumnName, $tenthElement, $eleventhColumnName, $eleventhElement, $twelfthColumnName, $twelfthElement, $thirteenthColumnName, $thirteenthElement, $fourteenthColumnName, $fourteenthElement, $fifteenthColumnName, $fifteenthElement, $sixteenthColumnName, $sixteenthElement, $seventeenthColumnName, $seventeenthElement, $eighteenthColumnName, $eighteenthElement, $ninteenthColumnName, $ninteenthElement, $twentiethColumnName, $twentiethElement, $twentyfirstColumnName, $twentyfirstElement, $twentysecondColumnName, $twentysecondElement, $twentythirdColumnName, $twentythirdElement, $twentyfourthColumnName, $twentyfourthElement, $twentyfifthColumnName, $twentyfifthElement, $twentysixthColumnName, $twentysixthElement, $twentyseventhColumnName, $twentyseventhElement, $twentyeighthColumnName, $twentyeighthElement, $twentyninthColumnName, $twentyninthElement, $thirtiethColumnName, $thirtiethElement, $thirtiethfirstColumnName, $thirtiethfirstElement, $thirtiethsecondColumnName, $thirtiethsecondElement, $thirtieththirdColumnName, $thirtieththirdElement)
+
+		{
+			$query = "SELECT $databaseItemName FROM $tableName WHERE $firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement' AND
+$ninthColumnName = '$ninthElement' AND $tenthColumnName = '$tenthElement' AND $eleventhColumnName = '$eleventhElement' AND $twelfthColumnName = '$twelfthElement' AND $thirteenthColumnName = '$thirteenthElement' AND $fourteenthColumnName = '$fourteenthElement' AND $fifteenthColumnName = '$fifteenthElement' AND $sixteenthColumnName = '$sixteenthElement' AND $seventeenthColumnName = '$seventeenthElement' AND $eighteenthColumnName = ' $eighteenthElement' AND $ninteenthColumnName = '$ninteenthElement' AND $twentiethColumnName = '$twentiethElement' AND $twentyfirstColumnName = '$twentyfirstElement' AND $twentysecondColumnName = '$twentysecondElement' AND $twentythirdColumnName = '$twentythirdElement' AND $twentyfourthColumnName = '$twentyfourthElement' AND $twentyfifthColumnName = '$twentyfifthElement' AND $twentysixthColumnName = '$twentysixthElement' AND $twentyseventhColumnName = '$twentyseventhElement' AND $twentyeighthColumnName = '$twentyeighthElement' AND $twentyninthColumnName = '$twentyninthElement' AND $thirtiethColumnName = '$thirtiethElement' AND $thirtiethfirstColumnName = '$thirtiethfirstElement' AND $thirtiethsecondColumnName = '$thirtiethsecondElement' AND $thirtieththirdColumnName = '$thirtieththirdElement'";
+
+			$result = mysql_query($query);
+
+			if(!$result)
+			{
+				echo "query: $query";
+				throw new Exception('Mysql Error. '.mysql_error());
+			}
+
+			$dbResultCounter = 0;
+
+			while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+			{
+				$databaseItemValue = $row[$databaseItemName];
+				$dbResultCounter = $dbResultCounter + 1;
+			}
+
+			if($dbResultCounter == 0)
+			{
+				echo "dbResultCounter == 0,<br> query: $query";
+             	throw new Exception('Mysql returned 0 results.');
+			}
+
+			return $databaseItemValue;
+		}
+
+?>

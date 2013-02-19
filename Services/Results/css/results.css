@@ -1,0 +1,86 @@
+.tracker{
+color: #aaa;
+text-align: left;
+margin-bottom: -11%;
+}
+
+#hotzone table {
+font-size: 99%;
+}
+
+#hotzone h6 {
+font-size: 90%;
+-webkit-margin-before: 0em;
+}
+
+body {
+font-size: 75%;
+}
+ 
+#hotzone {
+float: left;
+right: 74%;
+position: fixed;
+width: 235px;
+}
+
+#toolscell {
+float: right;
+width: 500px;
+left: 372px;
+position: fixed;
+height: 636px;
+}
+
+tr.titlerow td{
+    border-bottom: .1em solid black;  
+}
+
+.chart {
+position: relative;
+top: 1px;
+left: 45px;
+}
+
+#hotzonetable{
+border-style: outset;
+border-width: .4em;
+position: relative;
+cursor: pointer;
+width: 11em;
+height: 15em;
+}
+
+#hotzonetable td {
+	color:white;
+	font-weight:lighter;
+	text-align:center;
+}
+
+#hotzonetable td:hover {	
+	background:#0066FF;
+	cursor:pointer;
+}
+
+#filters {
+border-collapse: collapse;
+position: relative;
+margin-top: 4%;
+}
+
+/*.hotzonebutton {
+	width:57px;
+	height:22px;
+	font-size:0.4375em;
+	position:relative;
+	left:5px;
+}*/
+
+/*#hotzonecontainer {
+}*/
+
+a {
+    color: #0066FF;
+    cursor: pointer;
+    text-decoration: none;
+}

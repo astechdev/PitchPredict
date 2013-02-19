@@ -1,0 +1,231 @@
+<?php
+/*
+ * Created on Feb 24, 2009
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+				function get_counter_four_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_five_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_six_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_seven_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_eight_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_nine_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement, $ninthColumnName, $ninthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement' AND $ninthColumnName = '$ninthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+
+				function get_counter_ten_columns($primaryKeyName, $tableName, $firstColumnName, $firstElement, $secondColumnName, $secondElement, $thirdColumnName, $thirdElement, $fourthColumnName, $fourthElement, $fifthColumnName, $fifthElement, $sixthColumnName, $sixthElement, $seventhColumnName, $seventhElement, $eighthColumnName, $eighthElement, $ninthColumnName, $ninthElement, $tenthColumnName, $tenthElement)
+
+					{
+						$query = "SELECT $primaryKeyName FROM $tableName WHERE ($firstColumnName = '$firstElement' AND $secondColumnName = '$secondElement' AND $thirdColumnName = '$thirdElement' AND  $fourthColumnName = '$fourthElement' AND $fifthColumnName = '$fifthElement' AND $sixthColumnName = '$sixthElement' AND $seventhColumnName = '$seventhElement' AND $eighthColumnName = '$eighthElement' AND $ninthColumnName = '$ninthElement' AND $tenthColumnName = '$tenthElement')";
+
+						$result = mysql_query($query);
+
+						if(!$result)
+						{
+							echo "query: $query";
+							throw new Exception('Mysql Error. '.mysql_error());
+						}
+
+						$counterValue = 0;
+
+						while($row = mysql_fetch_array($result, MYSQL_ASSOC))
+						{
+							$primaryKeyValue = $row[$primaryKeyName];
+							//echo "Counter Value: $primaryKeyValue<br>";
+							$counterValue = $counterValue + $primaryKeyValue;
+							//echo "Counter Value: $counterValue<br>";
+						}
+/*
+						if($counterValue == 0)
+						{
+							echo "counterValue == 0,<br> query: $query";
+			             	throw new Exception('Mysql returned 0 results.');
+						}
+*/
+						return $counterValue;
+					}
+?>

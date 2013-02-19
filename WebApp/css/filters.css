@@ -1,0 +1,11 @@
+#filterstable
+{
+    position: relative;
+    cursor: pointer;
+    width: 20em;
+    height: 24em;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 80%;
+}
+

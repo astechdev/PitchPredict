@@ -1,0 +1,536 @@
+<?php
+/*
+ * COPYRIGHT    2009 AsTech Development
+ *
+ *
+ * DESRIPTION:  This file is the entry point to the Pitch Predict web site.
+ *
+ * SOFTWARE HISTORY:
+ *
+ *   10FEB09    S. Aslan
+ *              Initial Coding.
+ */
+?>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
+
+<head> 
+	<link type="text/css" href="css/jQueryTools/tabs/tabs.css" rel="stylesheet" />
+	<link type="text/css" href="css/jQueryTools/tooltip/tooltip.css"rel="stylesheet" /> 
+	<link type="text/css" href="css/field.css" rel="stylesheet"  />
+	<link type="text/css" href="css/style.css" rel="stylesheet" />
+	<link type="text/css" href="css/menu_style.css" rel="stylesheet" />
+	<link type="text/css" href="css/pitch_recorder.css" rel="stylesheet" />
+	<link type="text/css" href="css/team_lineup.css" rel="stylesheet" />
+	<link type="text/css" href="css/scoreboard.css" rel="stylesheet" />
+	
+	<!-- icons for tabs and bookmarks  -->
+	<link type="image/x-ico" href="images/favicon.ico" rel="icon" />
+	<link type="image/x-icon" href="images/favicon.ico" rel="shortcut icon" />
+	
+	<!-- Full version of jQuery Tools + jQuery 1.3.2.  This includes all the Tools, 
+	     plugins and effects but not the Flowplayer files.  -->
+	<script type="text/javascript" src="js/jquery.tools.min.js"></script>
+	<script>jQuery.noConflict();</script>
+        
+	<script type="text/javascript" src="js/globalVariables.js"></script>
+        
+	<!--<script type="text/javascript" src="js/Util/jquery.form.js"></script>-->
+	<script type="text/javascript" src="js/Util/jquery.cookie.js"></script>
+	<script type="text/javascript" src="js/Util/util.js"></script>
+	<script type="text/javascript" src="js/Util/array.js"></script>
+        
+	<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/situations.js"></script>
+        
+	<script type="text/javascript" src="js/Components/login.js"></script>
+	<script type="text/javascript" src="js/Components/team_lineup.js"></script>
+	<script type="text/javascript" src="js/Components/scoreboard.js"></script>
+	<script type="text/javascript" src="js/Components/field.js"></script>
+	<script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
+	
+	<!-- This JavaScript snippet binds the login form as an ajax form and loads the home page content. -->
+	<script>
+		// perform JavaScript after the document is scriptable.
+		jQuery(document).ready(function() 
+		{		
+//                        var options = { 
+//			        beforeSubmit:  loginRequest,  // pre-submit callback 
+//			        success:       loginResponse,  // post-submit callback 
+//			 	type:          'post',
+//			 	dataType:      'json',
+//			 	clearForm:     'true'
+//			 	
+//			        // other available options: 
+//			        //url:       url         // override for form's 'action' attribute 
+//			        //type:      type        // 'get' or 'post', override for form's 'method' attribute 
+//			        //dataType:  null        // 'xml', 'script', or 'json' (expected server response type) 
+//			        //clearForm: true        // clear all form fields after successful submit 
+//			        //resetForm: true        // reset the form after successful submit 
+//			 
+//			        // $.ajax options can be used here too, for example: 
+//			        //timeout:   3000
+//		        };
+//		        
+//			// bind 'loginform' and provide a simple callback function 
+//			jQuery('#login').ajaxForm(options);
+                        jQuery.cookie("UserName", "jaslan");
+//                        alert('cookie UserName'+jQuery.cookie("UserName"));
+			if (jQuery.cookie("UserName") == null)
+			{				
+				jQuery("#loggedin").hide();
+				
+				jQuery("#situationsmenubutton").hide();
+				
+				jQuery("#toolsmenubutton").hide();
+			}
+			else
+			{	
+				jQuery('#login').hide();
+				
+				jQuery("#loggedin").load("Components/Login/loggedIn.html", function()
+				{
+                                        jQuery("#register").hide();
+                                        
+					jQuery("#loggedin").fadeIn("slow");
+				});
+                                
+                                loadSituations();
+			}
+			
+//			jQuery("#homemenubutton").hide();
+//						
+//			jQuery("#center_col").append('<div id="homecontent"></div>');
+//			
+//			jQuery("#homecontent").load("homecontent.html");
+		});
+	</script>
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="_your description goes here_" />
+	<meta name="keywords" content="_your,keywords,goes,here_" />
+	
+	<title>PitchPredict</title>
+	
+</head>
+	<body>	
+		<div id="header">
+<!--                    <div class="menu">
+                            <ul id="mainmenuul">
+                                    <li id="homemenubutton"><a class="padding14201420" onClick=loadHome() >Home</a></li>
+                                    <li id="toolsmenubutton"><a class="padding14201420">Tools</a>
+                                            <ul class="submenu">
+                                                    <li id="situationsmenubutton"><a onClick=loadSituations()>Situations</a></li>
+                                            </ul>
+                                    </li>
+                            </ul>
+
+                            <div id="pitchpredictlogo">
+                                    <h1>Pitch<span>Predict</span></h1>
+                            </div>
+
+                            <div id="register"><a onClick=loadRegister() >Register</a></div>
+                            
+                            <div id="logincontainer">
+                                    <form id="login" method="post" action="http://www.pitchpredict.com/PitchPredict/Services/login.php">
+                                             <label>Username:  
+                                                    <input type="text" id="UserName" name="UserName" tabindex="1" class="text" />  
+                                             </label>  
+                                             <label>Password:  
+                                                    <input type="password" id="password" name="password" tabindex="2" class="text" />  
+                                                    <input type="submit" name="Submit" value="Log In" tabindex="3" class="buttons" />  
+                                             </label>  
+                                    </form>
+
+                            </div>
+                            <div id="loggedin"></div>
+                    </div>-->
+		</div>
+		
+		<div id="container">			
+			<div id="content">
+				<div id="left_col">
+                                    <div id="awayteamlineupcontent" class="teamlineupcontent">
+                                        <table id="awayteamlineuptable" class="teamlineuptable">
+                                                <tr class="teamlineupheaderRow">
+                                                        <th class="teamlineuptableheadercolumn1"></th>
+                                                        <th id="awayteamlineuptableheadercolumn2" class="teamlineuptableheadercolumn2"></th>
+                                                </tr>
+
+                                                <tr>
+                                                        <td>1)</td>
+
+                                                        <td>
+                                                                <div id="awayteamfirstbatterdisplayid" class="pointer" onclick=showFirstAwayTeamBatterSelectionDropDown()></div>
+
+                                                                <div id="awayteamfirstbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>2)</td>
+
+                                                        <td>
+                                                                <div id="awayteamsecondbatterdisplayid" class="pointer" onclick=showSecondAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamsecondbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>3)</td>
+
+                                                        <td>
+                                                                <div id="awayteamthirdbatterdisplayid" class="pointer" onclick=showThirdAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamthirdbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>4)</td>
+
+                                                        <td>
+                                                                <div id="awayteamfourthbatterdisplayid" class="pointer" onclick=showFourthAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamfourthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>5)</td>
+
+                                                        <td>
+                                                                <div id="awayteamfifthbatterdisplayid" class="pointer" onclick=showFifthAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamfifthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>6)</td>
+
+                                                        <td>
+                                                                <div id="awayteamsixthbatterdisplayid" class="pointer" onclick=showSixthAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamsixthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>7)</td>
+
+                                                        <td>
+                                                                <div id="awayteamseventhbatterdisplayid" class="pointer" onclick=showSeventhAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamseventhbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>8)</td>
+
+                                                        <td>
+                                                                <div id="awayteameighthbatterdisplayid" class="pointer" onclick=showEighthAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteameighthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>9)</td>
+
+                                                        <td>
+                                                                <div id="awayteamninthbatterdisplayid" class="pointer" onclick=showNinthAwayTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="awayteamninthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr class="teamlineupfooterRow">
+                                                        <td></td>
+
+                                                        <td></td>
+                                                </tr>
+                                        </table>
+                                </div>
+                                </div>
+                                
+				<div id="right_col">
+                                    <div id="hometeamlineupcontent" class="teamlineupcontent">
+                                        <table id="hometeamlineuptable" class="teamlineuptable">
+                                                <tr class="teamlineupheaderRow">
+                                                        <th class="teamlineuptableheadercolumn1"></th>
+                                                        <th id="hometeamlineuptableheadercolumn2" class="teamlineuptableheadercolumn2"></th>
+                                                </tr>
+
+                                                <tr>
+                                                        <td>1)</td>
+
+                                                        <td>
+                                                                <div id="hometeamfirstbatterdisplayid" class="pointer" onclick=showFirstHomeTeamBatterSelectionDropDown()></div>
+
+                                                                <div id="hometeamfirstbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>2)</td>
+
+                                                        <td>
+                                                                <div id="hometeamsecondbatterdisplayid" class="pointer" onclick=showSecondHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamsecondbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>3)</td>
+
+                                                        <td>
+                                                                <div id="hometeamthirdbatterdisplayid" class="pointer" onclick=showThirdHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamthirdbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>4)</td>
+
+                                                        <td>
+                                                                <div id="hometeamfourthbatterdisplayid" class="pointer" onclick=showFourthHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamfourthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>5)</td>
+
+                                                        <td>
+                                                                <div id="hometeamfifthbatterdisplayid" class="pointer" onclick=showFifthHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamfifthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>6)</td>
+
+                                                        <td>
+                                                                <div id="hometeamsixthbatterdisplayid" class="pointer" onclick=showSixthHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamsixthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>7)</td>
+
+                                                        <td>
+                                                                <div id="hometeamseventhbatterdisplayid" class="pointer" onclick=showSeventhHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamseventhbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>8)</td>
+
+                                                        <td>
+                                                                <div id="hometeameighthbatterdisplayid" class="pointer" onclick=showEighthHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeameighthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr>
+
+                                                        <td>9)</td>
+
+                                                        <td>
+                                                                <div id="hometeamninthbatterdisplayid" class="pointer" onclick=showNinthHomeTeamBatterSelectionDropDown() ></div>
+
+                                                                <div id="hometeamninthbatterselectid" class="batterselect"></div>
+                                                        </td>
+                                                </tr>
+
+                                                <tr class="teamlineupfooterRow">
+                                                        <td></td>
+
+                                                        <td></td>
+                                                </tr>
+                                        </table>
+                                </div>
+                                </div>
+                                
+				<div id="center_col">
+                                    <div id="scoreboard">
+                                        <div id="inningdisplayid" class="inning pointer" onclick=showInningSelectionDropDown()></div>
+
+                                        <div id="inningselectid" class="inning"></div>
+
+                                        <div id="awayteamnamedisplayid" class="awayteamname pointer" onclick=showAwayTeamNameSelectionDropDown()></div>
+
+                                        <div id="awayteamnameselectid" class="awayteamname"></div>
+
+                                        <div id="awayteamscoredisplayid" class="awayteamscore pointer" onclick=showAwayTeamScoreSelectionDropDown()></div>
+
+                                        <div id="awayteamscoreselectid" class="awayteamscoreselector"></div>
+
+                                        <div id="hometeamnamedisplayid" class="hometeamname pointer" onclick=showHomeTeamNameSelectionDropDown()></div>
+
+                                        <div id="hometeamnameselectid" class="hometeamname"></div>
+
+                                        <div id="hometeamscoredisplayid" class="hometeamscore pointer" onclick=showHomeTeamScoreSelectionDropDown()></div>
+
+                                        <div id="hometeamscoreselectid" class="hometeamscoreselector"></div>
+
+                                        <div id="ballsdisplayid" class="balls pointer" onclick=showBallsSelectionDropDown()></div>
+
+                                        <div id="ballsselectid" class="balls">Balls:</div>
+
+                                        <div id="strikesdisplayid" class="strikes pointer" onclick=showStrikesSelectionDropDown()></div>
+
+                                        <div id="strikesselectid" class="strikes">Strikes:</div>
+
+                                        <div id="outsdisplayid" class="outs pointer" onclick=showOutsSelectionDropDown()></div>
+
+                                        <div id="outsselectid" class="outs">Outs:</div>
+
+                                        <div id="years"></div>
+                                    </div>
+	
+                                    <div id="field">
+                                        <div id="runneronsecondimagecontainer"></div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="runneronsecond">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div>
+                                                        <h3 id="runneronsecondselectid"></h3>
+                                                </div> 
+                                        </div>
+
+                                        <div id="pitcherimagecontainer"></div>
+
+                                        <div id="runneronfirstimagecontainer"></div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="runneronthird">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div>
+                                                        <h3 id="runneronthirdselectid"></h3>
+                                                </div>
+                                        </div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="pitcher">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div id="pitcherdropdownid">
+                                                        <h3 id="pitcherselectid"></h3>
+                                                </div>
+                                        </div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="runneronfirst">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div>
+                                                        <h3 id="runneronfirstselectid"></h3>
+                                                </div>
+                                        </div>
+
+                                        <div id="runneronthirdimagecontainer"></div>
+
+                                        <div id="catcherimagecontainer"></div>
+
+                                        <div id="lh_hitterimage"></div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="hitter">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div id="hitterdropdownid">
+                                                        <h3 id="hitterselectid"></h3>
+                                                </div>
+
+                                                <div>
+                                                        <h3 id="hitterrightorleftselectid"></h3>
+                                                </div>
+
+                                        <!--        <div>
+                                                    <h3 id="atbatnumberselectid">At Bat #:</select>
+                                                    </h3>
+                                                </div>-->
+                                        </div>
+
+                                        <div id="rh_hitterimage"></div>
+
+                                        <!-- trigger element. a regular workable link --> 
+                                        <div id="catcher">&nbsp;</div>
+
+                                        <!-- tooltip element --> 
+                                        <div class="tooltip"> 
+                                                <div id="catcherdropdownid">
+                                                        <h3 id="catcherselectid"></h3>	
+                                                </div>
+                                        </div>
+
+                                        <div id="home_team_ondeck_hitterimage"></div>
+
+                                        <div id="away_team_ondeck_hitterimage"></div>
+                                    </div>
+
+                                    <!-- the tabs --> 
+                                    <ul class="tabs"> 
+                                        <li><a href="#first" onClick=removeResults()>Pitch Recording</a></li> 
+                                        <li><a id="resultstab" onClick=loadResults() href="#second">Results</a></li> 
+                                    </ul> 
+
+                                    <!-- tab "panes" -->
+                                    <div class="panes">
+                                            <div>
+                                                    <ul id="pitchcountercontainer">
+                                                        <table id="pitchrecordertable">
+                                                            <tbody id="pitchrecordertabletbody">
+                                                            </tbody>
+                                                        </table>
+                                                    </ul>
+                                            </div>
+                                            <div>
+                                                    <ul id="resultscontainer"></ul>
+                                            </div>
+                                            <div>
+                                            </div>
+                                    </div>
+                                    
+                                </div>
+                                <!--<div id="footer">&copy; <a>AsTech Development</a></div>-->
+			</div>		
+		</div>
+	</body>	
+
+</html>

@@ -1,0 +1,185 @@
+#scoreboard {
+-moz-background-clip:border;
+-moz-background-inline-policy:continuous;
+-moz-background-origin:padding;
+-moz-border-radius-bottomleft:5px;
+-moz-border-radius-bottomright:5px;
+-moz-border-radius-topleft:5px;
+-moz-border-radius-topright:5px;
+background-image:url('../images/blackGradient.jpg');
+border:3px double #DDDDDD;
+color:#EEEEEE;
+font-size:1em;
+height:240px;
+margin-left:auto;
+margin-right:auto;
+position:relative;
+width:100%;
+z-index:1;
+}
+
+.inning {
+margin-left:auto;
+margin-right:auto;
+position:relative;
+width:21%;
+z-index:2;
+top:6%;
+height:1em;
+}
+
+.awayteamname {
+left:2%;
+position:relative;
+top:18%;
+width:20%;
+z-index:2;
+height:1em;
+}
+
+.hometeamname {
+left:2%;
+position:relative;
+top:26%;
+width:20%;
+z-index:2;
+height:1em;
+}
+
+.awayteamscore {
+left:96%;
+position:relative;
+top:12%;
+width:3%;
+z-index:2;
+height:1em;
+}
+
+.awayteamscoreselector {
+left:93%;
+position:relative;
+top:12%;
+width:3%;
+z-index:2;
+height:1em;
+}
+
+.hometeamscore {
+left:96%;
+position:relative;
+top:21%;
+width:3%;
+z-index:2;
+height:1em;
+}
+
+.hometeamscoreselector {
+left:93%;
+position:relative;
+top:21%;
+z-index:2;
+height:1em;
+}
+
+.balls {
+height:1em;
+left:4%;
+position:relative;
+top:40%;
+z-index:3;
+width: 15%;
+}
+
+.strikes {
+margin-left:auto;
+margin-right:auto;
+position:relative;
+top:34%;
+width:6%;
+z-index:3;
+height:1em;
+width: 15%;
+}
+
+.outs {
+height:1em;
+left:90%;
+position:relative;
+top:27%;
+width:5%;
+z-index:2;
+width: 15%;
+}
+
+#years {
+    left: 36%;
+    position: relative;
+    top: 41%;
+    width: 37%;
+}
+
+/*#inningtooltipid {
+margin-left:auto;
+margin-right:auto;
+position:relative;
+width:160px;
+z-index:2;
+top:10px;
+}
+
+#awayteamnametooltipid {
+left:15px;
+position:relative;
+top:45px;
+width:250px;
+z-index:2;
+}
+
+#hometeamnametooltipid {
+left:15px;
+position:relative;
+top:60px;
+width:250px;
+z-index:2;
+}
+
+#awayteamscoretooltipid {
+margin-left:auto;
+position:relative;
+top:23px;
+width:25px;
+z-index:2;
+}
+
+#hometeamscoretooltipid {
+margin-left:auto;
+position:relative;
+top:38px;
+width:25px;
+z-index:2;
+}
+
+#ballstooltipid {
+margin-left:15px;
+position:relative;
+top:91px;
+width:70px;
+z-index:2;
+}
+
+#strikestooltipid {
+margin-left:auto;
+margin-right:auto;
+position:relative;
+top:68px;
+width:75px;
+z-index:2;
+}
+
+#outstooltipid {
+margin-left:auto;
+position:relative;
+top:45px;
+width:70px;
+z-index:2;
+}*/
