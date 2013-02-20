@@ -531,3 +531,18 @@ h6 {
     width: 100%;
   }
 }
+
+#ajaxloader{
+    height: 30%;
+    width: 30%;
+    margin-left: 38%;
+    margin-top: 25%;
+}
+
+#hotzoneajaxloader{
+    height: 10%;
+    width: 25%;
+    margin-left: 38%;
+    margin-top: 45%;
+}
+

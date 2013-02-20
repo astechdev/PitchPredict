@@ -161,26 +161,46 @@ function loadScoreBoardDropDowns()
     var awayteamsselectdd = document.createElement("select");
     awayteamsselectdd.name = "AwayTeamName";
     awayteamsselectdd.id = "awayteamnameId";
-    awayteamsselectdd.options[awayteamsselectdd.length] = new Option(stateVariablesMap['theAwayTeamName'], stateVariablesMap['theAwayTeamId']);
+    awayteamsselectdd.options[awayteamsselectdd.length] = new Option(stateVariablesMap['theAwayTeamName'], 
+                                                                stateVariablesMap['theAwayTeamId']+","+stateVariablesMap['theAwayTeamName']+","+stateVariablesMap['theAwayTeamAbbr']);
     for(var key in teamsMap) 
     {
         if(teamsMap.hasOwnProperty(key)) 
         {
-            awayteamsselectdd.options[awayteamsselectdd.length] = new Option(teamsMap[key].theName, teamsMap[key].theId);
+            awayteamsselectdd.options[awayteamsselectdd.length] = new Option(teamsMap[key].theName, 
+                                                                        teamsMap[key].theId+","+teamsMap[key].theName+","+teamsMap[key].theTeamAbbr);
         }
     }
 
     //Add the dropdown to the parent node
     jQuery("#awayteamnameselectid").append(awayteamsselectdd);
     jQuery("#awayteamnameId").change(function(e) {  
-        stateVariablesMap['theAwayTeamId'] = jQuery("#awayteamnameId").val(); 
-        stateVariablesMap['theAwayTeamName'] = jQuery("#awayteamnameId[value="+stateVariablesMap['theAwayTeamId']+"]").text();
+        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
+        stateVariablesMap['theAwayTeamId'] = awayTeamInfoArray[0]; 
+        stateVariablesMap['theAwayTeamName'] = awayTeamInfoArray[1];
+        stateVariablesMap['theAwayTeamAbbr'] = awayTeamInfoArray[2];
+        
+//        if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
+//        {
+//            stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theHomeTeamId'];
+//            stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+//            stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theAwayTeamId'];
+//            stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+//        }
+//        else
+//        {
+//            stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theAwayTeamId'];
+//            stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+//            stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theHomeTeamId'];
+//            stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+//        }
+        
         resetAwayTeamLineup();
 //        resetScoreBoard();
         resetField('Home Team');
 //        resetPitchSequences();
         saveState();
-        load();
+        //load();
     });   
 
     //create home teams drop down
@@ -189,26 +209,55 @@ function loadScoreBoardDropDowns()
     var hometeamsselectdd = document.createElement("select");
     hometeamsselectdd.name = "HomeTeamName";
     hometeamsselectdd.id = "hometeamnameId";
-    hometeamsselectdd.options[hometeamsselectdd.length] = new Option(stateVariablesMap['theHomeTeamName'], stateVariablesMap['theHomeTeamId']);
+    hometeamsselectdd.options[hometeamsselectdd.length] = new Option(stateVariablesMap['theHomeTeamName'], 
+                                                                stateVariablesMap['theHomeTeamId']+","+stateVariablesMap['theHomeTeamName']+","+stateVariablesMap['theHomeTeamAbbr']);
     for(var key in teamsMap) 
     {
         if(teamsMap.hasOwnProperty(key)) 
         {
-            hometeamsselectdd.options[hometeamsselectdd.length] = new Option(teamsMap[key].theName, teamsMap[key].theId);
+            hometeamsselectdd.options[hometeamsselectdd.length] = new Option(teamsMap[key].theName, 
+                                                                        teamsMap[key].theId+","+teamsMap[key].theName+","+teamsMap[key].theTeamAbbr);
         }
     }
 
     //Add the dropdown to the parent node
     jQuery("#hometeamnameselectid").append(hometeamsselectdd);
-    jQuery("#hometeamnameId").change(function(e) { 
-        stateVariablesMap['theHomeTeamId'] = jQuery("#hometeamnameId").val(); 
-        stateVariablesMap['theHomeTeamName'] = jQuery("#hometeamnameId[value="+stateVariablesMap['theHomeTeamId']+"]").text();
+    jQuery("#hometeamnameId").change(function(e) {  
+        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
+        stateVariablesMap['theHomeTeamId'] = homeTeamInfoArray[0]; 
+        stateVariablesMap['theHomeTeamName'] = homeTeamInfoArray[1];
+        stateVariablesMap['theHomeTeamAbbr'] = homeTeamInfoArray[2];
+        
+//        if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
+//        {
+//            stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theHomeTeamId'];
+//            stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+//            stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theAwayTeamId'];
+//            stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+//        }
+//        else
+//        {
+//            stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theAwayTeamId'];
+//            stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+//            stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theHomeTeamId'];
+//            stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+//        }
+        
+//        console.log('stateVariablesMap[theHomeTeamId]'+stateVariablesMap['theHomeTeamId']);
+//        stateVariablesMap['theHomeTeamId'] = jQuery("#hometeamnameId").val(); 
+        
+//        console.log('stateVariablesMap[theHomeTeamId]'+stateVariablesMap['theHomeTeamId']);
+//        console.log('stateVariablesMap[theHomeTeamName]'+stateVariablesMap['theHomeTeamName']);
+//        stateVariablesMap['theHomeTeamName'] = $("#hometeamnameId option:selected").text();
+//        console.log('(#hometeamnameId option:selected).text()'+$("#hometeamnameId option:selected").text());        
+//        console.log('stateVariablesMap[theHomeTeamName]'+stateVariablesMap['theHomeTeamName']);
+        
         resetHomeTeamLineup();
 //        resetScoreBoard();
         resetField('Home Team');
 //        resetPitchSequences();
         saveState();
-        load();
+        //load();
     });    
 }
 
@@ -236,11 +285,24 @@ function loadScoreBoardRadioButtons()
 //        resetField('Home Team');
 //        resetField('Away Team');
 
-        stateVariablesMap['thePitcherTeamId'] = jQuery('#hometeamnameId').val();
-        stateVariablesMap['thePitcherTeamName'] = jQuery("#hometeamnameId[value="+stateVariablesMap['thePitcherTeamId']+"]").text();
+        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
+        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
         
-        stateVariablesMap['theBatterTeamId'] = jQuery('#awayteamnameId').val();
-        stateVariablesMap['theBatterTeamName'] = jQuery("#awayteamnameId[value="+stateVariablesMap['theBatterTeamId']+"]").text();
+        stateVariablesMap['thePitcherTeamId'] = homeTeamInfoArray[0];
+        stateVariablesMap['thePitcherTeamName'] = homeTeamInfoArray[1];
+        stateVariablesMap['thePitcherTeamAbrr'] = homeTeamInfoArray[2];
+        
+        stateVariablesMap['theBatterTeamId'] = awayTeamInfoArray[0];
+        stateVariablesMap['theBatterTeamName'] = awayTeamInfoArray[1];
+        stateVariablesMap['theBatterTeamAbrr'] = awayTeamInfoArray[2];
+        
+//        var index = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].indexOf(homeTeamInfoArray[0]);
+//        
+//        stateVariablesMap['thePitcherTeamId'] = jQuery('#hometeamnameId').val();
+//        stateVariablesMap['thePitcherTeamName'] = jQuery("#hometeamnameId[value="+stateVariablesMap['thePitcherTeamId']+"]").text();
+//        
+//        stateVariablesMap['theBatterTeamId'] = jQuery('#awayteamnameId').val();
+//        stateVariablesMap['theBatterTeamName'] = jQuery("#awayteamnameId[value="+stateVariablesMap['theBatterTeamId']+"]").text();
         
         var index = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
         if ((index + 1) < stateVariablesMap['theAwayTeamBattingOrderBatterIds'].length)
@@ -271,7 +333,7 @@ function loadScoreBoardRadioButtons()
         }
     
         saveState();
-        load();
+//        load();
     });  
     
     jQuery("#bottomradiobutton").click(function() { 
@@ -280,11 +342,22 @@ function loadScoreBoardRadioButtons()
 //        resetField('Home Team');
 //        resetField('Away Team');
 
-        stateVariablesMap['thePitcherTeamId'] = jQuery('#awayteamnameId').val();
-        stateVariablesMap['thePitcherTeamName'] = jQuery("#awayteamnameId[value="+stateVariablesMap['thePitcherTeamId']+"]").text();
+        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
+        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
         
-        stateVariablesMap['theBatterTeamId'] = jQuery('#hometeamnameId').val();
-        stateVariablesMap['theBatterTeamName'] = jQuery("#hometeamnameId[value="+stateVariablesMap['theBatterTeamId']+"]").text();
+        stateVariablesMap['thePitcherTeamId'] = awayTeamInfoArray[0];
+        stateVariablesMap['thePitcherTeamName'] = awayTeamInfoArray[1];
+        stateVariablesMap['thePitcherTeamAbrr'] = awayTeamInfoArray[2];
+        
+        stateVariablesMap['theBatterTeamId'] = homeTeamInfoArray[0];
+        stateVariablesMap['theBatterTeamName'] = homeTeamInfoArray[1];
+        stateVariablesMap['theBatterTeamAbrr'] = homeTeamInfoArray[2];
+
+//        stateVariablesMap['thePitcherTeamId'] = jQuery('#awayteamnameId').val();
+//        stateVariablesMap['thePitcherTeamName'] = jQuery("#awayteamnameId[value="+stateVariablesMap['thePitcherTeamId']+"]").text();
+//        
+//        stateVariablesMap['theBatterTeamId'] = jQuery('#hometeamnameId').val();
+//        stateVariablesMap['theBatterTeamName'] = jQuery("#hometeamnameId[value="+stateVariablesMap['theBatterTeamId']+"]").text();
         
         var index = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
         if ((index + 1) < stateVariablesMap['theHomeTeamBattingOrderBatterIds'].length)
@@ -315,7 +388,7 @@ function loadScoreBoardRadioButtons()
         }
     
         saveState();
-        load();
+//        load();
     });  
     
 //    jQuery("#anyradiobutton").click(function() { 

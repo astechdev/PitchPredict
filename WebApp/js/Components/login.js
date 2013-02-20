@@ -8,9 +8,11 @@ function loginRequest()
     jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/login.php?UserName='+jQuery('#userName').val()+'&password='+jQuery('#password').val(), function(data) 
     {
         userInfoMap = data;
-//        alert('username'+userInfoMap.UserName);
-        if (userInfoMap.UserName != 'false')
+        console.log(userInfoMap.UserName);
+        console.log(JSON.stringify(userInfoMap));
+        if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
         {
+            console.log('load');
             load();
         }
         
@@ -41,7 +43,7 @@ function loginRequest()
 function loginResponse()
 { 
 //    alert("loginResponse: ");
-    if (userInfoMap.UserName != 'false')
+    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
     {
 //            jQuery.cookie("UserName", userInfoMap.UserName);
 //        jQuery("#loginbutton").hide();
@@ -61,7 +63,7 @@ function loginResponse()
 function logout()
 {
 	//openPage('Login'); 
-        userInfoMap.UserName === 'false'; 
+        userInfoMap.UserName = null; 
 //        jQuery('#loginbutton').show(); 
 //        jQuery('#loggedin').hide();
 //        jQuery('#pitchpredictbutton').hide();

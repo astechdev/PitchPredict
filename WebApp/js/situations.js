@@ -1,13 +1,16 @@
 function load()
 {
     //reinitialize some maps
-    for(var stateVariablesKey in stateVariablesMap) 
-    {
-        if(stateVariablesMap.hasOwnProperty(stateVariablesKey)) 
-        {
-            delete stateVariablesMap[stateVariablesKey];
-        }
-    }
+//    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
+//    {
+//        for(var stateVariablesKey in stateVariablesMap) 
+//        {
+//            if(stateVariablesMap.hasOwnProperty(stateVariablesKey)) 
+//            {
+//                delete stateVariablesMap[stateVariablesKey];
+//            }
+//        }
+//    }
     
     for(var teamsKey in teamsMap) 
     {
@@ -81,11 +84,55 @@ function load()
     
     jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?UserName='+userInfoMap.UserName, function(data) 
     {
-        jQuery.each(data, function(key, val) 
+        if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
         {
-            stateVariablesMap[key] = val;
-//            alert("stateVariablesMap["+key+"]: "+stateVariablesMap[key]);
-        }); 
+            jQuery.each(data, function(key, val) 
+            {
+                stateVariablesMap[key] = val;
+    //            alert("stateVariablesMap["+key+"]: "+stateVariablesMap[key]);
+            }); 
+
+            if(stateVariablesMap['thePitchTypeSequence'] === 'underfined' || stateVariablesMap['thePitchTypeSequence'] === null)
+            {
+                stateVariablesMap['thePitchTypeSequence'] = new Array();
+            }
+            if(stateVariablesMap['thePitchLocationSequence'] === 'underfined' || stateVariablesMap['thePitchLocationSequence'] === null)
+            {
+                stateVariablesMap['thePitchLocationSequence'] = new Array();
+            }
+            if(stateVariablesMap['thePitchOutcomeSequence'] === 'underfined' || stateVariablesMap['thePitchOutcomeSequence'] === null)
+            {
+                stateVariablesMap['thePitchOutcomeSequence'] = new Array();
+            }
+
+            stateVariablesMap['theHomeTeamBattingOrderBatterIds'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].split(",");
+            stateVariablesMap['theAwayTeamBattingOrderBatterIds'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].split(",");
+        }
+        else
+        {
+            if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
+            {
+                stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theHomeTeamId'];
+                stateVariablesMap['thePitcherTeamName'] = stateVariablesMap['theHomeTeamName'];
+                stateVariablesMap['thePitcherTeamAbbr'] = stateVariablesMap['theHomeTeamAbbr'];
+                stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+                stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theAwayTeamId'];
+                stateVariablesMap['theBatterTeamName'] = stateVariablesMap['theAwayTeamName'];
+                stateVariablesMap['theBatterTeamAbbr'] = stateVariablesMap['theAwayTeamAbbr'];
+                stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+            }
+            else
+            {
+                stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theAwayTeamId'];
+                stateVariablesMap['thePitcherTeamName'] = stateVariablesMap['theAwayTeamName'];
+                stateVariablesMap['thePitcherTeamAbbr'] = stateVariablesMap['theAwayTeamAbbr'];
+                stateVariablesMap['thePitcherTeamScore'] = stateVariablesMap['theAwayTeamScore'];
+                stateVariablesMap['theBatterTeamId'] = stateVariablesMap['theHomeTeamId'];
+                stateVariablesMap['theBatterTeamName'] = stateVariablesMap['theHomeTeamName'];
+                stateVariablesMap['theBatterTeamAbbr'] = stateVariablesMap['theHomeTeamAbbr'];
+                stateVariablesMap['theBatterTeamScore'] = stateVariablesMap['theHomeTeamScore'];
+            }
+        }
         
         console.log(JSON.stringify(stateVariablesMap));
         
@@ -124,21 +171,25 @@ function load()
 //            });
             awayTeamMap = data;
             
-//            alert('awayTeamMap theTeamName'+awayTeamMap[stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0]].theTeamName);
-//            alert('stateVariablesMap theBatterTeamName'+stateVariablesMap['theBatterTeamName']);
-            if(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0] !== '0')
-            {
-                if(awayTeamMap[0].theTeamName == stateVariablesMap['theBatterTeamName'])
-                {
-//                    alert('away team on offense');
-                    offenseTeamMap = awayTeamMap;
-                }
-                else
-                {
-//                    alert('away team on defense');
-                    defenseTeamMap = awayTeamMap;
-                }
-            }
+//            console.log('awayTeamMap theTeamName'+awayTeamMap[stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0]].theTeamName);
+//            console.log('stateVariablesMap theBatterTeamName'+stateVariablesMap['theBatterTeamName']);
+//            if(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0] != '0')
+//            {
+//                if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
+//                {
+//                    defenseTeamMap = homeTeamMap;
+//                    offenseTeamMap = awayTeamMap;
+//                }
+//                else
+//                {
+//                    offenseTeamMap = homeTeamMap;
+//                    defenseTeamMap = awayTeamMap;
+//                }
+//            }
+            
+//            console.log('awayTeamMap: '+JSON.stringify(awayTeamMap));
+//            console.log('offenseTeamMap: '+JSON.stringify(offenseTeamMap));
+//            console.log('defenseTeamMap: '+JSON.stringify(defenseTeamMap));
             
             awayTeamMapAquired = 'true';
             
@@ -158,19 +209,25 @@ function load()
 //            });
             homeTeamMap = data;
             
-            if(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0] !== '0')
-            {
-                if(homeTeamMap[0].theTeamName == stateVariablesMap['thePitcherTeamName'])
-                {
-//                    alert('home team on defense');
-                    defenseTeamMap = homeTeamMap;
-                }
-                else
-                {
-//                    alert('home team on offense');
-                    offenseTeamMap = homeTeamMap;
-                }
-            }
+//            console.log('homeTeamMap theTeamName'+homeTeamMap[stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0]].theTeamName);
+//            console.log('stateVariablesMap theBatterTeamName'+stateVariablesMap['theBatterTeamName']);
+//            if(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0] != '0')
+//            {
+//                if(stateVariablesMap['theTopOrBottomHalf'] === "BOTTOM")
+//                {
+//                    defenseTeamMap = homeTeamMap;
+//                    offenseTeamMap = awayTeamMap;
+//                }
+//                else
+//                {
+//                    offenseTeamMap = homeTeamMap;
+//                    defenseTeamMap = awayTeamMap;
+//                }
+//            }
+            
+//            console.log('homeTeamMap: '+JSON.stringify(homeTeamMap));
+//            console.log('offenseTeamMap: '+JSON.stringify(offenseTeamMap));
+//            console.log('defenseTeamMap: '+JSON.stringify(defenseTeamMap));
             
             homeTeamMapAquired = 'true';
             
@@ -249,6 +306,16 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
 //"pitchTypesAquired "+pitchTypesAquired +
 //"pitchLocationsAquired "+pitchLocationsAquired +
 //"pitchOutcomesAquired "+pitchOutcomesAquired);
+    if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
+    {
+        defenseTeamMap = homeTeamMap;
+        offenseTeamMap = awayTeamMap;
+    }
+    else
+    {
+        offenseTeamMap = homeTeamMap;
+        defenseTeamMap = awayTeamMap;
+    }
     
     if((teamsMapAquired == 'true')&&
         (awayTeamMapAquired == 'true')&&
@@ -268,7 +335,7 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadAwayTeamLineup();
         loadPitchCounters();
         loadFilters();
-        loadHotzone();
+        //loadHotzone();
         loadField();
         updateCharts('true');
 
@@ -557,10 +624,11 @@ function checkSituationsStateVariables()
 function saveState()
 {	
     getParamsString();
+    console.log(JSON.stringify(stateVariablesMap));
 //    alertStateVariables();
 
     //dont save state if not logged in/registered 
-    if(userInfoMap != null)
+    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
     {
         jQuery.ajax(
         {
@@ -573,10 +641,12 @@ function saveState()
                 success: function(msg)
                 {
     //                    alert( "State saved: " + msg );
-                        //load();
+                    load();
                 }
         });  
     }
-    
-    load();
+    else
+    {
+        load();
+    }
 }

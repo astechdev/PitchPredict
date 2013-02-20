@@ -69,4 +69,13 @@ function pausecomp(millis)
 	
 	do { curDate = new Date(); }
 	while(curDate-date < millis);
-} 
+}
+
+function isEmpty(map) {
+   for(var key in map) {
+      if (map.hasOwnProperty(key)) {
+         return false;
+      }
+   }
+   return true;
+}

@@ -81,21 +81,26 @@ function loginDialogInit()
       buttons: {
           Close: function() {
             jQuery( this ).dialog( "close" );
+          },
+          Logout: function() {
+            logout();
+            jQuery( this ).dialog( "close" );
           }
       }
     });
    
-   $( "#dialog-message" ).append("<div id=\"logincontainer\"></div>");   
-   
-   $( "#logincontainer" ).append("<form id=\"login\">"+
-                            "<label>Username:  \n"+
-                            "<input type=\"text\" id=\"userName\" name=\"userName\" tabindex=\"1\" class=\"text\" />\n"+  
-                            "</label>\n"+
-                            "<label>Password: \n"+
-                                   "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
-                                   "<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
-                            "</label>"+
-                            "</form>"+
-                            "<a href=\"http://www.pitchpredict.com/index.php/component/users/?view=registration\" target=\"_blank\">Register</a>");
+    if(userInfoMap.UserName === "" ||userInfoMap.UserName === null || userInfoMap.UserName === "undefined")
+    {
+        $( "#dialog-message" ).append("<div id=\"logincontainer\"></div>");   
+
+        $( "#logincontainer" ).append("<label>Username:  \n"+
+                                "<input type=\"text\" id=\"userName\" name=\"userName\" tabindex=\"1\" class=\"text\" />\n"+  
+                                "</label>\n"+
+                                "<label>Password: \n"+
+                                       "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
+                                       "<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
+                                "</label>"+
+                                "<a href=\"http://www.pitchpredict.com/index.php/component/users/?view=registration\" target=\"_blank\">Register</a>");
+    }
                      
 }
