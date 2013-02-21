@@ -1,0 +1,118 @@
+/* root element for tabs  */
+ul.tabs {
+	list-style:none; 
+	margin:0 !important; 
+	padding:0;
+	height:55px;
+}
+
+/* single tab */
+ul.tabs li {
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:16px;
+	background-color:#333333;
+	border:1px solid #FFFFFF;
+	float:left;
+	height:55px;
+	list-style-image:none !important;
+	margin:0 !important;
+	padding:0;
+	text-indent:0;
+}
+
+/* link inside the tab. uses a background image */
+ul.tabs a { 
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:16px;
+	/*background: url(/img/global/tabs.png) no-repeat -652px 0;*/
+	font-size: 0.6em;
+	font-family: 'century gothic', verdana, sans-serif;	
+	font-weight: bold;	
+	color: #DDD;
+	display:block;
+	line-height:22.5px;
+	width: 111px;
+	text-align:center;
+	padding: 14px 20px 14px 20px;
+	text-decoration:none;
+	margin:0px;	
+	position:relative;
+	top:1px;
+}
+
+ul.tabs a:active {
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:16px;
+	background-position: -652px -31px;	
+	background-color:#0066FF;
+	background: #0066FF url('../../../images/menubg.jpg') repeat-x top;
+	color: #fff;
+	text-decoration: none;
+	border: solid 1px #fff;	
+	font-weight: bolder;	
+}
+
+/* when mouse enters the tab move the background image */
+ul.tabs a:hover {
+	-moz-border-radius-topleft:6px;
+	-moz-border-radius-topright:16px;
+	background-position: -652px -31px;	
+	background-color:#0066FF;
+	background: #0066FF url('../../../images/menubg.jpg') repeat-x top;
+	color: #fff;
+	text-decoration: none;
+	border: solid 1px #fff;
+	font-weight: bolder;	
+}
+
+/* active tab uses a class name "current". it's highlight is also done by moving the background image. */
+ul.tabs a.current, ul.tabs a.current:hover, ul.tabs li.current a {
+	background-color:#06f;
+	background: #0066FF url('../../../images/menubg.jpg') repeat-x top;
+	color: #fff;
+	text-decoration: none;
+	border: solid 1px #fff;
+	font-weight: bolder;	
+}
+
+/* Different widths for tabs: use a class name: w1, w2, w3 or w2 */
+
+
+/* width 1 */
+ul.tabs a.w1 			{ background-position: -519px 0; width:134px; }
+ul.tabs a.w1:hover 	{ background-position: -519px -31px; }
+ul.tabs a.w1.current { background-position: -519px -62px; }
+
+/* width 2 */
+ul.tabs a.w2 			{ background-position: -366px -0px; width:154px; }
+ul.tabs a.w2:hover 	{ background-position: -366px -31px; }
+ul.tabs a.w2.current { background-position: -366px -62px; }
+
+
+/* width 3 */
+ul.tabs a.w3 			{ background-position: -193px -0px; width:174px; }
+ul.tabs a.w3:hover 	{ background-position: -193px -31px; }
+ul.tabs a.w3.current { background-position: -193px -62px; }
+
+/* width 4 */
+ul.tabs a.w4 			{ background-position: -0px -0px; width:194px; }
+ul.tabs a.w4:hover 	{ background-position: -0px -31px; }
+ul.tabs a.w4.current { background-position: -0px -62px; }
+
+
+/* initially all panes are hidden */ 
+div.panes div.pane {
+	display:none;
+}
+
+.panes {
+	-moz-border-radius-bottomleft:5px;
+	-moz-border-radius-bottomright:5px;
+	-moz-border-radius-topleft:5px;
+	-moz-border-radius-topright:5px;
+	border:1px solid #666;
+	min-height: 590px;
+	padding: 0 0 0 15px;
+	position:relative;
+	top:1px;	
+}

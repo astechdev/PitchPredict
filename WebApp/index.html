@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        
+        <title>Pitch Predict</title>
+		
+        <link rel="stylesheet" type="text/css" href="css/app.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/scoreboard.css" />-->
+        <link rel="stylesheet" type="text/css" href="css/pitch_recorder.css" />
+        <link rel="stylesheet" type="text/css" href="css/filters.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/team_lineup.css" />-->
+        <link rel='stylesheet' type='text/css' href='css/googleapis.css'>
+        
+    </head>
+    <body>
+		<div id="header">
+			<img class="logo" src="images/logo.png"/>
+			<div class="hud">
+				<a onclick="loginDialogInit();" href="#"><img src="images/icons/play_6x8.png"/></a>
+			</div>
+		</div>
+		<div id="dashboard">
+			<div class="navwrap">
+				<ul class="nav">
+					<li><a data-view="scoreboard" href="#/scoreboard"><img src="images/icons/scoreboard.png"/><span></span></a></li>
+					<li><a data-view="lineup" href="#/lineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
+					<li><a data-view="field" href="#/field"><img src="images/icons/base.png"/><span></span></a></li>
+					<li><a data-view="pitchselection" href="#/pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
+					<li><a data-view="filters" href="#/filters"><img src=""/><span></span></a></li>
+					<li><a data-view="hotzone" href="#/hotzone"><img src=""/><span></span></a></li>
+					<!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts" href="#/charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
+				</ul>
+			</div>
+			<div class="content">
+				 <div class="leftcol">
+					<div class="inner">
+						<div data-view="scoreboard" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>                                                    
+                                                    <div id="yearselectid"></div>
+                                                    <div id="toporbottomhalfselectid"></div>
+                                                    <div id="inningselectid"></div>
+                                                    <div id="awayteamnameselectid"></div>
+                                                    <div id="awayteamscoreselectid"></div>
+                                                    <div id="hometeamnameselectid"></div>
+                                                    <div id="hometeamscoreselectid"></div>
+                                                    <div id="ballsselectid"></div>
+                                                    <div id="strikesselectid"></div>
+                                                    <div id="outsselectid"></div>
+						</div>
+						<div data-view="lineup" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);">Team Lineups<span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    
+                                                    <div id="awayteamlineupcontent">
+                                                        <div id="awayteamlineupheadercolumn"></div>
+                                                        <div id="awayteamfirstbatterselectid"></div>
+                                                        <div id="awayteamsecondbatterselectid"></div>
+                                                        <div id="awayteamthirdbatterselectid"></div>
+                                                        <div id="awayteamfourthbatterselectid"></div>
+                                                        <div id="awayteamfifthbatterselectid"></div>
+                                                        <div id="awayteamsixthbatterselectid"></div>
+                                                        <div id="awayteamseventhbatterselectid"></div>
+                                                        <div id="awayteameighthbatterselectid"></div>
+                                                        <div id="awayteamninthbatterselectid"></div>
+                                                    </div>
+                                                    <br>
+                                                    <div id="hometeamlineupcontent">
+                                                        <div id="hometeamlineupheadercolumn"></div>
+                                                        <div id="hometeamfirstbatterselectid"></div>
+                                                        <div id="hometeamsecondbatterselectid"></div>
+                                                        <div id="hometeamthirdbatterselectid"></div>
+                                                        <div id="hometeamfourthbatterselectid"></div>
+                                                        <div id="hometeamfifthbatterselectid"></div>
+                                                        <div id="hometeamsixthbatterselectid"></div>
+                                                        <div id="hometeamseventhbatterselectid"></div>
+                                                        <div id="hometeameighthbatterselectid"></div>
+                                                        <div id="hometeamninthbatterselectid"></div>
+                                                    </div>
+						</div>
+						<div data-view="field" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);">Game Situation<span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <div id="pitcherselectid"></div>
+                                                    <div id="catcherselectid"></div>
+                                                    <div id="hitterselectid"></div>
+                                                    <div id="hitterrightorleftselectid"></div>
+                                                    <div id="runneronfirstselectid"></div>
+                                                    <div id="runneronsecondselectid"></div>
+                                                    <div id="runneronthirdselectid"></div>
+                                                    <!--<div id="atbatnumberselectid"></div>-->
+                                                </div>
+						<div data-view="pitchselection" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);">Add Pitch Sequence<span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <div id="pitchtypeselectid"></div>
+                                                    <div id="pitchlocationselectid"></div>
+                                                    <div id="pitchoutcomeselectid"></div>
+                                                    
+                                                    <input type="Submit" id="submitPitch" value="Add" class="buttons">
+                                                    <input type="Submit" id="resetpitchcounterpitchbutton" value="Reset" class="buttons">
+                                                    <input type="Submit" id="viewpitchsequencebutton" value="View" class="buttons">
+                                                    
+                                                    <div id="pitchcounterdialogcontainer">
+                                                        <table id="pitchrecordertable" class="teamlineuptable">
+                                                            <tbody id="pitchrecordertabletbody">
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+						<div data-view="filters" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Filters', filtersHelp);">Filter Results By:<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <div id="filterspitchtypeselectid"></div>
+                                                    <div id="filterspitchoutcomeselectid"></div><br>
+                                                    <div id="filterscontainer">
+                                                        <table id="filterstable">
+                                                            <tr class="titlerow">
+                                                                <td>
+                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                </td>
+                                                                <td>
+                                                                    Pitcher
+                                                                </td>
+                                                                <td>
+                                                                    &nbsp;&nbsp;Batter
+                                                                </td>
+                                                                <td>
+                                                                    &nbsp;&nbsp;
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Pitcher/Batter:
+
+                                                                </td>
+                                                                <td>
+                                                                    <input onclick="stateVariablesMap['thePitcherOrBatter'] = 'PITCHER'; saveState();" id="pitcherid" type="radio" name="pitcherorbatter" value="PITCHER">
+                                                                </td>
+                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherOrBatter'] = 'BATTER'; saveState();" id="batterid" type="radio" name="pitcherorbatter" value="BATTER">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    &nbsp;&nbsp;&nbsp;
+                                                                </td>
+                                                                <td>
+                                                                    &nbsp;&nbsp;&nbsp;
+                                                                </td>
+                                                                <td>
+                                                                    &nbsp;&nbsp;&nbsp;
+                                                                </td>
+                                                            </tr>
+                                                            <tr class="titlerow">
+                                                                <td>
+                                                                    &nbsp;&nbsp;&nbsp;Type
+                                                                </td>
+                                                                <td>
+                                                                    Exact
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;Similar
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;Any
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Pitcher:
+                                                                </td>
+                                                                <td>
+                                                                    <input onclick="stateVariablesMap['thePitcherType'] = 'EXACT'; saveState();" id="pitcherexacttypeid" type="radio" name="pitchertype" value="EXACT">
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'SIMILAR'; saveState();" id="pitchersimilartypeid" type="radio" name="pitchertype" value="SIMILAR">
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'ANY'; saveState();" id="pitcheranytypeid" type="radio" name="pitchertype" value="ANY">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Catcher:
+                                                                </td>
+                                                                <td>
+                                                                    <input onclick="stateVariablesMap['theCatcherType'] = 'EXACT'; saveState();" id="catcherexacttypeid" type="radio" name="catchertype" value="EXACT">
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'SIMILAR'; saveState();" id="catchersimilartypeid" type="radio" name="catchertype" value="SIMILAR">
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'ANY'; saveState();" id="catcheranytypeid" type="radio" name="catchertype" value="ANY">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Batter:
+                                                                </td>
+                                                                <td>
+                                                                    <input id="batterexacttypeid" onclick="stateVariablesMap['theBatterType'] = 'EXACT'; saveState();" type="radio" name="battertype" value="EXACT">
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'SIMILAR'; saveState();" id="battersimilartypeid" type="radio" name="battertype" value="SIMILAR">
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'ANY'; saveState();" id="batteranytypeid" type="radio" name="battertype" value="ANY">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    On Deck:
+                                                                </td>
+                                                                <td>
+                                                                    <input onclick="stateVariablesMap['theOnDeckBatterType'] = 'EXACT'; saveState();" id="batterondeckexacttypeid" type="radio" name="batterondecktype" value="EXACT">
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'SIMILAR'; saveState();" id="batterondecksimilartypeid" type="radio" name="batterondecktype" value="SIMILAR">
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'ANY'; saveState();" id="batterondeckanytypeid" type="radio" name="batterondecktype" value="ANY">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>
+                                                                    Base Runners:
+                                                                </td>
+                                                                <td>
+                                                                    <input onclick="stateVariablesMap['theBaseRunnerType'] = 'EXACT'; saveState();" id="baserunnerexacttypeid" type="radio" name="baserunnertype" value="EXACT">
+                                                                </td>
+<!--                                                                <td>
+                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'SIMILAR'; saveState();" id="baserunnersimilartypeid" type="radio" name="baserunnertype" value="SIMILAR">
+                                                                </td>-->
+                                                                <td>
+                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'ANY'; saveState();" id="baserunneranytypeid" type="radio" name="baserunnertype" value="ANY">
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+						<div data-view="hotzone" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);">Hotzone<span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <div id="hotzonecontainer">
+                                                        <img id="hotzoneajaxloader" src="images/ajax-loader.gif">
+                                                    </div>
+                                                </div>
+						<div data-view="charts" class="view charts">
+							<div class="tabs">
+								<a data-chart="chart1" class="active" href="#chart1"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart2" href="#chart2"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart3" href="#chart3"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart4" href="#chart4"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart5" href="#chart5"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart6" href="#chart6"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<a data-chart="chart7" href="#chart7"><span><img src="images/icons/image_16x16.png"/></span></a>
+								<div class="clear"></div>
+							</div>
+							<div class="inner">
+                                                                <div data-chart="chart1" class="chart">Chart 1</div>
+								<div data-chart="chart2" class="chart">Chart 2</div>
+								<div data-chart="chart3" class="chart">Chart 3</div>
+								<div data-chart="chart4" class="chart">Chart 4</div>
+								<div data-chart="chart5" class="chart">Chart 5</div>
+								<div data-chart="chart6" class="chart">Chart 6</div>
+								<div data-chart="chart7" class="chart">Chart 7</div>
+							</div>						
+						</div>
+					</div>
+				 </div>
+				 <div class="rightcol charts hidden-phone">
+					<div class="tabs padHeader">
+						<a onclick="setCurrentChart('Pitch Type');" data-chart="chart1" class="active" href="#chart1"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Outcome');" data-chart="chart2" href="#chart2"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Probability');" data-chart="chart3" href="#chart3"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Pitch Chart');" data-chart="chart4" href="#chart4"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Vertical');" data-chart="chart5" href="#chart5"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Horizontal');" data-chart="chart6" href="#chart6"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<a onclick="setCurrentChart('Hit Chart');" data-chart="chart7" href="#chart7"><span><img src="images/icons/image_16x16.png"/></span></a>
+						<div class="clear"></div>
+					</div>
+					<div class="inner">
+                                            <div data-chart="chart1" class="chart"><div id="pitchtypepercentagechartcontainer"></div></div>
+                                                <div data-chart="chart2" class="chart"><div id="outcomepercentagechartcontainer"></div></div>
+                                                <div data-chart="chart3" class="chart"><div id="resultspercentagechartcontainer"></div></div>
+                                                <div data-chart="chart4" class="chart"><div id="pitchchartcontainer"></div></div>
+                                                <div data-chart="chart5" class="chart"><div id="verticalchartcontainer"></div><div id="sidepitchvirtualizationchartcontainer"></div></div>
+                                                <div data-chart="chart6" class="chart"><div id="horizontalchartcontainer"></div><div id="toppitchvirtualizationchartcontainer"></div></div>
+                                                <div data-chart="chart7" class="chart"><div id="hitchartcontainer"></div></div>
+					</div>
+				 </div>
+				 <div class="clear"></div>
+			</div>
+			<div class="clear">
+                            <!--dialog popup div-->
+                            <div id="dialog">
+                               <p id="dialog-message"></p>
+                            </div>
+                        </div>
+		</div>
+
+                <!--<script type="text/javascript" src="js/Util/cordova-2.2.0.js"></script>-->
+
+                <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+                <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
+
+                <script type="text/javascript" src="js/globalVariables.js"></script>
+                <script type="text/javascript" src="js/google.jsapi.js"></script>	
+
+                <script type="text/javascript" src="js/sammy.js"></script>
+                <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
+                <script type="text/javascript" src="js/util.js"></script>
+
+                <!--<script type="text/javascript" src="js/index.js"></script>-->
+                <script type="text/javascript" src="js/situations.js"></script>
+                <!--<script type="text/javascript" src="js/results.js"></script>-->
+
+                <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
+                <script type="text/javascript" src="js/Components/login.js"></script>
+                <script type="text/javascript" src="js/Components/dialog.js"></script>
+                <script type="text/javascript" src="js/Components/team_lineup.js"></script>
+                <script type="text/javascript" src="js/Components/scoreboard.js"></script>
+                <!--<script type="text/javascript" src="js/Components/charts.js"></script>-->
+                <script type="text/javascript" src="js/Components/filters.js"></script>
+                <script type="text/javascript" src="js/Components/hotzone.js"></script>
+                <script type="text/javascript" src="js/Components/field.js"></script>
+                <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
+                <!--<script src="http://debug.phonegap.com/target/target-script-min.js#pitchpredict"></script>-->
+                <script type="text/javascript">
+                    
+                    jQuery(document).ready(function() {
+                            //pretend to login
+//                            userInfoMap = { UserName: "jaslan" };
+//                            alert('username'+userInfoMap.UserName);
+                            load();
+   
+                            //need to initialize the dialog div so that 
+                            //we can set the resize function
+                            $( "#dialog" ).dialog({
+                              autoOpen: false
+                            });
+    
+                            jQuery(window).resize(function() {
+                                chartheight = ($(window).height()*.73);
+                                chartwidth = chartheight*1.28; 
+
+                                dialogheight = $(window).height()*.75;
+                                dialogwidth = $(window).width()*.80;
+                                
+                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+                                
+                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+                                                  
+                                $( "#dialog" ).dialog( "option", "width", dialogwidth );
+                                
+                                $( "#dialog" ).dialog( "option", "height", dialogheight );
+                                                                
+//                                setCurrentChart(currentchart);
+                            });
+                        });
+                    
+                    
+                </script>
+    </body>
+</html>

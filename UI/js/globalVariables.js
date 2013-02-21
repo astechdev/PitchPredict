@@ -1,0 +1,67 @@
+//var anyOutcomeType = "ANY";
+//var anyPitchType = "ANY";
+var stateVariablesMap = {};
+var teamsMap = {};
+var homeTeamMap = {};
+var awayTeamMap = {};
+var offenseTeamMap = {};
+var defenseTeamMap = {};
+var pitchTypesMap = {};
+var pitchOutcomesMap = {};
+var pitchLocationsMap = {};
+//var pitchTypeSequenceArray = new Array();
+//var pitchLocationSequenceArray = new Array();
+//var pitchOutcomeSequenceArray = new Array();
+//var inning;
+//var toporbottomhalf;
+//var balls;
+//var strikes;
+//var outs;
+//var awayteamname;
+//var awayteamscore;
+//var hometeamname;
+//var hometeamscore;
+//var pitcherteamname;
+//var pitchername;
+//var catchername;
+//var hitterteamname;
+//var hittername;
+//var hitterrightorleft;
+//var hitterondeckname;
+//var atbatnumber;
+//var yeartoquery;
+//var runneronfirst;
+//var runneronsecond;
+//var runneronthird;
+var params;
+//var homeTeamLineupArray;
+//var awayTeamLineupArray;
+var pitchtype = "ANY";
+var outcometype = "ANY";
+//Acceptable values for the following var's: "ANY", "SIMILAR", or "EXACT"
+var pitchertype = "EXACT";
+var catchertype = "EXACT";
+var battertype = "EXACT";
+var batterondecktype = "EXACT";
+var baserunnertype = "EXACT";
+//Acceptable values for the following var's: "PITCHER" or "BATTER"
+var pitcherorbatter = "PITCHER";
+//Acceptable values for the hotzone var: is any of the following zone* var's'
+var hotzone = "ANY";
+//var zoneAny = "ANY";
+//var zone1 = "ZONE 1";
+//var zone2 = "ZONE 2";
+//var zone3 = "ZONE 3";
+//var zone4 = "ZONE 4";
+//var zone5 = "ZONE 5";
+//var zone6 = "ZONE 6";
+//var zone7 = "ZONE 7";
+//var zone8 = "ZONE 8";
+//var zone9 = "ZONE 9";
+//var zone10 = "ZONE 10";
+//var zone11 = "ZONE 11";
+//var zone12 = "ZONE 12";
+//var zone13 = "ZONE 13";
+//var zone14 = "ZONE 14";
+//var defaultWaitTime = 250; //time in milliseconds
+//var defaultSetTimeoutWaitTime = 750; //time in milliseconds

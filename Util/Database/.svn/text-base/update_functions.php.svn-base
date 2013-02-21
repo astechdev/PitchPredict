@@ -1,0 +1,45 @@
+<?php
+/*
+ * Created on Feb 24, 2009
+ *
+ * To change the template for this generated file go to
+ * Window - Preferences - PHPeclipse - PHP - Code Templates
+ */
+
+	function update_single_database_item_single_parameter($tableName, $firstColumnName, $firstColumnElement, $firstParameterName, $firstParameterColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' WHERE $firstParameterName = '$firstParameterColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+/*
+	function update_two_database_items($tableName, $firstColumnName, $firstColumnElement, $secondColumnName, $secondColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' AND $secondColumnName = '$secondColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+
+	function update_three_database_items($tableName, $firstColumnName, $firstColumnElement, $secondColumnName, $secondColumnElement, $thirdColumnName, $thirdColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' AND $secondColumnName = '$secondColumnElement' AND $thirdColumnName = '$thirdColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+
+	function update_four_database_items($tableName, $firstColumnName, $firstColumnElement, $secondColumnName, $secondColumnElement, $thirdColumnName, $thirdColumnElement, $fourthColumnName, $fourthColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' AND $secondColumnName = '$secondColumnElement' AND $thirdColumnName = '$thirdColumnElement' AND $fourthColumnName = '$fourthColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+
+	function update_five_database_items($tableName, $firstColumnName, $firstColumnElement, $secondColumnName, $secondColumnElement, $thirdColumnName, $thirdColumnElement, $fourthColumnName, $fourthColumnElement, $fifthColumnName, $fifthColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' AND $secondColumnName = '$secondColumnElement' AND $thirdColumnName = '$thirdColumnElement' AND $fourthColumnName = '$fourthColumnElement' AND $fifthColumnName = '$fifthColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+
+	function update_six_database_items($tableName, $firstColumnName, $firstColumnElement, $secondColumnName, $secondColumnElement, $thirdColumnName, $thirdColumnElement, $fourthColumnName, $fourthColumnElement, $fifthColumnName, $fifthColumnElement, $sixthColumnName, $sixthColumnElement)
+	{
+		$update = "UPDATE $tableName SET $firstColumnName = '$firstColumnElement' AND $secondColumnName = '$secondColumnElement' AND $thirdColumnName = '$thirdColumnElement' AND $fourthColumnName = '$fourthColumnElement' AND $fifthColumnName = '$fifthColumnElement' AND $sixthColumnName = '$sixthColumnElement'";
+		mysql_query($update) or die('Error updating '.mysql_error());
+	}
+*/
+?>

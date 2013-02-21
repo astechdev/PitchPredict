@@ -1,0 +1,15 @@
+<?
+/*
+ * COPYRIGHT    2009 AsTech Development
+ *
+ *
+ * DESRIPTION:  This file closes the mysql database connection.
+ *
+ * SOFTWARE HISTORY:
+ *
+ *   10FEB09    S. Aslan
+ *              Initial Coding.
+ */
+
+	mysql_close($connect);
+?>

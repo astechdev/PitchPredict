@@ -1,0 +1,152 @@
+#scroll {
+border: .1em solid #DDDDDD;
+/*height: 86%;
+margin-left: auto;
+margin-right: auto;*/
+overflow: hidden;
+/*position: relative;
+width: 34%;
+margin-top: 1%;*/
+}
+
+#tools {
+    /*height: 434px;*/
+    position: absolute;
+    /*width: 9999em;*/
+}
+
+.tool {
+/*	float:left;
+	width:622px;
+	height:432px;
+	background-repeat:no-repeat;
+	background-position:0 0px;
+	padding: 0px 5px 0px 5px;*/
+}
+
+.details {
+	background-color:#fff;
+	color:#666;
+	float:left;
+	font-size:20px;
+	margin:270px 0 0 0;
+	padding:10px 60px;
+	width:525px;
+}
+
+.demos {
+	background-color:#fff;
+	background-color:rgba(255, 255, 255, 0.8);
+	border-left:1px solid #ddd;
+	float:right;
+	min-height:365px;
+	padding:0 25px;
+	width:272px;
+}
+
+.demos h2 {
+	color:#065598;
+	font-size:22px;
+	display:block;
+	padding:10px 0;
+}
+
+.demos a {
+	color:#666;
+	font-size:12px;
+	text-decoration:none;
+}
+
+.demos p {
+	margin:0 0 4px;
+	background:transparent url(http://static.flowplayer.org/tools/img/bullet.png) no-repeat scroll 0 2px;
+	padding:2px 0 1px 22px;
+}
+
+#thumbs {
+	background:url(http://www.pitchpredict.com/PitchPredict/UI/images/scott-navi.jpg) no-repeat;
+	height:90px;
+	position:absolute;
+	top:410px;
+	width:632px;
+	left:0px;
+}
+
+.t a {
+	/*background:transparent url(http://www.pitchpredict.com/PitchPredict/UI/images/scott-navi.jpg) no-repeat scroll -21px -90px;*/
+	margin-left:11px;
+	display:block;
+	width:99px;
+	float:left;
+	height:61px;
+	cursor:pointer;
+}
+
+.t a.active {
+	cursor:default !important;
+}
+
+.navi {
+text-align: center;
+}
+
+#indexthumbs {
+background-color: #3B3B3B;
+border: .1em solid #666666;
+left: 0;
+position: relative;
+margin-top: 376px;
+}
+
+.indext a {
+background: url("http://www.pitchpredict.com/PitchPredict/UI/images/menubg.jpg") repeat-x scroll center top #CCCCCC;
+color: #DDDDDD;
+cursor: pointer;
+display: block;
+font-family: 'century gothic',verdana,sans-serif;
+height: 17px;
+text-decoration: none;
+}
+
+.indext a.active {
+cursor: default !important;
+background: #0066FF url('http://www.pitchpredict.com/PitchPredict/UI/images/menubg.jpg') repeat-x top;
+color: #fff;
+text-decoration: none;
+border: solid .1em #fff;
+font-weight: bold;
+}
+
+.indext a:hover {
+	background: #0066FF url('http://www.pitchpredict.com/PitchPredict/UI/images/menubg.jpg') repeat-x top;
+	color: #fff;
+	text-decoration: none;
+	border: solid .1em #fff;
+	font-weight: bold;
+}
+
+/* CSS sprite for the navigation */
+#t0 			{ background-position:-21px -90px; }
+#t0:hover 	{ background-position:-21px -180px; }
+#t0:active 	{ background-position:-21px -270px; }
+#t0.active 	{ background-position:-21px 0 !important; }
+
+#t1			{ background-position:-131px -90px; }
+#t1:hover 	{ background-position:-131px -180px; }
+#t1:active	{ background-position:-131px -270px; }
+#t1.active	{ background-position:-131px 0 !important; }
+
+#t2			{ background-position:-241px -90px; }
+#t2:hover 	{ background-position:-241px -180px; }
+#t2:active	{ background-position:-241px -270px; }
+#t2.active	{ background-position:-241px 0 !important; }
+
+#t3			{ background-position:-351px -90px; }
+#t3:hover 	{ background-position:-351px -180px; }
+#t3:active	{ background-position:-351px -270px; }
+#t3.active	{ background-position:-351px 0 !important; }
+
+#t4			{ background-position:-461px -90px; }
+#t4:hover 	{ background-position:-461px -180px; }
+#t4:active	{ background-position:-461px -270px; }
+#t4.active	{ background-position:-461px 0 !important; }

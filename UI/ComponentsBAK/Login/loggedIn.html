@@ -1,0 +1,7 @@
+<h1>Welcome: <span id="loggedinusernameid"></span> <input type="submit" name="Submit" value="Log out" onClick=logout() tabindex="3" class="buttons" /></h1>
+<script>
+        // perform JavaScript after the document is scriptable.
+        jQuery(document).ready(function() {
+            jQuery('#loggedinusernameid').append(userInfoMap.UserName);
+        });
+</script>

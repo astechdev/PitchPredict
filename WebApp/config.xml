@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns     = "http://www.w3.org/ns/widgets"
+        xmlns:gap = "http://phonegap.com/ns/1.0"
+        id        = "com.pitchpredict"
+        version   = "2.3.0">
+    <name>Pitch Predict</name>
+
+    <description>
+        PitchPredict is a baseball analytics tool that data mines MLB's free 
+        gameday XML and builds an interface that enables users to analyze 
+        possible outcomes of a given situation.
+        
+        PitchPredict has a singular api that allows other developers to hook 
+        into via ajax and create there own widgets/charts and graphs for study. 
+        It's target audience is baseball fans and stat enthusiasts.
+    </description>
+
+    <author href="http://astechdev.com" email="astechdev@gmail.com">
+        Scott Aslan, AsTech Development
+    </author>
+
+    <preference name="permissions" value="none"/>
+
+    <preference name="orientation"      value="landscape" />
+    <preference name="target-device"    value="universal" />
+    <preference name="fullscreen"       value="false" />
+
+    <access origin="http://pitchpredict.com" subdomains="true" />
+    
+    <icon src="images/icon.png" />
+
+    <gap:splash src="images/splash.jpeg" />
+</widget>
