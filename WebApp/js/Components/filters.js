@@ -1,12 +1,5 @@
 function loadFilters()
 {
-//    jQuery('#filterscontainer').empty();
-//    getParamsString();
-//    
-//    var url = 'http://www.pitchpredict.com/PitchPredict/Services/filters.php?'+params;
-//
-//    jQuery('#filterscontainer').load(url);
-
     loadFiltersRadioButtons();
     loadFiltersDropDowns();
 }
@@ -25,7 +18,6 @@ function loadFiltersDropDowns()
     {
         if(pitchTypesMap.hasOwnProperty(key)) 
         {
-//                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
             pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(pitchTypesMap[key].theAbbr, pitchTypesMap[key].theAbbr);
         }
     }

@@ -1,4 +1,7 @@
-//var anyOutcomeType = "ANY";
+//global chart variable for dynamically loading charts of all kinds
+//each chart defines its own var data and var options
+var chart;
+////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
 var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};
 var stateVariablesMap = {
@@ -69,7 +72,7 @@ var dialogheight = $(window).height()*.75;
 var dialogwidth = $(window).width()*.80;
 var scoreboardHelp = "The game scenario assigns the home and away teams as well "+
 "as the season so that Pitch Predict can populate the players for each team "+
-"accordingly.<br><br>The game scenarion also keeps track of the counts and "+
+"accordingly.<br><br>The game scenario also keeps track of the counts and "+
 "number of outs.";
 var teamlineupHelp = "The team line ups assign the batting order for the home "+
 "and away teams defined in the game scenario section.<br><br>This enables "+
@@ -77,7 +80,7 @@ var teamlineupHelp = "The team line ups assign the batting order for the home "+
 var fieldHelp = "The game situation describes the pitcher, catcher, batter, and "+
 "runners on base.<br><br>Pitch Predict tracks every pitch thrown in the MLB and tracks "+
 "who is pitching, who is catching, who is hitting, who is on deck, and who is on "+
-"base during during every pitch.  Then we make this capability an "+
+"base during every pitch.  Then we make this capability an "+
 "option for our users.<br><br>Use the filters section to turn the game situation "+
 "capabilities \"on\" or \"off\".  This information must be set, but the user can choose which "+
 "of these \"game characteristics\" are important to them.";
@@ -89,7 +92,7 @@ var pitchsequenceHelp = "The pitch sequence is one of the key features of Pitch 
 "the pitches thrown leading up to that pitch.  Then we make this capability an "+
 "option for our users.  Use the filters section to turn the pitch sequence "+
 "capabilities \"on\" or \"off\".";
-var filtersHelp = "This sections presents the real power of Pitch predict.  "+
+var filtersHelp = "This sections presents the real power of Pitch Predict.  "+
 "The filters allow the user to determine and define what "+
 "characteristics of the game they feel is essential to understanding the given "+
 "game situation.<br><br>Use these filters to choose between looking at the pitcher's "+
@@ -99,17 +102,17 @@ var filtersHelp = "This sections presents the real power of Pitch predict.  "+
 "pitcher, catcher, batter, on deck batter, or base runner; or if you just want "+
 "to examine a game situation for any of these.  What's more is you can choose "+
 "any, all, or anywhere in between.  Pitch Predict does not confine our users "+
-"to analyzing data our way, rather we allow you to determine whats important in"+
+"to analyzing data our way, rather we allow you to determine whats important in "+
 "your analysis.";
 var hotzoneHelp = "The hot zone gives a pitcher's or batter's percentage of "+
 "success in a given zone for the current game scenario, game situation, pitch "+
 "sequence, and set of filters.<br><br>You can further analyze the data by "+
-"clicking on a hot zone.  You will set that the chart will update as a filter "+
+"clicking on a hot zone.  You will see that the chart will update as a filter "+
 "for the zone you just clicked is applied.  This is a great way to start off "+
 "analyzing a pitcher's or batter's overall performance in the strike zone and "+
 "then really concentrate on examining what the pitcher or batter does well for "+
 "a particular area of the strike zone.<br><br>When you click on a zone you will "+
-"also see the hot zone \"tracker\" update to let you know what zone you are "+
+"also see the hot zone \"tracker\" updates to let you know what zone you are "+
 "currently analyzing while still allowing you to view the overall performance "+
 "of the player within the strike zone.  To turn a particular zone \"off\" all "+
 "you need to do is click on the \"Hotzone Overview\" button.";

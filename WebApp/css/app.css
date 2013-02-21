@@ -533,16 +533,13 @@ h6 {
 }
 
 #ajaxloader{
-    height: 30%;
-    width: 30%;
-    margin-left: 38%;
-    margin-top: 25%;
+    width: 2em;
+    margin-left: 50%;
+    margin-top: 40%;
 }
 
-#hotzoneajaxloader{
-    height: 10%;
-    width: 25%;
-    margin-left: 38%;
-    margin-top: 45%;
+#hotzoneajaxloader{    
+    margin-left: 47%;
+    margin-top: 91%;
 }
 

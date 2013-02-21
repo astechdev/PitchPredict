@@ -39,7 +39,8 @@
 				 <div class="leftcol">
 					<div class="inner">
 						<div data-view="scoreboard" class="view">
-                                                    <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>                                                    
+                                                    <div id="yearselectid"></div>
                                                     <div id="toporbottomhalfselectid"></div>
                                                     <div id="inningselectid"></div>
                                                     <div id="awayteamnameselectid"></div>
@@ -49,10 +50,10 @@
                                                     <div id="ballsselectid"></div>
                                                     <div id="strikesselectid"></div>
                                                     <div id="outsselectid"></div>
-                                                    <div id="years"></div>
 						</div>
 						<div data-view="lineup" class="view">
                                                     <span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);">Team Lineups<span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    
                                                     <div id="awayteamlineupcontent">
                                                         <div id="awayteamlineupheadercolumn"></div>
                                                         <div id="awayteamfirstbatterselectid"></div>
@@ -66,7 +67,7 @@
                                                         <div id="awayteamninthbatterselectid"></div>
                                                     </div>
                                                     <br>
-                                                    <div id="hometeamlineupcontent" class="teamlineupcontent">
+                                                    <div id="hometeamlineupcontent">
                                                         <div id="hometeamlineupheadercolumn"></div>
                                                         <div id="hometeamfirstbatterselectid"></div>
                                                         <div id="hometeamsecondbatterselectid"></div>
@@ -157,9 +158,9 @@
                                                                 <td>
                                                                     Exact
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;Similar
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;Any
                                                                 </td>
@@ -171,9 +172,9 @@
                                                                 <td>
                                                                     <input onclick="stateVariablesMap['thePitcherType'] = 'EXACT'; saveState();" id="pitcherexacttypeid" type="radio" name="pitchertype" value="EXACT">
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'SIMILAR'; saveState();" id="pitchersimilartypeid" type="radio" name="pitchertype" value="SIMILAR">
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'ANY'; saveState();" id="pitcheranytypeid" type="radio" name="pitchertype" value="ANY">
                                                                 </td>
@@ -185,9 +186,9 @@
                                                                 <td>
                                                                     <input onclick="stateVariablesMap['theCatcherType'] = 'EXACT'; saveState();" id="catcherexacttypeid" type="radio" name="catchertype" value="EXACT">
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'SIMILAR'; saveState();" id="catchersimilartypeid" type="radio" name="catchertype" value="SIMILAR">
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'ANY'; saveState();" id="catcheranytypeid" type="radio" name="catchertype" value="ANY">
                                                                 </td>
@@ -199,9 +200,9 @@
                                                                 <td>
                                                                     <input id="batterexacttypeid" onclick="stateVariablesMap['theBatterType'] = 'EXACT'; saveState();" type="radio" name="battertype" value="EXACT">
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'SIMILAR'; saveState();" id="battersimilartypeid" type="radio" name="battertype" value="SIMILAR">
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'ANY'; saveState();" id="batteranytypeid" type="radio" name="battertype" value="ANY">
                                                                 </td>
@@ -213,9 +214,9 @@
                                                                 <td>
                                                                     <input onclick="stateVariablesMap['theOnDeckBatterType'] = 'EXACT'; saveState();" id="batterondeckexacttypeid" type="radio" name="batterondecktype" value="EXACT">
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'SIMILAR'; saveState();" id="batterondecksimilartypeid" type="radio" name="batterondecktype" value="SIMILAR">
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'ANY'; saveState();" id="batterondeckanytypeid" type="radio" name="batterondecktype" value="ANY">
                                                                 </td>
@@ -227,9 +228,9 @@
                                                                 <td>
                                                                     <input onclick="stateVariablesMap['theBaseRunnerType'] = 'EXACT'; saveState();" id="baserunnerexacttypeid" type="radio" name="baserunnertype" value="EXACT">
                                                                 </td>
-                                                                <td>
+<!--                                                                <td>
                                                                     &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'SIMILAR'; saveState();" id="baserunnersimilartypeid" type="radio" name="baserunnertype" value="SIMILAR">
-                                                                </td>
+                                                                </td>-->
                                                                 <td>
                                                                     &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'ANY'; saveState();" id="baserunneranytypeid" type="radio" name="baserunnertype" value="ANY">
                                                                 </td>
@@ -303,22 +304,19 @@
                 <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 
                 <script type="text/javascript" src="js/globalVariables.js"></script>
-                <script type="text/javascript" src="js/google.jsapi.js"></script>
-                <script type="text/javascript" src="js/chartFunctions.js"></script>	
+                <script type="text/javascript" src="js/google.jsapi.js"></script>	
 
                 <script type="text/javascript" src="js/sammy.js"></script>
                 <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
-
-                <!--<script type="text/javascript" src="js/Util/jquery.form.js"></script>-->
-                <script type="text/javascript" src="js/Util/util.js"></script>
-                <script type="text/javascript" src="js/Util/dialog.js"></script>
-                <!--<script type="text/javascript" src="js/Util/array.js"></script>-->
+                <script type="text/javascript" src="js/util.js"></script>
 
                 <!--<script type="text/javascript" src="js/index.js"></script>-->
                 <script type="text/javascript" src="js/situations.js"></script>
-                <script type="text/javascript" src="js/results.js"></script>
+                <!--<script type="text/javascript" src="js/results.js"></script>-->
 
+                <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
                 <script type="text/javascript" src="js/Components/login.js"></script>
+                <script type="text/javascript" src="js/Components/dialog.js"></script>
                 <script type="text/javascript" src="js/Components/team_lineup.js"></script>
                 <script type="text/javascript" src="js/Components/scoreboard.js"></script>
                 <!--<script type="text/javascript" src="js/Components/charts.js"></script>-->
@@ -341,23 +339,23 @@
                               autoOpen: false
                             });
     
-//                            jQuery(window).resize(function() {
-//                                chartheight = ($(window).height()*.73);
-//                                chartwidth = chartheight*1.28; 
-//
-//                                dialogheight = $(window).height()*.75;
-//                                dialogwidth = $(window).width()*.80;
-//                                
-//                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-//                                
-//                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-//                                                  
-//                                $( "#dialog" ).dialog( "option", "width", dialogwidth );
-//                                
-//                                $( "#dialog" ).dialog( "option", "height", dialogheight );
-//                                                                
+                            jQuery(window).resize(function() {
+                                chartheight = ($(window).height()*.73);
+                                chartwidth = chartheight*1.28; 
+
+                                dialogheight = $(window).height()*.75;
+                                dialogwidth = $(window).width()*.80;
+                                
+                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+                                
+                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+                                                  
+                                $( "#dialog" ).dialog( "option", "width", dialogwidth );
+                                
+                                $( "#dialog" ).dialog( "option", "height", dialogheight );
+                                                                
 //                                setCurrentChart(currentchart);
-//                            });
+                            });
                         });
                     
                     
