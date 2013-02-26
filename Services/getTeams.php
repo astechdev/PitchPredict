@@ -1,4 +1,5 @@
 <?php
+    header("content-type: application/json");
 
     $data = json_decode(file_get_contents('http://pitchpredict.com/PitchPredict/Services/trackApiUseage.php?ApiKey='.$_REQUEST['ApiKey']));
 //    var_dump($data);
@@ -25,6 +26,7 @@
             $teamsArray[] = new Team($row['id'], "pitchpre_pbp_".$_REQUEST['YearToQuery']);
         }
 
-        echo json_encode($teamsArray);
+        // Wrap and write a JSON-formatted object with a function call, using the supplied value of parm 'callback' in the URL:
+        echo $_GET['callback']. '('. json_encode($teamsArray) . ')';
     }
 ?>

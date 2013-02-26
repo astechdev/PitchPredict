@@ -262,9 +262,11 @@ h6 {
 }
 /* line 75, ../sass/common/_structure.scss */
 #dashboard .content .leftcol .view.animate-in {
-  left: 0;
-  opacity: 1;
-  z-index: 1;
+    left: 0;
+    opacity: 1;
+    z-index: 1;
+    max-height: 44em;
+    overflow-y: hidden;
 }
 /* line 83, ../sass/common/_structure.scss */
 #dashboard .content .rightcol {

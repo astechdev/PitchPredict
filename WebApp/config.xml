@@ -25,6 +25,8 @@
     <preference name="target-device"    value="universal" />
     <preference name="fullscreen"       value="false" />
 
+    <preference name="UIWebViewBounce" value="false" />
+    
     <access origin="http://pitchpredict.com" subdomains="true" />
     
     <icon src="images/icon.png" />

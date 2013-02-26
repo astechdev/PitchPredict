@@ -82,7 +82,7 @@ function load()
 //    alert(JSON.stringify(homeTeamMap));
 //    alert(JSON.stringify(awayTeamMap));
     
-    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?UserName='+userInfoMap.UserName, function(data) 
+    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?callback=?&UserName='+userInfoMap.UserName, function(data) 
     {
         if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
         {
@@ -143,7 +143,7 @@ function load()
         var pitchLocationsAquired = 'false';
         var pitchOutcomesAquired = 'false';
     
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getTeams.php?YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getTeams.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
         {
 //            jQuery.each(data, function(key, val) 
 //            {
@@ -163,7 +163,7 @@ function load()
         });
 
 
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theAwayTeamAbbr'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theAwayTeamAbbr'], function(data) 
         {             
 //            jQuery.each(data, function(key, val)
 //            {
@@ -201,7 +201,7 @@ function load()
                             pitchOutcomesAquired);
         });
 
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theHomeTeamAbbr'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theHomeTeamAbbr'], function(data) 
         {
 //            jQuery.each(data, function(key, val)
 //            {
@@ -239,7 +239,7 @@ function load()
                             pitchOutcomesAquired);
         });
         
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchTypes.php?YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchTypes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
         {
 //            jQuery.each(data, function(key, val)
 //            {
@@ -259,7 +259,7 @@ function load()
                             pitchOutcomesAquired);
         });
 
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchOutcomes.php?YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchOutcomes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
         {
 //            jQuery.each(data, function(key, val)
 //            {
@@ -277,7 +277,7 @@ function load()
                             pitchOutcomesAquired);
         });
 
-        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchLocations.php?YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
+        jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchLocations.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
         {
 //            jQuery.each(data, function(key, val)
 //            {

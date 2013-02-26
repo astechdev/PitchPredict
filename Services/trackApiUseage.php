@@ -1,4 +1,5 @@
 <?php
+    header("content-type: application/json");
 
     $responseArray = array();
     //write some traking code here.  Each user will have an Api Key and a set number of api calls they can make in a day.
