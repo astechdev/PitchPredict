@@ -5,7 +5,7 @@ function updateHotZone()
     jQuery("#hotzonecontainer").empty();
     jQuery("#hotzonecontainer").append('<img id=\"hotzoneajaxloader\" src="images/ajax-loader.gif">');
 
-    jQuery("#hotzonecontainer").load("http://www.pitchpredict.com/PitchPredict/Services/charting.php?ChartType=HOTZONE&", params, function()
+    jQuery("#hotzonecontainer").load("http://www.pitchpredict.com/PitchPredict/Services/charting.php?callback=?&ChartType=HOTZONE&", params, function()
     {
         jQuery('#hotzoneajaxloader').fadeOut("slow").remove();
         jQuery("#hotzonecontainer").fadeIn("slow");
@@ -17,7 +17,7 @@ function loadHotzone()
     jQuery('#hotzonecontainer').empty();
     getParamsString();
     
-    var url = 'http://www.pitchpredict.com/PitchPredict/Services/charting.php?ChartType=HOTZONE&'+params; 
+    var url = 'http://www.pitchpredict.com/PitchPredict/Services/charting.php?callback=?&ChartType=HOTZONE&'+params; 
 
     jQuery('#hotzonecontainer').load(url);
 }
