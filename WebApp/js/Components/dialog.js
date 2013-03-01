@@ -79,6 +79,9 @@ function loginDialogInit()
       title: "Login",
       closeOnEscape: false,
       buttons: {
+          Login: function() {
+            loginRequest();
+          },
           Register: function() {    
             if(phonegap != "false")
             {
@@ -91,16 +94,13 @@ function loginDialogInit()
             
             jQuery( this ).dialog( "close" );
           },
-          Login: function() {
-            loginRequest();
-          },
           Close: function() {
             jQuery( this ).dialog( "close" );
           }
       }
     });
    
-    if(userInfoMap.UserName === "" ||userInfoMap.UserName === null || userInfoMap.UserName === "undefined")
+    if(userInfoMap.UserName === "" || userInfoMap.UserName === null || userInfoMap.UserName === "undefined" || userInfoMap.UserName === "false")
     {
         $( "#dialog-message" ).append("<div id=\"logincontainer\"></div>");   
 

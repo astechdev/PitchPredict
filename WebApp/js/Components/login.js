@@ -12,14 +12,21 @@ function loginRequest()
         console.log(JSON.stringify(userInfoMap));
         if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
         {
-            console.log('load');
-            load();
+            if(userInfoMap.UserName != "false")
+            {
+                console.log('load');
+                jQuery( "#dialog" ).dialog( "close" );
+                load();
+            }
+            else
+            {
+                helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); 
+            }
         }
         
-        jQuery( "#dialog" ).dialog( "close" );
 //        alert('username'+userInfoMap.UserName);
     }).error(function(e) { 
-        helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e))});
+        helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e));});
         
         
         
