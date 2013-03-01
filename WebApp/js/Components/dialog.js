@@ -80,6 +80,7 @@ function loginDialogInit()
       closeOnEscape: false,
       buttons: {
           Login: function() {
+            TrackButtonClicked('Login', 'clicked', 'Attempt to Login', 1);
             loginRequest();
           },
           Register: function() {    
@@ -91,7 +92,7 @@ function loginDialogInit()
             {
                 window.open('http://www.pitchpredict.com/index.php?option=com_users&view=registration', '_blank');
             } 
-            
+            TrackButtonClicked('Register', 'clicked', 'Attempt to Register', 1);
             jQuery( this ).dialog( "close" );
           },
           Close: function() {

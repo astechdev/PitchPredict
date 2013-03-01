@@ -2,6 +2,8 @@
 //each chart defines its own var data and var options
 var chart;
 var phonegap = 'false';
+var gaPlugin;
+var _gaq = _gaq || [];
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
 var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};

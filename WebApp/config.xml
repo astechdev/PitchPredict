@@ -29,6 +29,8 @@
     <preference name="stay-in-webview" value="false" />
     <preference name="show-splash-screen-spinner" value="false" />
     
+    <gap:plugin name="GAPlugin" /> <!-- latest release -->
+    
     <access origin="http://pitchpredict.com" subdomains="true" browserOnly="true"/>
     
     <icon src="images/icon.png" />
