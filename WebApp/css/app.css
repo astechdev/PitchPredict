@@ -267,7 +267,7 @@ h6 {
     left: 0;
     opacity: 1;
     z-index: 1;
-    max-height: 44em;
+    height: 30em;
     overflow-y: hidden;
 }
 /* line 83, ../sass/common/_structure.scss */
