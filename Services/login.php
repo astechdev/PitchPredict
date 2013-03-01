@@ -13,7 +13,7 @@
     
     include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DBProxies/PitchPredictUserDbProxy.php';
 
-    $aPitchPredictUserDbProxyObject = new PitchPredictUserDbProxy('pitchpre_jml1');
+    $aPitchPredictUserDbProxyObject = new PitchPredictUserDbProxy('pitchpre_jml4');
 	
     $userName =  $_REQUEST['UserName'];
     $password =  $_REQUEST['password'];

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -98,7 +97,7 @@
                                                     <div id="pitchlocationselectid"></div>
                                                     <div id="pitchoutcomeselectid"></div>
                                                     
-                                                    <input type="Button" onclick="addToPitchSequences();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="submitPitch" value="Add" class="buttons">
+                                                    <input type="Button" onclick="addToPitchSequences();" id="submitPitch" value="Add" class="buttons">
                                                     <input type="Button" onclick="revertPitchSequences();saveState();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="revertpitchcounterpitchbutton" value="Undo" class="buttons">
                                                     <input type="Button" onclick="resetPitchSequences();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="resetpitchcounterpitchbutton" value="Reset" class="buttons">
                                                     <!--<input type="Button" onclick="$( '#pitchcounterdialogcontainer' ).dialog('open');" id="viewpitchsequencebutton" value="View" class="buttons">-->
@@ -302,7 +301,8 @@
 		</div>
 
                 <!--<script type="text/javascript" src="js/Util/cordova-2.2.0.js"></script>-->
-
+                <script src="phonegap.js"></script>
+                
                 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
                 <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 
@@ -342,10 +342,10 @@
                               autoOpen: false
                             });
     
+                            chartheight = ($(window).height()*.73);
+                            chartwidth = chartheight*1.28; 
+                                
                             jQuery(window).resize(function() {
-                                chartheight = ($(window).height()*.73);
-                                chartwidth = chartheight*1.28; 
-
                                 dialogheight = $(window).height()*.75;
                                 dialogwidth = $(window).width()*.80;
                                 
@@ -362,6 +362,20 @@
                         });
                     
                     
+                </script>
+                <script type="text/javascript">
+
+                    var _gaq = _gaq || [];
+                    _gaq.push(['_setAccount', 'UA-29743249-1']);
+                    _gaq.push(['_setDomainName', 'pitchpredict.com']);
+                    _gaq.push(['_trackPageview']);
+
+                    (function() {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                    })();
+
                 </script>
     </body>
 </html>

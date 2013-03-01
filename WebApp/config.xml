@@ -22,12 +22,14 @@
     <preference name="permissions" value="none"/>
 
     <preference name="orientation"      value="landscape" />
-    <preference name="target-device"    value="universal" />
-    <preference name="fullscreen"       value="false" />
+    <preference name="target-device"    value="tablet" />
+    <preference name="fullscreen"       value="true" />
 
-    <preference name="UIWebViewBounce" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="stay-in-webview" value="false" />
+    <preference name="show-splash-screen-spinner" value="false" />
     
-    <access origin="http://pitchpredict.com" subdomains="true" />
+    <access origin="http://pitchpredict.com" subdomains="true"  browserOnly="true"/>
     
     <icon src="images/icon.png" />
 

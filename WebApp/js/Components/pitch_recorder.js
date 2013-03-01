@@ -288,6 +288,7 @@ function addToPitchSequences()
         
         //enableResultsTab();
         saveState();
+        $( '#pitchcounterdialogcontainer' ).dialog('open');
 //        loadPitchCounters();
     }
     else

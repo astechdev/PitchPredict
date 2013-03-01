@@ -81,10 +81,6 @@ function loginDialogInit()
       buttons: {
           Close: function() {
             jQuery( this ).dialog( "close" );
-          },
-          Logout: function() {
-            logout();
-            jQuery( this ).dialog( "close" );
           }
       }
     });
@@ -100,7 +96,12 @@ function loginDialogInit()
                                        "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
                                        "<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
                                 "</label>"+
-                                "<a href=\"http://www.pitchpredict.com/index.php/component/users/?view=registration\" target=\"_blank\">Register</a>");
+                                "<a href=\"http://www.pitchpredict.com/index.php?option=com_users&view=registration\" target=\"_blank\">Register</a>");
+    }
+    else
+    {
+        $( "#dialog" ).dialog( "option", "title", "Logout" );
+        $( "#dialog" ).dialog( "option", "buttons", [ { text: "Logout", click: function() { logout();$( this ).dialog( "close" ); } }, { text: "Close", click: function() { $( this ).dialog( "close" ); } } ] );
     }
                      
 }
