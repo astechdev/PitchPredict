@@ -243,7 +243,7 @@ h6 {
 /* line 62, ../sass/common/_structure.scss */
 #dashboard .content .leftcol {
   float: left;
-  width: 25%;
+  width: 20%;
 }
 /* line 66, ../sass/common/_structure.scss */
 #dashboard .content .leftcol .view {
@@ -272,7 +272,7 @@ h6 {
 }
 /* line 83, ../sass/common/_structure.scss */
 #dashboard .content .rightcol {
-  margin-left: 25%;
+  margin-left: 20%;
   background: #e1e1e1;
   height: auto !important;
   /* real browsers */

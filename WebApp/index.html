@@ -113,7 +113,7 @@
 						<div data-view="filters" class="view">
                                                     <span onclick="helpDialogInit('info', 'Filters', filtersHelp);">Filter Results By:<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
                                                     <div id="filterspitchtypeselectid"></div>
-                                                    <div id="filterspitchoutcomeselectid"></div><br>
+                                                    <div id="filterspitchoutcomeselectid"></div>
                                                     <div id="filterscontainer">
                                                         <table id="filterstable">
                                                             <tr class="titlerow">
@@ -300,8 +300,7 @@
                         </div>
 		</div>
 
-                <!--<script type="text/javascript" src="js/Util/cordova-2.2.0.js"></script>-->
-                <script src="phonegap.js"></script>
+                <!--<script src="phonegap.js"></script>-->
                 
                 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
                 <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -340,12 +339,12 @@
                             //we can set the resize function
                             $( "#dialog" ).dialog({
                               autoOpen: false
-                            });
-    
-                            chartheight = ($(window).height()*.73);
-                            chartwidth = chartheight*1.28; 
+                            }); 
                                 
-                            jQuery(window).resize(function() {
+                            jQuery(window).resize(function() {    
+//                                chartheight = ($(window).height()*.75);
+//                                chartwidth = chartheight*1.40;
+                                
                                 dialogheight = $(window).height()*.75;
                                 dialogwidth = $(window).width()*.80;
                                 
