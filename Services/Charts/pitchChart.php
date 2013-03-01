@@ -25,33 +25,31 @@
         $tmpPitchLocationArray = array();
         $tmpPitchLocationValueArray = array();
 
-        //for testing purposes only
-        for ($i=0; $i<20; $i++)
-        {
-            $x = mt_rand (-3*10, 3*10) / 10;
-            $y = mt_rand (0*10, 6*10) / 10;
-            $tmpPitchLocationValueArray[1] = $x;
-            $tmpPitchLocationValueArray[2] = $y;
-            $tmpPitchLocationArray[] = $tmpPitchLocationValueArray;
-        }
-        
-//        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+//        //for testing purposes only
+//        for ($i=0; $i<20; $i++)
 //        {
-//            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
-//            {
-//                $tmpPitchLocationValueArray[1] = $pitches_row['px'];
-//                $tmpPitchLocationValueArray[2] = $pitches_row['py'];
-//                $tmpPitchLocationArray[] = $tmpPitchLocationValueArray;
-//            }
+//            $x = mt_rand (-3*10, 3*10) / 10;
+//            $y = mt_rand (0*10, 6*10) / 10;
+//            $tmpPitchLocationValueArray[1] = $x;
+//            $tmpPitchLocationValueArray[2] = $y;
+//            $tmpPitchLocationArray[] = $tmpPitchLocationValueArray;
 //        }
+        
+        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+        {
+            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
+            {
+                $tmpPitchLocationValueArray[1] = $pitches_row['px'];
+                $tmpPitchLocationValueArray[2] = $pitches_row['py'];
+                $tmpPitchLocationArray[] = $tmpPitchLocationValueArray;
+            }
+        }
 
         $scatterChartArray[$pitch_types_row['abbreviation']] = $tmpPitchLocationArray;
     }
-?>		
+?>	
+<div id="pitchchart" class="chart"></div>	
 <script type="text/javascript">
-    // perform JavaScript after the document is scriptable.
-    jQuery(document).ready(function() 
-    {   
         // Create and populate the data table.
         data = new google.visualization.DataTable();
         data.addColumn('number', 'X');
@@ -117,9 +115,7 @@
 
         redrawScatterChart('pitchchart', data, options);
         
-        // Every time the table fires the "select" event, it should call your
-        // selectPitchTypeHandler() function.
-        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
-    });
+//        // Every time the table fires the "select" event, it should call your
+//        // selectPitchTypeHandler() function.
+//        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
 </script>	
-<div id="pitchchart" class="chart"></div>

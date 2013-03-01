@@ -33,7 +33,9 @@ footer, header, hgroup, menu, nav, section {
 
 /* line 31, ../sass/common/_reset.scss */
 body {
-  line-height: 1;
+    line-height: 1;
+    height: 100%;
+    overflow: hidden;
 }
 
 .inner span {
@@ -543,5 +545,10 @@ h6 {
 #hotzoneajaxloader{    
     margin-left: 47%;
     margin-top: 91%;
+}
+
+#pitchrecorderajaxloader{
+    margin-left: 51%;
+    margin-top: 25%;
 }
 

@@ -520,30 +520,30 @@ function getParamsString()
 //            }
 //        }
         
-        params = "UserName=" + userInfoMap.UserName+
-	"&Inning=" + stateVariablesMap['theInning'] +
-	"&TopOrBottomHalf=" + stateVariablesMap['theTopOrBottomHalf']+
-	"&Balls=" + stateVariablesMap['theBalls']+
-	"&Strikes=" + stateVariablesMap['theStrikes']+
-	"&Outs=" + stateVariablesMap['theOuts']+
-        "&AtBatNumber=" + stateVariablesMap['theAtBatNumber']+
-        "&YearToQuery=" + stateVariablesMap['theYearToQuery']+
-	"&AwayTeamId=" + stateVariablesMap['theAwayTeamId']+
-	"&AwayTeamScore=" + stateVariablesMap['theAwayTeamScore']+
-	"&HomeTeamId=" + stateVariablesMap['theHomeTeamId']+
-	"&HomeTeamScore=" + stateVariablesMap['theHomeTeamScore']+
-	"&PitcherTeamId=" + stateVariablesMap['thePitcherTeamId']+
-	"&PitcherId=" + stateVariablesMap['thePitcherId']+
-	"&CatcherId=" + stateVariablesMap['theCatcherId']+
-	"&BatterTeamId=" + stateVariablesMap['theBatterTeamId']+
-	"&BatterId=" + stateVariablesMap['theBatterId']+
-	"&BatterOnDeckId=" + stateVariablesMap['theBatterOnDeckId']+
-	"&BatterRightOrLeft=" + stateVariablesMap['theBatterRightOrLeft']+
-	"&On1BId=" + stateVariablesMap['theOn1bId']+
-	"&On2BId=" + stateVariablesMap['theOn2bId']+
-	"&On3BId=" + stateVariablesMap['theOn3bId']+			
-	"&HomeTeamBattingOrderBatterIds=" +  stateVariablesMap['theHomeTeamBattingOrderBatterIds'].toString()+ 	
-	"&AwayTeamBattingOrderBatterIds=" +  stateVariablesMap['theAwayTeamBattingOrderBatterIds'].toString()+ 
+        params = "UserName=" + encodeURIComponent(userInfoMap.UserName)+
+	"&Inning=" + encodeURIComponent(stateVariablesMap['theInning']) +
+	"&TopOrBottomHalf=" + encodeURIComponent(stateVariablesMap['theTopOrBottomHalf'])+
+	"&Balls=" + encodeURIComponent(stateVariablesMap['theBalls'])+
+	"&Strikes=" + encodeURIComponent(stateVariablesMap['theStrikes'])+
+	"&Outs=" + encodeURIComponent(stateVariablesMap['theOuts'])+
+        "&AtBatNumber=" + encodeURIComponent(stateVariablesMap['theAtBatNumber'])+
+        "&YearToQuery=" + encodeURIComponent(stateVariablesMap['theYearToQuery'])+
+	"&AwayTeamId=" + encodeURIComponent(stateVariablesMap['theAwayTeamId'])+
+	"&AwayTeamScore=" + encodeURIComponent(stateVariablesMap['theAwayTeamScore'])+
+	"&HomeTeamId=" + encodeURIComponent(stateVariablesMap['theHomeTeamId'])+
+	"&HomeTeamScore=" + encodeURIComponent(stateVariablesMap['theHomeTeamScore'])+
+	"&PitcherTeamId=" + encodeURIComponent(stateVariablesMap['thePitcherTeamId'])+
+	"&PitcherId=" + encodeURIComponent(stateVariablesMap['thePitcherId'])+
+	"&CatcherId=" + encodeURIComponent(stateVariablesMap['theCatcherId'])+
+	"&BatterTeamId=" + encodeURIComponent(stateVariablesMap['theBatterTeamId'])+
+	"&BatterId=" + encodeURIComponent(stateVariablesMap['theBatterId'])+
+	"&BatterOnDeckId=" + encodeURIComponent(stateVariablesMap['theBatterOnDeckId'])+
+	"&BatterRightOrLeft=" + encodeURIComponent(stateVariablesMap['theBatterRightOrLeft'])+
+	"&On1BId=" + encodeURIComponent(stateVariablesMap['theOn1bId'])+
+	"&On2BId=" + encodeURIComponent(stateVariablesMap['theOn2bId'])+
+	"&On3BId=" + encodeURIComponent(stateVariablesMap['theOn3bId'])+			
+	"&HomeTeamBattingOrderBatterIds=" +  encodeURIComponent(stateVariablesMap['theHomeTeamBattingOrderBatterIds'].toString())+ 	
+	"&AwayTeamBattingOrderBatterIds=" +  encodeURIComponent(stateVariablesMap['theAwayTeamBattingOrderBatterIds'].toString())+ 
 //	"&PitchType=" +  pitchtype+ 	
 //	"&OutcomeType=" +  outcometype+ 
 //	"&PitcherType=" +  pitchertype+ 	
@@ -553,18 +553,18 @@ function getParamsString()
 //	"&BaseRunnerType=" +  baserunnertype+ 	
 //	"&PitcherOrBatter=" +  pitcherorbatter+ 	
 //	"&HotZone=" +  hotzone+	
-	"&PitchType=" +  stateVariablesMap['thePitchType']+ 	
-	"&OutcomeType=" +  stateVariablesMap['theOutcomeType']+ 
-	"&PitcherType=" +  stateVariablesMap['thePitcherType']+ 	
-	"&CatcherType=" +  stateVariablesMap['theCatcherType']+ 	
-	"&BatterType=" +  stateVariablesMap['theBatterType']+ 	
-	"&BatterOnDeckType=" +  stateVariablesMap['theOnDeckBatterType']+ 	
-	"&BaseRunnerType=" +  stateVariablesMap['theBaseRunnerType']+ 	
-	"&PitcherOrBatter=" +  stateVariablesMap['thePitcherOrBatter']+ 	
-	"&HotZone=" +  stateVariablesMap['theHotZone']+
-        "&PitchTypeSequence=" + stateVariablesMap['thePitchTypeSequence'].toString()+
-        "&PitchLocationSequence=" + stateVariablesMap['thePitchLocationSequence'].toString()+
-        "&PitchOutcomeSequence=" + stateVariablesMap['thePitchOutcomeSequence'].toString();
+	"&PitchType=" +  encodeURIComponent(stateVariablesMap['thePitchType'])+ 	
+	"&OutcomeType=" +  encodeURIComponent(stateVariablesMap['theOutcomeType'])+ 
+	"&PitcherType=" +  encodeURIComponent(stateVariablesMap['thePitcherType'])+ 	
+	"&CatcherType=" +  encodeURIComponent(stateVariablesMap['theCatcherType'])+ 	
+	"&BatterType=" +  encodeURIComponent(stateVariablesMap['theBatterType'])+ 	
+	"&BatterOnDeckType=" +  encodeURIComponent(stateVariablesMap['theOnDeckBatterType'])+ 	
+	"&BaseRunnerType=" +  encodeURIComponent(stateVariablesMap['theBaseRunnerType'])+ 	
+	"&PitcherOrBatter=" +  encodeURIComponent(stateVariablesMap['thePitcherOrBatter'])+ 	
+	"&HotZone=" +  encodeURIComponent(stateVariablesMap['theHotZone'])+
+        "&PitchTypeSequence=" + encodeURIComponent(stateVariablesMap['thePitchTypeSequence'].toString())+
+        "&PitchLocationSequence=" + encodeURIComponent(stateVariablesMap['thePitchLocationSequence'].toString())+
+        "&PitchOutcomeSequence=" + encodeURIComponent(stateVariablesMap['thePitchOutcomeSequence'].toString());
 //	"&OutsRecorded=" + jQuery('#outsRecorded').val();
         
 //        if(getPitchSequences == 'true')

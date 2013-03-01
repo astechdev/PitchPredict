@@ -34,8 +34,8 @@
         {
             //set default value to 0
             $outcomesPredictionsCountersArray[$outcomesArray[$i]] = 0;
-            //for testing purposes only
-            $outcomesPredictionsCountersArray[$outcomesArray[$i]] = 1;
+//            //for testing purposes only
+//            $outcomesPredictionsCountersArray[$outcomesArray[$i]] = 1;
             
             //Set the pitch type to specific pitch type to get totals for that pitch type
             $aStateVariablesObjectClone->theOutcomeType = $outcomesArray[$i];
@@ -62,19 +62,17 @@
         {
             //set default value to 0
             $pitchTypesPredictionsCountersArray[$pitchTypesArray[$i]] = 0;
-            //for testing purposes only
-            $pitchTypesPredictionsCountersArray[$pitchTypesArray[$i]] = 1;
+//            //for testing purposes only
+//            $pitchTypesPredictionsCountersArray[$pitchTypesArray[$i]] = 1;
             
             //Set the pitch type to specific pitch type to get totals for that pitch type
             $aStateVariablesObjectClone->thePitchType = $pitchTypesArray[$i];
             $pitchTypesPredictionsCountersArray[$pitchTypesArray[$i]] = new PitchPredict(& $aStateVariablesObjectClone);
         }
     } 
-?>		
+?>	
+<div id="outcomepercentagechart" class="chart"></div>	
 <script type="text/javascript">
-    // perform JavaScript after the document is scriptable.
-    jQuery(document).ready(function() 
-    {   
         // Create and populate the data table.
         data = new google.visualization.arrayToDataTable([
 
@@ -92,9 +90,9 @@
                 $counter = 0;
                 foreach($outcomesPredictionsCountersArray as $key => $pitchPredictObject)
                 {
-        //                print ($pitchPredictObject->theTotal/$anAnyOutcomePredictionsCountersObject->theTotal*100);
-                    //for testing purposes only
-                    print (1/14*100);
+                    print (($pitchPredictObject->theTotal/$anAnyOutcomePredictionsCountersObject->theTotal)*100);
+//                    //for testing purposes only
+//                    print ((1/14)*100);
 
                     if($counter < (count($outcomesPredictionsCountersArray) - 1))
                     {
@@ -119,9 +117,9 @@
                 $counter = 0;
                 foreach($pitchTypesPredictionsCountersArray as $key => $pitchPredictObject)
                 {
-    //                print ($pitchPredictObject->theTotal/$anAnyPitchPredictionsCountersObject->theTotal*100);
-                    //for testing purposes only
-                    print (1/9*100);
+                    print (($pitchPredictObject->theTotal/$anAnyPitchPredictionsCountersObject->theTotal)*100);
+//                    //for testing purposes only
+//                    print ((1/9)*100);
 
                     if($counter < (count($pitchTypesPredictionsCountersArray) - 1))
                     {
@@ -143,7 +141,12 @@
                 print "options = {
                                     title: 'Outcome Prediction Chart',
                                     colors: ['#000000', '#555555', '#2568a0', '#ea1605'],
-                                    vAxis: {title: '%'},
+                                    vAxis: {title: '%', 
+                                            viewWindowMode:'explicit',
+                                            viewWindow:{
+                                              max:100,
+                                              min:0
+                                            }},
                                     backgroundColor: 'transparent',";
                                     
                                     if(isset($_REQUEST['ChartWidth']))
@@ -170,7 +173,12 @@
                 print "options = {
                                     title: 'Pitch Prediction Chart For Selected Outcome',
                                     colors: ['#000000', '#555555', '#2568a0', '#ea1605'],
-                                    vAxis: {title: '%'},
+                                    vAxis: {title: '%', 
+                                            viewWindowMode:'explicit',
+                                            viewWindow:{
+                                              max:100,
+                                              min:0
+                                            }},
                                     backgroundColor: 'transparent',";
                                     
                                     if(isset($_REQUEST['ChartWidth']))
@@ -200,17 +208,15 @@
         <?php
             if($aStateVariablesObject->theOutcomeType === "ANY")
             {
-                // Every time the table fires the "select" event, it should call your
-                // selectOutcomeHandler() function.
-                print "google.visualization.events.addListener(chart, 'select', selectOutcomeHandler);";
+//                // Every time the table fires the "select" event, it should call your
+//                // selectOutcomeHandler() function.
+//                print "google.visualization.events.addListener(chart, 'select', selectOutcomeHandler);";
             }
             else
             {
-                // Every time the table fires the "select" event, it should call your
-                // selectPitchTypeHandler() function.
-                print "google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);";
+//                // Every time the table fires the "select" event, it should call your
+//                // selectPitchTypeHandler() function.
+//                print "google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);";
             }
         ?>
-    });
 </script>	
-<div id="outcomepercentagechart" class="chart"></div>

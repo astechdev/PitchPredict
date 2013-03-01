@@ -1555,7 +1555,7 @@ sub parse_at_bats_and_pitches()
             if ($pitchfx) 
             {
 
-                if ($result_type == 'X')
+                if ($result_type eq "'X'")
                 {
                     $pitch_query = 'INSERT INTO pitches (batter_id, pitcher_id, catcher_id, batter_stand, balls, strikes, outs, game_id, atbat_id, inning, half, description, outcome, des, event, pitch_id, pitch_sequence, location_sequence, x, y, start_speed,'
                                     . ' end_speed, sz_top, sz_bot, pfx_x, pfx_z, px, pz, x0, y0, z0, vx0, vy0,'
@@ -1590,7 +1590,7 @@ sub parse_at_bats_and_pitches()
             $sth->execute();
             $sth->finish();
 
-            #if ($result_type == 'X')
+            #if ($result_type eq "'X'")
             #{
                 # update at bat record with pitch type and zone info
                 #$atbat_query = 'UPDATE atbats SET on_1b = ' . $on_1b . ', on_2b = ' . $on_2b . ', on_3b = ' . $on_3b . ', zone = ' . $dbh->quote($zone) . ', pitch_type = ' . $dbh->quote($pitch_type) . ' WHERE id = ' . $select_ab_id;
