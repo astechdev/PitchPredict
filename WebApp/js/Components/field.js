@@ -13,6 +13,7 @@ function loadFieldDropDowns()
     firstbaserunnerselectdd.name = "RunnerOnFirst";
     firstbaserunnerselectdd.id = "runneronfirstId";
     firstbaserunnerselectdd.options[firstbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn1bName'], stateVariablesMap['theOn1bId']);
+    firstbaserunnerselectdd.options[firstbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
     {
@@ -34,6 +35,7 @@ function loadFieldDropDowns()
     secondbaserunnerselectdd.name = "RunnerOnSecond";
     secondbaserunnerselectdd.id = "runneronsecondId";
     secondbaserunnerselectdd.options[secondbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn2bName'], stateVariablesMap['theOn2bId']);
+    secondbaserunnerselectdd.options[secondbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
     {
@@ -55,6 +57,7 @@ function loadFieldDropDowns()
     thirdbaserunnerselectdd.name = "RunnerOnThird";
     thirdbaserunnerselectdd.id = "runneronthirdId";
     thirdbaserunnerselectdd.options[thirdbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn3bName'], stateVariablesMap['theOn3bId']);
+    thirdbaserunnerselectdd.options[thirdbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
     {

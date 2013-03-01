@@ -8,7 +8,7 @@
     border-collapse: collapse;
     position: relative;
     text-align: left;
-    font-size: 125%;
+    font-size: 100%;
     width: 100%;
 }
 
@@ -37,8 +37,7 @@
 }
 
 #pitchrecordertable select{
-	font-size:85%;
-        width:53px;
+        width:11em;
 }
 
 #pitchrecordertable .buttons {

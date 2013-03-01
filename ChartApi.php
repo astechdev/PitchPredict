@@ -1,34 +1,14 @@
+<?php
+    $data = json_decode(file_get_contents('http://pitchpredict.com/PitchPredict/Services/trackApiUseage.php?ApiKey='.$_REQUEST['ApiKey']));
+//    var_dump($data);
+    if($data->{'response'} == 'true')
+    {
+?>        
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en_US" xml:lang="en_US">
 
 <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
-    <style type="text/css">        
-    #pitchchart {
-        opacity: 1 !important;
-    }       
-    #hitchart {
-        opacity: 1 !important;
-    }       
-    #pitchtypepercentagechart {
-        opacity: 1 !important;
-    }       
-    #verticalchart {
-        opacity: 1 !important;
-    }       
-    #horizontalchart {
-        opacity: 1 !important;
-    }       
-    #resultspercentagechart {
-        opacity: 1 !important;
-    }       
-    #outcomepercentagechart {
-        opacity: 1 !important;
-    }       
-    #pitchtypepercentagechart {
-        opacity: 1 !important;
-    }   
-</style>
         <body>
             <?php
                 if(strtoupper($_REQUEST['ChartType']) != "HOTZONE")
@@ -43,7 +23,7 @@
                         We must also provde http://www.pitchpredict.com/PitchPredict/Services/js/chartFunctions.js!!!!
 
                         Full version of jQuery !!!!Must require users have their own jQuery library loaded as loading this lib everytime causes conflicts-->
-                        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+                        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>-->
                         
                         <!--Load the google AJAX API-->
                         <script type="text/javascript" src='https://www.google.com/jsapi?autoload={"modules":[{"name":"visualization","version":"1","packages":["corechart"]}]}'></script>
@@ -96,3 +76,6 @@
             ?>
 	</body>	
 </html>
+<?php
+    }
+?>

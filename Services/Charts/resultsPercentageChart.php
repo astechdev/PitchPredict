@@ -8,30 +8,33 @@
     
     $aPredictionsCountersObject = new PitchPredict(& $aStateVariablesObject);
 ?>		
+<div id="resultspercentagechart" class="chart"></div>	
 <script type="text/javascript">
-    // perform JavaScript after the document is scriptable.
-    jQuery(document).ready(function() 
-    {   
         // Create and populate the data table.
         data = new google.visualization.arrayToDataTable([
 
         <?php
             print "['Outcome', 'Success', 'Failure'], ";
             
-            print "['Overall', ".($aPredictionsCountersObject->theSuccess/$aPredictionsCountersObject->theTotal*100).",".($aPredictionsCountersObject->theFailure/$aPredictionsCountersObject->theTotal*100)." ], ";
+            print "['Overall', ".(($aPredictionsCountersObject->theSuccess/$aPredictionsCountersObject->theTotal)*100).",".(($aPredictionsCountersObject->theFailure/$aPredictionsCountersObject->theTotal)*100)." ], ";
             
-            print "['Groundball', ".($aPredictionsCountersObject->theGroundballSuccess/$aPredictionsCountersObject->theTotal*100).",".($aPredictionsCountersObject->theGroundballFailure/$aPredictionsCountersObject->theTotal*100)." ], ";
+            print "['Groundball', ".(($aPredictionsCountersObject->theGroundballSuccess/$aPredictionsCountersObject->theTotal)*100).",".(($aPredictionsCountersObject->theGroundballFailure/$aPredictionsCountersObject->theTotal)*100)." ], ";
             
-            print "['Flyball', ".($aPredictionsCountersObject->theFlyballSuccess/$aPredictionsCountersObject->theTotal*100).",".($aPredictionsCountersObject->theFlyballFailure/$aPredictionsCountersObject->theTotal*100)." ], ";
+            print "['Flyball', ".(($aPredictionsCountersObject->theFlyballSuccess/$aPredictionsCountersObject->theTotal)*100).",".(($aPredictionsCountersObject->theFlyballFailure/$aPredictionsCountersObject->theTotal)*100)." ], ";
             
-            print "['Strike/Ball', ".($aPredictionsCountersObject->theStrike/$aPredictionsCountersObject->theTotal*100).",".($aPredictionsCountersObject->theBall/$aPredictionsCountersObject->theTotal*100)." ], ";
+            print "['Strike/Ball', ".(($aPredictionsCountersObject->theStrike/$aPredictionsCountersObject->theTotal)*100).",".(($aPredictionsCountersObject->theBall/$aPredictionsCountersObject->theTotal)*100)." ], ";
         ?>
                     
         ]);
         
        options = {title: 'Probability Chart',
-                    colors: ['#000000', '#555555', '#2568a0', '#ea1605'],
-                    vAxis: {title: '%'},
+                    colors: ['#2568a0', '#ea1605'],
+                    vAxis: {title: '%', 
+                            viewWindowMode:'explicit',
+                            viewWindow:{
+                              max:100,
+                              min:0
+                            }},
                     backgroundColor: 'transparent',
                     <?php
                         if(isset($_REQUEST['ChartWidth']))
@@ -54,6 +57,4 @@
                 };
                 
         redrawColumnChart('resultspercentagechart', data, options);
-    });
-</script>	
-<div id="resultspercentagechart" class="chart"></div>
+</script>

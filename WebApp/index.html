@@ -98,11 +98,13 @@
                                                     <div id="pitchlocationselectid"></div>
                                                     <div id="pitchoutcomeselectid"></div>
                                                     
-                                                    <input type="Submit" id="submitPitch" value="Add" class="buttons">
-                                                    <input type="Submit" id="resetpitchcounterpitchbutton" value="Reset" class="buttons">
-                                                    <input type="Submit" id="viewpitchsequencebutton" value="View" class="buttons">
+                                                    <input type="Button" onclick="addToPitchSequences();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="submitPitch" value="Add" class="buttons">
+                                                    <input type="Button" onclick="revertPitchSequences();saveState();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="revertpitchcounterpitchbutton" value="Undo" class="buttons">
+                                                    <input type="Button" onclick="resetPitchSequences();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="resetpitchcounterpitchbutton" value="Reset" class="buttons">
+                                                    <!--<input type="Button" onclick="$( '#pitchcounterdialogcontainer' ).dialog('open');" id="viewpitchsequencebutton" value="View" class="buttons">-->
                                                     
                                                     <div id="pitchcounterdialogcontainer">
+                                                        <img id="pitchrecorderajaxloader" src="images/ajax-loader.gif">
                                                         <table id="pitchrecordertable" class="teamlineuptable">
                                                             <tbody id="pitchrecordertabletbody">
                                                             </tbody>

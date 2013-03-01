@@ -25,50 +25,48 @@
         $tmpPitchBreakArray = array();
         $tmpPitchBreakValueArray = array();
 
-        //for testing purposes only
-        for ($i=0; $i<20; $i++)
-        {
-            $start_speed_mph = 93.1;
-            $start_speed_fps = $start_speed_mph * (5280/3600);
-
-            $x0=-2.803;
-            $y0=50.0;
-            $z0=5.118;
-            $vx0=9.033;
-            $vy0=-136.258;
-            $vz0=-3.104;
-            $ax0=-15.271;
-            $ay0=30.338; 
-            $az0=-21.793;
-                                        
-            for ($t=0; $t<=.4; $t = $t + .025)
-            {
-                $tmpPitchBreakValueArray[1] = ($y0 - ($start_speed_fps*$t));
-                $tmpPitchBreakValueArray[2] = ($ax0*$t*$t + $vx0*$t + $x0);
-                $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
-            }
-        }
-        
-//        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+//        //for testing purposes only
+//        for ($i=0; $i<20; $i++)
 //        {
-//            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
+//            $start_speed_mph = 93.1;
+//            $start_speed_fps = $start_speed_mph * (5280/3600);
+//
+//            $x0=-2.803;
+//            $y0=50.0;
+//            $z0=5.118;
+//            $vx0=9.033;
+//            $vy0=-136.258;
+//            $vz0=-3.104;
+//            $ax0=-15.271;
+//            $ay0=30.338; 
+//            $az0=-21.793;
+//                                        
+//            for ($t=0; $t<=.4; $t = $t + .025)
 //            {
-//                for ($t=0; $t<=.4; $t = $t + .025)
-//                {
-//                    $tmpPitchBreakValueArray[1] = ($pitches_row['y0'] - ($pitches_row['start_speed']*(5280/3600)*$t));
-//                    $tmpPitchBreakValueArray[2] = ($pitches_row['ax']*$t*$t + $pitches_row['vx0']*$t + $pitches_row['x0']);
-//                    $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
-//                }
+//                $tmpPitchBreakValueArray[1] = ($y0 - ($start_speed_fps*$t));
+//                $tmpPitchBreakValueArray[2] = ($ax0*$t*$t + $vx0*$t + $x0);
+//                $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
 //            }
 //        }
+        
+        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+        {
+            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
+            {
+                for ($t=0; $t<=.4; $t = $t + .025)
+                {
+                    $tmpPitchBreakValueArray[1] = ($pitches_row['y0'] - ($pitches_row['start_speed']*(5280/3600)*$t));
+                    $tmpPitchBreakValueArray[2] = ($pitches_row['ax']*$t*$t + $pitches_row['vx0']*$t + $pitches_row['x0']);
+                    $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
+                }
+            }
+        }
 
         $scatterChartArray[$pitch_types_row['abbreviation']] = $tmpPitchBreakArray;
     }
 ?>		
+<div id="toppitchvirtualizationchart" class="chart"></div>
 <script type="text/javascript">
-    // perform JavaScript after the document is scriptable.
-    jQuery(document).ready(function() 
-    {   
         // Create and populate the data table.
         data = new google.visualization.DataTable();
         data.addColumn('number', 'X');
@@ -134,9 +132,7 @@
 
         redrawScatterChart('toppitchvirtualizationchart', data, options);
         
-        // Every time the table fires the "select" event, it should call your
-        // selectPitchTypeHandler() function.
-        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
-    });
+//        // Every time the table fires the "select" event, it should call your
+//        // selectPitchTypeHandler() function.
+//        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
 </script>
-<div id="toppitchvirtualizationchart" class="chart"></div>

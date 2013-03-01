@@ -12,7 +12,7 @@ function loadFiltersDropDowns()
     var pitchtypeselectdd = document.createElement("select");
     pitchtypeselectdd.name = "FiltersPitchType";
     pitchtypeselectdd.id = "filterspitchtypeId";
-    pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option("Select Pitch", "Select Pitch");
+    pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(stateVariablesMap['thePitchType'], stateVariablesMap['thePitchType']);
     pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option("ANY", "Any");
     for(var key in pitchTypesMap) 
     {
@@ -23,8 +23,13 @@ function loadFiltersDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#filterspitchtypeselectid").append(pitchtypeselectdd);
+    jQuery("#filterspitchtypeselectid").append(pitchtypeselectdd);    
     
+    jQuery("#filterspitchtypeId").change(function(e) {  
+        stateVariablesMap['thePitchType'] = jQuery("#filterspitchtypeId").val();  
+//        stateVariablesMap['theOn1bName'] = jQuery("#runneronfirstId[value="+stateVariablesMap['theOn1bId']+"]").text(); 
+        saveState(); 
+    });
 
     //create outcome drop down
     jQuery("#filterspitchoutcomeselectid").empty();
@@ -32,7 +37,7 @@ function loadFiltersDropDowns()
     var pitchoutcomeselectdd = document.createElement("select");
     pitchoutcomeselectdd.name = "FiltersPitchOutcome";
     pitchoutcomeselectdd.id = "filterspitchoutcomeId";
-    pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option("Select Outcome", "Select Outcome");
+    pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option(stateVariablesMap['theOutcomeType'], stateVariablesMap['theOutcomeType']);
     pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option("ANY", "Any");
     for(var key in pitchOutcomesMap) 
     {
@@ -43,7 +48,13 @@ function loadFiltersDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#filterspitchoutcomeselectid").append(pitchoutcomeselectdd);
+    jQuery("#filterspitchoutcomeselectid").append(pitchoutcomeselectdd);  
+    
+    jQuery("#filterspitchoutcomeId").change(function(e) {  
+        stateVariablesMap['theOutcomeType'] = jQuery("#filterspitchoutcomeId").val();  
+//        stateVariablesMap['theOn1bName'] = jQuery("#runneronfirstId[value="+stateVariablesMap['theOn1bId']+"]").text(); 
+        saveState(); 
+    });
     
 }
 

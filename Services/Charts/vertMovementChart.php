@@ -25,33 +25,31 @@
         $tmpPitchBreakArray = array();
         $tmpPitchBreakValueArray = array();
 
-        //for testing purposes only
-        for ($i=0; $i<20; $i++)
-        {
-            $x = mt_rand (-20*10, 20*10) / 10;
-            $y = mt_rand (50*10, 100*10) / 10;
-            $tmpPitchBreakValueArray[1] = $y;
-            $tmpPitchBreakValueArray[2] = $x;
-            $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
-        }
-        
-//        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+//        //for testing purposes only
+//        for ($i=0; $i<20; $i++)
 //        {
-//            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
-//            {
-//                $tmpPitchBreakValueArray[1] = $pitches_row['start_speed'];
-//                $tmpPitchBreakValueArray[2] = $pitches_row['pfx_z'];
-//                $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
-//            }
+//            $x = mt_rand (-20*10, 20*10) / 10;
+//            $y = mt_rand (50*10, 100*10) / 10;
+//            $tmpPitchBreakValueArray[1] = $y;
+//            $tmpPitchBreakValueArray[2] = $x;
+//            $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
 //        }
+        
+        while($pitches_row = $aPitchesDbProxyObject->dbProxyFetchAssocArray($pitches_result))
+        {
+            if($pitches_row['pitch_type'] == $pitch_types_row['abbreviation'])
+            {
+                $tmpPitchBreakValueArray[1] = $pitches_row['start_speed'];
+                $tmpPitchBreakValueArray[2] = $pitches_row['pfx_z'];
+                $tmpPitchBreakArray[] = $tmpPitchBreakValueArray;
+            }
+        }
 
         $scatterChartArray[$pitch_types_row['abbreviation']] = $tmpPitchBreakArray;
     }
-?>		
+?>
+<div id="vertmovementchart" class="chart"></div>		
 <script type="text/javascript">
-    // perform JavaScript after the document is scriptable.
-    jQuery(document).ready(function() 
-    {   
         // Create and populate the data table.
         data = new google.visualization.DataTable();
         data.addColumn('number', 'X');
@@ -117,9 +115,7 @@
 
         redrawScatterChart('vertmovementchart', data, options);
         
-        // Every time the table fires the "select" event, it should call your
-        // selectPitchTypeHandler() function.
-        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
-    });
+//        // Every time the table fires the "select" event, it should call your
+//        // selectPitchTypeHandler() function.
+//        google.visualization.events.addListener(chart, 'select', selectPitchTypeHandler);
 </script>
-<div id="vertmovementchart" class="chart"></div>

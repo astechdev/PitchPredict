@@ -3,6 +3,7 @@ function loadPitchCounters()
 //    alert('loadPitchCounters');
     jQuery("#pitchrecordertabletbody").empty();
     
+    
     jQuery('#pitchrecordertable').find('tbody:last').append('\
         <tr class=\"headerRow\">\n\
             <th id="pitchrecordertableheadercolumn1">#</th>\n\
@@ -16,15 +17,15 @@ function loadPitchCounters()
 
     for (var i = 0, j = stateVariablesMap['thePitchTypeSequence'].length; i < j; i++) 
     {
-        var undotd;
-        if(i === (j-1))
-        {
-            undotd = '<td><div><input type=\"Submit\" id=\"undobutton\" value=\"Undo\"></div></td>'
-        }
-        else
-        {
+//        var undotd;
+//        if(i === (j-1))
+//        {
+//            undotd = '<td><div><input type=\"Submit\" id=\"undobutton\" value=\"Undo\"></div></td>'
+//        }
+//        else
+//        {
             undotd = '<td></td>'
-        }
+//        }
 
         jQuery('#pitchrecordertable').find('tbody:last').append('\
             <tr class=\"inactiveRow\">\n\
@@ -38,16 +39,16 @@ function loadPitchCounters()
             </tr>');
     }
 
-////    jQuery('#pitchrecordertable').find('tbody:last').append('\
-//        <tr id=\"inputrowid\" class=\"activeRow\">\n\
-//            <td>//'+(i + 1)+':</td>\n\
-//            <td id=\"pitchtypeselectid\"></td>\n\
-//            <td id=\"pitchlocationselectid\"></td>\n\
-//            <td id=\"pitchoutcomeselectid\"></td>\n\
-//            <td></td>\n\
-//            <td><div><input type=\"Submit\" id=\"submitPitch\" value=\"Go\" class=\"buttons\"></div></td>\n\
-//            <td><div></div></td>\n\
-//        </tr>//');
+    jQuery('#pitchrecordertable').find('tbody:last').append('\
+        <tr id=\"inputrowid\" class=\"activeRow\">\n\
+            <td>'+(i + 1)+':</td>\n\
+            <td id=\"pitchtypeselectidclone\" class=\"pitchtypeselectid\"></td>\n\
+            <td id=\"pitchlocationselectidclone\" class=\"pitchlocationselectid\"></td>\n\
+            <td id=\"pitchoutcomeselectidclone\" class=\"pitchoutcomeselectid\"></td>\n\
+            <td></td>\n\
+            <td></td>\n\
+            <td><div></div></td>\n\
+        </tr>//');
 
     var resettd;
 //    if((i+1)>1)
@@ -118,33 +119,82 @@ function loadPitchCounters()
     {
         if(pitchLocationsMap.hasOwnProperty(key)) 
         {
-            pitchlocationselectdd.options[pitchlocationselectdd.length] = new Option(pitchLocationsMap[key].theLocation, pitchLocationsMap[key].theLocation);
+            pitchlocationselectdd.options[pitchlocationselectdd.length] = new Option('Zone '+pitchLocationsMap[key].theLocation, pitchLocationsMap[key].theLocation);
         }
     }
 
     //Add the dropdown to the parent node
     jQuery("#pitchlocationselectid").append(pitchlocationselectdd);  
 
-    jQuery("#submitPitch").click(function() { 
-        addToPitchSequences();
-        saveState(); 
-    });       
+    //create pitch types drop down
+    jQuery("#pitchtypeselectidclone").empty();
+    var pitchtypeselectdd = document.createElement("select");
+    pitchtypeselectdd.name = "PitchType";
+    pitchtypeselectdd.id = "pitchtypeIdclone";
+    pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option("Select Pitch", "Select Pitch");
+    for(var key in pitchTypesMap) 
+    {
+        if(pitchTypesMap.hasOwnProperty(key)) 
+        {
+//                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
+            pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(pitchTypesMap[key].theAbbr, pitchTypesMap[key].theAbbr);
+        }
+    }
 
-    jQuery("#undobutton").click(function() { 
-        revertPitchSequences();
-        saveState();
-        loadPitchCounters();
-    });       
+    //Add the dropdown to the parent node
+    jQuery("#pitchtypeselectidclone").append(pitchtypeselectdd);
 
-    jQuery("#resetpitchcounterpitchbutton").click(function() { 
-        resetPitchSequences();
-        saveState();
-        loadPitchCounters();
-    }); 
+    //create outcome drop down
+    jQuery("#pitchoutcomeselectidclone").empty();
+    var pitchoutcomeselectdd = document.createElement("select");
+    pitchoutcomeselectdd.name = "PitchOutcome";
+    pitchoutcomeselectdd.id = "pitchoutcomeIdclone";
+    pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option("Select Outcome", "Select Outcome");
+    for(var key in pitchOutcomesMap) 
+    {
+        if(pitchOutcomesMap.hasOwnProperty(key)) 
+        {
+            pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option(pitchOutcomesMap[key].theOutcome, pitchOutcomesMap[key].theOutcome);
+        }
+    }
 
-    jQuery("#viewpitchsequencebutton").click(function() { 
-        $( "#pitchcounterdialogcontainer" ).dialog("open");
-    }); 
+    //Add the dropdown to the parent node
+    jQuery("#pitchoutcomeselectidclone").append(pitchoutcomeselectdd);
+
+    //create location drop down
+    jQuery("#pitchlocationselectidclone").empty();
+    var pitchlocationselectdd = document.createElement("select");
+    pitchlocationselectdd.name = "PitchLocation";
+    pitchlocationselectdd.id = "pitchlocationIdclone";
+    pitchlocationselectdd.options[pitchlocationselectdd.length] = new Option("Select Location", "Select Location");
+    for(var key in pitchLocationsMap) 
+    {
+        if(pitchLocationsMap.hasOwnProperty(key)) 
+        {
+            pitchlocationselectdd.options[pitchlocationselectdd.length] = new Option('Zone '+pitchLocationsMap[key].theLocation, pitchLocationsMap[key].theLocation);
+        }
+    }
+
+    //Add the dropdown to the parent node
+    jQuery("#pitchlocationselectidclone").append(pitchlocationselectdd);  
+
+//    jQuery("#submitPitch").click(function() { 
+//        addToPitchSequences();
+//    });       
+
+//    jQuery("#undobutton").click(function() { 
+//        revertPitchSequences();
+////        loadPitchCounters();
+//    });       
+
+//    jQuery("#resetpitchcounterpitchbutton").click(function() { 
+//        resetPitchSequences();
+////        loadPitchCounters();
+//    }); 
+
+//    jQuery("#viewpitchsequencebutton").click(function() { 
+//        $( "#pitchcounterdialogcontainer" ).dialog("open");
+//    }); 
 
     jQuery( "#pitchcounterdialogcontainer" ).dialog({
         autoOpen: false,
@@ -156,15 +206,29 @@ function loadPitchCounters()
         title: "Pitch Sequence",
         closeOnEscape: false,
         buttons: {
+            Add: function() {
+              addCloneToPitchSequences();
+            },
+            Undo: function() {
+              revertPitchSequences();
+              saveState();
+            },
+            Reset: function() {
+              resetPitchSequences();
+            },
             Ok: function() {
               jQuery( this ).dialog( "close" );
             }
         }
     });
+    
+//    jQuery("#pitchcounterdialogcontainer").append('<img id=\"pitchrecorderajaxloader\" src="images/ajax-loader.gif">');
 
-    hidePitchCounterInputRow();
+//    hidePitchCounterInputRow();
 
     hideRemovePitchButton();
+    jQuery("#pitchrecorderajaxloader").fadeOut(10);
+    jQuery("#pitchrecordertable").fadeIn(2000);
 }
 
 function hidePitchCounterInputRow()
@@ -189,7 +253,9 @@ function showPitchCounterInputRow()
 }
 
 function removePitchCounterInputRow()
-{	
+{
+    jQuery("#pitchrecordertable").hide();
+    jQuery("#pitchrecorderajaxloader").show();
 //    //enableResultsTab();
 
     jQuery("#inputrowid").fadeOut();
@@ -200,52 +266,67 @@ function removePitchCounterInputRow()
 }
 
 function revertPitchSequences()
-{           
+{  
+    jQuery("#pitchrecordertable").hide();
+    jQuery("#pitchrecorderajaxloader").show();
+    
     stateVariablesMap['thePitchTypeSequence'].pop();
     stateVariablesMap['thePitchLocationSequence'].pop();
     stateVariablesMap['thePitchOutcomeSequence'].pop();
 }
 
 function addToPitchSequences()
-{
-    if(jQuery("#pitchtypeId").val().beginsWith("Select", true) || jQuery("#pitchlocationId").val().beginsWith("Select", true) ||jQuery("#pitchoutcomeId").val().beginsWith("Select", true))
-    {
-        alert('You must selcet a pitch type, pitch location, and a pitch outcome');
-    }
-    else
-    {
+{   
+    if(jQuery("#pitchtypeId").val() != "Select Pitch" && jQuery("#pitchlocationId").val() != "Select Location" && jQuery("#pitchoutcomeId").val() != "Select Outcome")
+    {  
+        jQuery("#pitchrecordertable").hide();
+        jQuery("#pitchrecorderajaxloader").show();
+        
         stateVariablesMap['thePitchTypeSequence'].push(jQuery("#pitchtypeId").val());
         stateVariablesMap['thePitchLocationSequence'].push(jQuery("#pitchlocationId").val());
         stateVariablesMap['thePitchOutcomeSequence'].push(jQuery("#pitchoutcomeId").val());
         
         //enableResultsTab();
-        loadPitchCounters();
+        saveState();
+//        loadPitchCounters();
+    }
+    else
+    {
+        helpDialogInit("alert", "Warning!", "You must selcet a pitch type, pitch location, and a pitch outcome.");
+    }
+}
+
+function addCloneToPitchSequences()
+{     
+    if(jQuery("#pitchtypeIdclone").val() != "Select Pitch" && jQuery("#pitchlocationIdclone").val() != "Select Location" && jQuery("#pitchoutcomeIdclone").val() != "Select Outcome")
+    {  
+        jQuery("#pitchrecordertable").hide();
+        jQuery("#pitchrecorderajaxloader").show();
+        
+        stateVariablesMap['thePitchTypeSequence'].push(jQuery("#pitchtypeIdclone").val());
+        stateVariablesMap['thePitchLocationSequence'].push(jQuery("#pitchlocationIdclone").val());
+        stateVariablesMap['thePitchOutcomeSequence'].push(jQuery("#pitchoutcomeIdclone").val());
+        
+        //enableResultsTab();
+        saveState();
+//        loadPitchCounters();
+    }
+    else
+    {
+        helpDialogInit("alert", "Warning!", "You must selcet a pitch type, pitch location, and a pitch outcome."); 
     }
 }
 
 function resetPitchSequences()
 {
-    for(var pitchTypeKey in stateVariablesMap['thePitchTypeSequence']) 
-    {
-        if(stateVariablesMap['thePitchTypeSequence'].hasOwnProperty(pitchTypeKey)) 
-        {
-            delete stateVariablesMap['thePitchTypeSequence'][pitchTypeKey];
-        }
+    jQuery("#pitchrecordertable").hide();
+    jQuery("#pitchrecorderajaxloader").show();
+    
+    var len = stateVariablesMap['thePitchTypeSequence'].length
+    
+    while (len--) {
+        revertPitchSequences();
     }
     
-    for(var pitchLocationKey in stateVariablesMap['thePitchLocationSequence']) 
-    {
-        if(stateVariablesMap['thePitchLocationSequence'].hasOwnProperty(pitchLocationKey)) 
-        {
-            delete stateVariablesMap['thePitchLocationSequence'][pitchLocationKey];
-        }
-    }
-    
-    for(var pitchOutcomeKey in stateVariablesMap['thePitchOutcomeSequence']) 
-    {
-        if(stateVariablesMap['thePitchOutcomeSequence'].hasOwnProperty(pitchOutcomeKey)) 
-        {
-            delete stateVariablesMap['thePitchOutcomeSequence'][pitchOutcomeKey];
-        }
-    }
+    saveState();
 }
