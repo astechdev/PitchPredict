@@ -251,6 +251,8 @@ h6 {
   top: 60px;
   left: -100px;
   width: 100%;
+  height: 30em;
+  overflow-y: hidden;
   opacity: 0;
   -webkit-transition-duration: 0.2s;
   -moz-transition-duration: 0.2s;
@@ -267,8 +269,6 @@ h6 {
     left: 0;
     opacity: 1;
     z-index: 1;
-    height: 30em;
-    overflow-y: hidden;
 }
 /* line 83, ../sass/common/_structure.scss */
 #dashboard .content .rightcol {
