@@ -79,6 +79,18 @@ function loginDialogInit()
       title: "Login",
       closeOnEscape: false,
       buttons: {
+          Register: function() {    
+            if(phonegap != "false")
+            {
+                navigator.app.loadUrl('http://www.pitchpredict.com/index.php?option=com_users&view=registration', {openExternal:true});
+            }
+            else
+            {
+                window.open('http://www.pitchpredict.com/index.php?option=com_users&view=registration', '_blank');
+            } 
+            
+            jQuery( this ).dialog( "close" );
+          },
           Close: function() {
             jQuery( this ).dialog( "close" );
           }
@@ -95,13 +107,11 @@ function loginDialogInit()
                                 "<label>Password: \n"+
                                        "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
                                        "<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
-                                "</label>"+
-                                "<a href=\"http://www.pitchpredict.com/index.php?option=com_users&view=registration\" target=\"_blank\">Register</a>");
+                                "</label>");
     }
     else
     {
         $( "#dialog" ).dialog( "option", "title", "Logout" );
         $( "#dialog" ).dialog( "option", "buttons", [ { text: "Logout", click: function() { logout();$( this ).dialog( "close" ); } }, { text: "Close", click: function() { $( this ).dialog( "close" ); } } ] );
-    }
-                     
+    }           
 }

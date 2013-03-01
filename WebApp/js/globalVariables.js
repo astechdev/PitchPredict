@@ -1,6 +1,7 @@
 //global chart variable for dynamically loading charts of all kinds
 //each chart defines its own var data and var options
 var chart;
+var phonegap = 'false';
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
 var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};
