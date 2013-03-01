@@ -91,6 +91,9 @@ function loginDialogInit()
             
             jQuery( this ).dialog( "close" );
           },
+          Login: function() {
+            loginRequest();
+          },
           Close: function() {
             jQuery( this ).dialog( "close" );
           }
@@ -106,7 +109,7 @@ function loginDialogInit()
                                 "</label>\n"+
                                 "<label>Password: \n"+
                                        "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
-                                       "<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
+                                       //"<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
                                 "</label>");
     }
     else

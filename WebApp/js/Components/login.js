@@ -18,7 +18,8 @@ function loginRequest()
         
         jQuery( "#dialog" ).dialog( "close" );
 //        alert('username'+userInfoMap.UserName);
-    }).error(function(e) { alert(JSON.stringify(e)); });
+    }).error(function(e) { 
+        helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e))});
         
         
         
