@@ -27,9 +27,10 @@
 			<div class="navwrap">
 				<ul class="nav">
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Scoreboard', 1);" data-view="scoreboard" href="#/scoreboard"><img src="images/icons/scoreboard.png"/><span></span></a></li>
-					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Lineup', 1);" data-view="lineup" href="#/lineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Awany Lineup', 1);" data-view="awaylineup" href="#/lineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Home Lineup', 1);" data-view="homelineup" href="#/lineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Field', 1);" data-view="field" href="#/field"><img src="images/icons/base.png"/><span></span></a></li>
-					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitchselection', 1);" data-view="pitchselection" href="#/pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitch Selection', 1);" data-view="pitchselection" href="#/pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);" data-view="filters" href="#/filters"><img src=""/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);" data-view="hotzone" href="#/hotzone"><img src=""/><span></span></a></li>
 					<!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts" href="#/charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
@@ -40,62 +41,65 @@
 					<div class="inner">
 						<div data-view="scoreboard" class="view">
                                                     <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario', 1);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>                                                    
-                                                    <div id="yearselectid"></div>
                                                     <div id="toporbottomhalfselectid"></div>
-                                                    <div id="inningselectid"></div>
-                                                    <div id="awayteamnameselectid"></div>
-                                                    <div id="awayteamscoreselectid"></div>
-                                                    <div id="hometeamnameselectid"></div>
-                                                    <div id="hometeamscoreselectid"></div>
-                                                    <div id="ballsselectid"></div>
-                                                    <div id="strikesselectid"></div>
-                                                    <div id="outsselectid"></div>
+                                                    <div id="inningselectid" class="selectioncontainer"></div>
+                                                    <div id="awayteamnameselectid" class="selectioncontainer"></div>
+                                                    <div id="awayteamscoreselectid" class="selectioncontainer"></div>
+                                                    <div id="hometeamnameselectid" class="selectioncontainer"></div>
+                                                    <div id="hometeamscoreselectid" class="selectioncontainer"></div>
+                                                    <div id="ballsselectid" class="selectioncontainer"></div>
+                                                    <div id="strikesselectid" class="selectioncontainer"></div>
+                                                    <div id="outsselectid" class="selectioncontainer"></div>
+                                                    <div id="yearselectid" class="selectioncontainer"></div>
 						</div>
-						<div data-view="lineup" class="view">
-                                                    <span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Team Lineups', 1);">Team Lineups<span onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+						<div data-view="awaylineup" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Away Team Lineups', 1);">Away Team Lineup<span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
                                                     
                                                     <div id="awayteamlineupcontent">
                                                         <div id="awayteamlineupheadercolumn"></div>
-                                                        <div id="awayteamfirstbatterselectid"></div>
-                                                        <div id="awayteamsecondbatterselectid"></div>
-                                                        <div id="awayteamthirdbatterselectid"></div>
-                                                        <div id="awayteamfourthbatterselectid"></div>
-                                                        <div id="awayteamfifthbatterselectid"></div>
-                                                        <div id="awayteamsixthbatterselectid"></div>
-                                                        <div id="awayteamseventhbatterselectid"></div>
-                                                        <div id="awayteameighthbatterselectid"></div>
-                                                        <div id="awayteamninthbatterselectid"></div>
+                                                        <div id="awayteamfirstbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamsecondbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamthirdbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamfourthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamfifthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamsixthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamseventhbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteameighthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="awayteamninthbatterselectid" class="selectioncontainer"></div>
                                                     </div>
-                                                    <br>
+						</div>
+						<div data-view="homelineup" class="view">
+                                                    <span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Home Team Lineups', 1);">Home Team Lineup<span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    
                                                     <div id="hometeamlineupcontent">
                                                         <div id="hometeamlineupheadercolumn"></div>
-                                                        <div id="hometeamfirstbatterselectid"></div>
-                                                        <div id="hometeamsecondbatterselectid"></div>
-                                                        <div id="hometeamthirdbatterselectid"></div>
-                                                        <div id="hometeamfourthbatterselectid"></div>
-                                                        <div id="hometeamfifthbatterselectid"></div>
-                                                        <div id="hometeamsixthbatterselectid"></div>
-                                                        <div id="hometeamseventhbatterselectid"></div>
-                                                        <div id="hometeameighthbatterselectid"></div>
-                                                        <div id="hometeamninthbatterselectid"></div>
+                                                        <div id="hometeamfirstbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamsecondbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamthirdbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamfourthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamfifthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamsixthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamseventhbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeameighthbatterselectid" class="selectioncontainer"></div>
+                                                        <div id="hometeamninthbatterselectid" class="selectioncontainer"></div>
                                                     </div>
 						</div>
 						<div data-view="field" class="view">
                                                     <span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation', 1);">Game Situation<span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);" class="ui-icon ui-icon-help"></span></span>
-                                                    <div id="pitcherselectid"></div>
-                                                    <div id="catcherselectid"></div>
-                                                    <div id="hitterselectid"></div>
-                                                    <div id="hitterrightorleftselectid"></div>
-                                                    <div id="runneronfirstselectid"></div>
-                                                    <div id="runneronsecondselectid"></div>
-                                                    <div id="runneronthirdselectid"></div>
+                                                    <div id="pitcherselectid" class="selectioncontainer"></div>
+                                                    <div id="catcherselectid" class="selectioncontainer"></div>
+                                                    <div id="hitterselectid" class="selectioncontainer"></div>
+                                                    <div id="hitterrightorleftselectid" class="selectioncontainer"></div>
+                                                    <div id="runneronfirstselectid" class="selectioncontainer"></div>
+                                                    <div id="runneronsecondselectid" class="selectioncontainer"></div>
+                                                    <div id="runneronthirdselectid" class="selectioncontainer"></div>
                                                     <!--<div id="atbatnumberselectid"></div>-->
                                                 </div>
 						<div data-view="pitchselection" class="view">
                                                     <span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Sequence', 1);">Add Pitch Sequence<span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);" class="ui-icon ui-icon-help"></span></span>
-                                                    <div id="pitchtypeselectid"></div>
-                                                    <div id="pitchlocationselectid"></div>
-                                                    <div id="pitchoutcomeselectid"></div>
+                                                    <div id="pitchtypeselectid" class="selectioncontainer"></div>
+                                                    <div id="pitchlocationselectid" class="selectioncontainer"></div>
+                                                    <div id="pitchoutcomeselectid" class="selectioncontainer"></div>
                                                     
                                                     <input type="Button" onclick="addToPitchSequences();" id="submitPitch" value="Add" class="buttons">
                                                     <input type="Button" onclick="revertPitchSequences();saveState();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="revertpitchcounterpitchbutton" value="Undo" class="buttons">
@@ -112,8 +116,8 @@
                                                 </div>
 						<div data-view="filters" class="view">
                                                     <span onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters', 1);">Filter Results By:<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
-                                                    <div id="filterspitchtypeselectid"></div>
-                                                    <div id="filterspitchoutcomeselectid"></div>
+                                                    <div id="filterspitchtypeselectid" class="selectioncontainer"></div>
+                                                    <div id="filterspitchoutcomeselectid" class="selectioncontainer"></div>
                                                     <div id="filterscontainer">
                                                         <table id="filterstable">
                                                             <tr class="titlerow">

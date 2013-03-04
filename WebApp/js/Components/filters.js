@@ -8,11 +8,11 @@ function loadFiltersDropDowns()
 {
     //create filters pitch types drop down
     jQuery("#filterspitchtypeselectid").empty();
-    jQuery("#filterspitchtypeselectid").append("Type: <br>");
+//    jQuery("#filterspitchtypeselectid").append("Pitch Type:");
     var pitchtypeselectdd = document.createElement("select");
     pitchtypeselectdd.name = "FiltersPitchType";
     pitchtypeselectdd.id = "filterspitchtypeId";
-    pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(stateVariablesMap['thePitchType'], stateVariablesMap['thePitchType']);
+    pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option("Pitch Type: "+stateVariablesMap['thePitchType'], stateVariablesMap['thePitchType']);
     pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option("ANY", "Any");
     for(var key in pitchTypesMap) 
     {
@@ -33,11 +33,11 @@ function loadFiltersDropDowns()
 
     //create outcome drop down
     jQuery("#filterspitchoutcomeselectid").empty();
-    jQuery("#filterspitchoutcomeselectid").append("Outcome: <br>");
+//    jQuery("#filterspitchoutcomeselectid").append("Outcome:");
     var pitchoutcomeselectdd = document.createElement("select");
     pitchoutcomeselectdd.name = "FiltersPitchOutcome";
     pitchoutcomeselectdd.id = "filterspitchoutcomeId";
-    pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option(stateVariablesMap['theOutcomeType'], stateVariablesMap['theOutcomeType']);
+    pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option("Outcome: "+stateVariablesMap['theOutcomeType'], stateVariablesMap['theOutcomeType']);
     pitchoutcomeselectdd.options[pitchoutcomeselectdd.length] = new Option("ANY", "Any");
     for(var key in pitchOutcomesMap) 
     {

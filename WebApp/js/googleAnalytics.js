@@ -23,7 +23,7 @@ function gaInit() {
 }
 
 function onDeviceReady() {
-    debug.log('Device Ready');
+    console.log('Device Ready');
     phonegap = 'true';
     gaPlugin = window.plugins.gaPlugin;        
 
@@ -41,13 +41,13 @@ function permissionCallback (button) {
 
 function nativePluginResultHandler (result) {
     //alert('nativePluginResultHandler - '+result);
-    debug.log('nativePluginResultHandler: '+result);
+    console.log('nativePluginResultHandler: '+result);
 
 }
 
 function nativePluginErrorHandler (error) {
     //alert('nativePluginErrorHandler - '+error);
-    debug.log('nativePluginErrorHandler: '+error);
+    console.log('nativePluginErrorHandler: '+error);
 }
 
 function TrackButtonClicked(category, action, label, value) {

@@ -12,62 +12,8 @@
     width: 100%;
 }
 
-#pitchrecordertableheadercolumn1 {
-	width:23px;
-}
-
-#pitchrecordertableheadercolumn2 {
-	width:185px;
-}
-
-#pitchrecordertableheadercolumn3 {
-	width:208px;
-}
-
-#pitchrecordertableheadercolumn4 {
-	width:211px;
-}
-
-#pitchrecordertableheadercolumn5 {
-	width:55px;
-}
-
-#pitchrecordertableheadercolumn6 {
-	width:80px;
-}
-
-#pitchrecordertable select{
-        width:11em;
-}
-
-#pitchrecordertable .buttons {
-	background-color:#3B3B3B;
-	color:#FFFFFF;
-	font-family:Verdana,Arial,Helvetica,sans-serif;
-	font-size:0.6em;
-	margin-right:3px;
-	position:relative;
-	cursor:pointer;
-}
-
-#undobutton {
-	background-color:#3B3B3B;
-	color:#FFFFFF;
-	font-family:Verdana,Arial,Helvetica,sans-serif;
-	margin-right:3px;
-	position:relative;
-	cursor:pointer;
-	font-size:0.7em;
-}
-
-#addrowid .buttons {
-	background: #2568a0;
-	color:#FFFFFF;
-	font-family:Verdana,Arial,Helvetica,sans-serif;
-	font-size:0.6em;
-	margin-right:3px;
-	position:relative;
-	cursor:pointer;
+#pitchrecordertable td {
+    width:25%;
 }
 
 .activeRow{

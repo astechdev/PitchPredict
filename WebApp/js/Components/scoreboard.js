@@ -21,18 +21,26 @@ function resetScoreBoard()
 }
     
 function loadScoreBoardDropDowns()
-{        
+{
+//    $form = $("<form></form>");
+//    $div = $("<div data-role=\"fieldcontain\"></div>");
+//    $label = $("<label for=\"select-native-2\">Inning #:</label>");
+//    $div.append($label);
+    
     //create innings drop down
     jQuery("#inningselectid").empty();
-    jQuery("#inningselectid").append("Inning #: ");
+//    jQuery("#inningselectid").append("Inning #: ");
     var inningselectdd = document.createElement("select");
     inningselectdd.name = "Inning";
     inningselectdd.id = "inningId";
-    inningselectdd.options[inningselectdd.length] = new Option(stateVariablesMap['theInning'], stateVariablesMap['theInning']);
+    inningselectdd.options[inningselectdd.length] = new Option("Inning: "+stateVariablesMap['theInning'], stateVariablesMap['theInning']);
     for (var i=0;i<40;i++)
     { 
         inningselectdd.options[inningselectdd.length] = new Option(i, i);
     }
+    
+//    $div.append(inningselectdd);
+//    $form.append($div);
 
     //Add the dropdown to the parent node
     jQuery("#inningselectid").append(inningselectdd);
@@ -43,11 +51,11 @@ function loadScoreBoardDropDowns()
 
     //create outs drop down
     jQuery("#outsselectid").empty();
-    jQuery("#outsselectid").append("Outs: ");
+//    jQuery("#outsselectid").append("Outs: ");
     var outselectdd = document.createElement("select");
     outselectdd.name = "Outs";
     outselectdd.id = "outsId";
-    outselectdd.options[outselectdd.length] = new Option(stateVariablesMap['theOuts'], stateVariablesMap['theOuts']);
+    outselectdd.options[outselectdd.length] = new Option("Outs: "+stateVariablesMap['theOuts'], stateVariablesMap['theOuts']);
     for (var i=0;i<3;i++)
     { 
         outselectdd.options[outselectdd.length] = new Option(i, i);
@@ -62,11 +70,11 @@ function loadScoreBoardDropDowns()
 
     //create strikes drop down
     jQuery("#strikesselectid").empty();
-    jQuery("#strikesselectid").append("Strikes: ");
+//    jQuery("#strikesselectid").append("Strikes: ");
     var strikesselectdd = document.createElement("select");
     strikesselectdd.name = "Strikes";
     strikesselectdd.id = "strikesId";
-    strikesselectdd.options[strikesselectdd.length] = new Option(stateVariablesMap['theStrikes'], stateVariablesMap['theStrikes']);
+    strikesselectdd.options[strikesselectdd.length] = new Option("Strikes: "+stateVariablesMap['theStrikes'], stateVariablesMap['theStrikes']);
     for (var i=0;i<3;i++)
     { 
         strikesselectdd.options[strikesselectdd.length] = new Option(i, i);
@@ -81,11 +89,11 @@ function loadScoreBoardDropDowns()
 
     //create balls drop down
     jQuery("#ballsselectid").empty();
-    jQuery("#ballsselectid").append("Balls: ");
+//    jQuery("#ballsselectid").append("Balls: ");
     var ballsselectdd = document.createElement("select");
     ballsselectdd.name = "Balls";
     ballsselectdd.id = "ballsId";
-    ballsselectdd.options[ballsselectdd.length] = new Option(stateVariablesMap['theBalls'], stateVariablesMap['theBalls']);
+    ballsselectdd.options[ballsselectdd.length] = new Option("Balls: "+stateVariablesMap['theBalls'], stateVariablesMap['theBalls']);
     for (var i=0;i<4;i++)
     { 
         ballsselectdd.options[ballsselectdd.length] = new Option(i, i);
@@ -100,11 +108,11 @@ function loadScoreBoardDropDowns()
 
     //create home team score drop down
     jQuery("#hometeamscoreselectid").empty();
-    jQuery("#hometeamscoreselectid").append("Home Team Score: ");
+//    jQuery("#hometeamscoreselectid").append("Home Team Score: ");
     var hometeamscoreselectdd = document.createElement("select");
     hometeamscoreselectdd.name = "HomeTeamScore";
     hometeamscoreselectdd.id = "hometeamscoreId";
-    hometeamscoreselectdd.options[hometeamscoreselectdd.length] = new Option(stateVariablesMap['theHomeTeamScore'], stateVariablesMap['theHomeTeamScore']);
+    hometeamscoreselectdd.options[hometeamscoreselectdd.length] = new Option("Home Team Score: "+stateVariablesMap['theHomeTeamScore'], stateVariablesMap['theHomeTeamScore']);
     for (var i=0;i<40;i++)
     { 
         hometeamscoreselectdd.options[hometeamscoreselectdd.length] = new Option(i, i);
@@ -119,11 +127,11 @@ function loadScoreBoardDropDowns()
 
     //create away team score drop down
     jQuery("#awayteamscoreselectid").empty();
-    jQuery("#awayteamscoreselectid").append("Away Team Score: ");
+//    jQuery("#awayteamscoreselectid").append("Away Team Score: ");
     var awayteamscoreselectdd = document.createElement("select");
     awayteamscoreselectdd.name = "AwayTeamScore";
     awayteamscoreselectdd.id = "awayteamscoreId";
-    awayteamscoreselectdd.options[awayteamscoreselectdd.length] = new Option(stateVariablesMap['theAwayTeamScore'], stateVariablesMap['theAwayTeamScore']);
+    awayteamscoreselectdd.options[awayteamscoreselectdd.length] = new Option("Away Team Score: "+stateVariablesMap['theAwayTeamScore'], stateVariablesMap['theAwayTeamScore']);
     for (var i=0;i<40;i++)
     { 
         awayteamscoreselectdd.options[awayteamscoreselectdd.length] = new Option(i, i);
@@ -138,11 +146,11 @@ function loadScoreBoardDropDowns()
 
     //create away teams drop down
     jQuery("#awayteamnameselectid").empty();
-    jQuery("#awayteamnameselectid").append("Away Team: ");
+//    jQuery("#awayteamnameselectid").append("Away Team: ");
     var awayteamsselectdd = document.createElement("select");
     awayteamsselectdd.name = "AwayTeamName";
     awayteamsselectdd.id = "awayteamnameId";
-    awayteamsselectdd.options[awayteamsselectdd.length] = new Option(stateVariablesMap['theAwayTeamName'], 
+    awayteamsselectdd.options[awayteamsselectdd.length] = new Option("Away Team: "+stateVariablesMap['theAwayTeamName'], 
                                                                 stateVariablesMap['theAwayTeamId']+","+stateVariablesMap['theAwayTeamName']+","+stateVariablesMap['theAwayTeamAbbr']);
     for(var key in teamsMap) 
     {
@@ -169,11 +177,11 @@ function loadScoreBoardDropDowns()
 
     //create home teams drop down
     jQuery("#hometeamnameselectid").empty();
-    jQuery("#hometeamnameselectid").append("Home Team: ");
+//    jQuery("#hometeamnameselectid").append("Home Team: ");
     var hometeamsselectdd = document.createElement("select");
     hometeamsselectdd.name = "HomeTeamName";
     hometeamsselectdd.id = "hometeamnameId";
-    hometeamsselectdd.options[hometeamsselectdd.length] = new Option(stateVariablesMap['theHomeTeamName'], 
+    hometeamsselectdd.options[hometeamsselectdd.length] = new Option("Home Team: "+stateVariablesMap['theHomeTeamName'], 
                                                                 stateVariablesMap['theHomeTeamId']+","+stateVariablesMap['theHomeTeamName']+","+stateVariablesMap['theHomeTeamAbbr']);
     for(var key in teamsMap) 
     {
@@ -200,11 +208,11 @@ function loadScoreBoardDropDowns()
 
     //create years drop down
     jQuery("#yearselectid").empty();
-    jQuery("#yearselectid").append("Year: ");
+//    jQuery("#yearselectid").append("Year: ");
     var yearselectdd = document.createElement("select");
     yearselectdd.name = "Year";
     yearselectdd.id = "yearId";
-    yearselectdd.options[yearselectdd.length] = new Option("2009", "2009");
+    yearselectdd.options[yearselectdd.length] = new Option("Year: 2009", "2009");
 
     //Add the dropdown to the parent node
     jQuery("#yearselectid").append(yearselectdd);

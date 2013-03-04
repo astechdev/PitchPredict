@@ -10,55 +10,26 @@ function loadPitchCounters()
             <th id="pitchrecordertableheadercolumn2">Pitch</th>\n\
             <th id="pitchrecordertableheadercolumn3">Location</th>\n\
             <th id="pitchrecordertableheadercolumn4">Outcome</th>\n\
-            <th id="pitchrecordertableheadercolumn5"></th>\n\
-            <th id="pitchrecordertableheadercolumn6"></th>\n\
-            <th id="pitchrecordertableheadercolumn7"></th>\n\
         </tr>');
 
     for (var i = 0, j = stateVariablesMap['thePitchTypeSequence'].length; i < j; i++) 
     {
-//        var undotd;
-//        if(i === (j-1))
-//        {
-//            undotd = '<td><div><input type=\"Submit\" id=\"undobutton\" value=\"Undo\"></div></td>'
-//        }
-//        else
-//        {
-            undotd = '<td></td>'
-//        }
-
         jQuery('#pitchrecordertable').find('tbody:last').append('\
             <tr class=\"inactiveRow\">\n\
                 <td>'+(i + 1)+':</td>\n\
                 <td><input id=\"pitchtype'+i+'Id\" type=\"hidden\" name=\"Pitch'+i+'Type\" value=\"'+stateVariablesMap['thePitchTypeSequence'][i]+'\">'+stateVariablesMap['thePitchTypeSequence'][i]+'</td>\n\
                 <td><input id=\"pitchlocation'+i+'Id\" type=\"hidden\" name=\"Pitch'+i+'Location\" value=\"'+stateVariablesMap['thePitchLocationSequence'][i]+'\">'+stateVariablesMap['thePitchLocationSequence'][i]+'</td>\n\
                 <td><input id=\"pitchoutcome'+i+'Id\" type=\"hidden\" name=\"Pitch'+i+'Outcome\" value=\"'+stateVariablesMap['thePitchOutcomeSequence'][i]+'\">'+stateVariablesMap['thePitchOutcomeSequence'][i]+'</td>\n\
-                <td></td>\n\
-                <td></td>\n\
-                '+undotd+'\n\
             </tr>');
     }
 
     jQuery('#pitchrecordertable').find('tbody:last').append('\
         <tr id=\"inputrowid\" class=\"activeRow\">\n\
             <td>'+(i + 1)+':</td>\n\
-            <td id=\"pitchtypeselectidclone\" class=\"pitchtypeselectid\"></td>\n\
-            <td id=\"pitchlocationselectidclone\" class=\"pitchlocationselectid\"></td>\n\
-            <td id=\"pitchoutcomeselectidclone\" class=\"pitchoutcomeselectid\"></td>\n\
-            <td></td>\n\
-            <td></td>\n\
-            <td><div></div></td>\n\
+            <td id=\"pitchtypeselectidclone\"></td>\n\
+            <td id=\"pitchlocationselectidclone\"></td>\n\
+            <td id=\"pitchoutcomeselectidclone\"></td>\n\
         </tr>//');
-
-    var resettd;
-//    if((i+1)>1)
-//    {
-//        resettd = '<td><div><input type=\"Submit\" id=\"resetpitchcounterpitchbutton\" value=\"Reset\" class=\"buttons\"></div></td>'
-//    }
-//    else
-//    {
-        resettd = '<td></td>'
-//    }
 
     jQuery('#pitchrecordertable').find('tbody:last').append('\
         <tr id="addrowid" class="addRow">\n\
@@ -66,14 +37,11 @@ function loadPitchCounters()
             <td><div>\n\
             <td></td>\n\
             <td></td>\n\
-            <td></td>\n\
-            <td></td>\n\
-            '+resettd+'\n\
         </tr>');
 
     //create pitch types drop down
     jQuery("#pitchtypeselectid").empty();
-    jQuery("#pitchtypeselectid").append("Type: <br>");
+//    jQuery("#pitchtypeselectid").append("Type: <br>");
     var pitchtypeselectdd = document.createElement("select");
     pitchtypeselectdd.name = "PitchType";
     pitchtypeselectdd.id = "pitchtypeId";
@@ -92,7 +60,7 @@ function loadPitchCounters()
 
     //create outcome drop down
     jQuery("#pitchoutcomeselectid").empty();
-    jQuery("#pitchoutcomeselectid").append("Outcome: <br>");
+//    jQuery("#pitchoutcomeselectid").append("Outcome: <br>");
     var pitchoutcomeselectdd = document.createElement("select");
     pitchoutcomeselectdd.name = "PitchOutcome";
     pitchoutcomeselectdd.id = "pitchoutcomeId";
@@ -110,7 +78,7 @@ function loadPitchCounters()
 
     //create location drop down
     jQuery("#pitchlocationselectid").empty();
-    jQuery("#pitchlocationselectid").append("Location: <br>");
+//    jQuery("#pitchlocationselectid").append("Location: <br>");
     var pitchlocationselectdd = document.createElement("select");
     pitchlocationselectdd.name = "PitchLocation";
     pitchlocationselectdd.id = "pitchlocationId";

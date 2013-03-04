@@ -12,7 +12,7 @@ function loadFieldDropDowns()
     var firstbaserunnerselectdd = document.createElement("select");
     firstbaserunnerselectdd.name = "RunnerOnFirst";
     firstbaserunnerselectdd.id = "runneronfirstId";
-    firstbaserunnerselectdd.options[firstbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn1bName'], stateVariablesMap['theOn1bId']);
+    firstbaserunnerselectdd.options[firstbaserunnerselectdd.length] = new Option("Runner on 1st: "+stateVariablesMap['theOn1bName'], stateVariablesMap['theOn1bId']);
     firstbaserunnerselectdd.options[firstbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
@@ -24,7 +24,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#runneronfirstselectid").append("Runner on 1st:<br>");
+//    jQuery("#runneronfirstselectid").append("Runner on 1st:<br>");
     jQuery("#runneronfirstselectid").append(firstbaserunnerselectdd);    
 
     //make sure 2nd base runner drop down doesn't exist
@@ -34,7 +34,7 @@ function loadFieldDropDowns()
     var secondbaserunnerselectdd = document.createElement("select");
     secondbaserunnerselectdd.name = "RunnerOnSecond";
     secondbaserunnerselectdd.id = "runneronsecondId";
-    secondbaserunnerselectdd.options[secondbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn2bName'], stateVariablesMap['theOn2bId']);
+    secondbaserunnerselectdd.options[secondbaserunnerselectdd.length] = new Option("Runner on 2nd: "+stateVariablesMap['theOn2bName'], stateVariablesMap['theOn2bId']);
     secondbaserunnerselectdd.options[secondbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
@@ -46,7 +46,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#runneronsecondselectid").append("Runner on 2nd:<br>");
+//    jQuery("#runneronsecondselectid").append("Runner on 2nd:<br>");
     jQuery("#runneronsecondselectid").append(secondbaserunnerselectdd);    
 
     //make sure 3rd base runner drop down doesn't exist
@@ -56,7 +56,7 @@ function loadFieldDropDowns()
     var thirdbaserunnerselectdd = document.createElement("select");
     thirdbaserunnerselectdd.name = "RunnerOnThird";
     thirdbaserunnerselectdd.id = "runneronthirdId";
-    thirdbaserunnerselectdd.options[thirdbaserunnerselectdd.length] = new Option(stateVariablesMap['theOn3bName'], stateVariablesMap['theOn3bId']);
+    thirdbaserunnerselectdd.options[thirdbaserunnerselectdd.length] = new Option("Runner on 3rd: "+stateVariablesMap['theOn3bName'], stateVariablesMap['theOn3bId']);
     thirdbaserunnerselectdd.options[thirdbaserunnerselectdd.length] = new Option("None", "0");
     
     for(var key in offenseTeamMap) 
@@ -68,7 +68,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#runneronthirdselectid").append("Runner on 3rd:<br>");
+//    jQuery("#runneronthirdselectid").append("Runner on 3rd:<br>");
     jQuery("#runneronthirdselectid").append(thirdbaserunnerselectdd);   
 
     //make sure hitter drop down doesn't exist
@@ -78,7 +78,7 @@ function loadFieldDropDowns()
     var hitterselectdd = document.createElement("select");
     hitterselectdd.name = "HitterName";
     hitterselectdd.id = "hitternameId";
-    hitterselectdd.options[hitterselectdd.length] = new Option(stateVariablesMap['theBatterName'], stateVariablesMap['theBatterId']);
+    hitterselectdd.options[hitterselectdd.length] = new Option("Batter: "+stateVariablesMap['theBatterName'], stateVariablesMap['theBatterId']);
     
     for(var key in offenseTeamMap) 
     {
@@ -89,7 +89,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#hitterselectid").append("Batter:<br>");
+//    jQuery("#hitterselectid").append("Batter:<br>");
     jQuery("#hitterselectid").append(hitterselectdd);  
 
     //make sure pitcher drop down doesn't exist
@@ -99,7 +99,7 @@ function loadFieldDropDowns()
     var pitcherselectdd = document.createElement("select");
     pitcherselectdd.name = "PitcherName";
     pitcherselectdd.id = "pitchernameId";
-    pitcherselectdd.options[pitcherselectdd.length] = new Option(stateVariablesMap['thePitcherName'], stateVariablesMap['thePitcherId']);
+    pitcherselectdd.options[pitcherselectdd.length] = new Option("Pitcher: "+stateVariablesMap['thePitcherName'], stateVariablesMap['thePitcherId']);
     
     for(var key in defenseTeamMap) 
     {
@@ -113,7 +113,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#pitcherselectid").append("Pitcher:<br>");
+//    jQuery("#pitcherselectid").append("Pitcher:<br>");
     jQuery("#pitcherselectid").append(pitcherselectdd); 
 
     //make sure catcher drop down doesn't exist
@@ -123,7 +123,7 @@ function loadFieldDropDowns()
     var catcherselectdd = document.createElement("select");
     catcherselectdd.name = "CatcherName";
     catcherselectdd.id = "catchernameId";
-    catcherselectdd.options[catcherselectdd.length] = new Option(stateVariablesMap['theCatcherName'], stateVariablesMap['theCatcherId']);
+    catcherselectdd.options[catcherselectdd.length] = new Option("Catcher: "+stateVariablesMap['theCatcherName'], stateVariablesMap['theCatcherId']);
     
     for(var key in defenseTeamMap) 
     {
@@ -137,7 +137,7 @@ function loadFieldDropDowns()
     }
 
     //Add the dropdown to the parent node
-    jQuery("#catcherselectid").append("Catcher:<br>");
+//    jQuery("#catcherselectid").append("Catcher:<br>");
     jQuery("#catcherselectid").append(catcherselectdd);
 
     //make sure batter right or left drop down doesn't exist
@@ -147,12 +147,12 @@ function loadFieldDropDowns()
     var batterrightorleftselectdd = document.createElement("select");
     batterrightorleftselectdd.name = "HitterRightOrLeft";
     batterrightorleftselectdd.id = "hitterrightorleftId";
-    batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option(stateVariablesMap['theBatterRightOrLeft'], stateVariablesMap['theBatterRightOrLeft']);
+    batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option("Batter R/L: "+stateVariablesMap['theBatterRightOrLeft'], stateVariablesMap['theBatterRightOrLeft']);
     batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option('L', 'L');
     batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option('R', 'R');
 
     //Add the dropdown to the parent node
-    jQuery("#hitterrightorleftselectid").append("Batter R/L:<br>");
+//    jQuery("#hitterrightorleftselectid").append("Batter R/L:<br>");
     jQuery("#hitterrightorleftselectid").append(batterrightorleftselectdd);
 
 //    //make sure atbat drop down doesn't exist

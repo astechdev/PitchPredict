@@ -142,7 +142,7 @@ function loadAwayTeamLineupDropDowns()
 {    
     //create 1st batter drop down
     jQuery("#awayteamfirstbatterselectid").empty();
-    jQuery("#awayteamfirstbatterselectid").append("1: ");
+//    jQuery("#awayteamfirstbatterselectid").append("1: ");
     var firstbatterselectdd = document.createElement("select");
     firstbatterselectdd.name = "FirstAwayTeamBatter";
     firstbatterselectdd.id = "firstawayteambatterId";
@@ -179,7 +179,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 2nd batter drop down
     jQuery("#awayteamsecondbatterselectid").empty();
-    jQuery("#awayteamsecondbatterselectid").append("2: ");
+//    jQuery("#awayteamsecondbatterselectid").append("2: ");
     var secondbatterselectdd = document.createElement("select");
     secondbatterselectdd.name = "SecondAwayTeamBatter";
     secondbatterselectdd.id = "secondawayteambatterId";
@@ -216,7 +216,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 3rd batter drop down
     jQuery("#awayteamthirdbatterselectid").empty();
-    jQuery("#awayteamthirdbatterselectid").append("3: ");
+//    jQuery("#awayteamthirdbatterselectid").append("3: ");
     var thirdbatterselectdd = document.createElement("select");
     thirdbatterselectdd.name = "ThirdAwayTeamBatter";
     thirdbatterselectdd.id = "thirdawayteambatterId";
@@ -253,7 +253,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 4th batter drop down
     jQuery("#awayteamfourthbatterselectid").empty();
-    jQuery("#awayteamfourthbatterselectid").append("4: ");
+//    jQuery("#awayteamfourthbatterselectid").append("4: ");
     var fourthbatterselectdd = document.createElement("select");
     fourthbatterselectdd.name = "FourthAwayTeamBatter";
     fourthbatterselectdd.id = "fourthawayteambatterId";
@@ -290,7 +290,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 5th batter drop down
     jQuery("#awayteamfifthbatterselectid").empty();
-    jQuery("#awayteamfifthbatterselectid").append("5: ");
+//    jQuery("#awayteamfifthbatterselectid").append("5: ");
     var fifthbatterselectdd = document.createElement("select");
     fifthbatterselectdd.name = "FifthAwayTeamBatter";
     fifthbatterselectdd.id = "fifthawayteambatterId";
@@ -327,7 +327,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 6th batter drop down
     jQuery("#awayteamsixthbatterselectid").empty();
-    jQuery("#awayteamsixthbatterselectid").append("6: ");
+//    jQuery("#awayteamsixthbatterselectid").append("6: ");
     var sixthbatterselectdd = document.createElement("select");
     sixthbatterselectdd.name = "SixthAwayTeamBatter";
     sixthbatterselectdd.id = "sixthawayteambatterId";
@@ -364,7 +364,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 7th batter drop down
     jQuery("#awayteamseventhbatterselectid").empty();
-    jQuery("#awayteamseventhbatterselectid").append("7: ");
+//    jQuery("#awayteamseventhbatterselectid").append("7: ");
     var seventhbatterselectdd = document.createElement("select");
     seventhbatterselectdd.name = "SeventhAwayTeamBatter";
     seventhbatterselectdd.id = "seventhawayteambatterId";
@@ -401,7 +401,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 8th batter drop down
     jQuery("#awayteameighthbatterselectid").empty();
-    jQuery("#awayteameighthbatterselectid").append("8: ");
+//    jQuery("#awayteameighthbatterselectid").append("8: ");
     var eighthbatterselectdd = document.createElement("select");
     eighthbatterselectdd.name = "EighthAwayTeamBatter";
     eighthbatterselectdd.id = "eighthawayteambatterId";
@@ -438,7 +438,7 @@ function loadAwayTeamLineupDropDowns()
 
     //create 9th batter drop down
     jQuery("#awayteamninthbatterselectid").empty();
-    jQuery("#awayteamninthbatterselectid").append("9: ");
+//    jQuery("#awayteamninthbatterselectid").append("9: ");
     var ninthbatterselectdd = document.createElement("select");
     ninthbatterselectdd.name = "NinthAwayTeamBatter";
     ninthbatterselectdd.id = "ninthawayteambatterId";
@@ -478,7 +478,7 @@ function loadHomeTeamLineupDropDowns()
 {    
     //create 1st batter drop down
     jQuery("#hometeamfirstbatterselectid").empty();
-    jQuery("#hometeamfirstbatterselectid").append("1: ");
+//    jQuery("#hometeamfirstbatterselectid").append("1: ");
     var firstbatterselectdd = document.createElement("select");
     firstbatterselectdd.name = "FirstHomeTeamBatter";
     firstbatterselectdd.id = "firsthometeambatterId";
@@ -515,7 +515,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 2nd batter drop down
     jQuery("#hometeamsecondbatterselectid").empty();
-    jQuery("#hometeamsecondbatterselectid").append("2: ");
+//    jQuery("#hometeamsecondbatterselectid").append("2: ");
     var secondbatterselectdd = document.createElement("select");
     secondbatterselectdd.name = "SecondHomeTeamBatter";
     secondbatterselectdd.id = "secondhometeambatterId";
@@ -552,7 +552,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 3rd batter drop down
     jQuery("#hometeamthirdbatterselectid").empty();
-    jQuery("#hometeamthirdbatterselectid").append("3: ");
+//    jQuery("#hometeamthirdbatterselectid").append("3: ");
     var thirdbatterselectdd = document.createElement("select");
     thirdbatterselectdd.name = "ThirdHomeTeamBatter";
     thirdbatterselectdd.id = "thirdhometeambatterId";
@@ -589,7 +589,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 4th batter drop down
     jQuery("#hometeamfourthbatterselectid").empty();
-    jQuery("#hometeamfourthbatterselectid").append("4: ");
+//    jQuery("#hometeamfourthbatterselectid").append("4: ");
     var fourthbatterselectdd = document.createElement("select");
     fourthbatterselectdd.name = "FourthHomeTeamBatter";
     fourthbatterselectdd.id = "fourthhometeambatterId";
@@ -626,7 +626,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 5th batter drop down
     jQuery("#hometeamfifthbatterselectid").empty();
-    jQuery("#hometeamfifthbatterselectid").append("5: ");
+//    jQuery("#hometeamfifthbatterselectid").append("5: ");
     var fifthbatterselectdd = document.createElement("select");
     fifthbatterselectdd.name = "FifthHomeTeamBatter";
     fifthbatterselectdd.id = "fifthhometeambatterId";
@@ -663,7 +663,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 6th batter drop down
     jQuery("#hometeamsixthbatterselectid").empty();
-    jQuery("#hometeamsixthbatterselectid").append("6: ");
+//    jQuery("#hometeamsixthbatterselectid").append("6: ");
     var sixthbatterselectdd = document.createElement("select");
     sixthbatterselectdd.name = "SixthHomeTeamBatter";
     sixthbatterselectdd.id = "sixthhometeambatterId";
@@ -700,7 +700,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 7th batter drop down
     jQuery("#hometeamseventhbatterselectid").empty();
-    jQuery("#hometeamseventhbatterselectid").append("7: ");
+//    jQuery("#hometeamseventhbatterselectid").append("7: ");
     var seventhbatterselectdd = document.createElement("select");
     seventhbatterselectdd.name = "SeventhHomeTeamBatter";
     seventhbatterselectdd.id = "seventhhometeambatterId";
@@ -737,7 +737,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 8th batter drop down
     jQuery("#hometeameighthbatterselectid").empty();
-    jQuery("#hometeameighthbatterselectid").append("8: ");
+//    jQuery("#hometeameighthbatterselectid").append("8: ");
     var eighthbatterselectdd = document.createElement("select");
     eighthbatterselectdd.name = "EighthHomeTeamBatter";
     eighthbatterselectdd.id = "eighthhometeambatterId";
@@ -774,7 +774,7 @@ function loadHomeTeamLineupDropDowns()
 
     //create 9th batter drop down
     jQuery("#hometeamninthbatterselectid").empty();
-    jQuery("#hometeamninthbatterselectid").append("9: ");
+//    jQuery("#hometeamninthbatterselectid").append("9: ");
     var ninthbatterselectdd = document.createElement("select");
     ninthbatterselectdd.name = "NinthHomeTeamBatter";
     ninthbatterselectdd.id = "ninthhometeambatterId";
