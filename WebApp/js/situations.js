@@ -1,5 +1,6 @@
 function load()
 {
+    $('#filters').hide();
     //reinitialize some maps
 //    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
 //    {
@@ -351,6 +352,9 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
 //                jQuery("#catchernameId").remove();
 //        }
     }
+    
+    $('#filters').show();
+    
 }
 function getParamsString()
 //function getStateVariables(revertPitchSequences, getPitchSequences, pitchTypeSequenceArray, pitchLocationSequenceArray, pitchOutcomeSequenceArray, resetAwayTeamLineups, resetHomeTeamLineups)

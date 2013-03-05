@@ -251,7 +251,7 @@ h6 {
   top: 60px;
   left: -100px;
   width: 100%;
-  height: 35em;
+  height: 37em;
   overflow-y: hidden;
   opacity: 0;
   -webkit-transition-duration: 0.2s;
@@ -626,3 +626,110 @@ option {
     box-shadow: 1px 1px 11px #330033;
     background: no-repeat scroll 319px 5px #356aa0; 
 }
+
+.bounds {
+    color:#ffffff;
+    overflow:hidden; 
+    width: 100%;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 1px 1px 11px #330033;
+    /*background: url(“arrow.gif”) no-repeat scroll 319px 5px #1a2c41;*/
+    background: #1a2c41;
+    background: -moz-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1a2c41), color-stop(100%, #070d11));
+    background: -webkit-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -o-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -ms-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: linear-gradient(to bottom, #1a2c41 0%, #070d11 100%);
+    margin-top: 3px;
+}
+
+.bounds label {
+    float: left;
+    width: 50%;
+}
+
+.bounds label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: inherit;
+    color: #ffffff;
+    font-family: inherit;
+    font-style: inherit;
+    cursor: pointer;
+}
+
+.bounds label input {
+    position:absolute;
+    top:-20px;
+}
+
+.bounds input:checked + span {
+    background-color:#356aa0;
+    color:#FFFFFF;
+}
+
+.bounds label span:hover {
+    overflow:hidden; 
+    width:100%;
+    background: #356aa0; 
+}
+
+.bounds3 {
+    color:#ffffff;
+    overflow:hidden; 
+    width: 100%;
+    -moz-border-radius: 9px 9px 9px 9px;
+    -webkit-border-radius: 9px 9px 9px 9px;
+    border-radius: 9px 9px 9px 9px;
+    box-shadow: 1px 1px 11px #330033;
+    /*background: url(“arrow.gif”) no-repeat scroll 319px 5px #1a2c41;*/
+    background: #1a2c41;
+    background: -moz-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #1a2c41), color-stop(100%, #070d11));
+    background: -webkit-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -o-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: -ms-linear-gradient(top, #1a2c41 0%, #070d11 100%);
+    background: linear-gradient(to bottom, #1a2c41 0%, #070d11 100%);
+    margin-top: 3px;
+}
+
+.bounds3 label {
+    float: left;
+    width: 33.333333%;
+}
+
+.bounds3 label span {
+    text-align:center;
+    padding:3px 0px;
+    display:block;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: inherit;
+    color: #ffffff;
+    font-family: inherit;
+    font-style: inherit;
+    cursor: pointer;
+}
+
+.bounds3 label input {
+    position:absolute;
+    top:-20px;
+}
+
+.bounds3 input:checked + span {
+    background-color:#356aa0;
+    color:#FFFFFF;
+}
+
+.bounds3 label span:hover {
+    overflow:hidden; 
+    width:100%;
+    background: #356aa0; 
+}
+    
