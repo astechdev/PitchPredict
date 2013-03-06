@@ -12,7 +12,7 @@ var dashboard = dashboard || {};
   }
 
   dashboard.loadView = function(view, chart) {
-
+      
     //set current chart in view
     if(chart == "chart1")
     {
@@ -96,9 +96,10 @@ var dashboard = dashboard || {};
   dashboard.loadroutes = function() {
     var app = $.sammy('body', function() {
 
+//emptyChartContainers();
       //disable push-states for android
       this.disable_push_state = true;
-
+      
       //root path
       this.get('#/', function(context) {
         dashboard.loadView($("#dashboard .nav a:first").attr("data-view"), $(".charts .tabs a:first").attr("data-chart"));

@@ -559,6 +559,12 @@ background: linear-gradient(to bottom, #356aa0 50%, #070d11 100%);
     margin-top: 25%;
 }
 
+#loadingajaxloader{
+    width: 2em;
+    margin-left: 51%;
+    margin-top: 25%;
+}
+
 select { 
     margin-bottom: 5px;
     border: 0;

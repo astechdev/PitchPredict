@@ -32,9 +32,11 @@ function helpDialogInit(iconType, dialogTitle, message)
    $( "#dialog-message" ).append(message);   
 }
 
-function adsDialogInit(dialogTitle, message, timeInMilliseconds)
-{
-   $( "#dialog-message" ).empty();
+function adsDialogInit(dialogTitle, timeInMilliseconds)
+{   
+    $( "#dialog" ).dialog( "option", "buttons", [  ] );
+    
+    $( "#dialog-message" ).empty();
    
     $( "#dialog" ).dialog({
       autoOpen: true,
@@ -47,7 +49,7 @@ function adsDialogInit(dialogTitle, message, timeInMilliseconds)
       closeOnEscape: false
     });
    
-   $( "#dialog-message" ).append(message); 
+   $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
    
     var $dialog = $("#dialog"); // Your Dialog Div
 
@@ -57,14 +59,72 @@ function adsDialogInit(dialogTitle, message, timeInMilliseconds)
 
     //hide the close button
     $dialogCloseBtn.hide();
+    
+    $dialogCloseBtn.click(function(e) {
+        $( "#dialog-message" ).empty(); 
+    });
 
     //show the close button after 10 seconds
     setTimeout(function () 
     {
         $dialogCloseBtn.fadeIn(100);
+        
+//        $( "#dialog" ).dialog( "option", "buttons", [ { text: "Close", click: function() { $( this ).dialog( "close" ); } } ] );
+        
     }, timeInMilliseconds);
    
+    if(youTubePlayListIndex < youTubePlayListLength)
+    {
+        youTubePlayListIndex = youTubePlayListIndex + 1;
+    }
+    else
+    {
+        youTubePlayListIndex = 1;
+    }
 }
+
+function loadingDialogInit()
+{
+   $( "#dialog-message" ).empty();
+   
+    $( "#dialog" ).dialog({
+      autoOpen: true,
+      modal: true,
+      height: dialogheight,
+      width: dialogwidth,
+      resizable: false,
+      draggable: false,
+      title: 'Loading, Please Wait...',
+      closeOnEscape: false
+    });
+   
+   $( "#dialog-message" ).append("<img id=\"loadingajaxloader\" src=\"images/ajax-loader.gif\">");
+   
+    var $dialog = $("#dialog"); // Your Dialog Div
+
+    //Get Dialogs Parent and find the close button. 
+    //jQuery assigns .ui-dialog-titlebar-close class to the close X (a tag)
+    var $dialogCloseBtn = $dialog.parent().find('.ui-dialog-titlebar-close'); 
+
+    //hide the close button
+    $dialogCloseBtn.hide(); 
+}
+
+
+function loadingDialogClose()
+{
+    $( "#dialog" ).dialog("close");
+    
+    var $dialog = $("#dialog"); // Your Dialog Div
+
+    //Get Dialogs Parent and find the close button. 
+    //jQuery assigns .ui-dialog-titlebar-close class to the close X (a tag)
+    var $dialogCloseBtn = $dialog.parent().find('.ui-dialog-titlebar-close'); 
+
+    //hide the close button
+    $dialogCloseBtn.show(); 
+}
+
 function loginDialogInit()
 {
    $( "#dialog-message" ).empty();

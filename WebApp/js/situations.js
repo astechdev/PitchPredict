@@ -1,6 +1,6 @@
 function load()
 {
-    $('#filters').hide();
+//    $('#filters').hide();
     //reinitialize some maps
 //    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
 //    {
@@ -353,8 +353,8 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
 //        }
     }
     
-    $('#filters').show();
-    
+//    $('#filters').show();
+    loadingDialogClose();
 }
 function getParamsString()
 //function getStateVariables(revertPitchSequences, getPitchSequences, pitchTypeSequenceArray, pitchLocationSequenceArray, pitchOutcomeSequenceArray, resetAwayTeamLineups, resetHomeTeamLineups)
@@ -627,6 +627,8 @@ function checkSituationsStateVariables()
 //***
 function saveState()
 {	
+    loadingDialogInit();
+    
     getParamsString();
     console.log(JSON.stringify(stateVariablesMap));
 //    alertStateVariables();
@@ -652,5 +654,16 @@ function saveState()
     else
     {
         load();
+    }
+}
+
+function showAds()
+{   
+    chartClicks = chartClicks + 1;
+    
+    if (chartClicks >= numberOfChartClicksBeforShowAds)
+    {
+        adsDialogInit("Advertisment", 10000);
+        chartClicks = 0;
     }
 }

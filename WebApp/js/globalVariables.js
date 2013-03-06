@@ -3,6 +3,11 @@
 var chart;
 var phonegap = 'false';
 var gaPlugin;
+var chartClicks = 0;
+var numberOfChartClicksBeforShowAds = 2;
+var youTubePlayList = 'PL9C5815B418D1508E';
+var youTubePlayListIndex = 1;
+var youTubePlayListLength = 60;
 var _gaq = _gaq || [];
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
