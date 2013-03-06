@@ -33,6 +33,7 @@
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitch Selection', 1);" data-view="pitchselection" href="#/pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);" data-view="filters" href="#/filters"><img src=""/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);" data-view="hotzone" href="#/hotzone"><img src=""/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Help', 1);" data-view="help" href="#/help"><img src=""/><span></span></a></li>
 					<!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts" href="#/charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
 				</ul>
 			</div>
@@ -41,7 +42,7 @@
 					<div class="inner">
 						<div data-view="scoreboard" class="view">
                                                     <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario', 1);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>                                                    
-                                                    <div id="toporbottomhalfselectid"></div>
+                                                    <div id="toporbottomhalfselectid" class="selectioncontainer"></div>
                                                     <div id="inningselectid" class="selectioncontainer"></div>
                                                     <div id="awayteamnameselectid" class="selectioncontainer"></div>
                                                     <div id="awayteamscoreselectid" class="selectioncontainer"></div>
@@ -54,8 +55,7 @@
 						</div>
 						<div data-view="awaylineup" class="view">
                                                     <span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Away Team Lineups', 1);">Away Team Lineup<span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
-                                                    
-                                                    <div id="awayteamlineupcontent">
+                                                    <!--<div id="awayteamlineupcontent">-->
                                                         <div id="awayteamlineupheadercolumn"></div>
                                                         <div id="awayteamfirstbatterselectid" class="selectioncontainer"></div>
                                                         <div id="awayteamsecondbatterselectid" class="selectioncontainer"></div>
@@ -66,12 +66,11 @@
                                                         <div id="awayteamseventhbatterselectid" class="selectioncontainer"></div>
                                                         <div id="awayteameighthbatterselectid" class="selectioncontainer"></div>
                                                         <div id="awayteamninthbatterselectid" class="selectioncontainer"></div>
-                                                    </div>
+                                                    <!--</div>-->
 						</div>
 						<div data-view="homelineup" class="view">
                                                     <span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Home Team Lineups', 1);">Home Team Lineup<span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
-                                                    
-                                                    <div id="hometeamlineupcontent">
+                                                    <!--<div id="hometeamlineupcontent">-->
                                                         <div id="hometeamlineupheadercolumn"></div>
                                                         <div id="hometeamfirstbatterselectid" class="selectioncontainer"></div>
                                                         <div id="hometeamsecondbatterselectid" class="selectioncontainer"></div>
@@ -82,7 +81,7 @@
                                                         <div id="hometeamseventhbatterselectid" class="selectioncontainer"></div>
                                                         <div id="hometeameighthbatterselectid" class="selectioncontainer"></div>
                                                         <div id="hometeamninthbatterselectid" class="selectioncontainer"></div>
-                                                    </div>
+                                                    <!--</div>-->
 						</div>
 						<div data-view="field" class="view">
                                                     <span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation', 1);">Game Situation<span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);" class="ui-icon ui-icon-help"></span></span>
@@ -115,181 +114,30 @@
                                                     </div>
                                                 </div>
 						<div data-view="filters" class="view">
-                                                    <span onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters', 1);">Filter Results By:<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
+                                                    <span onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters', 1);">Filter Results<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
                                                     <div id="filterspitchtypeselectid" class="selectioncontainer"></div>
                                                     <div id="filterspitchoutcomeselectid" class="selectioncontainer"></div>
-                                                    
-                                                    <div id="filters">
-                                                        Pitcher/Batter:
-                                                        <div class="bounds">
-                                                            <label><input onclick="stateVariablesMap['thePitcherOrBatter'] = 'PITCHER'; saveState();" id="pitcherid" type="radio" name="pitcherorbatter" value="PITCHER"><span>Pitcher</span></label>
-                                                            <label><input onclick="stateVariablesMap['thePitcherOrBatter'] = 'BATTER'; saveState();" id="batterid" type="radio" name="pitcherorbatter" value="BATTER"><span>Batter</span></label>
-                                                        </div>
-                                                        Pitcher Type:
-                                                        <div class="bounds">
-                                                            <label><input onclick="stateVariablesMap['thePitcherType'] = 'EXACT'; saveState();" id="pitcherexacttypeid" type="radio" name="pitchertype" value="EXACT"><span>Exact</span></label>
-                                                            <!--<label><input onclick="stateVariablesMap['thePitcherType'] = 'SIMILAR'; saveState();" id="pitchersimilartypeid" type="radio" name="pitchertype" value="SIMILAR"><span>Similar</span></label>-->
-                                                            <label><input onclick="stateVariablesMap['thePitcherType'] = 'ANY'; saveState();" id="pitcheranytypeid" type="radio" name="pitchertype" value="ANY"><span>Any</span></label>
-                                                        </div>
-                                                        Catcher Type:
-                                                        <div class="bounds">
-                                                            <label><input onclick="stateVariablesMap['theCatcherType'] = 'EXACT'; saveState();" id="catcherexacttypeid" type="radio" name="catchertype" value="EXACT"><span>Exact</span></label>
-                                                            <!--<label><input onclick="stateVariablesMap['theCatcherType'] = 'SIMILAR'; saveState();" id="catchersimilartypeid" type="radio" name="catchertype" value="SIMILAR"><span>Similar</span></label>-->
-                                                            <label><input onclick="stateVariablesMap['theCatcherType'] = 'ANY'; saveState();" id="catcheranytypeid" type="radio" name="catchertype" value="ANY"><span>Any</span></label>
-                                                        </div>
-                                                        Batter Type:
-                                                        <div class="bounds">
-                                                            <label><input id="batterexacttypeid" onclick="stateVariablesMap['theBatterType'] = 'EXACT'; saveState();" type="radio" name="battertype" value="EXACT"><span>Exact</span></label>
-                                                            <!--<label><input onclick="stateVariablesMap['theBatterType'] = 'SIMILAR'; saveState();" id="battersimilartypeid" type="radio" name="battertype" value="SIMILAR"><span>Similar</span></label>-->
-                                                            <label><input onclick="stateVariablesMap['theBatterType'] = 'ANY'; saveState();" id="batteranytypeid" type="radio" name="battertype" value="ANY"><span>Any</span></label>
-                                                        </div>
-                                                        Batter On Deck Type:
-                                                        <div class="bounds">
-                                                            <label><input onclick="stateVariablesMap['theOnDeckBatterType'] = 'EXACT'; saveState();" id="batterondeckexacttypeid" type="radio" name="batterondecktype" value="EXACT"><span>Exact</span></label>
-                                                            <!--<label><input onclick="stateVariablesMap['theOnDeckBatterType'] = 'SIMILAR'; saveState();" id="batterondecksimilartypeid" type="radio" name="batterondecktype" value="SIMILAR"><span>Similar</span></label>-->
-                                                            <label><input onclick="stateVariablesMap['theOnDeckBatterType'] = 'ANY'; saveState();" id="batterondeckanytypeid" type="radio" name="batterondecktype" value="ANY"><span>Any</span></label>
-                                                        </div>
-                                                        Base Runners Type:
-                                                        <div class="bounds">
-                                                            <label><input onclick="stateVariablesMap['theBaseRunnerType'] = 'EXACT'; saveState();" id="baserunnerexacttypeid" type="radio" name="baserunnertype" value="EXACT"><span>Exact</span></label>
-                                                            <!--<label><input onclick="stateVariablesMap['theBaseRunnerType'] = 'SIMILAR'; saveState();" id="baserunnersimilartypeid" type="radio" name="baserunnertype" value="SIMILAR"><span>Similar</span></label>-->
-                                                            <label><input onclick="stateVariablesMap['theBaseRunnerType'] = 'ANY'; saveState();" id="baserunneranytypeid" type="radio" name="baserunnertype" value="ANY"><span>Any</span></label>
-                                                        </div>
-                                                    </div>
-                                                    
-<!--                                                    <div id="filterscontainer">
-                                                        
-                                                        
-                                                        <table id="filterstable">
-                                                            <tr class="titlerow">
-                                                                <td>
-                                                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                                </td>
-                                                                <td>
-                                                                    Pitcher
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;Batter
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Pitcher/Batter:
-
-                                                                </td>
-                                                                <td>
-                                                                    <input onclick="stateVariablesMap['thePitcherOrBatter'] = 'PITCHER'; saveState();" id="pitcherid" type="radio" name="pitcherorbatter" value="PITCHER">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherOrBatter'] = 'BATTER'; saveState();" id="batterid" type="radio" name="pitcherorbatter" value="BATTER">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    &nbsp;&nbsp;&nbsp;
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;&nbsp;
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;&nbsp;
-                                                                </td>
-                                                            </tr>
-                                                            <tr class="titlerow">
-                                                                <td>
-                                                                    &nbsp;&nbsp;&nbsp;Type
-                                                                </td>
-                                                                <td>
-                                                                    Exact
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;Similar
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;Any
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Pitcher:
-                                                                </td>
-                                                                <td>
-                                                                    <input onclick="stateVariablesMap['thePitcherType'] = 'EXACT'; saveState();" id="pitcherexacttypeid" type="radio" name="pitchertype" value="EXACT">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'SIMILAR'; saveState();" id="pitchersimilartypeid" type="radio" name="pitchertype" value="SIMILAR">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['thePitcherType'] = 'ANY'; saveState();" id="pitcheranytypeid" type="radio" name="pitchertype" value="ANY">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Catcher:
-                                                                </td>
-                                                                <td>
-                                                                    <input onclick="stateVariablesMap['theCatcherType'] = 'EXACT'; saveState();" id="catcherexacttypeid" type="radio" name="catchertype" value="EXACT">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'SIMILAR'; saveState();" id="catchersimilartypeid" type="radio" name="catchertype" value="SIMILAR">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theCatcherType'] = 'ANY'; saveState();" id="catcheranytypeid" type="radio" name="catchertype" value="ANY">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Batter:
-                                                                </td>
-                                                                <td>
-                                                                    <input id="batterexacttypeid" onclick="stateVariablesMap['theBatterType'] = 'EXACT'; saveState();" type="radio" name="battertype" value="EXACT">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'SIMILAR'; saveState();" id="battersimilartypeid" type="radio" name="battertype" value="SIMILAR">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBatterType'] = 'ANY'; saveState();" id="batteranytypeid" type="radio" name="battertype" value="ANY">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    On Deck:
-                                                                </td>
-                                                                <td>
-                                                                    <input onclick="stateVariablesMap['theOnDeckBatterType'] = 'EXACT'; saveState();" id="batterondeckexacttypeid" type="radio" name="batterondecktype" value="EXACT">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'SIMILAR'; saveState();" id="batterondecksimilartypeid" type="radio" name="batterondecktype" value="SIMILAR">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theOnDeckBatterType'] = 'ANY'; saveState();" id="batterondeckanytypeid" type="radio" name="batterondecktype" value="ANY">
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    Base Runners:
-                                                                </td>
-                                                                <td>
-                                                                    <input onclick="stateVariablesMap['theBaseRunnerType'] = 'EXACT'; saveState();" id="baserunnerexacttypeid" type="radio" name="baserunnertype" value="EXACT">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'SIMILAR'; saveState();" id="baserunnersimilartypeid" type="radio" name="baserunnertype" value="SIMILAR">
-                                                                </td>
-                                                                <td>
-                                                                    &nbsp;&nbsp; &nbsp;&nbsp;<input onclick="stateVariablesMap['theBaseRunnerType'] = 'ANY'; saveState();" id="baserunneranytypeid" type="radio" name="baserunnertype" value="ANY">
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>-->
+                                                    <div id="pitcherbatterselectid" class="selectioncontainer"></div>
+                                                    <div id="pitchertypeselectid" class="selectioncontainer"></div>
+                                                    <div id="catchertypeselectid" class="selectioncontainer"></div>
+                                                    <div id="battertypeselectid" class="selectioncontainer"></div>
+                                                    <div id="batterondecktypeselectid" class="selectioncontainer"></div>
+                                                    <div id="baserunnertypeselectid" class="selectioncontainer"></div>
                                                 </div>
 						<div data-view="hotzone" class="view">
                                                     <span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);TrackButtonClicked('Help', 'viewed', 'Hot Zone', 1);">Hotzone<span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);" class="ui-icon ui-icon-help"></span></span>
                                                     <div id="hotzonecontainer">
                                                         <img id="hotzoneajaxloader" src="images/ajax-loader.gif">
                                                     </div>
+                                                </div>
+						<div data-view="help" class="view">
+                                                    <span>Help</span>
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario Info', 1);" value="Game Scenario Info">
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Team Lineups Info', 1);" value="Team Lineup Info">
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation Info', 1);" value="Game Situation Info">
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Sequence Info', 1);" value="Pitch Sequence Info">
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters Info', 1);" value="Filters Info">
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);TrackButtonClicked('Help', 'viewed', 'Hotzone Info', 1);" value="Hotzone Info">
                                                 </div>
 						<div data-view="charts" class="view charts">
 							<div class="tabs">
@@ -316,13 +164,13 @@
 				 </div>
 				 <div class="rightcol charts hidden-phone">
 					<div class="tabs padHeader">
-						<a onclick="setCurrentChart('Pitch Type');TrackButtonClicked('Chart', 'viewed', 'Pitch Type', 1);" data-chart="chart1" class="active" href="#chart1"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Outcome');TrackButtonClicked('Chart', 'viewed', 'Outcome', 1);" data-chart="chart2" href="#chart2"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Probability');TrackButtonClicked('Chart', 'viewed', 'Probability', 1);" data-chart="chart3" href="#chart3"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Pitch Chart');TrackButtonClicked('Chart', 'viewed', 'Pitch Chart', 1);" data-chart="chart4" href="#chart4"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Vertical');TrackButtonClicked('Chart', 'viewed', 'Vertical', 1);" data-chart="chart5" href="#chart5"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Horizontal');TrackButtonClicked('Chart', 'viewed', 'Horizontal', 1);" data-chart="chart6" href="#chart6"><span><img src="images/icons/image_16x16.png"/></span></a>
-						<a onclick="setCurrentChart('Hit Chart');TrackButtonClicked('Chart', 'viewed', 'Hit Chart', 1);" data-chart="chart7" href="#chart7"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                            <a onclick="setCurrentChart('Pitch Type');TrackButtonClicked('Chart', 'viewed', 'Pitch Type', 1);" data-chart="chart1" class="active" href="#chart1"><span class="chartbuttons">Pitch Predict</span></a>
+						<a onclick="setCurrentChart('Outcome');TrackButtonClicked('Chart', 'viewed', 'Outcome', 1);" data-chart="chart2" href="#chart2"><span class="chartbuttons">Outcome Predict</span></a>
+						<a onclick="setCurrentChart('Probability');TrackButtonClicked('Chart', 'viewed', 'Probability', 1);" data-chart="chart3" href="#chart3"><span class="chartbuttons">Probabilities</span></a>
+						<a onclick="setCurrentChart('Pitch Chart');TrackButtonClicked('Chart', 'viewed', 'Pitch Chart', 1);" data-chart="chart4" href="#chart4"><span class="chartbuttons">Pitch Chart</span></a>
+						<a onclick="setCurrentChart('Vertical');TrackButtonClicked('Chart', 'viewed', 'Vertical', 1);" data-chart="chart5" href="#chart5"><span class="chartbuttons">Virtual Vertical</span></a>
+						<a onclick="setCurrentChart('Horizontal');TrackButtonClicked('Chart', 'viewed', 'Horizontal', 1);" data-chart="chart6" href="#chart6"><span class="chartbuttons">Virtual Horizontal</span></a>
+						<a onclick="setCurrentChart('Hit Chart');TrackButtonClicked('Chart', 'viewed', 'Hit Chart', 1);" data-chart="chart7" href="#chart7"><span class="chartbuttons">Spray Chart</span></a>
 						<div class="clear"></div>
 					</div>
 					<div class="inner">

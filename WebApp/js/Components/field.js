@@ -148,8 +148,15 @@ function loadFieldDropDowns()
     batterrightorleftselectdd.name = "HitterRightOrLeft";
     batterrightorleftselectdd.id = "hitterrightorleftId";
     batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option("Batter R/L: "+stateVariablesMap['theBatterRightOrLeft'], stateVariablesMap['theBatterRightOrLeft']);
-    batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option('L', 'L');
-    batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option('R', 'R');
+    
+    var len = hitterrightorleft.length
+    for (var i=0; i<len; ++i) 
+    {
+        if (i in hitterrightorleft) 
+        {
+            batterrightorleftselectdd.options[batterrightorleftselectdd.length] = new Option(hitterrightorleft[i], hitterrightorleft[i]);
+        }
+    }
 
     //Add the dropdown to the parent node
 //    jQuery("#hitterrightorleftselectid").append("Batter R/L:<br>");
@@ -180,28 +187,28 @@ function loadFieldDropDownsOnChangeFunctions()
 {
     jQuery("#runneronfirstId").change(function(e) {  
         stateVariablesMap['theOn1bId'] = jQuery("#runneronfirstId").val();  
-        stateVariablesMap['theOn1bName'] = jQuery("#runneronfirstId[value="+stateVariablesMap['theOn1bId']+"]").text(); 
+        stateVariablesMap['theOn1bName'] = $("#runneronfirstselectid option:selected").text();
         saveState();        
 //        loadFieldDropDowns();
     });
     
     jQuery("#runneronsecondId").change(function(e) {  
         stateVariablesMap['theOn2bId'] = jQuery("#runneronsecondId").val();  
-        stateVariablesMap['theOn2bName'] = jQuery("#runneronsecondId[value="+stateVariablesMap['theOn2bId']+"]").text(); 
+        stateVariablesMap['theOn2bName'] = $("#runneronsecondselectid option:selected").text();
         saveState();        
 //        loadFieldDropDowns();
     });
     
     jQuery("#runneronthirdId").change(function(e) {  
         stateVariablesMap['theOn3bId'] = jQuery("#runneronthirdId").val();  
-        stateVariablesMap['theOn3bName'] = jQuery("#runneronthirdId[value="+stateVariablesMap['theOn3bId']+"]").text(); 
+        stateVariablesMap['theOn3bName'] = $("#runneronthirdselectid option:selected").text();
         saveState();        
 //        loadFieldDropDowns();
     });    
     
     jQuery("#hitternameId").change(function(e) {  
         stateVariablesMap['theBatterId'] = jQuery("#hitternameId").val();  
-        stateVariablesMap['theBatterName'] = jQuery("#hitternameId[value="+stateVariablesMap['theBatterId']+"]").text(); 
+        stateVariablesMap['theBatterName'] = $("#hitterselectid option:selected").text();
 //        loadOnDeckHitterImage();
         saveState(); 
 //        loadFieldDropDowns();
@@ -209,14 +216,14 @@ function loadFieldDropDownsOnChangeFunctions()
     
     jQuery("#pitchernameId").change(function(e) { 
         stateVariablesMap['thePitcherId'] = jQuery("#pitchernameId").val();  
-        stateVariablesMap['thePitcherName'] = jQuery("#pitchernameId[value="+stateVariablesMap['thePitcherId']+"]").text(); 
+        stateVariablesMap['thePitcherName'] = $("#pitcherselectid option:selected").text();
         saveState();        
 //        loadFieldDropDowns();
     });        
     
     jQuery("#catchernameId").change(function(e) {  
         stateVariablesMap['theCatcherId'] = jQuery("#catchernameId").val();  
-        stateVariablesMap['theCatcherName'] = jQuery("#catchernameId[value="+stateVariablesMap['theCatcherId']+"]").text(); 
+        stateVariablesMap['theCatcherName'] = $("#catcherselectid option:selected").text();
         saveState();        
 //        loadFieldDropDowns();
     });    

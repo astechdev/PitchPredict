@@ -1,7 +1,7 @@
 function loadScoreboard()
 {           
     loadScoreBoardDropDowns();
-    loadScoreBoardRadioButtons();
+//    loadScoreBoardRadioButtons();
 }
     
 function resetScoreBoard()
@@ -219,112 +219,217 @@ function loadScoreBoardDropDowns()
     jQuery("#yearId").change(function(e) {         
         stateVariablesMap['theYearToQuery'] = jQuery("#yearId").val();
         saveState();
-    });     
-}
-
-function loadScoreBoardRadioButtons()
-{ 
+    });    
+    
+    //create toporbottomhalf type drop down
     jQuery("#toporbottomhalfselectid").empty();
-    jQuery("#toporbottomhalfselectid").append("Top or Bottom Half: ");
-    jQuery("#toporbottomhalfselectid").append('<input id="topradiobutton" type="radio" name="toporbottomhalf" value="TOP">Top');
-    jQuery("#toporbottomhalfselectid").append('<input id="bottomradiobutton" type="radio" name="toporbottomhalf" value="BOTTOM">Bottom');
+//    jQuery("#inningselectid").append("Inning #: ");
+    var toporbottomhalfselectdd = document.createElement("select");
+    toporbottomhalfselectdd.name = "toporbottomhalf";
+    toporbottomhalfselectdd.id = "toporbottomhalfid";
+    toporbottomhalfselectdd.options[toporbottomhalfselectdd.length] = new Option("Top/Bottom Half: "+stateVariablesMap['theTopOrBottomHalf'], stateVariablesMap['theTopOrBottomHalf']);
 
-    if(stateVariablesMap['theTopOrBottomHalf']==="TOP")
+    var len = toporbottomhalf.length
+    for (var i=0; i<len; ++i) 
     {
-        jQuery('#topradiobutton').attr('checked',true);
+        if (i in toporbottomhalf) 
+        {
+            toporbottomhalfselectdd.options[toporbottomhalfselectdd.length] = new Option(toporbottomhalf[i], toporbottomhalf[i]);
+        }
     }
-    else
-    {
-        jQuery('#bottomradiobutton').attr('checked',true);
-    }
-    
-    jQuery("#topradiobutton").click(function() { 
-        stateVariablesMap['theTopOrBottomHalf'] = "TOP";
+
+    //Add the dropdown to the parent node
+    jQuery("#toporbottomhalfselectid").append(toporbottomhalfselectdd);
+    jQuery("#toporbottomhalfid").change(function(e) {
+        stateVariablesMap['theTopOrBottomHalf'] = jQuery("#toporbottomhalfid").val();
         
         var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
         var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
         
-        stateVariablesMap['thePitcherTeamId'] = homeTeamInfoArray[0];
-        stateVariablesMap['thePitcherTeamName'] = homeTeamInfoArray[1];
-        stateVariablesMap['thePitcherTeamAbrr'] = homeTeamInfoArray[2];
-        
-        stateVariablesMap['theBatterTeamId'] = awayTeamInfoArray[0];
-        stateVariablesMap['theBatterTeamName'] = awayTeamInfoArray[1];
-        stateVariablesMap['theBatterTeamAbrr'] = awayTeamInfoArray[2];
-        
-        var index = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
-        if ((index + 1) < stateVariablesMap['theAwayTeamBattingOrderBatterIds'].length)
+        if(stateVariablesMap['theTopOrBottomHalf']==="TOP")
         {
-            if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+            stateVariablesMap['thePitcherTeamId'] = homeTeamInfoArray[0];
+            stateVariablesMap['thePitcherTeamName'] = homeTeamInfoArray[1];
+            stateVariablesMap['thePitcherTeamAbrr'] = homeTeamInfoArray[2];
+
+            stateVariablesMap['theBatterTeamId'] = awayTeamInfoArray[0];
+            stateVariablesMap['theBatterTeamName'] = awayTeamInfoArray[1];
+            stateVariablesMap['theBatterTeamAbrr'] = awayTeamInfoArray[2];
+
+            var index = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
+            if ((index + 1) < stateVariablesMap['theAwayTeamBattingOrderBatterIds'].length)
             {
-                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1];
-                stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1];
+                    stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                }
+                else
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = '0';
+                    stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                }
             }
             else
             {
-                stateVariablesMap['theBatterOnDeckId'] = '0';
-                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0];
+                    stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                }
+                else
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = '0';
+                    stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                }
             }
         }
         else
         {
-            if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+            stateVariablesMap['thePitcherTeamId'] = awayTeamInfoArray[0];
+            stateVariablesMap['thePitcherTeamName'] = awayTeamInfoArray[1];
+            stateVariablesMap['thePitcherTeamAbrr'] = awayTeamInfoArray[2];
+
+            stateVariablesMap['theBatterTeamId'] = homeTeamInfoArray[0];
+            stateVariablesMap['theBatterTeamName'] = homeTeamInfoArray[1];
+            stateVariablesMap['theBatterTeamAbrr'] = homeTeamInfoArray[2];
+
+            var index = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
+            if ((index + 1) < stateVariablesMap['theHomeTeamBattingOrderBatterIds'].length)
             {
-                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0];
-                stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1];
+                    stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                }
+                else
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = '0';
+                    stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                }
             }
             else
             {
-                stateVariablesMap['theBatterOnDeckId'] = '0';
-                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0];
+                    stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
+                }
+                else
+                {
+                    stateVariablesMap['theBatterOnDeckId'] = '0';
+                    stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+                }
             }
         }
-    
-        saveState();
-    });  
-    
-    jQuery("#bottomradiobutton").click(function() { 
-        stateVariablesMap['theTopOrBottomHalf'] = "BOTTOM";
         
-        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
-        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
-        
-        stateVariablesMap['thePitcherTeamId'] = awayTeamInfoArray[0];
-        stateVariablesMap['thePitcherTeamName'] = awayTeamInfoArray[1];
-        stateVariablesMap['thePitcherTeamAbrr'] = awayTeamInfoArray[2];
-        
-        stateVariablesMap['theBatterTeamId'] = homeTeamInfoArray[0];
-        stateVariablesMap['theBatterTeamName'] = homeTeamInfoArray[1];
-        stateVariablesMap['theBatterTeamAbrr'] = homeTeamInfoArray[2];
-        
-        var index = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
-        if ((index + 1) < stateVariablesMap['theHomeTeamBattingOrderBatterIds'].length)
-        {
-            if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
-            {
-                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1];
-                stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
-            }
-            else
-            {
-                stateVariablesMap['theBatterOnDeckId'] = '0';
-                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
-            }
-        }
-        else
-        {
-            if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
-            {
-                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0];
-                stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
-            }
-            else
-            {
-                stateVariablesMap['theBatterOnDeckId'] = '0';
-                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
-            }
-        }
-    
-        saveState();
-    });
+        saveState(); 
+    }); 
 }
+
+//function loadScoreBoardRadioButtons()
+//{ 
+//    jQuery("#toporbottomhalfselectid").empty();
+//    jQuery("#toporbottomhalfselectid").append("Top or Bottom Half: ");
+//    jQuery("#toporbottomhalfselectid").append('<input id="topradiobutton" type="radio" name="toporbottomhalf" value="TOP">Top');
+//    jQuery("#toporbottomhalfselectid").append('<input id="bottomradiobutton" type="radio" name="toporbottomhalf" value="BOTTOM">Bottom');
+//
+//    if(stateVariablesMap['theTopOrBottomHalf']==="TOP")
+//    {
+//        jQuery('#topradiobutton').attr('checked',true);
+//    }
+//    else
+//    {
+//        jQuery('#bottomradiobutton').attr('checked',true);
+//    }
+//    
+//    jQuery("#topradiobutton").click(function() { 
+//        stateVariablesMap['theTopOrBottomHalf'] = "TOP";
+//        
+//        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
+//        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
+//        
+//        stateVariablesMap['thePitcherTeamId'] = homeTeamInfoArray[0];
+//        stateVariablesMap['thePitcherTeamName'] = homeTeamInfoArray[1];
+//        stateVariablesMap['thePitcherTeamAbrr'] = homeTeamInfoArray[2];
+//        
+//        stateVariablesMap['theBatterTeamId'] = awayTeamInfoArray[0];
+//        stateVariablesMap['theBatterTeamName'] = awayTeamInfoArray[1];
+//        stateVariablesMap['theBatterTeamAbrr'] = awayTeamInfoArray[2];
+//        
+//        var index = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
+//        if ((index + 1) < stateVariablesMap['theAwayTeamBattingOrderBatterIds'].length)
+//        {
+//            if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index + 1];
+//                stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+//            }
+//            else
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = '0';
+//                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+//            }
+//        }
+//        else
+//        {
+//            if((!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0] == stateVariablesMap['theAwayTeamBattingOrderBatterIds'][index])))
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'][0];
+//                stateVariablesMap['theBatterOnDeckName'] = awayTeamMap[stateVariablesMap['theBatterOnDeckId']];
+//            }
+//            else
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = '0';
+//                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+//            }
+//        }
+//    
+//        saveState();
+//    });  
+//    
+//    jQuery("#bottomradiobutton").click(function() { 
+//        stateVariablesMap['theTopOrBottomHalf'] = "BOTTOM";
+//        
+//        var homeTeamInfoArray = jQuery("#hometeamnameId").val().split(",");
+//        var awayTeamInfoArray = jQuery("#awayteamnameId").val().split(",");
+//        
+//        stateVariablesMap['thePitcherTeamId'] = awayTeamInfoArray[0];
+//        stateVariablesMap['thePitcherTeamName'] = awayTeamInfoArray[1];
+//        stateVariablesMap['thePitcherTeamAbrr'] = awayTeamInfoArray[2];
+//        
+//        stateVariablesMap['theBatterTeamId'] = homeTeamInfoArray[0];
+//        stateVariablesMap['theBatterTeamName'] = homeTeamInfoArray[1];
+//        stateVariablesMap['theBatterTeamAbrr'] = homeTeamInfoArray[2];
+//        
+//        var index = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].indexOf(jQuery("#hitternameId").val());
+//        if ((index + 1) < stateVariablesMap['theHomeTeamBattingOrderBatterIds'].length)
+//        {
+//            if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index + 1];
+//                stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
+//            }
+//            else
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = '0';
+//                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+//            }
+//        }
+//        else
+//        {
+//            if((!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0].beginsWith("Select", true))) && (!(stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0] == stateVariablesMap['theHomeTeamBattingOrderBatterIds'][index])))
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'][0];
+//                stateVariablesMap['theBatterOnDeckName'] = homeTeamMap[stateVariablesMap['theBatterOnDeckId']];
+//            }
+//            else
+//            {
+//                stateVariablesMap['theBatterOnDeckId'] = '0';
+//                stateVariablesMap['theBatterOnDeckName'] = 'Select Batter';
+//            }
+//        }
+//    
+//        saveState();
+//    });
+//}

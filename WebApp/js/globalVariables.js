@@ -150,13 +150,15 @@ var params;
 //var pitchtype = "ANY";
 //var outcometype = "ANY";
 //Acceptable values for the following var's: "ANY", "SIMILAR", or "EXACT"
-//var pitchertype = "EXACT";
-//var catchertype = "EXACT";
-//var battertype = "EXACT";
-//var batterondecktype = "EXACT";
-//var baserunnertype = "EXACT";
+var pitchertype = ["EXACT", "ANY"];
+var catchertype = ["EXACT", "ANY"];
+var battertype = ["EXACT", "ANY"];
+var batterondecktype = ["EXACT", "ANY"];
+var baserunnertype = ["EXACT", "ANY"];
+var toporbottomhalf = ["TOP", "BOTTOM", "ANY"];
+var hitterrightorleft = ["R", "L", "ANY"];
 //Acceptable values for the following var's: "PITCHER" or "BATTER"
-//var pitcherorbatter = "PITCHER";
+var pitcherorbatter = ["PITCHER", "BATTER"];
 //Acceptable values for the hotzone var: is any of the following zone* var's'
 //var hotzone = "ANY";
 var zoneAny = "ANY";
