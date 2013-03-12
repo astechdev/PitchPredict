@@ -697,6 +697,7 @@ option {
 
 .text {
     float: right;
+    width: 60%;
 }
 
 /*.bounds {

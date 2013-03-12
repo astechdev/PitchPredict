@@ -257,8 +257,10 @@
                             
                             jQuery( "#logoutcontainer" ).hide();
 
-                            jQuery('div.rightcol').bind('swiperight',rightSwipeEventHandler);
-                            jQuery('div.rightcol').bind('swipeleft',leftSwipeEventHandler);
+                            jQuery('#dashboard').bind('swiperight',rightSwipeEventHandler);
+                            jQuery('#dashboard').bind('swipeleft',leftSwipeEventHandler);
+                            jQuery('#dashboard').bind('swipeup',upSwipeEventHandler);
+                            jQuery('#dashboard').bind('swipedown',downSwipeEventHandler);
                             
                             load();
    

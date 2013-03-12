@@ -18,4 +18,22 @@ function leftSwipeEventHandler()
     nextChartTab.click(); 
 }
 
+function upSwipeEventHandler()
+{       
+    alert('upSwipeEventHandler');
+    var activeNavLink = $(".nav").find('a.active');
+    var nextNavLink = activeNavLink.parent().nextOrFirst().find('a');
+    
+    nextNavLink.click();
+}
+
+function downSwipeEventHandler()
+{       
+    alert('downSwipeEventHandler');
+    var activeNavLink = $(".nav").find('a.active');
+    var prevNavLink = activeNavLink.parent().prevOrLast().find('a');
+    
+    prevNavLink.click();    
+}
+
 
