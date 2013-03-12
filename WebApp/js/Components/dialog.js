@@ -51,6 +51,19 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
    
    $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
    
+//    $( "#dialog-message" ).append('<script type="text/javascript"><!--'+
+//                                    'google_ad_client = "ca-pub-5820947892438978";'+
+//                                    '/* PitchPredict */'+
+//                                    'google_ad_slot = "0144094309";'+
+//                                    'google_ad_width = 250;'+
+//                                    'google_ad_height = 250;'+
+//                                    '//-->'+
+//                                    '</script>'+
+//                                    '<script type="text/javascript"'+
+//                                    'src="http://pagead2.googlesyndication.com/pagead/show_ads.js">'+
+//                                    'alert("Adsense Loaded");</script>');
+   
+   
     var $dialog = $("#dialog"); // Your Dialog Div
 
     //Get Dialogs Parent and find the close button. 

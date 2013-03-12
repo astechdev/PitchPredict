@@ -54,15 +54,15 @@ function emptyChartContainers()
     jQuery('#resultspercentagechartcontainer').hide("slide", { direction: "right" }, 1000);
     jQuery('#outcomepercentagechartcontainer').hide("slide", { direction: "right" }, 1000);
     
-//    jQuery('#pitchtypepercentagechartcontainer').empty();
-//    jQuery('#hitchartcontainer').empty();
-//    jQuery('#pitchchartcontainer').empty();
-//    jQuery('#verticalchartcontainer').empty();
-//    jQuery('#sidepitchvirtualizationchartcontainer').empty();
-//    jQuery('#horizontalchartcontainer').empty();
-//    jQuery('#toppitchvirtualizationchartcontainer').empty();
-//    jQuery('#resultspercentagechartcontainer').empty();
-//    jQuery('#outcomepercentagechartcontainer').empty();
+    jQuery('#pitchtypepercentagechartcontainer').empty();
+    jQuery('#hitchartcontainer').empty();
+    jQuery('#pitchchartcontainer').empty();
+    jQuery('#verticalchartcontainer').empty();
+    jQuery('#sidepitchvirtualizationchartcontainer').empty();
+    jQuery('#horizontalchartcontainer').empty();
+    jQuery('#toppitchvirtualizationchartcontainer').empty();
+    jQuery('#resultspercentagechartcontainer').empty();
+    jQuery('#outcomepercentagechartcontainer').empty();
 }
 
 function updatePitchTypePercentageChart()
@@ -345,6 +345,9 @@ function setCurrentChart(chart)
     
     updateCharts('false');
     
-    showAds();
+    if(phonegap != 'true')
+    {
+        showAds();
+    }
 }
 

@@ -79,3 +79,17 @@ function isEmpty(map) {
    }
    return true;
 }
+
+jQuery.fn.nextOrFirst = function(selector)
+{
+    var next = this.next(selector);
+
+    return (next.length) ? next : this.prevAll(selector).last();
+}
+
+jQuery.fn.prevOrLast = function(selector)
+{
+    var prev = this.prev(selector);
+
+    return (prev.length) ? prev : this.nextAll(selector).last();
+}

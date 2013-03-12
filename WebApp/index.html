@@ -19,9 +19,9 @@
     <body onload="initialize();" onunload="goingAway();">
 		<div id="header">
 			<img class="logo" src="images/logo.png"/>
-			<div class="hud">
+<!--			<div class="hud">
 				<a onclick="loginDialogInit();" href="#"><img src="images/icons/play_6x8.png"/></a>
-			</div>
+			</div>-->
 		</div>
 		<div id="dashboard">
 			<div class="navwrap">
@@ -33,6 +33,7 @@
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitch Selection', 1);" data-view="pitchselection" href="#/pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);" data-view="filters" href="#/filters"><img src=""/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);" data-view="hotzone" href="#/hotzone"><img src=""/><span></span></a></li>
+                                        <li id="usernav"><a onclick="TrackButtonClicked('Navigation', 'viewed', 'User', 1);" data-view="user" href="#/user"><img src=""/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Help', 1);" data-view="help" href="#/help"><img src=""/><span></span></a></li>
 					<!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts" href="#/charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
 				</ul>
@@ -132,12 +133,29 @@
                                                 </div>
 						<div data-view="help" class="view">
                                                     <span>Help</span>
+                                                    <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Pitch Predict', pitchpredictHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Predict Info', 1);" value="Pitch Predict Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario Info', 1);" value="Game Scenario Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Team Lineups Info', 1);" value="Team Lineup Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation Info', 1);" value="Game Situation Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Sequence Info', 1);" value="Pitch Sequence Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters Info', 1);" value="Filters Info">
                                                     <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);TrackButtonClicked('Help', 'viewed', 'Hotzone Info', 1);" value="Hotzone Info">
+                                                </div>
+						<div data-view="user" class="view">
+                                                    <span>Preferences</span>
+                                                    <div id="logincontainer">
+                                                        <label>Username:  
+                                                            <input type="text" id="userName" name="userName" tabindex="1" class="text" />
+                                                        </label>
+                                                        <label>Password: 
+                                                            <input type="password" id="password" name="password" tabindex="2" class="text" />
+                                                        </label>
+                                                        <input type="Button" class="helpbuttons" onclick="loginRequest();" value="Log In">
+                                                        <input type="Button" class="helpbuttons" onclick="register();" value="Register">
+                                                    </div>
+                                                    <div id="logoutcontainer">
+                                                        <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
+                                                    </div>
                                                 </div>
 						<div data-view="charts" class="view charts">
 							<div class="tabs">
@@ -165,22 +183,22 @@
 				 <div class="rightcol charts hidden-phone">
 					<div class="tabs padHeader">
                                             <a onclick="setCurrentChart('Pitch Type');TrackButtonClicked('Chart', 'viewed', 'Pitch Type', 1);" data-chart="chart1" class="active" href="#chart1"><span class="chartbuttons">Pitch Predict</span></a>
-						<a onclick="setCurrentChart('Outcome');TrackButtonClicked('Chart', 'viewed', 'Outcome', 1);" data-chart="chart2" href="#chart2"><span class="chartbuttons">Outcome Predict</span></a>
-						<a onclick="setCurrentChart('Probability');TrackButtonClicked('Chart', 'viewed', 'Probability', 1);" data-chart="chart3" href="#chart3"><span class="chartbuttons">Probabilities</span></a>
-						<a onclick="setCurrentChart('Pitch Chart');TrackButtonClicked('Chart', 'viewed', 'Pitch Chart', 1);" data-chart="chart4" href="#chart4"><span class="chartbuttons">Pitch Chart</span></a>
-						<a onclick="setCurrentChart('Vertical');TrackButtonClicked('Chart', 'viewed', 'Vertical', 1);" data-chart="chart5" href="#chart5"><span class="chartbuttons">Virtual Vertical</span></a>
-						<a onclick="setCurrentChart('Horizontal');TrackButtonClicked('Chart', 'viewed', 'Horizontal', 1);" data-chart="chart6" href="#chart6"><span class="chartbuttons">Virtual Horizontal</span></a>
-						<a onclick="setCurrentChart('Hit Chart');TrackButtonClicked('Chart', 'viewed', 'Hit Chart', 1);" data-chart="chart7" href="#chart7"><span class="chartbuttons">Spray Chart</span></a>
-						<div class="clear"></div>
+                                            <a onclick="setCurrentChart('Outcome');TrackButtonClicked('Chart', 'viewed', 'Outcome', 1);" data-chart="chart2" href="#chart2"><span class="chartbuttons">Outcome Predict</span></a>
+                                            <a onclick="setCurrentChart('Probability');TrackButtonClicked('Chart', 'viewed', 'Probability', 1);" data-chart="chart3" href="#chart3"><span class="chartbuttons">Probabilities</span></a>
+                                            <a onclick="setCurrentChart('Pitch Chart');TrackButtonClicked('Chart', 'viewed', 'Pitch Chart', 1);" data-chart="chart4" href="#chart4"><span class="chartbuttons">Pitch Chart</span></a>
+                                            <a onclick="setCurrentChart('Vertical');TrackButtonClicked('Chart', 'viewed', 'Vertical', 1);" data-chart="chart5" href="#chart5"><span class="chartbuttons">Virtual Vertical</span></a>
+                                            <a onclick="setCurrentChart('Horizontal');TrackButtonClicked('Chart', 'viewed', 'Horizontal', 1);" data-chart="chart6" href="#chart6"><span class="chartbuttons">Virtual Horizontal</span></a>
+                                            <a onclick="setCurrentChart('Hit Chart');TrackButtonClicked('Chart', 'viewed', 'Hit Chart', 1);" data-chart="chart7" href="#chart7"><span class="chartbuttons">Spray Chart</span></a>
+                                            <div class="clear"></div>
 					</div>
 					<div class="inner">
                                             <div data-chart="chart1" class="chart"><div id="pitchtypepercentagechartcontainer"></div></div>
-                                                <div data-chart="chart2" class="chart"><div id="outcomepercentagechartcontainer"></div></div>
-                                                <div data-chart="chart3" class="chart"><div id="resultspercentagechartcontainer"></div></div>
-                                                <div data-chart="chart4" class="chart"><div id="pitchchartcontainer"></div></div>
-                                                <div data-chart="chart5" class="chart"><div id="verticalchartcontainer"></div><div id="sidepitchvirtualizationchartcontainer"></div></div>
-                                                <div data-chart="chart6" class="chart"><div id="horizontalchartcontainer"></div><div id="toppitchvirtualizationchartcontainer"></div></div>
-                                                <div data-chart="chart7" class="chart"><div id="hitchartcontainer"></div></div>
+                                            <div data-chart="chart2" class="chart"><div id="outcomepercentagechartcontainer"></div></div>
+                                            <div data-chart="chart3" class="chart"><div id="resultspercentagechartcontainer"></div></div>
+                                            <div data-chart="chart4" class="chart"><div id="pitchchartcontainer"></div></div>
+                                            <div data-chart="chart5" class="chart"><div id="verticalchartcontainer"></div><div id="sidepitchvirtualizationchartcontainer"></div></div>
+                                            <div data-chart="chart6" class="chart"><div id="horizontalchartcontainer"></div><div id="toppitchvirtualizationchartcontainer"></div></div>
+                                            <div data-chart="chart7" class="chart"><div id="hitchartcontainer"></div></div>
 					</div>
 				 </div>
 				 <div class="clear"></div>
@@ -198,13 +216,19 @@
                 
                 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
                 <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
+                
                 <script type="text/javascript" src="js/googleAnalytics.js"></script>
 
                 <script type="text/javascript" src="js/globalVariables.js"></script>
+                
                 <script type="text/javascript" src="js/google.jsapi.js"></script>	
 
                 <script type="text/javascript" src="js/sammy.js"></script>
-                <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
+                <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>                
+                
+                <script type="text/javascript" src="js/jgestures.min.js"></script>
+                <script type="text/javascript" src="js/touchEvents.js"></script>
+                
                 <script type="text/javascript" src="js/util.js"></script>
 
                 <!--<script type="text/javascript" src="js/index.js"></script>-->
@@ -223,11 +247,19 @@
                 <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
                 <!--<script src="http://debug.phonegap.com/target/target-script-min.js#pitchpredict"></script>-->
                 <script type="text/javascript">
-                    
                     jQuery(document).ready(function() {
-                            //pretend to login
-//                            userInfoMap = { UserName: "jaslan" };
-//                            alert('username'+userInfoMap.UserName);
+                            if(phonegap != 'true')
+                            {
+                                //Hide the user nav if not phonegap app.  This way users can use the "Web App" for free, but have to 
+                                //pay for app to get additional traking functionality plus no ads
+//                                $( "#usernav" ).hide();
+                            }
+                            
+                            jQuery( "#logoutcontainer" ).hide();
+
+                            jQuery('.rightcol').bind('swiperight',rightSwipeEventHandler);
+                            jQuery('.rightcol').bind('swipeleft',leftSwipeEventHandler);
+                            
                             load();
    
                             //need to initialize the dialog div so that 
@@ -236,9 +268,7 @@
                               autoOpen: false
                             }); 
                                 
-                            jQuery(window).resize(function() {    
-//                                chartheight = ($(window).height()*.75);
-//                                chartwidth = chartheight*1.40;
+                            jQuery(window).resize(function() { 
                                 
                                 dialogheight = $(window).height()*.75;
                                 dialogwidth = $(window).width()*.80;
@@ -250,8 +280,13 @@
                                 $( "#dialog" ).dialog( "option", "width", dialogwidth );
                                 
                                 $( "#dialog" ).dialog( "option", "height", dialogheight );
-                                                                
-//                                setCurrentChart(currentchart);
+                                  
+                                if(phonegap != 'true')
+                                {                                    
+                                    chartheight = ($(window).height()*.75);
+                                    chartwidth = chartheight*1.40;                          
+                                    setCurrentChart(currentchart);
+                                }
                             });
                         });
                 </script>

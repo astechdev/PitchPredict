@@ -661,7 +661,7 @@ function showAds()
 {   
     chartClicks = chartClicks + 1;
     
-    if (chartClicks >= numberOfChartClicksBeforShowAds)
+    if (chartClicks > numberOfChartClicksBeforeShowAds)
     {
         adsDialogInit("Advertisment", 10000);
         chartClicks = 0;

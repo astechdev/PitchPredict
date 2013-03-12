@@ -4,10 +4,10 @@ var chart;
 var phonegap = 'false';
 var gaPlugin;
 var chartClicks = 0;
-var numberOfChartClicksBeforShowAds = 2;
+var numberOfChartClicksBeforeShowAds = 1000000;
 var youTubePlayList = 'PL9C5815B418D1508E';
 var youTubePlayListIndex = 1;
-var youTubePlayListLength = 60;
+var youTubePlayListLength = 7;
 var _gaq = _gaq || [];
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
@@ -124,7 +124,11 @@ var hotzoneHelp = "The hot zone gives a pitcher's or batter's percentage of "+
 "currently analyzing while still allowing you to view the overall performance "+
 "of the player within the strike zone.  To turn a particular zone \"off\" all "+
 "you need to do is click on the \"Hotzone Overview\" button.";
-
+var pitchpredictHelp = "The Pitch Predict Web App is a baseball analytics tool that data mines MLB's free "+
+"gameday XML and builds an interface that enables users to analyze possible outcomes "+
+"of a given situation. PitchPredict has a singular api that allows other developers "+
+"to hook into via ajax and create there own widgets/charts and graphs for study. "+
+"It's target audience is baseball fans and stat enthusiasts.";
 //var pitchTypeSequenceArray = new Array();
 //var pitchLocationSequenceArray = new Array();
 //var pitchOutcomeSequenceArray = new Array();
