@@ -1,39 +1,55 @@
 function rightSwipeEventHandler()
-{       
-    alert('rightSwipeEventHandler');
+{
     var chartsWrapper = $(".charts");
     var chartsTabs = $(chartsWrapper).find(".tabs");
-    var previousChartTab = $(chartsTabs).find("a.active").prevOrLast();
+    var clickNextChart = $(chartsTabs).find("a.active").prevOrLast();
+    clickNextChart.trigger('click'); 
+    var activeChartTab = $(chartsTabs).find("a.active");
+    var nextChartTab = activeChartTab.prevOrLast();
     
-    previousChartTab.click();
+    var activeNavLink = $(".nav").find('a.active');
+    
+    dashboard.loadView(activeNavLink.attr("data-view"), nextChartTab.attr("data-chart"));
+    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartTab.attr("data-chart");
 }
 
 function leftSwipeEventHandler()
-{      
-    alert('leftSwipeEventHandler');
+{  
     var chartsWrapper = $(".charts");
     var chartsTabs = $(chartsWrapper).find(".tabs");
-    var nextChartTab = $(chartsTabs).find("a.active").nextOrFirst();
+    var clickNextChart = $(chartsTabs).find("a.active").nextOrFirst();
+    clickNextChart.trigger('click'); 
+    var activeChartTab = $(chartsTabs).find("a.active");
+    var nextChartTab = activeChartTab.nextOrFirst();
     
-    nextChartTab.click(); 
+    var activeNavLink = $(".nav").find('a.active');
+    
+    dashboard.loadView(activeNavLink.attr("data-view"), nextChartTab.attr("data-chart"));
+    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartTab.attr("data-chart");
 }
 
 function upSwipeEventHandler()
-{       
-    alert('upSwipeEventHandler');
+{
+    var chartsWrapper = $(".charts");
+    var chartsTabs = $(chartsWrapper).find(".tabs");
+    var activeChartTab = $(chartsTabs).find("a.active");
     var activeNavLink = $(".nav").find('a.active');
     var nextNavLink = activeNavLink.parent().nextOrFirst().find('a');
     
-    nextNavLink.click();
+    dashboard.loadView(nextNavLink.attr("data-view"), activeChartTab.attr("data-chart"));
+    window.location.href = "#/" + nextNavLink.attr("data-view") + "/" + activeChartTab.attr("data-chart");
 }
 
 function downSwipeEventHandler()
-{       
-    alert('downSwipeEventHandler');
+{     
+    var chartsWrapper = $(".charts");
+    var chartsTabs = $(chartsWrapper).find(".tabs");
+    var activeChartTab = $(chartsTabs).find("a.active");
     var activeNavLink = $(".nav").find('a.active');
-    var prevNavLink = activeNavLink.parent().prevOrLast().find('a');
+    var nextNavLink = activeNavLink.parent().prevOrLast().find('a');
     
-    prevNavLink.click();    
+    dashboard.loadView(nextNavLink.attr("data-view"), activeChartTab.attr("data-chart"));
+    window.location.href = "#/" + nextNavLink.attr("data-view") + "/" + activeChartTab.attr("data-chart");
 }
 
 
