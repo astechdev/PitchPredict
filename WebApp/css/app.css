@@ -16,19 +16,19 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
 /* line 28, ../sass/common/_reset.scss */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+    display: block;
 }
 
 /* line 31, ../sass/common/_reset.scss */
@@ -50,500 +50,507 @@ body {
 
 /* line 34, ../sass/common/_reset.scss */
 ol, ul {
-  list-style: none;
+    list-style: none;
 }
 
 /* line 37, ../sass/common/_reset.scss */
 blockquote, q {
-  quotes: none;
+    quotes: none;
 }
 
 /* line 41, ../sass/common/_reset.scss */
 blockquote:before, blockquote:after,
 q:before, q:after {
-  content: '';
-  content: none;
+    content: '';
+    content: none;
 }
 
 /* line 45, ../sass/common/_reset.scss */
 table {
-  border-collapse: collapse;
-  border-spacing: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
 }
 
 /*Basic Element Styling.
  * ******************************************************/
 /* line 3, ../sass/common/_base.scss */
 html, body {
-  height: 100%;
+    height: 100%;
 }
 
 /* line 6, ../sass/common/_base.scss */
 body {
-  font: 14px/2em "Droid Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #111111;
-  -webkit-font-smoothing: antialiased;
-  /* Fix for webkit rendering */
-  -webkit-text-size-adjust: 100%;
-  font-size: 12px/21px;
+    font: 14px/2em "Droid Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #111111;
+    -webkit-font-smoothing: antialiased;
+    /* Fix for webkit rendering */
+    -webkit-text-size-adjust: 100%;
+    font-size: 12px/21px;
 }
 
 /* line 14, ../sass/common/_base.scss */
 p {
-  width: 100%;
-  margin-bottom: 20px;
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 /* line 19, ../sass/common/_base.scss */
 strong {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 /* line 21, ../sass/common/_base.scss */
 h1, h2, h3, h4, h5, h6 {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 /* line 22, ../sass/common/_base.scss */
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
-  font-weight: inherit;
+    font-weight: inherit;
 }
 
 /* line 23, ../sass/common/_base.scss */
 h1 {
-  font-size: 46px;
-  line-height: 50px;
-  margin-bottom: 14px;
+    font-size: 46px;
+    line-height: 50px;
+    margin-bottom: 14px;
 }
 
 /* line 24, ../sass/common/_base.scss */
 h2 {
-  font-size: 35px;
-  line-height: 40px;
-  margin-bottom: 10px;
+    font-size: 35px;
+    line-height: 40px;
+    margin-bottom: 10px;
 }
 
 /* line 25, ../sass/common/_base.scss */
 h3 {
-  font-size: 28px;
-  line-height: 34px;
-  margin-bottom: 8px;
+    font-size: 28px;
+    line-height: 34px;
+    margin-bottom: 8px;
 }
 
 /* line 26, ../sass/common/_base.scss */
 h4 {
-  font-size: 21px;
-  line-height: 30px;
-  margin-bottom: 4px;
+    font-size: 21px;
+    line-height: 30px;
+    margin-bottom: 4px;
 }
 
 /* line 27, ../sass/common/_base.scss */
 h5 {
-  font-size: 17px;
-  line-height: 24px;
+    font-size: 17px;
+    line-height: 24px;
 }
 
 /* line 28, ../sass/common/_base.scss */
 h6 {
-  font-size: 14px;
-  line-height: 21px;
+    font-size: 14px;
+    line-height: 21px;
 }
 
 /* line 30, ../sass/common/_base.scss */
 .clear {
-  clear: both;
+    clear: both;
 }
 
 /* line 34, ../sass/common/_base.scss */
 .padHeader {
-  padding-top: 50px;
+    padding-top: 50px;
 }
 
 /* line 37, ../sass/common/_base.scss */
 .marginHeader {
-  margin-top: 50px;
+    margin-top: 50px;
 }
 
 /* McLeodLabs Site Structure.
  * ******************************************************/
 /* line 2, ../sass/common/_structure.scss */
 #header {
-  width: 100%;
-  height: 49px;
-  background: black;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background: url("../images/headerbg.png") repeat-x center left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  z-index: 9000;
+    width: 100%;
+    height: 49px;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: url("../images/headerbg.png") repeat-x center left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    z-index: 9000;
 }
 /* line 12, ../sass/common/_structure.scss */
 #header .logo {
-  position: absolute;
-  top: 7px;
-  left: 9px;
+    position: absolute;
+    top: 7px;
+    left: 9px;
 }
 /* line 17, ../sass/common/_structure.scss */
 #header .hud {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: white;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
 }
 /* line 22, ../sass/common/_structure.scss */
 #header .hud span {
-  color: #eee;
+    color: #eee;
 }
 /* line 26, ../sass/common/_structure.scss */
 #header .hud a {
-  display: inline-block;
-  text-decoration: none;
-  width: 24px;
-  height: 24px;
-  line-height: 24px;
-  text-align: center;
-  border: 1px solid black;
-  margin-left: 20px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
-  -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
-  box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
+    display: inline-block;
+    text-decoration: none;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: 1px solid black;
+    margin-left: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
+    -moz-box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.3);
 }
 
 /* line 41, ../sass/common/_structure.scss */
 #dashboard {
-  height: 100%;
-  /* IE6: treaded as min-height*/
+    height: 100%;
+    /* IE6: treaded as min-height*/
 }
 /* line 45, ../sass/common/_structure.scss */
 #dashboard .navwrap {
-  width: 50px;
-  background: #B22234;
-  height: auto !important;
-  /* real browsers */
-  height: 100%;
-  /* IE6: treaded as min-height*/
-  min-height: 100%;
-  /* real browsers */
-  position: fixed;
-  z-index: 8000;
-  top: 49px;
-  left: 0;
-  border-right: 1px solid rgba(0, 0, 0, 0.6);
+    width: 50px;
+    background: #B22234;
+    height: auto !important;
+    /* real browsers */
+    height: 100%;
+    /* IE6: treaded as min-height*/
+    min-height: 100%;
+    /* real browsers */
+    position: fixed;
+    z-index: 8000;
+    top: 49px;
+    left: 0;
+    border-right: 1px solid rgba(0, 0, 0, 0.6);
 }
 /* line 58, ../sass/common/_structure.scss */
 #dashboard .content {
-  margin-left: 50px;
-  background: #f1f1f1;
-  height: 100%;
+    margin-left: 50px;
+    background: #f1f1f1;
+    height: 100%;
 }
 /* line 62, ../sass/common/_structure.scss */
 #dashboard .content .leftcol {
-  float: left;
-  width: 20%;
+    float: left;
+    width: 20%;
 }
 /* line 66, ../sass/common/_structure.scss */
 #dashboard .content .leftcol .view {
-  position: absolute;
-  top: 60px;
-  left: -100px;
-  width: 100%;
-  height: 33em;
-  overflow-y: hidden;
-  opacity: 0;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -ms-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  transition-property: all;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
+    position: absolute;
+    top: 60px;
+    left: -100px;
+    width: 100%;
+    height: 33em;
+    overflow-y: hidden;
+    opacity: 0;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
 }
 /* line 75, ../sass/common/_structure.scss */
 #dashboard .content .leftcol .view.animate-in {
     left: 0;
     opacity: 1;
     z-index: 1;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
 }
 /* line 83, ../sass/common/_structure.scss */
 #dashboard .content .rightcol {
-  margin-left: 20%;
-  background: #e1e1e1;
-  height: auto !important;
-  /* real browsers */
-  height: 100%;
-  /* IE6: treaded as min-height*/
-  min-height: 100%;
-  /* real browsers */
-  -webkit-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    margin-left: 20%;
+    background: #e1e1e1;
+    height: auto !important;
+    /* real browsers */
+    height: 100%;
+    /* IE6: treaded as min-height*/
+    min-height: 100%;
+    /* real browsers */
+    -webkit-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
 }
 /* line 91, ../sass/common/_structure.scss */
 #dashboard .content .inner {
-  margin-right: 20px;
-  margin-left: 20px;
-  position: relative;
+    margin-right: 20px;
+    margin-left: 20px;
+    position: relative;
 }
 /* line 99, ../sass/common/_structure.scss */
 #dashboard .charts .inner {
-  position: relative;
+    position: relative;
 }
 /* line 101, ../sass/common/_structure.scss */
 #dashboard .charts .inner .chart {
-  position: absolute;
-  top: 10px;
-  opacity: 0;
-  width: 90%;
-  left: 5px;
-  /*right: -200px;*/
+    position: absolute;
+    top: 10px;
+    opacity: 0;
+    width: 90%;
+    left: 5px;
+    /*right: -200px;*/
 }
 /* line 108, ../sass/common/_structure.scss */
 #dashboard .charts .inner .chart.animate-in {
-  opacity: 1;
-  right: 0;
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -ms-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  transition-property: all;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
+    opacity: 1;
+    right: 0;
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
 }
 /* line 118, ../sass/common/_structure.scss */
 #dashboard .tabs {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  width: 100%;
-background: #1a2c41;
-background: -moz-linear-gradient(top, #356aa0 50%, #070d11 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #356aa0), color-stop(100%, #070d11));
-background: -webkit-linear-gradient(top, #356aa0 50%, #070d11 100%);
-background: -o-linear-gradient(top, #356aa0 50%, #070d11 100%);
-background: -ms-linear-gradient(top, #356aa0 50%, #070d11 100%);
-background: linear-gradient(to bottom, #356aa0 50%, #070d11 100%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    width: 100%;
+    background: #1a2c41;
+    background: -moz-linear-gradient(top, #356aa0 50%, #070d11 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(50%, #356aa0), color-stop(100%, #070d11));
+    background: -webkit-linear-gradient(top, #356aa0 50%, #070d11 100%);
+    background: -o-linear-gradient(top, #356aa0 50%, #070d11 100%);
+    background: -ms-linear-gradient(top, #356aa0 50%, #070d11 100%);
+    background: linear-gradient(to bottom, #356aa0 50%, #070d11 100%);
 }
 /* line 120, ../sass/common/_structure.scss */
 #dashboard .tabs a {
-  display: block;
-  width: 14% !important;
-  margin-left: auto;
-  margin-right: auto;
-  height: 50px;
-  background: #1a2c41;
-  background: -moz-linear-gradient(top, #356aa0 0%, #070d11 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #356aa0), color-stop(100%, #070d11));
-  background: -webkit-linear-gradient(top, #356aa0 0%, #070d11 100%);
-  background: -o-linear-gradient(top, #356aa0 0%, #070d11 100%);
-  background: -ms-linear-gradient(top, #356aa0 0%, #070d11 100%);
-  background: linear-gradient(to bottom, #356aa0 0%, #070d11 100%);
-  color:#ffffff;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1a2c41', endColorstr='#070d11',GradientType=0 );
-  text-decoration: none;
-  float: left;
-  position: relative;
-  text-align: center;
-  line-height: 50px;
-  -webkit-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-  -moz-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-  box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -ms-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  transition-property: all;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
+    display: block;
+    width: 14% !important;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    background: #1a2c41;
+    background: -moz-linear-gradient(top, #356aa0 0%, #070d11 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #356aa0), color-stop(100%, #070d11));
+    background: -webkit-linear-gradient(top, #356aa0 0%, #070d11 100%);
+    background: -o-linear-gradient(top, #356aa0 0%, #070d11 100%);
+    background: -ms-linear-gradient(top, #356aa0 0%, #070d11 100%);
+    background: linear-gradient(to bottom, #356aa0 0%, #070d11 100%);
+    color:#ffffff;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#1a2c41', endColorstr='#070d11',GradientType=0 );
+    text-decoration: none;
+    float: left;
+    position: relative;
+    text-align: center;
+    line-height: 50px;
+    -webkit-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
 }
 /* line 148, ../sass/common/_structure.scss */
 #dashboard .tabs a.active, #dashboard .tabs a:hover {
-  background: #356aa0;
-  background: -moz-linear-gradient(top, #356aa0 0%, #356aa0 50%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #356aa0), color-stop(50%, #356aa0));
-  background: -webkit-linear-gradient(top, #356aa0 0%, #356aa0 50%);
-  background: -o-linear-gradient(top, #356aa0 0%, #356aa0 50%);
-  background: -ms-linear-gradient(top, #356aa0 0%, #356aa0 50%);
-  background: linear-gradient(to bottom, #356aa0 0%, #356aa0 50%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#356aa0', endColorstr='#356aa0',GradientType=0 );
+    background: #356aa0;
+    background: -moz-linear-gradient(top, #356aa0 0%, #356aa0 50%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #356aa0), color-stop(50%, #356aa0));
+    background: -webkit-linear-gradient(top, #356aa0 0%, #356aa0 50%);
+    background: -o-linear-gradient(top, #356aa0 0%, #356aa0 50%);
+    background: -ms-linear-gradient(top, #356aa0 0%, #356aa0 50%);
+    background: linear-gradient(to bottom, #356aa0 0%, #356aa0 50%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#356aa0', endColorstr='#356aa0',GradientType=0 );
 }
 /* line 162, ../sass/common/_structure.scss */
 #dashboard .tabs a span {
-  display: block;
-  width: 100%;
-  height: 100%;
-  -webkit-box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
-  -moz-box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
-  box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
+    display: block;
+    width: 100%;
+    height: 100%;
+    -webkit-box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
+    -moz-box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
+    box-shadow: inset -1px 0px 0px rgba(255, 255, 255, 0.1);
+    font-size: 80%;
 }
 
 /* line 3, ../sass/common/_navigation.scss */
 #dashboard .nav li {
-  position: relative;
+    position: relative;
 }
 /* line 6, ../sass/common/_navigation.scss */
 #dashboard .nav li:first-child a {
-  border-top: none;
+    border-top: none;
 }
 /* line 12, ../sass/common/_navigation.scss */
 #dashboard .nav a {
-  display: block;
-  text-align: center;
-  height: 45px;
-  line-height: 49px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  -webkit-transition-duration: 0.2s;
-  -moz-transition-duration: 0.2s;
-  -o-transition-duration: 0.2s;
-  -ms-transition-duration: 0.2s;
-  transition-duration: 0.2s;
-  transition-property: all;
-  -moz-transition-property: all;
-  -webkit-transition-property: all;
-  -o-transition-property: all;
+    display: block;
+    text-align: center;
+    height: 45px;
+    line-height: 49px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+    border-top: 1px solid rgba(255, 255, 255, 0.3);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
+    -ms-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    transition-property: all;
+    -moz-transition-property: all;
+    -webkit-transition-property: all;
+    -o-transition-property: all;
 }
 /* line 22, ../sass/common/_navigation.scss */
 #dashboard .nav a:hover {
-  background: #961d14;
+    background: #961d14;
 }
 /* line 26, ../sass/common/_navigation.scss */
 #dashboard .nav a.active {
-  background: #961d14;
+    background: #961d14;
 }
 /* line 28, ../sass/common/_navigation.scss */
 #dashboard .nav a.active span {
-  position: absolute;
-  top: 15px;
-  right: -4px;
-  display: block;
-  width: 9px;
-  height: 16px;
-  background: url("../images/icons/play_9x12_left.png") no-repeat top left;
+    position: absolute;
+    top: 15px;
+    right: -4px;
+    display: block;
+    width: 9px;
+    height: 16px;
+    background: url("../images/icons/play_9x12_left.png") no-repeat top left;
 }
 
 @-ms-viewport {
-  width: device-width;
+    width: device-width;
 }
 
 /* line 5, ../sass/common/responsive/_all.scss */
 .clearfix {
-  *zoom: 1;
+    *zoom: 1;
 }
 
 /* line 10, ../sass/common/responsive/_all.scss */
 .clearfix:before,
 .clearfix:after {
-  display: table;
-  line-height: 0;
-  content: "";
+    display: table;
+    line-height: 0;
+    content: "";
 }
 
 /* line 16, ../sass/common/responsive/_all.scss */
 .clearfix:after {
-  clear: both;
+    clear: both;
 }
 
 /* line 20, ../sass/common/responsive/_all.scss */
 .hide-text {
-  font: 0/0 a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
+    font: 0/0 a;
+    color: transparent;
+    text-shadow: none;
+    background-color: transparent;
+    border: 0;
 }
 
 /* line 28, ../sass/common/responsive/_all.scss */
 .input-block-level {
-  display: block;
-  width: 100%;
-  min-height: 30px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+    display: block;
+    width: 100%;
+    min-height: 30px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* line 37, ../sass/common/responsive/_all.scss */
 .hidden {
-  display: none;
-  visibility: hidden;
+    display: none;
+    visibility: hidden;
 }
 
 /* line 42, ../sass/common/responsive/_all.scss */
 .visible-phone {
-  display: none !important;
+    display: none !important;
 }
 
 /* line 46, ../sass/common/responsive/_all.scss */
 .visible-tablet {
-  display: none !important;
+    display: none !important;
 }
 
 /* line 50, ../sass/common/responsive/_all.scss */
 .hidden-desktop {
-  display: none !important;
+    display: none !important;
 }
 
 /* line 54, ../sass/common/responsive/_all.scss */
 .visible-desktop {
-  display: inherit !important;
+    display: inherit !important;
 }
 
 @media only screen and (max-width: 1024px) {
-  /* line 2, ../sass/common/responsive/_1024.scss */
-  .hidden-desktop {
-    display: inherit !important;
-  }
+    /* line 2, ../sass/common/responsive/_1024.scss */
+    .hidden-desktop {
+        display: inherit !important;
+    }
 
-  /* line 5, ../sass/common/responsive/_1024.scss */
-  .visible-desktop {
-    display: none !important;
-  }
+    /* line 5, ../sass/common/responsive/_1024.scss */
+    .visible-desktop {
+        display: none !important;
+    }
 
-  /* line 8, ../sass/common/responsive/_1024.scss */
-  .visible-tablet {
-    display: inherit !important;
-  }
+    /* line 8, ../sass/common/responsive/_1024.scss */
+    .visible-tablet {
+        display: inherit !important;
+    }
 
-  /* line 11, ../sass/common/responsive/_1024.scss */
-  .hidden-tablet {
-    display: none !important;
-  }
+    /* line 11, ../sass/common/responsive/_1024.scss */
+    .hidden-tablet {
+        display: none !important;
+    }
 
-  /* line 17, ../sass/common/responsive/_1024.scss */
-  #dashboard .content .leftcol {
-    width: 250px;
-  }
-  /* line 20, ../sass/common/responsive/_1024.scss */
-  #dashboard .content .rightcol {
-    margin-left: 251px;
-  }
+    /* line 17, ../sass/common/responsive/_1024.scss */
+    #dashboard .content .leftcol {
+        width: 250px;
+    }
+    /* line 20, ../sass/common/responsive/_1024.scss */
+    #dashboard .content .rightcol {
+        margin-left: 251px;
+    }
 }
 @media only screen and (max-width: 700px) {
-  /* line 2, ../sass/common/responsive/_700.scss */
-  .visible-phone {
-    display: inherit !important;
-  }
+    /* line 2, ../sass/common/responsive/_700.scss */
+    .visible-phone {
+        display: inherit !important;
+    }
 
-  /* line 5, ../sass/common/responsive/_700.scss */
-  .hidden-phone {
-    display: none !important;
-  }
+    /* line 5, ../sass/common/responsive/_700.scss */
+    .hidden-phone {
+        display: none !important;
+    }
 
-  /* line 11, ../sass/common/responsive/_700.scss */
-  #dashboard .content .leftcol {
-    float: none;
-    width: 100%;
-  }
+    /* line 11, ../sass/common/responsive/_700.scss */
+    #dashboard .content .leftcol {
+        float: none;
+        width: 100%;
+    }
 }
-      
+
 .chart {
     opacity: 1 !important;
 } 
@@ -812,4 +819,3 @@ option {
     width:100%;
     background: #356aa0; 
 }*/
-    

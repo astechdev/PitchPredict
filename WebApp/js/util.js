@@ -34,7 +34,7 @@ function initialize() {
 
     jQuery( "#logoutcontainer" ).hide();
 
-    var hammertime = $("#dashboard").hammer();
+    var hammertime = $('body').hammer();
     console.log(hammertime);
 
     hammertime.on("swipeleft", function(ev) 
