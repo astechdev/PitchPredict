@@ -1,3 +1,8 @@
+function loadLogin()
+{
+    jQuery( ".nav" ).append("<li><a onclick=\"TrackButtonClicked('Navigation', 'viewed', 'User', 1);\" data-view=\"user\"><img src=\"images/icons/profile.png\"/><span></span></a></li>");
+}
+
 function loginRequest()
 {
     TrackButtonClicked('Login', 'clicked', 'Attempt to Login', 1);

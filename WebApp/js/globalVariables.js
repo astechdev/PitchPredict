@@ -2,7 +2,10 @@
 //each chart defines its own var data and var options
 var chart;
 var phonegap = 'false';
+var googleAnalyticsInitialized = 'false';
 var gaPlugin;
+var gaAccount = 'UA-29743249-1';
+var gaDomianName = 'pitchpredict.com';
 var chartClicks = 0;
 var numberOfChartClicksBeforeShowAds = 1000000;
 var youTubePlayList = 'PL9C5815B418D1508E';

@@ -10,13 +10,13 @@
         <!--<link rel="stylesheet" type="text/css" href="css/scoreboard.css" />-->
         <link rel="stylesheet" type="text/css" href="css/pitch_recorder.css" />
         <link rel="stylesheet" type="text/css" href="css/filters.css" />
-        <link rel="stylesheet" type="text/css" href="css/charts.css" />
+        <!--<link rel="stylesheet" type="text/css" href="css/charts.css" />-->
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
         <!--<link rel="stylesheet" type="text/css" href="css/team_lineup.css" />-->
         <link rel='stylesheet' type='text/css' href='css/googleapis.css'>
         
     </head>
-    <body onload="initialize();" onunload="goingAway();">
+    <body onload="initialize();" onunload="deinitialize();">
 		<div id="header">
 			<img class="logo" src="images/logo.png"/>
 <!--			<div class="hud">
@@ -31,10 +31,9 @@
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Home Lineup', 1);" data-view="homelineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Field', 1);" data-view="field"><img src="images/icons/base.png"/><span></span></a></li>
 					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitch Selection', 1);" data-view="pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
-					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);" data-view="filters"><img src=""/><span></span></a></li>
-					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);" data-view="hotzone"><img src=""/><span></span></a></li>
-                                        <li id="usernav"><a onclick="TrackButtonClicked('Navigation', 'viewed', 'User', 1);" data-view="user"><img src=""/><span></span></a></li>
-					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Help', 1);" data-view="help"><img src=""/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);" data-view="filters"><img src="images/icons/filter.png"/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);" data-view="hotzone"><img src="images/icons/zone.png"/><span></span></a></li>
+					<li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Help', 1);" data-view="help"><img src="images/icons/help.png"/><span></span></a></li>
 					<!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
 				</ul>
 			</div>
@@ -215,26 +214,25 @@
                 <script src="GAPlugin.js"></script>
                 
                 <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
-                <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
-                
-                <script type="text/javascript" src="js/googleAnalytics.js"></script>
-
-                <script type="text/javascript" src="js/globalVariables.js"></script>
-                
-                <script type="text/javascript" src="js/google.jsapi.js"></script>	
+                <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>	
 
                 <script type="text/javascript" src="js/sammy.js"></script>
-                <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>                
+                <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>  
+
+                <script type="text/javascript" src="js/globalVariables.js"></script> 
+                
+                <script type="text/javascript" src="js/google.jsapi.js"></script>     
+                
+                <script type="text/javascript" src="js/googleAnalytics.js"></script>   
+                <script type="text/javascript" src="js/fastclick.js"></script>     
                 
                 <script type="text/javascript" src="js/jquery.hammer.js"></script>
                 <script type="text/javascript" src="js/touchEvents.js"></script>
                 
                 <script type="text/javascript" src="js/util.js"></script>
-
-                <!--<script type="text/javascript" src="js/index.js"></script>-->
+                
                 <script type="text/javascript" src="js/situations.js"></script>
-                <!--<script type="text/javascript" src="js/results.js"></script>-->
-
+                
                 <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
                 <script type="text/javascript" src="js/Components/login.js"></script>
                 <script type="text/javascript" src="js/Components/dialog.js"></script>
@@ -246,78 +244,5 @@
                 <script type="text/javascript" src="js/Components/field.js"></script>
                 <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
                 <!--<script src="http://debug.phonegap.com/target/target-script-min.js#pitchpredict"></script>-->
-                <script type="text/javascript">
-                    jQuery(document).ready(function() {
-                            if(phonegap != 'true')
-                            {
-                                //Remove the user nav if not phonegap app.  This way users can use the "Web App" for free, but have to 
-                                //pay for app to get additional traking functionality plus no ads
-//                                $( "#usernav" ).remove();
-                            }
-                            
-                            jQuery( "#logoutcontainer" ).hide();
-
-                            var hammertime = $("#dashboard").hammer();
-                            console.log(hammertime);
-                            
-                            hammertime.on("swipeleft", function(ev) 
-                            {
-                                if(window.console) { console.log(ev); }
-                                leftSwipeEventHandler();
-                            });
-                            
-                            hammertime.on("swiperight", function(ev) 
-                            {
-                                if(window.console) { console.log(ev); }
-                                rightSwipeEventHandler();
-                            });
-                            
-                            hammertime.on("swipeup", function(ev) 
-                            {
-                                if(window.console) { console.log(ev); }
-                                upSwipeEventHandler();
-                            });
-                            
-                            hammertime.on("swipedown", function(ev) 
-                            {
-                                if(window.console) { console.log(ev); }
-                                downSwipeEventHandler();
-                            });
-//                            
-//                            jQuery('#dashboard').bind('swiperight',rightSwipeEventHandler());
-//                            jQuery('#dashboard').bind('swipeleft',leftSwipeEventHandler());
-//                            jQuery('#dashboard').bind('swipeup',upSwipeEventHandler());
-//                            jQuery('#dashboard').bind('swipedown',downSwipeEventHandler());
-                            
-                            load();
-   
-                            //need to initialize the dialog div so that 
-                            //we can set the resize function
-                            $( "#dialog" ).dialog({
-                              autoOpen: false
-                            }); 
-                                
-                            jQuery(window).resize(function() { 
-                                
-                                dialogheight = $(window).height()*.75;
-                                dialogwidth = $(window).width()*.80;
-                                
-                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-                                
-                                $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-                                                  
-                                $( "#dialog" ).dialog( "option", "width", dialogwidth );
-                                
-                                $( "#dialog" ).dialog( "option", "height", dialogheight );
-                                  
-                                if(phonegap != 'true')
-                                {                                    
-                                    chartheight = ($(window).height()*.75);
-                                    chartwidth = chartheight*1.40;                          
-                                    setCurrentChart(currentchart);
-                                }
-                            });
-                        });
-                </script>
     </body>
 </html>

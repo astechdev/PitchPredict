@@ -2,30 +2,30 @@ function rightSwipeEventHandler()
 {
     var chartsWrapper = $(".charts");
     var chartsTabs = $(chartsWrapper).find(".tabs");
-    var clickNextChart = $(chartsTabs).find("a.active").prevOrLast();
+    var chartsDiv = $(chartsWrapper).find(".inner");
+    var nextChartDiv = $(chartsDiv).find("div.animate-in").prevOrLast();
+    var clickNextChart = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
     clickNextChart.trigger('click'); 
-    var activeChartTab = $(chartsTabs).find("a.active");
-    var nextChartTab = activeChartTab.prevOrLast();
     
     var activeNavLink = $(".nav").find('a.active');
     
-    dashboard.loadView(activeNavLink.attr("data-view"), nextChartTab.attr("data-chart"));
-    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartTab.attr("data-chart");
+    dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
+    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
 }
 
 function leftSwipeEventHandler()
 {  
     var chartsWrapper = $(".charts");
     var chartsTabs = $(chartsWrapper).find(".tabs");
-    var clickNextChart = $(chartsTabs).find("a.active").nextOrFirst();
+    var chartsDiv = $(chartsWrapper).find(".inner");
+    var nextChartDiv = $(chartsDiv).find("div.animate-in").nextOrFirst();
+    var clickNextChart = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
     clickNextChart.trigger('click'); 
-    var activeChartTab = $(chartsTabs).find("a.active");
-    var nextChartTab = activeChartTab.nextOrFirst();
     
     var activeNavLink = $(".nav").find('a.active');
     
-    dashboard.loadView(activeNavLink.attr("data-view"), nextChartTab.attr("data-chart"));
-    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartTab.attr("data-chart");
+    dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
+    window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
 }
 
 function upSwipeEventHandler()

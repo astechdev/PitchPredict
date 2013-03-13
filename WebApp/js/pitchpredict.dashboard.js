@@ -120,9 +120,9 @@ var dashboard = dashboard || {};
 
 })(dashboard);
 
-$(window).resize(function() {
-  dashboard.dimensions();
-});
-$(document).ready(function() {
-  dashboard.init();
-});
+//$(window).resize(function() {
+//  dashboard.dimensions();
+//});
+//$(document).ready(function() {
+//  dashboard.init();
+//});
