@@ -85,6 +85,9 @@ body {
     -webkit-font-smoothing: antialiased;
     /* Fix for webkit rendering */
     -webkit-text-size-adjust: 100%;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
     font-size: 12px/21px;
 }
 
@@ -263,6 +266,9 @@ h6 {
     -moz-transition-property: all;
     -webkit-transition-property: all;
     -o-transition-property: all;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
 }
 /* line 75, ../sass/common/_structure.scss */
 #dashboard .content .leftcol .view.animate-in {
@@ -368,6 +374,9 @@ h6 {
     -moz-transition-property: all;
     -webkit-transition-property: all;
     -o-transition-property: all;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
 }
 /* line 148, ../sass/common/_structure.scss */
 #dashboard .tabs a.active, #dashboard .tabs a:hover {
@@ -416,6 +425,9 @@ h6 {
     -moz-transition-property: all;
     -webkit-transition-property: all;
     -o-transition-property: all;
+    transform: translate3d(0,0,0);
+    -webkit-transform: translate3d(0,0,0);
+    -webkit-transform: translateZ(0);
 }
 /* line 22, ../sass/common/_navigation.scss */
 #dashboard .nav a:hover {

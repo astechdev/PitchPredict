@@ -4,7 +4,7 @@ function initialize() {
     
     window.addEventListener('load', function () {
 		FastClick.attach(document.body);
-                debug.log('fastclick initialized');
+                console.log('fastclick initialized');
 	}, false);
     
     jQuery(window).resize(function() 
@@ -71,10 +71,13 @@ function initialize() {
 }
 
 function onDeviceReady() {
-    debug.log('Device Ready');
+    console.log('Device Ready');
     jQuery(window).off('resize');
+    console.log('unbind resize events');
     phonegap = 'true';
+    console.log('set phonegap to true');
     loadUserBasedFunctionality();
+    console.log('userbased functionaility loaded');
 }
 
 function deinitialize() {
