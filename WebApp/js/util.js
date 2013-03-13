@@ -1,6 +1,6 @@
 function initialize() {
     // Wait for Cordova to connect with the device
-    document.addEventListener("deviceready", onDeviceReady, true);
+    document.addEventListener("deviceready", onDeviceReady, false);
     
     window.addEventListener('load', function () {
 		FastClick.attach(document.body);
