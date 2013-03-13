@@ -1,11 +1,11 @@
 function initialize() {
-    // Wait for Cordova to connect with the device
-    document.addEventListener("deviceready", onDeviceReady, false);
-    
-    window.addEventListener('load', function () {
-		FastClick.attach(document.body);
-                console.log('fastclick initialized');
-	}, false);
+//    // Wait for Cordova to connect with the device
+//    document.addEventListener("deviceready", onDeviceReady, false);
+//    
+//    window.addEventListener('load', function () {
+//		FastClick.attach(document.body);
+//                console.log('fastclick initialized');
+//	}, false);
     
     jQuery(window).resize(function() 
     { 

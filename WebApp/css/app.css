@@ -257,7 +257,7 @@ h6 {
     height: 33em;
     overflow-y: hidden;
     opacity: 0;
-    -webkit-transition-duration: 0.2s;
+/*    -webkit-transition-duration: 0.2s;
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     -ms-transition-duration: 0.2s;
@@ -265,7 +265,7 @@ h6 {
     transition-property: all;
     -moz-transition-property: all;
     -webkit-transition-property: all;
-    -o-transition-property: all;
+    -o-transition-property: all;*/
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -webkit-transform: translateZ(0);
@@ -316,7 +316,7 @@ h6 {
 #dashboard .charts .inner .chart.animate-in {
     opacity: 1;
     right: 0;
-    -webkit-transition-duration: 0.2s;
+/*    -webkit-transition-duration: 0.2s;
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     -ms-transition-duration: 0.2s;
@@ -324,7 +324,7 @@ h6 {
     transition-property: all;
     -moz-transition-property: all;
     -webkit-transition-property: all;
-    -o-transition-property: all;
+    -o-transition-property: all;*/
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -webkit-transform: translateZ(0);
@@ -365,7 +365,7 @@ h6 {
     -webkit-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
     box-shadow: inset 1px 0px 0px rgba(0, 0, 0, 0.2);
-    -webkit-transition-duration: 0.2s;
+/*    -webkit-transition-duration: 0.2s;
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     -ms-transition-duration: 0.2s;
@@ -373,7 +373,7 @@ h6 {
     transition-property: all;
     -moz-transition-property: all;
     -webkit-transition-property: all;
-    -o-transition-property: all;
+    -o-transition-property: all;*/
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -webkit-transform: translateZ(0);
@@ -416,7 +416,7 @@ h6 {
     line-height: 49px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
     border-top: 1px solid rgba(255, 255, 255, 0.3);
-    -webkit-transition-duration: 0.2s;
+/*    -webkit-transition-duration: 0.2s;
     -moz-transition-duration: 0.2s;
     -o-transition-duration: 0.2s;
     -ms-transition-duration: 0.2s;
@@ -424,7 +424,7 @@ h6 {
     transition-property: all;
     -moz-transition-property: all;
     -webkit-transition-property: all;
-    -o-transition-property: all;
+    -o-transition-property: all;*/
     transform: translate3d(0,0,0);
     -webkit-transform: translate3d(0,0,0);
     -webkit-transform: translateZ(0);
