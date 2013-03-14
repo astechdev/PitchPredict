@@ -42,32 +42,48 @@ function initialize() {
 
     jQuery( "#logoutcontainer" ).hide();
 
-    var hammertime = $('body').hammer();
-    console.log(hammertime);
+//    var hammertime = $('body').hammer();
+//    console.log(hammertime);
+//
+//    hammertime.on("swipeleft", function(ev) 
+//    {
+//        if(window.console) { console.log(ev); }
+//        leftSwipeEventHandler();
+//    });
+//
+//    hammertime.on("swiperight", function(ev) 
+//    {
+//        if(window.console) { console.log(ev); }
+//        rightSwipeEventHandler();
+//    });
+//
+//    hammertime.on("swipeup", function(ev) 
+//    {
+//        if(window.console) { console.log(ev); }
+//        upSwipeEventHandler();
+//    });
+//
+//    hammertime.on("swipedown", function(ev) 
+//    {
+//        if(window.console) { console.log(ev); }
+//        downSwipeEventHandler();
+//    });
 
-    hammertime.on("swipeleft", function(ev) 
-    {
-        if(window.console) { console.log(ev); }
-        leftSwipeEventHandler();
-    });
-
-    hammertime.on("swiperight", function(ev) 
-    {
-        if(window.console) { console.log(ev); }
+    jQuery('body').swiperight(function() {
         rightSwipeEventHandler();
     });
 
-    hammertime.on("swipeup", function(ev) 
-    {
-        if(window.console) { console.log(ev); }
-        upSwipeEventHandler();
+    jQuery('body').swipeleft(function() {
+        leftSwipeEventHandler();
     });
 
-    hammertime.on("swipedown", function(ev) 
-    {
-        if(window.console) { console.log(ev); }
-        downSwipeEventHandler();
-    });
+//    jQuery('body').swipeup(function() {
+//        upSwipeEventHandler();
+//    });
+//
+//    jQuery('body').swipedown(function() {
+//        downSwipeEventHandler();
+//    });
 
     load();
 
@@ -96,6 +112,15 @@ function onDeviceReady()
     document.addEventListener("online", onDeviceOnline, false);
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("menubutton", onMenuKeyDown, false);
+    
+    //Track device properties
+    var element = document.getElementById('deviceProperties');
+    TrackButtonClicked('Device', 'Name', device.name, 1);
+    TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
+    TrackButtonClicked('Device', 'Platform', device.platform, 1);
+    TrackButtonClicked('Device', 'UUID', device.uuid, 1);
+    TrackButtonClicked('Device', 'Version', device.version, 1);
+    
 }
 
 function onDeviceOnline() 
