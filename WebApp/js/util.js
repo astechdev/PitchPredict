@@ -106,7 +106,8 @@ function onDeviceOffline()
 
 function onMenuKeyDown() 
 {
-    console.log('onMenuKeyDown');  
+    console.log('onMenuKeyDown');
+    helpDialogInit(null, "Menu", "Manage your saved queries.");
 }
 
 function deinitialize() {

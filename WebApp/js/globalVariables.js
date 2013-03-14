@@ -113,7 +113,7 @@ var filtersHelp = "This sections presents the real power of Pitch Predict.  "+
 "pitcher, catcher, batter, on deck batter, or base runner; or if you just want "+
 "to examine a game situation for any of these.  What's more is you can choose "+
 "any, all, or anywhere in between.  Pitch Predict does not confine our users "+
-"to analyzing data our way, rather we allow you to determine whats important in "+
+"to analyzing data our way, rather we allow you to determine what is important in "+
 "your analysis.";
 var hotzoneHelp = "The hot zone gives a pitcher's or batter's percentage of "+
 "success in a given zone for the current game scenario, game situation, pitch "+
