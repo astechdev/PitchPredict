@@ -1,14 +1,22 @@
 function initialize() {
-//    // Wait for Cordova to connect with the device
-//    document.addEventListener("deviceready", onDeviceReady, false);
-//    
-//    window.addEventListener('load', function () {
-//		FastClick.attach(document.body);
-//                console.log('fastclick initialized');
-//	}, false);
+    // Wait for Cordova to connect with the device
+    document.addEventListener("deviceready", onDeviceReady, false);
+           
+    jQuery(window).load(function() 
+    {
+        FastClick.attach(document.body);
+        console.log('fastclick initialized');
+    });
+
+    jQuery(window).unload(function() 
+    {
+        deinitialize();
+        console.log('deinitialized');
+    });
     
     jQuery(window).resize(function() 
     { 
+        console.log('window resize events set');
         dialogheight = $(window).height()*.75;
         dialogwidth = $(window).width()*.80;
 
@@ -30,7 +38,7 @@ function initialize() {
     
     //Remove the user based funvtionality if not phonegap app.  This way users can use the "Web App" for free, but have to 
     //pay for app to get additional traking functionality plus no ads
-    loadUserBasedFunctionality();    
+//    loadUserBasedFunctionality();    
 
     jQuery( "#logoutcontainer" ).hide();
 
@@ -70,14 +78,35 @@ function initialize() {
     });
 }
 
-function onDeviceReady() {
+function onDeviceReady() 
+{
     console.log('Device Ready');
     jQuery(window).off('resize');
-    console.log('unbind resize events');
+    console.log('unbind window resize events');
     phonegap = 'true';
     console.log('set phonegap to true');
     loadUserBasedFunctionality();
-    console.log('userbased functionaility loaded');
+    console.log('userbased functionaility loaded');    
+    
+    // Register some event listeners
+    document.addEventListener("online", onDeviceOnline, false);
+    document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("menubutton", onMenuKeyDown, false);
+}
+
+function onDeviceOnline() 
+{
+    console.log('onDeviceOnline');  
+}
+
+function onDeviceOffline() 
+{
+    console.log('onDeviceOffline');  
+}
+
+function onMenuKeyDown() 
+{
+    console.log('onMenuKeyDown');  
 }
 
 function deinitialize() {
