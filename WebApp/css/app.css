@@ -724,6 +724,52 @@ option {
     width: 60%;
 }
 
+#pitchcountercontainer {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+#pitchrecordertable {
+    border-collapse: collapse;
+    position: relative;
+    text-align: left;
+    font-size: 100%;
+    width: 100%;
+}
+
+#pitchrecordertable td {
+    width:25%;
+}
+
+.activeRow{
+	background: #2568a0;
+	color:#FFF;
+	font-weight: bold;
+	height:48px;
+}
+
+.inactiveRow{
+	background-color:#DDD;
+	color:#000;
+	font-weight: bold;
+	height:25px;
+	font-size:0.9em;
+}
+
+.headerRow{
+	background-color:#3b3b3b;
+	border-bottom:1px solid #666666;
+	height:25px;
+	color:#CCC;
+}
+
+.addRow{
+	background-color:#3B3B3B;
+	height:25px;
+}
+
+
 /*.bounds {
     color:#ffffff;
     overflow:hidden; 

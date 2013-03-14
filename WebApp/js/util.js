@@ -85,8 +85,12 @@ function onDeviceReady()
     console.log('unbind window resize events');
     phonegap = 'true';
     console.log('set phonegap to true');
-    loadUserBasedFunctionality();
-    console.log('userbased functionaility loaded');    
+//    loadUserBasedFunctionality();
+//    console.log('userbased functionaility loaded'); 
+//    
+    //Remove user preferences on phonegap app since menu button will
+    //contain this functionality.
+    jQuery('#preferences').remove();
     
     // Register some event listeners
     document.addEventListener("online", onDeviceOnline, false);
@@ -115,9 +119,9 @@ function deinitialize() {
     gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
 }
 
-function loadUserBasedFunctionality() {
-    loadLogin();
-}
+//function loadUserBasedFunctionality() {
+//    loadLogin();
+//}
 
 jQuery.fn.nextOrFirst = function(selector)
 {
