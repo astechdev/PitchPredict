@@ -4,10 +4,13 @@ function rightSwipeEventHandler()
     var chartsTabs = $(chartsWrapper).find(".tabs");
     var chartsDiv = $(chartsWrapper).find(".inner");
     var nextChartDiv = $(chartsDiv).find("div.animate-in").prevOrLast();
-    var clickNextChart = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
-    clickNextChart.trigger('click'); 
+    var nextNavLink = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
+    nextNavLink.trigger('click'); 
     
     var activeNavLink = $(".nav").find('a.active');
+
+    activeNavLink.removeClass("active");
+    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
@@ -19,10 +22,13 @@ function leftSwipeEventHandler()
     var chartsTabs = $(chartsWrapper).find(".tabs");
     var chartsDiv = $(chartsWrapper).find(".inner");
     var nextChartDiv = $(chartsDiv).find("div.animate-in").nextOrFirst();
-    var clickNextChart = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
-    clickNextChart.trigger('click'); 
+    var nextNavLink = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
+    nextNavLink.trigger('click'); 
     
     var activeNavLink = $(".nav").find('a.active');
+
+    activeNavLink.removeClass("active");
+    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
