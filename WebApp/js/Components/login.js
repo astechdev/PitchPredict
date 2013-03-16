@@ -5,6 +5,7 @@
 
 function loginRequest()
 {
+    loadingDialogInit();
     TrackButtonClicked('Login', 'clicked', 'Attempt to Login', 1);
     
     var url = 'http://www.pitchpredict.com/PitchPredict/Services/login.php?UserName='+jQuery('#userName').val()+'&password='+jQuery('#password').val();
@@ -44,12 +45,21 @@ function register()
 {
     TrackButtonClicked('Register', 'clicked', 'Attempt to Register', 1);
     
-    if(phonegap != "false")
+//    if(phonegap != "false")
+//    {
+//        navigator.app.loadUrl('http://www.pitchpredict.com/index.php?option=com_users&view=registration', {openExternal:true});
+//    }
+//    else
+//    {
+//        window.open('http://www.pitchpredict.com/index.php?option=com_users&view=registration', '_blank');
+//    } 
+
+    if(userInfoMap.UserName === "" || userInfoMap.UserName === null || userInfoMap.UserName === "undefined" || userInfoMap.UserName === "false")
     {
-        navigator.app.loadUrl('http://www.pitchpredict.com/index.php?option=com_users&view=registration', {openExternal:true});
+        registerDialogInit();
     }
     else
     {
-        window.open('http://www.pitchpredict.com/index.php?option=com_users&view=registration', '_blank');
-    } 
+        helpDialogInit("alert", "Warning", "You are already registered and logged into PitchPredict.  ");
+    }
 }

@@ -151,13 +151,15 @@
 						<div data-view="user" class="view">
                                                     <span>Preferences</span>
                                                     <div id="logincontainer">
-                                                        <label>Username:  
-                                                            <input type="text" id="userName" name="userName" tabindex="1" class="text" />
-                                                        </label>
-                                                        <label>Password: 
-                                                            <input type="password" id="password" name="password" tabindex="2" class="text" />
-                                                        </label>
-                                                        <input type="Button" class="helpbuttons" onclick="loginRequest();" value="Log In">
+                                                        <form id="loginForm">
+                                                            <label>Username:  
+                                                                <input type="text" id="userName" name="userName" tabindex="1" class="text" />
+                                                            </label>
+                                                            <label>Password: 
+                                                                <input type="password" id="password" name="password" tabindex="2" class="text" />
+                                                            </label>
+                                                            <button type="Submit" class="helpbuttons" onclick="loginRequest();">Log In</button>
+                                                        </form>
                                                         <input type="Button" class="helpbuttons" onclick="register();" value="Register">
                                                     </div>
                                                     <div id="logoutcontainer">
@@ -219,10 +221,11 @@
 		</div> 
         
                 <script type="text/javascript" src="js/libs/jquery-ui-1.10.0.custom.min.js"></script>
-                <!--<script type="text/javascript" src="js/libs/jquery.hammer.js"></script>-->
+                <script type="text/javascript" src="js/libs/jquery.hammer.js"></script>
                 <script type="text/javascript" src="js/libs/fastclick.js"></script>     
-                <script type="text/javascript" src="js/libs/jquery.mobile.custom.js"></script>     
-                <script type="text/javascript" src="js/libs/google.jsapi.js"></script> 
+                <!--<script type="text/javascript" src="js/libs/jquery.validate.js"></script>-->     
+                <!--<script type="text/javascript" src="js/libs/jquery.mobile.custom.js"></script>-->     
+
 
                 <script type="text/javascript" src="js/sammy.js"></script>
                 <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script> 
@@ -240,7 +243,9 @@
                 <script type="text/javascript" src="js/Components/filters.js"></script>
                 <script type="text/javascript" src="js/Components/hotzone.js"></script>
                 <script type="text/javascript" src="js/Components/field.js"></script>
-                <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>                
+                <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
+                
+                <script type="text/javascript" src="js/libs/google.jsapi.js"></script> 
                 
                 <!--PhoneGap Javascript-->
                 <script src="phonegap.js"></script>

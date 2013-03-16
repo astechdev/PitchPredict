@@ -33,7 +33,7 @@
     
     <access origin="http://pitchpredict.com" subdomains="true" browserOnly="true"/>
     
-    <icon src="images/icon.png" />
+    <icon src="images/icons/launcher.ico" />
 
-    <gap:splash src="images/splash.jpeg" />
+    <gap:splash src="images/icons/splash.jpeg" />
 </widget>

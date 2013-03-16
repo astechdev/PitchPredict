@@ -5,12 +5,12 @@ function rightSwipeEventHandler()
     var chartsDiv = $(chartsWrapper).find(".inner");
     var nextChartDiv = $(chartsDiv).find("div.animate-in").prevOrLast();
     var nextNavLink = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
-    nextNavLink.trigger('click'); 
+    nextNavLink.click(); 
     
     var activeNavLink = $(".nav").find('a.active');
 
-    activeNavLink.removeClass("active");
-    nextNavLink.addClass("active");
+//    activeNavLink.removeClass("active");
+//    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
@@ -23,12 +23,12 @@ function leftSwipeEventHandler()
     var chartsDiv = $(chartsWrapper).find(".inner");
     var nextChartDiv = $(chartsDiv).find("div.animate-in").nextOrFirst();
     var nextNavLink = $(chartsTabs).find("[data-chart='"+nextChartDiv.attr("data-chart")+"']");
-    nextNavLink.trigger('click'); 
+    nextNavLink.click(); 
     
     var activeNavLink = $(".nav").find('a.active');
 
-    activeNavLink.removeClass("active");
-    nextNavLink.addClass("active");
+//    activeNavLink.removeClass("active");
+//    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");

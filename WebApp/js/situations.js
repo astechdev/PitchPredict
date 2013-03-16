@@ -1,5 +1,6 @@
 function load()
 {
+//    loadingDialogInit();
 //    $('#filters').hide();
     //reinitialize some maps
 //    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")

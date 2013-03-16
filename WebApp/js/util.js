@@ -42,47 +42,39 @@ function initialize() {
 
     jQuery( "#logoutcontainer" ).hide();
 
-//    var hammertime = $('body').hammer();
-//    console.log(hammertime);
-//
-//    hammertime.on("swipeleft", function(ev) 
-//    {
-//        if(window.console) { console.log(ev); }
-//        leftSwipeEventHandler();
-//    });
-//
-//    hammertime.on("swiperight", function(ev) 
-//    {
-//        if(window.console) { console.log(ev); }
-//        rightSwipeEventHandler();
-//    });
-//
-//    hammertime.on("swipeup", function(ev) 
-//    {
-//        if(window.console) { console.log(ev); }
-//        upSwipeEventHandler();
-//    });
-//
-//    hammertime.on("swipedown", function(ev) 
-//    {
-//        if(window.console) { console.log(ev); }
-//        downSwipeEventHandler();
-//    });
+    var hammertime = $('body').hammer();
+    console.log(hammertime);
 
-    jQuery('body').swiperight(function() {
-        rightSwipeEventHandler();
-    });
-
-    jQuery('body').swipeleft(function() {
+    hammertime.on("swipeleft", function(ev) 
+    {
+        if(window.console) { console.log(ev); }
         leftSwipeEventHandler();
     });
 
-//    jQuery('body').swipeup(function() {
-//        upSwipeEventHandler();
+    hammertime.on("swiperight", function(ev) 
+    {
+        if(window.console) { console.log(ev); }
+        rightSwipeEventHandler();
+    });
+
+    hammertime.on("swipeup", function(ev) 
+    {
+        if(window.console) { console.log(ev); }
+        upSwipeEventHandler();
+    });
+
+    hammertime.on("swipedown", function(ev) 
+    {
+        if(window.console) { console.log(ev); }
+        downSwipeEventHandler();
+    });
+
+//    jQuery('body').swiperight(function() {
+//        rightSwipeEventHandler();
 //    });
 //
-//    jQuery('body').swipedown(function() {
-//        downSwipeEventHandler();
+//    jQuery('body').swipeleft(function() {
+//        leftSwipeEventHandler();
 //    });
 
     load();
