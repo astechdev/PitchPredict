@@ -94,7 +94,6 @@ function initialize() {
     
     jQuery(window).resize(function() 
     { 
-        console.log('window resize events set');
         dialogheight = $(window).height()*.75;
         dialogwidth = $(window).width()*.80;
 

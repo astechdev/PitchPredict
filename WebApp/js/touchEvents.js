@@ -9,8 +9,8 @@ function rightSwipeEventHandler()
     
     var activeNavLink = $(".nav").find('a.active');
 
-//    activeNavLink.removeClass("active");
-//    nextNavLink.addClass("active");
+    //    activeNavLink.removeClass("active");
+    //    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
@@ -27,8 +27,8 @@ function leftSwipeEventHandler()
     
     var activeNavLink = $(".nav").find('a.active');
 
-//    activeNavLink.removeClass("active");
-//    nextNavLink.addClass("active");
+    //    activeNavLink.removeClass("active");
+    //    nextNavLink.addClass("active");
     
     dashboard.loadView(activeNavLink.attr("data-view"), nextChartDiv.attr("data-chart"));
     window.location.href = "#/" + activeNavLink.attr("data-view") + "/" + nextChartDiv.attr("data-chart");
