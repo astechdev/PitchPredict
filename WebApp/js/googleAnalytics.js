@@ -1,6 +1,6 @@
 function googleAnalyticsInit() 
 {
-//    console.log('gaInit');
+    //    console.log('gaInit');
     if(googleAnalyticsInitialized != 'true')
     {
         if(phonegap != 'true')
@@ -10,16 +10,19 @@ function googleAnalyticsInit()
             _gaq.push(['_trackPageview']);
 
             (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                var ga = document.createElement('script');
+                ga.type = 'text/javascript';
+                ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(ga, s);
             })();
             console.log('Google Analytics Initialized');
         }
         else
         {
             gaPlugin = window.plugins.gaPlugin;        
-        //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+            //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
             gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, gaAccount, 50);
             PageButtonClicked(gaDomianName);
         }
