@@ -238,6 +238,8 @@ function updateCharts(updatehotzone)
 
 function setCurrentChart(chart)
 {       
+    vibrateFeedback();
+    
     currentchart = chart;
     
     updateCharts('false');

@@ -16,7 +16,8 @@ function initialize() {
 
     jQuery.getScript("js/Components/login.js")
     .done(function(script, textStatus) {
-        console.log( textStatus );
+        console.log( textStatus ); 
+        jQuery( "#logoutcontainer" ).hide();
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception );
@@ -76,9 +77,10 @@ function initialize() {
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception );
-    });
-
-    jQuery( "#logoutcontainer" ).hide();
+    });    
+    
+    // Hide the splashscreen
+    navigator.splashscreen.hide();
     
     //need to initialize the dialog div so that 
     //we can set the resize function
@@ -131,9 +133,6 @@ function onDeviceReady()
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("menubutton", onMenuKeyDown, false);
     
-    // Hide the splashscreen
-    navigator.splashscreen.hide();
-    
     //Track device properties
     var element = document.getElementById('deviceProperties');
     TrackButtonClicked('Device', 'Name', device.name, 1);
@@ -156,6 +155,7 @@ function onDeviceOffline()
 function onMenuKeyDown() 
 {
     console.log('onMenuKeyDown');
+    vibrateFeedback();
     helpDialogInit(null, "Menu", "Manage your saved queries.");
 }
 
@@ -830,6 +830,8 @@ function saveState()
 
 function showAds()
 {   
+    vibrateFeedback();
+    
     chartClicks = chartClicks + 1;
     
     if (chartClicks > numberOfChartClicksBeforeShowAds)
@@ -935,4 +937,12 @@ function isEmpty(map) {
         }
     }
     return true;
+}
+
+function vibrateFeedback()
+{
+    if (phonegap === "true")
+    {
+        navigator.notification.vibrate(100);
+    }
 }

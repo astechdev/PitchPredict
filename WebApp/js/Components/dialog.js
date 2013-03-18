@@ -24,6 +24,7 @@ function helpDialogInit(iconType, dialogTitle, message)
       closeOnEscape: false,
       buttons: {
           Ok: function() {
+            vibrateFeedback();
             jQuery( this ).dialog( "close" );
           }
       }
@@ -153,7 +154,8 @@ function registerDialogInit()
       title: "Register",
       closeOnEscape: false,
       buttons: {
-          Register: function() {    
+          Register: function() {  
+              vibrateFeedback();
 //            if(phonegap != "false")
 //            {
 //                navigator.app.loadUrl('http://www.pitchpredict.com/index.php?option=com_users&view=registration', {openExternal:true});
@@ -253,6 +255,7 @@ function registerDialogInit()
             jQuery( this ).dialog( "close" );
           },
           Close: function() {
+            vibrateFeedback();
             jQuery( this ).dialog( "close" );
           }
       }
