@@ -81,6 +81,62 @@ function initialize() {
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " pitch_recorder failed");
     });
+                 
+    jQuery.getScript("js/libs/jquery.hammer.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " jquery.hammer.js loaded");
+
+        var hammertime = $('body').hammer();
+        console.log(hammertime);
+
+        hammertime.on("swipeleft", function(ev) 
+        {
+            if(window.console) { console.log(ev); }
+            leftSwipeEventHandler();
+        });
+
+        hammertime.on("swiperight", function(ev) 
+        {
+            if(window.console) { console.log(ev); }
+            rightSwipeEventHandler();
+        });
+
+        hammertime.on("swipeup", function(ev) 
+        {
+            if(window.console) { console.log(ev); }
+            upSwipeEventHandler();
+        });
+
+        hammertime.on("swipedown", function(ev) 
+        {
+            if(window.console) { console.log(ev); }
+            downSwipeEventHandler();
+        });
+
+        jQuery.getScript("js/touchEvents.js")
+        .done(function(script, textStatus) {
+            console.log('hammertime initialized');
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " hammertime failed");
+        });
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " jquery.hammer.js failed");
+    });
+
+    jQuery.getScript("js/libs/fastclick.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " fastclick loaded");
+        jQuery(window).load(function() 
+        {
+            FastClick.attach(document.body);
+            console.log('fastclick initialized');
+        });
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " fastclick failed");
+    });
 
     jQuery(window).unload(function() 
     {
