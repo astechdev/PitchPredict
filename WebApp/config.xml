@@ -23,7 +23,7 @@
     
     <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="tablet" />
-    <preference name="fullscreen"       value="true" />
+    <preference name="fullscreen"       value="false" />
     <preference name="detect-data-types" value="false" />
     <preference name="webviewbounce" value="false" />
     <preference name="stay-in-webview" value="false" />
@@ -34,7 +34,7 @@
     
     <gap:plugin name="GAPlugin" /> <!-- latest release -->
     
-    <access origin="*" subdomains="true" browserOnly="true"/>]
+    <access origin="*"/>
     
     <icon src="images/icons/launcher.png" />
 

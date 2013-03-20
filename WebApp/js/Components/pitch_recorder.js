@@ -1,8 +1,7 @@
 function loadPitchCounters()
 {	
-//    alert('loadPitchCounters');
-    jQuery("#pitchrecordertabletbody").empty();
-    
+    //    alert('loadPitchCounters');
+    jQuery("#pitchrecordertabletbody").empty();    
     
     jQuery('#pitchrecordertable').find('tbody:last').append('\
         <tr class=\"headerRow\">\n\
@@ -41,7 +40,7 @@ function loadPitchCounters()
 
     //create pitch types drop down
     jQuery("#pitchtypeselectid").empty();
-//    jQuery("#pitchtypeselectid").append("Type: <br>");
+    //    jQuery("#pitchtypeselectid").append("Type: <br>");
     var pitchtypeselectdd = document.createElement("select");
     pitchtypeselectdd.name = "PitchType";
     pitchtypeselectdd.id = "pitchtypeId";
@@ -50,7 +49,7 @@ function loadPitchCounters()
     {
         if(pitchTypesMap.hasOwnProperty(key)) 
         {
-//                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
+            //                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
             pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(pitchTypesMap[key].theAbbr, pitchTypesMap[key].theAbbr);
         }
     }
@@ -60,7 +59,7 @@ function loadPitchCounters()
 
     //create outcome drop down
     jQuery("#pitchoutcomeselectid").empty();
-//    jQuery("#pitchoutcomeselectid").append("Outcome: <br>");
+    //    jQuery("#pitchoutcomeselectid").append("Outcome: <br>");
     var pitchoutcomeselectdd = document.createElement("select");
     pitchoutcomeselectdd.name = "PitchOutcome";
     pitchoutcomeselectdd.id = "pitchoutcomeId";
@@ -78,7 +77,7 @@ function loadPitchCounters()
 
     //create location drop down
     jQuery("#pitchlocationselectid").empty();
-//    jQuery("#pitchlocationselectid").append("Location: <br>");
+    //    jQuery("#pitchlocationselectid").append("Location: <br>");
     var pitchlocationselectdd = document.createElement("select");
     pitchlocationselectdd.name = "PitchLocation";
     pitchlocationselectdd.id = "pitchlocationId";
@@ -104,7 +103,7 @@ function loadPitchCounters()
     {
         if(pitchTypesMap.hasOwnProperty(key)) 
         {
-//                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
+            //                    alert('add pitch type: '+pitchTypesMap[key].theAbbr);
             pitchtypeselectdd.options[pitchtypeselectdd.length] = new Option(pitchTypesMap[key].theAbbr, pitchTypesMap[key].theAbbr);
         }
     }
@@ -146,25 +145,31 @@ function loadPitchCounters()
     //Add the dropdown to the parent node
     jQuery("#pitchlocationselectidclone").append(pitchlocationselectdd);  
 
-//    jQuery("#submitPitch").click(function() { 
-//        addToPitchSequences();
-//    });       
+    //    jQuery("#submitPitch").click(function() { 
+    //        addToPitchSequences();
+    //    });       
 
-//    jQuery("#undobutton").click(function() { 
-//        revertPitchSequences();
-////        loadPitchCounters();
-//    });       
+    //    jQuery("#undobutton").click(function() { 
+    //        revertPitchSequences();
+    ////        loadPitchCounters();
+    //    });       
 
-//    jQuery("#resetpitchcounterpitchbutton").click(function() { 
-//        resetPitchSequences();
-////        loadPitchCounters();
-//    }); 
+    //    jQuery("#resetpitchcounterpitchbutton").click(function() { 
+    //        resetPitchSequences();
+    ////        loadPitchCounters();
+    //    }); 
 
-//    jQuery("#viewpitchsequencebutton").click(function() { 
-//        $( "#pitchcounterdialogcontainer" ).dialog("open");
-//    }); 
-
-    jQuery( "#pitchcounterdialogcontainer" ).dialog({
+    //    jQuery("#viewpitchsequencebutton").click(function() { 
+    //        $( "#pitchcounterdialogcontainer" ).dialog("open");
+    //    }); 
+    
+    
+    
+    //need to initialize the dialog div so that 
+    //we can set the resize function    
+    var $pitchcounterdialog = jQuery( "#pitchcounterdialogcontainer" ); // Your Dialog Div
+    
+    $pitchcounterdialog.dialog({
         autoOpen: false,
         modal: true,
         height: dialogheight,
@@ -175,24 +180,35 @@ function loadPitchCounters()
         closeOnEscape: false,
         buttons: {
             Add: function() {
-              addCloneToPitchSequences();
+                vibrateFeedback();
+                addCloneToPitchSequences();
             },
             Undo: function() {
-              revertPitchSequences();
-              saveState();
+                vibrateFeedback();
+                revertPitchSequences();
+                saveState();
             },
             Reset: function() {
-              resetPitchSequences();
+                vibrateFeedback();
+                resetPitchSequences();
             },
             Ok: function() {
-              jQuery( this ).dialog( "close" );
+                vibrateFeedback();
+                jQuery( this ).dialog( "close" );
             }
         }
-    });
+    });//initialized
     
-//    jQuery("#pitchcounterdialogcontainer").append('<img id=\"pitchrecorderajaxloader\" src="images/ajax-loader.gif">');
+    //Get Dialogs Parent and find the close button. 
+    //jQuery assigns .ui-dialog-titlebar-close class to the close X (a tag)
+    var $pitchcounterdialogCloseBtn = $pitchcounterdialog.parent().find('.ui-dialog-titlebar-close'); 
 
-//    hidePitchCounterInputRow();
+    //hide the close button, we want our touch screen users to enjoy big buttons
+    $pitchcounterdialogCloseBtn.hide();
+    
+    //    jQuery("#pitchcounterdialogcontainer").append('<img id=\"pitchrecorderajaxloader\" src="images/ajax-loader.gif">');
+
+    //    hidePitchCounterInputRow();
 
     hideRemovePitchButton();
     jQuery("#pitchrecorderajaxloader").fadeOut(10);
@@ -211,7 +227,7 @@ function hideRemovePitchButton()
 
 function showPitchCounterInputRow()
 {	
-//    disableResultsTab();
+    //    disableResultsTab();
 
     jQuery("#addpitchbutton").fadeOut();
 
@@ -224,7 +240,7 @@ function removePitchCounterInputRow()
 {
     jQuery("#pitchrecordertable").hide();
     jQuery("#pitchrecorderajaxloader").show();
-//    //enableResultsTab();
+    //    //enableResultsTab();
 
     jQuery("#inputrowid").fadeOut();
 
@@ -257,7 +273,7 @@ function addToPitchSequences()
         //enableResultsTab();
         saveState();
         $( '#pitchcounterdialogcontainer' ).dialog('open');
-//        loadPitchCounters();
+    //        loadPitchCounters();
     }
     else
     {
@@ -278,7 +294,7 @@ function addCloneToPitchSequences()
         
         //enableResultsTab();
         saveState();
-//        loadPitchCounters();
+    //        loadPitchCounters();
     }
     else
     {

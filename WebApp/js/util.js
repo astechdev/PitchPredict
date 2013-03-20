@@ -26,6 +26,9 @@ function initialize() {
     jQuery.getScript("js/Components/dialog.js")
     .done(function(script, textStatus) {
         console.log( textStatus );
+        //need to initialize the dialog div so that 
+        //we can set the resize function    
+        dialogInit();
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception );
@@ -77,15 +80,6 @@ function initialize() {
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception );
-    });    
-    
-    // Hide the splashscreen
-    navigator.splashscreen.hide();
-    
-    //need to initialize the dialog div so that 
-    //we can set the resize function
-    $( "#dialog" ).dialog({
-        autoOpen: false
     });
 
     jQuery(window).unload(function() 
@@ -112,6 +106,20 @@ function initialize() {
         setCurrentChart(currentchart);
         dashboard.dimensions();
     });
+    
+    // Hide the splashscreen after loading...
+    if(phonegap === "true")
+    {
+        navigator.splashscreen.hide();
+    }
+    else
+    {
+        setTimeout(function(){
+            if(phonegap === "true"){
+                navigator.splashscreen.hide();
+            }
+        },1500)
+}
 }
 
 function onDeviceReady() 
@@ -258,11 +266,12 @@ function load()
     {
         if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
         {
-            jQuery.each(data, function(key, val) 
-            {
-                stateVariablesMap[key] = val;
-            //            alert("stateVariablesMap["+key+"]: "+stateVariablesMap[key]);
-            }); 
+            stateVariablesMap = data;
+            //            jQuery.each(data, function(key, val) 
+            //            {
+            //                stateVariablesMap[key] = val;
+            //            //            alert("stateVariablesMap["+key+"]: "+stateVariablesMap[key]);
+            //            }); 
 
             if(stateVariablesMap['thePitchTypeSequence'] === 'underfined' || stateVariablesMap['thePitchTypeSequence'] === null)
             {

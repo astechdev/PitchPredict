@@ -44,34 +44,34 @@ function selectOutcomeHandler(e) {
 
 function emptyChartContainers() 
 {
-    jQuery('#pitchtypepercentagechartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#hitchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#pitchchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#verticalchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#sidepitchvirtualizationchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#horizontalchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#toppitchvirtualizationchartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#resultspercentagechartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    jQuery('#outcomepercentagechartcontainer').hide("slide", {
-        direction: "right"
-    }, 1000);
-    
+//    jQuery('#pitchtypepercentagechartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#hitchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#pitchchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#verticalchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#sidepitchvirtualizationchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#horizontalchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#toppitchvirtualizationchartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#resultspercentagechartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    jQuery('#outcomepercentagechartcontainer').hide("slide", {
+//        direction: "right"
+//    }, 1000);
+//    
     jQuery('#pitchtypepercentagechartcontainer').empty();
     jQuery('#hitchartcontainer').empty();
     jQuery('#pitchchartcontainer').empty();

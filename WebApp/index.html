@@ -8,14 +8,15 @@
 
         <link rel="stylesheet" type="text/css" href="css/app.css" /> 
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
-        <!--<link rel='stylesheet' type='text/css' href='css/googleapis.css'>-->
-
-        <!--<script type="text/javascript" src="js/libs/jquery-1.8.3.js"></script>-->
-        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        
+        <!--Load the google AJAX API-->
+        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]}]}"></script>
 
         <script>
             function loadScripts()
             {
+                console.log('loadScripts');
+                
                 jQuery.getScript("js/sammy.js")
                 .done(function(script, textStatus) {
                     console.log( textStatus + " sammy loaded" );
@@ -115,10 +116,11 @@
             }
             
             google.load("jquery", "1");
+            google.load("jqueryui", "1");
             google.setOnLoadCallback(loadScripts);
             
-            google.load("jqueryui", "1");
-            google.load('visualization', '1.0', {'packages':['corechart']});
+//            google.load("jqueryui", "1.10.1");
+//            google.load('visualization', '1.0', {'packages':['corechart']});
         </script>
 
     </head>
@@ -250,7 +252,7 @@
                         <div data-view="user" class="view">
                             <span>Preferences</span>
                             <div id="logincontainer">
-                                <form id="loginForm">
+                                <!--<form id="loginForm">-->
                                     <label>Username:  
                                         <input type="text" id="userName" name="userName" tabindex="1" class="text" />
                                     </label>
@@ -258,7 +260,7 @@
                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
                                     </label>
                                     <button type="Submit" class="helpbuttons" onclick="loginRequest();">Log In</button>
-                                </form>
+                                <!--</form>-->
                                 <input type="Button" class="helpbuttons" onclick="register();" value="Register">
                             </div>
                             <div id="logoutcontainer">
