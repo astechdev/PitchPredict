@@ -9,6 +9,10 @@
         <link rel="stylesheet" type="text/css" href="css/app.css" /> 
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
         
+        <!--PhoneGap Javascript-->
+        <script src="phonegap.js"></script>
+        <script src="GAPlugin.js"></script>
+        
         <!--Load the google AJAX API-->
         <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]},{name:jquery,version:1},{name:jqueryui,version:1}]}"></script>
 
@@ -124,7 +128,7 @@
         </script>
 
     </head>
-    <body onload="loadScripts();">
+    <body>
         <div id="header">
             <img class="logo" src="images/logo.png"/>
             <!--			<div class="hud">
@@ -320,8 +324,5 @@
                 </div>
             </div>
         </div> 
-        <!--PhoneGap Javascript-->
-        <script src="phonegap.js"></script>
-        <script src="GAPlugin.js"></script>
     </body>
 </html>
