@@ -10,7 +10,7 @@
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
         
         <!--Load the google AJAX API-->
-        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]}]}"></script>
+        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]},{name:jquery,version:1},{name:jqueryui,version:1}]}"></script>
 
         <script>
             function loadScripts()
@@ -115,16 +115,16 @@
                 });
             }
             
-            google.load("jquery", "1");
-            google.load("jqueryui", "1");
-            google.setOnLoadCallback(loadScripts);
+//            google.load("jquery", "1");
+//            google.load("jqueryui", "1");
+//            google.setOnLoadCallback(loadScripts);
             
 //            google.load("jqueryui", "1.10.1");
 //            google.load('visualization', '1.0', {'packages':['corechart']});
         </script>
 
     </head>
-    <body>
+    <body onload="loadScripts();">
         <div id="header">
             <img class="logo" src="images/logo.png"/>
             <!--			<div class="hud">
