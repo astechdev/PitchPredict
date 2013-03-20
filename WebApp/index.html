@@ -35,32 +35,32 @@
                                 initialize();
                             })
                             .fail(function(jqxhr, settings, exception) {
-                                console.log( exception );
+                                console.log( exception + " globalVariables failed");
                             });
                         })
                         .fail(function(jqxhr, settings, exception) {
-                            console.log( exception );
+                            console.log( exception + " util failed");
                         });
                     })
                     .fail(function(jqxhr, settings, exception) {
-                        console.log( exception );
+                        console.log( exception + " pitchpredict.dashboard failed");
                     });
 
                     jQuery.getScript("js/googleAnalytics.js")
                     .done(function(script, textStatus) {
-                        console.log( textStatus );
+                        console.log( textStatus + " googleAnalytics loaded");
                     })
                     .fail(function(jqxhr, settings, exception) {
-                        console.log( exception );
+                        console.log( exception + " googleAnalytics failed");
                     });
                 })
                 .fail(function(jqxhr, settings, exception) {
-                    console.log( exception );
+                    console.log( exception + " sammy failed");
                 });
                                 
                 jQuery.getScript("js/libs/jquery.hammer.js")
                 .done(function(script, textStatus) {
-                    console.log( textStatus );
+                    console.log( textStatus + " jquery.hammer.js loaded");
 
                     var hammertime = $('body').hammer();
                     console.log(hammertime);
@@ -94,16 +94,16 @@
                         console.log('hammertime initialized');
                     })
                     .fail(function(jqxhr, settings, exception) {
-                        console.log( exception );
+                        console.log( exception + " hammertime failed");
                     });
                 })
                 .fail(function(jqxhr, settings, exception) {
-                    console.log( exception );
+                    console.log( exception + " jquery.hammer.js failed");
                 });
 
                 jQuery.getScript("js/libs/fastclick.js")
                 .done(function(script, textStatus) {
-                    console.log( textStatus );
+                    console.log( textStatus + " fastclick loaded");
                     jQuery(window).load(function() 
                     {
                         FastClick.attach(document.body);
@@ -111,7 +111,7 @@
                     });
                 })
                 .fail(function(jqxhr, settings, exception) {
-                    console.log( exception );
+                    console.log( exception + " fastclick failed");
                 });
             }
             
