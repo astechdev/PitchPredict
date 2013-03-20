@@ -15,52 +15,57 @@
         
         <!--Load the google AJAX API-->
         <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]},{name:jquery,version:1},{name:jqueryui,version:1}]}"></script>
+        
+        <script type="text/javascript" src="js/sammy.js"></script>
+        <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
+        <script type="text/javascript" src="js/util.js"></script>
+        <script type="text/javascript" src="js/globalVariables.js"></script>
 
         <script>
             function loadScripts()
             {
                 console.log('loadScripts');
                 
-                jQuery.getScript("js/sammy.js")
-                .done(function(script, textStatus) {
-                    console.log( textStatus + " sammy loaded" );
-                    
-                    jQuery.getScript("js/pitchpredict.dashboard.js")
-                    .done(function(script, textStatus) {
-                        console.log( textStatus + " pitchpredict.dashboard loaded" );
-                        
-                        jQuery.getScript("js/util.js")
-                        .done(function(script, textStatus) {
-                            console.log( textStatus + " util loaded" );
-
-                            jQuery.getScript("js/globalVariables.js")
-                            .done(function(script, textStatus) {
-                                console.log( textStatus + " globalVariables loaded....initialize" );
-                                initialize();
-                            })
-                            .fail(function(jqxhr, settings, exception) {
-                                console.log( exception + " globalVariables failed");
-                            });
-                        })
-                        .fail(function(jqxhr, settings, exception) {
-                            console.log( exception + " util failed");
-                        });
-                    })
-                    .fail(function(jqxhr, settings, exception) {
-                        console.log( exception + " pitchpredict.dashboard failed");
-                    });
-
-                    jQuery.getScript("js/googleAnalytics.js")
-                    .done(function(script, textStatus) {
-                        console.log( textStatus + " googleAnalytics loaded");
-                    })
-                    .fail(function(jqxhr, settings, exception) {
-                        console.log( exception + " googleAnalytics failed");
-                    });
-                })
-                .fail(function(jqxhr, settings, exception) {
-                    console.log( exception + " sammy failed");
-                });
+//                jQuery.getScript("js/sammy.js")
+//                .done(function(script, textStatus) {
+//                    console.log( textStatus + " sammy loaded" );
+//                    
+//                    jQuery.getScript("js/pitchpredict.dashboard.js")
+//                    .done(function(script, textStatus) {
+//                        console.log( textStatus + " pitchpredict.dashboard loaded" );
+//                        
+//                        jQuery.getScript("js/util.js")
+//                        .done(function(script, textStatus) {
+//                            console.log( textStatus + " util loaded" );
+//
+//                            jQuery.getScript("js/globalVariables.js")
+//                            .done(function(script, textStatus) {
+//                                console.log( textStatus + " globalVariables loaded....initialize" );
+//                                initialize();
+//                            })
+//                            .fail(function(jqxhr, settings, exception) {
+//                                console.log( exception + " globalVariables failed");
+//                            });
+//                        })
+//                        .fail(function(jqxhr, settings, exception) {
+//                            console.log( exception + " util failed");
+//                        });
+//                    })
+//                    .fail(function(jqxhr, settings, exception) {
+//                        console.log( exception + " pitchpredict.dashboard failed");
+//                    });
+//
+//                    jQuery.getScript("js/googleAnalytics.js")
+//                    .done(function(script, textStatus) {
+//                        console.log( textStatus + " googleAnalytics loaded");
+//                    })
+//                    .fail(function(jqxhr, settings, exception) {
+//                        console.log( exception + " googleAnalytics failed");
+//                    });
+//                })
+//                .fail(function(jqxhr, settings, exception) {
+//                    console.log( exception + " sammy failed");
+//                });
                                 
 //                jQuery.getScript("js/libs/jquery.hammer.js")
 //                .done(function(script, textStatus) {
@@ -128,7 +133,7 @@
         </script>
 
     </head>
-    <body onload="loadScripts();">
+    <body onload="initialize();">
         <div id="header">
             <img class="logo" src="images/logo.png"/>
             <!--			<div class="hud">
