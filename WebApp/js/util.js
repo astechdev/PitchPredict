@@ -6,11 +6,11 @@ function initialize() {
     .done(function(script, textStatus) {        
         console.log( textStatus + " phonegap loaded");
         
-        jQuery.getScript("cdv-plugin-fb-connect.js")
+        jQuery.getScript("js/Components/FB/cdv-plugin-fb-connect.js")
         .done(function(script, textStatus) {
             console.log( textStatus + " cdv-plugin-fb-connect loaded");
             
-            jQuery.getScript("facebook-js-sdk.js")
+            jQuery.getScript("js/Components/FB/facebook-js-sdk.js")
             .done(function(script, textStatus) {
                 console.log( textStatus + " facebook-js-sdk loaded");
                 initDevice();
