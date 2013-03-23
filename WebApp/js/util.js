@@ -3,9 +3,7 @@ function initialize() {
     document.addEventListener("deviceready", onDeviceReady, false);
     
     jQuery.getScript("phonegap.js")
-    .done(function(script, textStatus) {
-        document.addEventListener("deviceready", onDeviceReady, false);
-        
+    .done(function(script, textStatus) {        
         console.log( textStatus + " phonegap loaded");
         
         jQuery.getScript("cdv-plugin-fb-connect.js")
