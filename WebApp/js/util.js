@@ -233,6 +233,9 @@ function onDeviceReady()
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("menubutton", onMenuKeyDown, false);
     
+    // Initialize FB plugin
+    FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
+    
     //Track device properties
     var element = document.getElementById('deviceProperties');
     TrackButtonClicked('Device', 'Name', device.name, 1);
