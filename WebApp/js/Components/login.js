@@ -33,13 +33,13 @@ function loginRequest()
         helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e));});
 }
 
-function logout()
-{
-    userInfoMap.UserName = null; 
-
-    jQuery( "#logincontainer" ).fadeIn();
-    jQuery( "#logoutcontainer" ).fadeOut();
-}
+//function logout()
+//{
+//    userInfoMap.UserName = null; 
+//
+//    jQuery( "#logincontainer" ).fadeIn();
+//    jQuery( "#logoutcontainer" ).fadeOut();
+//}
 
 function register()
 {

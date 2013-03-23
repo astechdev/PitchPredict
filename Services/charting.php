@@ -1,4 +1,7 @@
-<?php
+<?php 
+
+    header('Access-Control-Allow-Origin: *'); 
+    
     if(strtoupper($_REQUEST['ChartType']) == "SPRAY")
     {
         include $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/Services/Charts/hitChart.php';

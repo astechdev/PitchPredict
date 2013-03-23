@@ -68,8 +68,12 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
         title: dialogTitle,
         closeOnEscape: false
     });
+    
+    console.log('manually get ads');
+    _inmobi.getNewAd(document.getElementById('dialog-message'));
+    console.log('ads should be displayed');
    
-    $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
+//    $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
    
     //    $( "#dialog-message" ).append('<script type="text/javascript"><!--'+
     //                                    'google_ad_client = "ca-pub-5820947892438978";'+
@@ -82,20 +86,6 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
     //                                    '<script type="text/javascript"'+
     //                                    'src="http://pagead2.googlesyndication.com/pagead/show_ads.js">'+
     //                                    'alert("Adsense Loaded");</script>');
-   
-   
-    //    var $dialog = $("#dialog"); // Your Dialog Div
-
-    //    //Get Dialogs Parent and find the close button. 
-    //    //jQuery assigns .ui-dialog-titlebar-close class to the close X (a tag)
-    //    var $dialogCloseBtn = $dialog.parent().find('.ui-dialog-titlebar-close'); 
-    //
-    //    //hide the close button
-    //    $dialogCloseBtn.hide();
-    //    
-    //    $dialogCloseBtn.click(function(e) {
-    //        $( "#dialog-message" ).empty(); 
-    //    });
 
     //show the close button after 10 seconds
     setTimeout(function () 
@@ -113,14 +103,14 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
         
     }, timeInMilliseconds);
    
-if(youTubePlayListIndex < youTubePlayListLength)
-{
-    youTubePlayListIndex = youTubePlayListIndex + 1;
-}
-else
-{
-    youTubePlayListIndex = 1;
-}
+    if(youTubePlayListIndex < youTubePlayListLength)
+    {
+        youTubePlayListIndex = youTubePlayListIndex + 1;
+    }
+    else
+    {
+        youTubePlayListIndex = 1;
+    }
 }
 
 function loadingDialogInit()

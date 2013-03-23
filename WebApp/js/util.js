@@ -17,7 +17,7 @@ function initialize() {
     jQuery.getScript("js/Components/login.js")
     .done(function(script, textStatus) {
         console.log( textStatus + " login loaded"); 
-        jQuery( "#logoutcontainer" ).hide();
+//        jQuery( "#logoutcontainer" ).hide();
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " login failed");
@@ -81,40 +81,51 @@ function initialize() {
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " pitch_recorder failed");
     });
-                 
-    jQuery.getScript("js/libs/jquery.hammer.js")
+     
+    jQuery.getScript("js/googleAnalytics.js")
     .done(function(script, textStatus) {
-        console.log( textStatus + " jquery.hammer.js loaded");
+        console.log( textStatus + " googleAnalytics loaded");
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " googleAnalytics failed");
+    });     
+     
+    jQuery.getScript("js/touchEvents.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " touchEvents loaded");
 
-        var hammertime = $('body').hammer();
-        console.log(hammertime);
-
-        hammertime.on("swipeleft", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            leftSwipeEventHandler();
-        });
-
-        hammertime.on("swiperight", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            rightSwipeEventHandler();
-        });
-
-        hammertime.on("swipeup", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            upSwipeEventHandler();
-        });
-
-        hammertime.on("swipedown", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            downSwipeEventHandler();
-        });
-
-        jQuery.getScript("js/touchEvents.js")
+        jQuery.getScript("js/libs/jquery.hammer.js")
         .done(function(script, textStatus) {
+            console.log( textStatus + " jquery.hammer loaded");
+            
+            var hammertime = $('body').hammer();
+            
+            console.log(hammertime);
+
+            hammertime.on("swipeleft", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                leftSwipeEventHandler();
+            });
+
+            hammertime.on("swiperight", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                rightSwipeEventHandler();
+            });
+
+            hammertime.on("swipeup", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                upSwipeEventHandler();
+            });
+
+            hammertime.on("swipedown", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                downSwipeEventHandler();
+            });
+            
             console.log('hammertime initialized');
         })
         .fail(function(jqxhr, settings, exception) {
@@ -122,7 +133,7 @@ function initialize() {
         });
     })
     .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " jquery.hammer.js failed");
+        console.log( exception + " touchEvents failed");
     });
 
     jQuery.getScript("js/libs/fastclick.js")
@@ -175,7 +186,32 @@ function initialize() {
                 navigator.splashscreen.hide();
             }
         },1500)
-}
+    }
+    
+    // Initialize inmobi
+    inmobi_conf = 
+        {
+            siteid : "e807ef51fb1a49379c969a777d83d035",
+            //siteid : "4028cba631d63df10131e1d3191d00cb",
+            slot : "10",
+            test: false,
+            manual: true,
+            onError : function(code) {
+                console.log(code);
+                if(code == "nfr") {
+                    document.getElementById("dialog-message").style.display = "none";
+                    // do something else. call to other ad network or logic to display in-house ads, etc. 
+                }
+            }
+        };
+
+    jQuery.getScript("js/libs/inmobi.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " inmobi loaded");
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " inmobi failed");
+    });
 }
 
 function onDeviceReady() 
@@ -901,8 +937,11 @@ function showAds()
     
     if (chartClicks > numberOfChartClicksBeforeShowAds)
     {
-        adsDialogInit("Advertisment", 10000);
-        chartClicks = 0;
+        if(phonegap != "true")
+        {
+            adsDialogInit("Advertisment", 10000);
+            chartClicks = 0;
+        }
     }
 }
 

@@ -190,7 +190,7 @@ h6 {
 /* line 17, ../sass/common/_structure.scss */
 #header .hud {
     position: absolute;
-    top: 10px;
+    /*top: 10px;*/
     right: 10px;
     color: white;
 }
@@ -768,6 +768,18 @@ option {
 	background-color:#3B3B3B;
 	height:25px;
 }
+
+body.connected #logincontainer { display: none; }
+body.connected #logoutcontainer { display: block; }
+body.not_connected #logincontainer { display: block; }
+body.not_connected #logoutcontainer { display: none; }
+
+/* line 17, ../sass/common/_structure.scss */
+#header .hud img{
+    height: 40px;
+}
+
+
 
 
 /*.bounds {

@@ -1,2 +1,4 @@
-# Ignore all betbeans directories
+# Ignore all netbeans directories
 nbproject/
+# Ignore svn directories
+.svn/
