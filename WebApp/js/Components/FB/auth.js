@@ -69,15 +69,15 @@ function checkUserPermissions(permissionToCheck) {
         if (document.body.className != 'not_connected') {
             for (var i = 0; i < permissions.length; i++) {
               var perm = permissions[i];
-              var enabledElementName = document.getElementById('enabled_perm_' + perm);
-              var disabledElementName = document.getElementById('disabled_perm_' + perm);
-              if (response.data[0][perm] == 1) {
-                enabledElementName.style.display = 'block';
-                disabledElementName.style.display = 'none';
-              } else {
-                enabledElementName.style.display = 'none';
-                disabledElementName.style.display = 'block';
-              }
+//              var enabledElementName = document.getElementById('enabled_perm_' + perm);
+//              var disabledElementName = document.getElementById('disabled_perm_' + perm);
+//              if (response.data[0][perm] == 1) {
+//                enabledElementName.style.display = 'block';
+//                disabledElementName.style.display = 'none';
+//              } else {
+//                enabledElementName.style.display = 'none';
+//                disabledElementName.style.display = 'block';
+//              }
             }
             if (permissionToCheck) {
               if (response.data[0][permissionToCheck] == 1) {

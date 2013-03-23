@@ -15,30 +15,21 @@
         <link rel="stylesheet" type="text/css" href="css/app.css" /> 
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
         
-        <!--PhoneGap Javascript-->
-        <script src="phonegap.js"></script>
-        <script src="GAPlugin.js"></script>
-        <script src="cdv-plugin-fb-connect.js"></script>
-        <script src="facebook-js-sdk.js"></script>
-        
-        <!--Load the google AJAX API, google charts, jquery, and jquery ui-->
+        <!--Load the google AJAX API, google charts, jquery, jquery ui, and FB js sdk-->
         <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]}]}"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
-        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+<!--        <script type="text/javascript" src="http://connect.facebook.net/en_US/all.js"></script>
+        <script src="js/Components/FB/auth.js"></script>
+        <script src="js/Components/FB/credits.js"></script>
+        <script src="js/Components/FB/graph_api.js"></script>-->
+        <!--<script src="js/Components/FB/_config.js"></script>-->
         
         <script type="text/javascript" src="js/sammy.js"></script>
         <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
         <script type="text/javascript" src="js/util.js"></script>
         <script type="text/javascript" src="js/globalVariables.js"></script>	
         
-        <script src="js/Components/FB/_config.js"></script>
-        <script src="js/Components/FB/auth.js"></script>
-        <script src="js/Components/FB/feed.js"></script>
-        <script src="js/Components/FB/graph_api.js"></script>
-        <script src="js/Components/FB/requests.js"></script>
-        <script src="js/Components/FB/credits.js"></script>
-        <script src="js/Components/FB/send.js"></script>
-
         <script>
 //            function loadScripts()
 //            {
@@ -241,7 +232,8 @@
                             </div>
                             <div id="logoutcontainer">
                                 <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
-                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post to Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
                                 <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
                                 <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
                             </div>
