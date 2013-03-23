@@ -334,21 +334,7 @@ function initialize() {
         console.log( exception + " inmobi failed");
     });
 
-    load();    
-    
-    // Hide the splashscreen after loading...
-    if(phonegap === "true")
-    {
-        navigator.splashscreen.hide();
-    }
-    else
-    {
-        setTimeout(function(){
-            if(phonegap === "true"){
-                navigator.splashscreen.hide();
-            }
-        },1500);
-    }
+    load(); 
 }
 
 function onDeviceReady() 
@@ -380,7 +366,7 @@ function initDevice()
         document.addEventListener("menubutton", onMenuKeyDown, false);
 
         // Initialize FB plugin
-        FB._initialized = false;
+//        FB._initialized = false;
         FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
 
         if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
@@ -410,14 +396,13 @@ function initDevice()
         TrackButtonClicked('Device', 'Platform', device.platform, 1);
         TrackButtonClicked('Device', 'UUID', device.uuid, 1);
         TrackButtonClicked('Device', 'Version', device.version, 1);
+        
+        // Hide the splashscreen after loading...
+        navigator.splashscreen.hide();
     }
     else
     {
-        setTimeout(function(){
-            if(phonegap === "true"){
-                initDevice();
-            }
-        },1500);
+        setTimeout(initDevice(),1500);
     }
 }
 
