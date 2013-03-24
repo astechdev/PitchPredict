@@ -6,11 +6,11 @@ function initialize() {
     .done(function(script, textStatus) {        
         console.log( textStatus + " phonegap loaded");
         
-        jQuery.getScript("js/Components/FB/cdv-plugin-fb-connect.js")
+        jQuery.getScript("cdv-plugin-fb-connect.js")
         .done(function(script, textStatus) {
             console.log( textStatus + " cdv-plugin-fb-connect loaded");
             
-            jQuery.getScript("js/Components/FB/facebook-js-sdk.js")
+            jQuery.getScript("facebook-js-sdk.js")
             .done(function(script, textStatus) {
                 console.log( textStatus + " facebook-js-sdk loaded");
                 initDevice();
@@ -347,7 +347,7 @@ function initDevice()
     console.log('initDevice');
     
     if(phonegap === 'true')
-    {    
+    {
         jQuery(window).off('resize');
         console.log('unbind window resize events');
 
@@ -364,7 +364,7 @@ function initDevice()
         document.addEventListener("menubutton", onMenuKeyDown, false);
 
         // Initialize FB plugin
-//        FB._initialized = false;
+        FB._initialized = false;
         FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
 
         if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
