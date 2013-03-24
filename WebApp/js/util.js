@@ -58,21 +58,21 @@ function initialize() {
             checkForCredits();
             updateAuthElements();
 
-            FB.Event.subscribe('auth.login', function(response) {
-                console.log('auth.login event');
-            });
-
-            FB.Event.subscribe('auth.logout', function(response) {
-                console.log('auth.logout event');
-            });
-
-            FB.Event.subscribe('auth.sessionChange', function(response) {
-                console.log('auth.sessionChange event');
-            });
-
-            FB.Event.subscribe('auth.statusChange', function(response) {
-                console.log('auth.statusChange event');
-            });
+//            FB.Event.subscribe('auth.login', function(response) {
+//                console.log('auth.login event');
+//            });
+//
+//            FB.Event.subscribe('auth.logout', function(response) {
+//                console.log('auth.logout event');
+//            });
+//
+//            FB.Event.subscribe('auth.sessionChange', function(response) {
+//                console.log('auth.sessionChange event');
+//            });
+//
+//            FB.Event.subscribe('auth.statusChange', function(response) {
+//                console.log('auth.statusChange event');
+//            });
         };
 
         // Load the SDK Asynchronously
@@ -363,29 +363,29 @@ function initDevice()
         document.addEventListener("offline", onDeviceOffline, false);
         document.addEventListener("menubutton", onMenuKeyDown, false);
 
-        // Initialize FB plugin
-        FB._initialized = false;
-        FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
-
-        if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
-        if (typeof CDV == 'undefined') console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-        if (typeof FB == 'undefined') console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-
-        FB.Event.subscribe('auth.login', function(response) {
-                                   console.log('auth.login event');
-                                   });
-
-        FB.Event.subscribe('auth.logout', function(response) {
-                           console.log('auth.logout event');
-                           });
-
-        FB.Event.subscribe('auth.sessionChange', function(response) {
-                           console.log('auth.sessionChange event');
-                           });
-
-        FB.Event.subscribe('auth.statusChange', function(response) {
-                           console.log('auth.statusChange event');
-                           });
+//        // Initialize FB plugin
+//        FB._initialized = false;
+//        FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
+//
+//        if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
+//        if (typeof CDV == 'undefined') console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+//        if (typeof FB == 'undefined') console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+//
+//        FB.Event.subscribe('auth.login', function(response) {
+//                                   console.log('auth.login event');
+//                                   });
+//
+//        FB.Event.subscribe('auth.logout', function(response) {
+//                           console.log('auth.logout event');
+//                           });
+//
+//        FB.Event.subscribe('auth.sessionChange', function(response) {
+//                           console.log('auth.sessionChange event');
+//                           });
+//
+//        FB.Event.subscribe('auth.statusChange', function(response) {
+//                           console.log('auth.statusChange event');
+//                           });
 
         //Track device properties
         var element = document.getElementById('deviceProperties');
