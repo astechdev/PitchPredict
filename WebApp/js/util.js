@@ -171,25 +171,26 @@ function initialize() {
 
 function onDeviceReady() 
 {
-//    alert('Device Ready');
-//    jQuery(window).off('resize');
-//    alert('unbind window resize events');
+    alert('Device Ready');
     phonegap = 'true';
-//    alert('set phonegap to true');
+    alert('set phonegap to true');
 
     // Register some event listeners
     document.addEventListener("online", onDeviceOnline, false);
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("menubutton", onMenuKeyDown, false);
+    alert('Register some event listeners');
     
     // Initialize FB plugin
     FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+    alert('Initialize FB plugin');
 
     if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
     if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     
     FB.getLoginStatus(handleStatusChange);
+    alert('FB getLoginStatus');
 
     authUser();
     checkForCredits();
