@@ -182,35 +182,38 @@ function onDeviceReady()
     alert('Register some event listeners');
     
     // Initialize FB plugin
-    FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-    alert('Initialize FB plugin');
-
-    if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-    if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-    if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+    if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+    if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     
-    FB.getLoginStatus(handleStatusChange);
-    alert('FB getLoginStatus');
+    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
+    {
+        FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+        alert('Initialize FB plugin');
 
-    authUser();
-    checkForCredits();
-    updateAuthElements();
+        FB.getLoginStatus(handleStatusChange);
+        alert('FB getLoginStatus');
 
-//    FB.Event.subscribe('auth.login', function(response) {
-//                               console.log('auth.login event');
-//                               });
-//
-//    FB.Event.subscribe('auth.logout', function(response) {
-//                       console.log('auth.logout event');
-//                       });
-//
-//    FB.Event.subscribe('auth.sessionChange', function(response) {
-//                       console.log('auth.sessionChange event');
-//                       });
-//
-//    FB.Event.subscribe('auth.statusChange', function(response) {
-//                       console.log('auth.statusChange event');
-//                       });
+        authUser();
+        checkForCredits();
+        updateAuthElements();
+
+    //    FB.Event.subscribe('auth.login', function(response) {
+    //                               console.log('auth.login event');
+    //                               });
+    //
+    //    FB.Event.subscribe('auth.logout', function(response) {
+    //                       console.log('auth.logout event');
+    //                       });
+    //
+    //    FB.Event.subscribe('auth.sessionChange', function(response) {
+    //                       console.log('auth.sessionChange event');
+    //                       });
+    //
+    //    FB.Event.subscribe('auth.statusChange', function(response) {
+    //                       console.log('auth.statusChange event');
+    //                       });
+    }
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
