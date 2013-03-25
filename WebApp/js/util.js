@@ -117,55 +117,55 @@ function initialize() {
 //        .fail(function(jqxhr, settings, exception) {
 //            console.log( exception + " credits failed");
 //        });        
-
-        //Initialize the Facebook SDK
-        //See https://developers.facebook.com/docs/reference/javascript/
-        window.fbAsyncInit = function() {
-            FB.init({ 
-                appId: gAppID,
-                status: true,
-                cookie: true,
-                xfbml: true,
-                frictionlessRequests: true,
-                useCachedDialogs: true,
-                oauth: true
-            });
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-
-//            FB.Event.subscribe('auth.login', function(response) {
-//                console.log('auth.login event');
+//
+//        //Initialize the Facebook SDK
+//        //See https://developers.facebook.com/docs/reference/javascript/
+//        window.fbAsyncInit = function() {
+//            FB.init({ 
+//                appId: gAppID,
+//                status: true,
+//                cookie: true,
+//                xfbml: true,
+//                frictionlessRequests: true,
+//                useCachedDialogs: true,
+//                oauth: true
 //            });
 //
-//            FB.Event.subscribe('auth.logout', function(response) {
-//                console.log('auth.logout event');
-//            });
+//            FB.getLoginStatus(handleStatusChange);
 //
-//            FB.Event.subscribe('auth.sessionChange', function(response) {
-//                console.log('auth.sessionChange event');
-//            });
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
 //
-//            FB.Event.subscribe('auth.statusChange', function(response) {
-//                console.log('auth.statusChange event');
-//            });
-        };
-
-        // Load the SDK Asynchronously
-        (function(d){
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            ref.parentNode.insertBefore(js, ref);
-        }(document));
+////            FB.Event.subscribe('auth.login', function(response) {
+////                console.log('auth.login event');
+////            });
+////
+////            FB.Event.subscribe('auth.logout', function(response) {
+////                console.log('auth.logout event');
+////            });
+////
+////            FB.Event.subscribe('auth.sessionChange', function(response) {
+////                console.log('auth.sessionChange event');
+////            });
+////
+////            FB.Event.subscribe('auth.statusChange', function(response) {
+////                console.log('auth.statusChange event');
+////            });
+//        };
+//
+//        // Load the SDK Asynchronously
+//        (function(d){
+//            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//            if (d.getElementById(id)) {
+//                return;
+//            }
+//            js = d.createElement('script');
+//            js.id = id;
+//            js.async = true;
+//            js.src = "//connect.facebook.net/en_US/all.js";
+//            ref.parentNode.insertBefore(js, ref);
+//        }(document));
     });
 }
 
