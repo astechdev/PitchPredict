@@ -3,13 +3,6 @@
 var chart;
 var phonegap = 'false';
 var gAppID = '263545480387259';
-var my_client_id = gAppID, // YOUR APP ID
-	my_secret = "2024970f67087c82cad3c1d3e2f41498", // YOUR APP SECRET 
-	my_redirect_uri = "http://www.facebook.com/connect/login_success.html", // LEAVE THIS
-	my_type ="user_agent", my_display = "touch"; // LEAVE THIS
- 
-var facebook_token; // OUR TOKEN KEEPER
-var client_browser;
 var googleAnalyticsInitialized = 'false';
 var gaPlugin;
 var _gaq = _gaq || [];
