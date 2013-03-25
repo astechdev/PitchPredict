@@ -66,57 +66,57 @@ function initialize() {
             dashboard.dimensions();
         });
 
-        if (gAppID == 'enter_your_appid_here') {
-            console.log('You need to enter your App ID in js/util.js on line 37.');
-        }
-    
-        jQuery.getScript("js/Components/FB/auth.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " auth loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " auth failed");
-        });
-
-        jQuery.getScript("js/Components/FB/feed.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " feed loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " feed failed");
-        });
-
-        jQuery.getScript("js/Components/FB/graph_api.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " graph_api loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " graph_api failed");
-        });
-
-        jQuery.getScript("js/Components/FB/requests.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " requests loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " requests failed");
-        });
-
-        jQuery.getScript("js/Components/FB/send.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " send loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " send failed");
-        });
-
-        jQuery.getScript("js/Components/FB/credits.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " credits loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " credits failed");
-        });        
+//        if (gAppID == 'enter_your_appid_here') {
+//            console.log('You need to enter your App ID in js/util.js on line 37.');
+//        }
+//    
+//        jQuery.getScript("js/Components/FB/auth.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " auth loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " auth failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/feed.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " feed loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " feed failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/graph_api.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " graph_api loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " graph_api failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/requests.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " requests loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " requests failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/send.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " send loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " send failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/credits.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " credits loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " credits failed");
+//        });        
 
         //Initialize the Facebook SDK
         //See https://developers.facebook.com/docs/reference/javascript/
@@ -207,7 +207,7 @@ function onDeviceReady()
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
-        console.log( textStatus + " jquery.hammer.js loaded");
+        alert( textStatus + " jquery.hammer.js loaded");
 
         var hammertime = $('body').hammer();
         console.log(hammertime);
@@ -238,27 +238,27 @@ function onDeviceReady()
 
         jQuery.getScript("js/touchEvents.js")
         .done(function(script, textStatus) {
-            console.log('hammertime initialized');
+            alert('touchEvents loaded');
         })
         .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " hammertime failed");
+            alert( exception + " touchEvents loaded");
         });
     })
     .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " jquery.hammer.js failed");
+        alert( exception + " jquery.hammer.js failed");
     });
 
     jQuery.getScript("js/libs/fastclick.js")
     .done(function(script, textStatus) {
-        console.log( textStatus + " fastclick loaded");
+        alert( textStatus + " fastclick loaded");
         jQuery(window).load(function() 
         {
             FastClick.attach(document.body);
-            console.log('fastclick initialized');
+            alert('fastclick initialized');
         });
     })
     .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " fastclick failed");
+        alert( exception + " fastclick failed");
     });
 
     // Hide the splashscreen after loading...
@@ -267,17 +267,17 @@ function onDeviceReady()
 
 function onDeviceOnline() 
 {
-//    alert('onDeviceOnline');  
+    alert('onDeviceOnline');  
 }
 
 function onDeviceOffline() 
 {
-//    alert('onDeviceOffline');  
+    alert('onDeviceOffline');  
 }
 
 function onMenuKeyDown() 
 {
-//    alert('onMenuKeyDown');
+    alert('onMenuKeyDown');
     vibrateFeedback();
     helpDialogInit(null, "Menu", "Manage your saved queries.");
 }

@@ -26,6 +26,7 @@
     <preference name="fullscreen"       value="false" />
     
     <gap:plugin name="GAPlugin" /> <!-- latest release -->
+    <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser" />
     <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="263545480387259" />
     </gap:plugin>

@@ -3,6 +3,9 @@
 var chart;
 var phonegap = 'false';
 var gAppID = '263545480387259';
+var cordova;
+var CDV;
+var FB;
 var googleAnalyticsInitialized = 'false';
 var gaPlugin;
 var gaAccount = 'UA-29743249-1';
