@@ -5,31 +5,31 @@ function initialize() {
     // Check if phonegap, if not load web app functionality
     jQuery.getScript("phonegap.js")
     .done(function(script, textStatus) {        
-        console.log( textStatus + " phonegap loaded");
+        alert( textStatus + " phonegap loaded");
         
-        jQuery.getScript("cdv-plugin-fb-connect.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " cdv-plugin-fb-connect loaded");
-            
-            jQuery.getScript("facebook-js-sdk.js")
-            .done(function(script, textStatus) {
-                console.log( textStatus + " facebook-js-sdk loaded");
-//                initDevice();
-            })
-            .fail(function(jqxhr, settings, exception) {
-                console.log( exception + " facebook-js-sdk failed");
-            });
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " cdv-plugin-fb-connect failed");
-        });
+//        jQuery.getScript("cdv-plugin-fb-connect.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+//            
+//            jQuery.getScript("facebook-js-sdk.js")
+//            .done(function(script, textStatus) {
+//                console.log( textStatus + " facebook-js-sdk loaded");
+////                initDevice();
+//            })
+//            .fail(function(jqxhr, settings, exception) {
+//                console.log( exception + " facebook-js-sdk failed");
+//            });
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " cdv-plugin-fb-connect failed");
+//        });
         
         jQuery.getScript("GAPlugin.js")
         .done(function(script, textStatus) {
-            console.log( textStatus + " GAPlugin loaded");
+            alert( textStatus + " GAPlugin loaded");
         })
         .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " GAPlugin failed");
+            alert( exception + " GAPlugin failed");
         });        
     })
     .fail(function(jqxhr, settings, exception) {
