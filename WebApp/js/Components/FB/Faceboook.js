@@ -2,6 +2,8 @@
 var Facebook = {
     init:function(){
  
+        aler('Facebook.init');
+ 
         // Begin Authorization
         var authorize_url = "https://graph.facebook.com/oauth/authorize?";
         authorize_url += "client_id=" + my_client_id;
@@ -10,14 +12,14 @@ var Facebook = {
         authorize_url += "&scope=publish_stream,offline_access"
  
         // Open Child browser and ask for permissions
-        client_browser = ChildBrowser.install();
-        client_browser.onLocationChange = function(loc){
+//        client_browser = ChildBrowser.install();
+        window.plugins.childBrowser.onLocationChange = function(loc){
             Facebook.facebookLocChanged(loc);
         };
 
-        if (client_browser != null) {
+//        if (client_browser != null) {
             window.plugins.childBrowser.showWebPage(authorize_url);
-        }
+//        }
     
 //        // Open InAppBrowser and ask for permissions
 //        client_browser = window.open(authorize_url, '_blank', 'location=yes');
