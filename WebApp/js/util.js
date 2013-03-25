@@ -39,94 +39,7 @@ function initialize() {
 //        });        
     })
     .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " phonegap failed");
-        
-        if (gAppID == 'enter_your_appid_here') {
-            console.log('You need to enter your App ID in js/globalVariables.js on line 5.');
-        }
-    
-        jQuery.getScript("js/Components/FB/auth.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " auth loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " auth failed");
-        });
-
-        jQuery.getScript("js/Components/FB/feed.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " feed loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " feed failed");
-        });
-
-        jQuery.getScript("js/Components/FB/graph_api.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " graph_api loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " graph_api failed");
-        });
-
-        jQuery.getScript("js/Components/FB/requests.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " requests loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " requests failed");
-        });
-
-        jQuery.getScript("js/Components/FB/send.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " send loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " send failed");
-        });
-
-        jQuery.getScript("js/Components/FB/credits.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " credits loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " credits failed");
-        });        
-
-        //Initialize the Facebook SDK
-        //See https://developers.facebook.com/docs/reference/javascript/
-        window.fbAsyncInit = function() {
-            FB.init({ 
-                appId: gAppID,
-                status: true,
-                cookie: false,
-                xfbml: true,
-                frictionlessRequests: true,
-                useCachedDialogs: true,
-                oauth: true
-            });
-
-            console.log(FB);
-            
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-        };
-
-        // Load the SDK Asynchronously
-        (function(d){
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            ref.parentNode.insertBefore(js, ref);
-        }(document));        
+        console.log( exception + " phonegap failed");      
     });
      
     jQuery.getScript("js/googleAnalytics.js")
@@ -221,11 +134,11 @@ function initialize() {
 
 function onDeviceReady() 
 {
-    alert('Device Ready');
+//    alert('Device Ready');
     jQuery(window).off('resize');
-    alert('unbind window resize events');
+//    alert('unbind window resize events');
     phonegap = 'true';
-    alert('set phonegap to true');
+//    alert('set phonegap to true');
 
     // Register some event listeners
     document.addEventListener("online", onDeviceOnline, false);
@@ -233,22 +146,22 @@ function onDeviceReady()
     document.addEventListener("menubutton", onMenuKeyDown, false);
 
     // Hide the splashscreen after loading...
-    navigator.splashscreen.hide();
+//    navigator.splashscreen.hide();
 }
 
 function onDeviceOnline() 
 {
-    alert('onDeviceOnline');  
+//    alert('onDeviceOnline');  
 }
 
 function onDeviceOffline() 
 {
-    alert('onDeviceOffline');  
+//    alert('onDeviceOffline');  
 }
 
 function onMenuKeyDown() 
 {
-    alert('onMenuKeyDown');
+//    alert('onMenuKeyDown');
     vibrateFeedback();
     helpDialogInit(null, "Menu", "Manage your saved queries.");
 }
