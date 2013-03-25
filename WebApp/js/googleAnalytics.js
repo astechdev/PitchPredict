@@ -21,7 +21,6 @@ function googleAnalyticsInit()
         }
         else
         {
-            alert('window.plugins: '+window.plugins);
             gaPlugin = window.plugins.gaPlugin;        
             //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
             gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, gaAccount, 50);
