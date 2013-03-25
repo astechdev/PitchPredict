@@ -100,7 +100,7 @@ function checkUserPermissions(permissionToCheck) {
 
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
-    console.log('promptLogin');
+    alert('promptLogin');
     FB.login(null, {
         scope: 'email'
     });
