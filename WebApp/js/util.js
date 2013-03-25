@@ -403,7 +403,7 @@ function initDevice()
         load();
         
         // Hide the splashscreen after loading...
-        navigator.splashscreen.hide();
+//        navigator.splashscreen.hide();
         
         alert('init device complete');
     }
