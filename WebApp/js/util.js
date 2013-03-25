@@ -8,39 +8,64 @@ function initialize() {
 
     load();
     
-//    // Check if phonegap, if not load web app functionality
-//    jQuery.getScript("phonegap.js")
-//    .done(function(script, textStatus) {        
-//        alert( textStatus + " phonegap loaded");
+    // Check if phonegap, if not load web app functionality
+    jQuery.getScript("phonegap.js")
+    .done(function(script, textStatus) {        
+        alert( textStatus + " phonegap loaded");
+        
+//        jQuery.getScript("cdv-plugin-fb-connect.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+//            
+//            jQuery.getScript("facebook-js-sdk.js")
+//            .done(function(script, textStatus) {
+//                console.log( textStatus + " facebook-js-sdk loaded");
+////                initDevice();
+//            })
+//            .fail(function(jqxhr, settings, exception) {
+//                console.log( exception + " facebook-js-sdk failed");
+//            });
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " cdv-plugin-fb-connect failed");
+//        });
 //        
-////        jQuery.getScript("cdv-plugin-fb-connect.js")
-////        .done(function(script, textStatus) {
-////            console.log( textStatus + " cdv-plugin-fb-connect loaded");
-////            
-////            jQuery.getScript("facebook-js-sdk.js")
-////            .done(function(script, textStatus) {
-////                console.log( textStatus + " facebook-js-sdk loaded");
-//////                initDevice();
-////            })
-////            .fail(function(jqxhr, settings, exception) {
-////                console.log( exception + " facebook-js-sdk failed");
-////            });
-////        })
-////        .fail(function(jqxhr, settings, exception) {
-////            console.log( exception + " cdv-plugin-fb-connect failed");
-////        });
-////        
-////        jQuery.getScript("GAPlugin.js")
-////        .done(function(script, textStatus) {
-////            alert( textStatus + " GAPlugin loaded");
-////        })
-////        .fail(function(jqxhr, settings, exception) {
-////            alert( exception + " GAPlugin failed");
-////        });        
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " phonegap failed");      
-//    });
+//        jQuery.getScript("GAPlugin.js")
+//        .done(function(script, textStatus) {
+//            alert( textStatus + " GAPlugin loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            alert( exception + " GAPlugin failed");
+//        });        
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " phonegap failed....adding WebApp ONLY functionality");
+        
+        jQuery(window).unload(function() 
+        {
+            deinitialize();
+            console.log('deinitialized');
+        });
+
+        jQuery(window).resize(function() 
+        { 
+            dialogheight = $(window).height()*.75;
+            dialogwidth = $(window).width()*.80;
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+
+            $( "#dialog" ).dialog( "option", "width", dialogwidth );
+
+            $( "#dialog" ).dialog( "option", "height", dialogheight );
+
+            chartheight = ($(window).height()*.75);
+            chartwidth = chartheight*1.40;                          
+            setCurrentChart(currentchart);
+            dashboard.dimensions();
+        });
+    });
      
 //    jQuery.getScript("js/googleAnalytics.js")
 //    .done(function(script, textStatus) {
@@ -50,36 +75,36 @@ function initialize() {
 //        console.log( exception + " googleAnalytics failed");
 //    }); 
 
-    jQuery(window).unload(function() 
-    {
-        deinitialize();
-        console.log('deinitialized');
-    });
-    
-    jQuery(window).resize(function() 
-    { 
-        dialogheight = $(window).height()*.75;
-        dialogwidth = $(window).width()*.80;
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-
-        $( "#dialog" ).dialog( "option", "width", dialogwidth );
-
-        $( "#dialog" ).dialog( "option", "height", dialogheight );
-        
-        chartheight = ($(window).height()*.75);
-        chartwidth = chartheight*1.40;                          
-        setCurrentChart(currentchart);
-        dashboard.dimensions();
-    });
+//    jQuery(window).unload(function() 
+//    {
+//        deinitialize();
+//        console.log('deinitialized');
+//    });
+//    
+//    jQuery(window).resize(function() 
+//    { 
+//        dialogheight = $(window).height()*.75;
+//        dialogwidth = $(window).width()*.80;
+//
+//        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+//
+//        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+//
+//        $( "#dialog" ).dialog( "option", "width", dialogwidth );
+//
+//        $( "#dialog" ).dialog( "option", "height", dialogheight );
+//        
+//        chartheight = ($(window).height()*.75);
+//        chartwidth = chartheight*1.40;                          
+//        setCurrentChart(currentchart);
+//        dashboard.dimensions();
+//    });
 }
 
 function onDeviceReady() 
 {
 //    alert('Device Ready');
-    jQuery(window).off('resize');
+//    jQuery(window).off('resize');
 //    alert('unbind window resize events');
     phonegap = 'true';
 //    alert('set phonegap to true');
