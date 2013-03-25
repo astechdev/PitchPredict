@@ -8,39 +8,39 @@ function initialize() {
 
     load();
     
-    // Check if phonegap, if not load web app functionality
-    jQuery.getScript("phonegap.js")
-    .done(function(script, textStatus) {        
-        alert( textStatus + " phonegap loaded");
-        
-//        jQuery.getScript("cdv-plugin-fb-connect.js")
-//        .done(function(script, textStatus) {
-//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
-//            
-//            jQuery.getScript("facebook-js-sdk.js")
-//            .done(function(script, textStatus) {
-//                console.log( textStatus + " facebook-js-sdk loaded");
-////                initDevice();
-//            })
-//            .fail(function(jqxhr, settings, exception) {
-//                console.log( exception + " facebook-js-sdk failed");
-//            });
-//        })
-//        .fail(function(jqxhr, settings, exception) {
-//            console.log( exception + " cdv-plugin-fb-connect failed");
-//        });
+//    // Check if phonegap, if not load web app functionality
+//    jQuery.getScript("phonegap.js")
+//    .done(function(script, textStatus) {        
+//        alert( textStatus + " phonegap loaded");
 //        
-//        jQuery.getScript("GAPlugin.js")
-//        .done(function(script, textStatus) {
-//            alert( textStatus + " GAPlugin loaded");
-//        })
-//        .fail(function(jqxhr, settings, exception) {
-//            alert( exception + " GAPlugin failed");
-//        });        
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " phonegap failed");      
-    });
+////        jQuery.getScript("cdv-plugin-fb-connect.js")
+////        .done(function(script, textStatus) {
+////            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+////            
+////            jQuery.getScript("facebook-js-sdk.js")
+////            .done(function(script, textStatus) {
+////                console.log( textStatus + " facebook-js-sdk loaded");
+//////                initDevice();
+////            })
+////            .fail(function(jqxhr, settings, exception) {
+////                console.log( exception + " facebook-js-sdk failed");
+////            });
+////        })
+////        .fail(function(jqxhr, settings, exception) {
+////            console.log( exception + " cdv-plugin-fb-connect failed");
+////        });
+////        
+////        jQuery.getScript("GAPlugin.js")
+////        .done(function(script, textStatus) {
+////            alert( textStatus + " GAPlugin loaded");
+////        })
+////        .fail(function(jqxhr, settings, exception) {
+////            alert( exception + " GAPlugin failed");
+////        });        
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " phonegap failed");      
+//    });
      
     jQuery.getScript("js/googleAnalytics.js")
     .done(function(script, textStatus) {
@@ -48,7 +48,46 @@ function initialize() {
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " googleAnalytics failed");
-    });  
+    }); 
+
+    jQuery(window).unload(function() 
+    {
+        deinitialize();
+        console.log('deinitialized');
+    });
+    
+    jQuery(window).resize(function() 
+    { 
+        dialogheight = $(window).height()*.75;
+        dialogwidth = $(window).width()*.80;
+
+        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+
+        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+
+        $( "#dialog" ).dialog( "option", "width", dialogwidth );
+
+        $( "#dialog" ).dialog( "option", "height", dialogheight );
+        
+        chartheight = ($(window).height()*.75);
+        chartwidth = chartheight*1.40;                          
+        setCurrentChart(currentchart);
+        dashboard.dimensions();
+    });
+}
+
+function onDeviceReady() 
+{
+//    alert('Device Ready');
+    jQuery(window).off('resize');
+//    alert('unbind window resize events');
+    phonegap = 'true';
+//    alert('set phonegap to true');
+
+    // Register some event listeners
+    document.addEventListener("online", onDeviceOnline, false);
+    document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("menubutton", onMenuKeyDown, false);
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
@@ -105,45 +144,6 @@ function initialize() {
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " fastclick failed");
     });
-
-    jQuery(window).unload(function() 
-    {
-        deinitialize();
-        console.log('deinitialized');
-    });
-    
-    jQuery(window).resize(function() 
-    { 
-        dialogheight = $(window).height()*.75;
-        dialogwidth = $(window).width()*.80;
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-
-        $( "#dialog" ).dialog( "option", "width", dialogwidth );
-
-        $( "#dialog" ).dialog( "option", "height", dialogheight );
-        
-        chartheight = ($(window).height()*.75);
-        chartwidth = chartheight*1.40;                          
-        setCurrentChart(currentchart);
-        dashboard.dimensions();
-    });
-}
-
-function onDeviceReady() 
-{
-//    alert('Device Ready');
-    jQuery(window).off('resize');
-//    alert('unbind window resize events');
-    phonegap = 'true';
-//    alert('set phonegap to true');
-
-    // Register some event listeners
-    document.addEventListener("online", onDeviceOnline, false);
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("menubutton", onMenuKeyDown, false);
 
     // Hide the splashscreen after loading...
 //    navigator.splashscreen.hide();
