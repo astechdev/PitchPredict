@@ -185,9 +185,9 @@ function onDeviceReady()
     // Initialize FB plugin
     FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
 
-    if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
-    if (typeof CDV == 'undefined') console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-    if (typeof FB == 'undefined') console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+    if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+    if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+    if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
 
 //    FB.Event.subscribe('auth.login', function(response) {
 //                               console.log('auth.login event');
