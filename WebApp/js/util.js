@@ -288,8 +288,8 @@ function onDeviceOffline()
 function onMenuKeyDown() 
 {
     alert('onMenuKeyDown');
-    vibrateFeedback();
     helpDialogInit(null, "Menu", "Manage your saved queries.");
+    vibrateFeedback();
 }
 
 function deinitialize() {
