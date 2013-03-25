@@ -23,13 +23,20 @@
     
     <preference name="orientation"       value="landscape" />
     <preference name="target-device"     value="tablet" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="stay-in-webview" value="false" />
+    <!--<preference name="exit-on-suspend" value="false" />-->
+    <!--<preference name="show-splash-screen-spinner" value="true" />-->
+    <!--<preference name="splash-screen-duration" value="1000000" />-->
+    <!--<preference name="auto-hide-splash-screen" value="false" />-->
     
     <gap:plugin name="GAPlugin" /> <!-- latest release -->
-    <gap:plugin name="FacebookConnect">
+<!--    <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="263545480387259" />
-    </gap:plugin>
+    </gap:plugin>-->
     
-    <access origin="*"/>
+    <access origin="http://pitchpredict.com" subdomains="true" browserOnly="true"/>>
     
     <icon src="images/icons/launcher.png" />
 
