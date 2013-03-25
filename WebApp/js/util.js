@@ -2,6 +2,7 @@ function initialize() {
     // Wait for Cordova to connect with the device
     document.addEventListener("deviceready", onDeviceReady, false);
     
+    // Check if phonegap, if not load web app functionality
     jQuery.getScript("phonegap.js")
     .done(function(script, textStatus) {        
         console.log( textStatus + " phonegap loaded");
@@ -13,7 +14,7 @@ function initialize() {
             jQuery.getScript("facebook-js-sdk.js")
             .done(function(script, textStatus) {
                 console.log( textStatus + " facebook-js-sdk loaded");
-                initDevice();
+//                initDevice();
             })
             .fail(function(jqxhr, settings, exception) {
                 console.log( exception + " facebook-js-sdk failed");
@@ -33,6 +34,32 @@ function initialize() {
     })
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " phonegap failed");
+
+        jQuery(window).unload(function() 
+        {
+            deinitialize();
+            console.log('deinitialized');
+        });
+
+        jQuery(window).resize(function() 
+        { 
+            dialogheight = $(window).height()*.75;
+            dialogwidth = $(window).width()*.80;
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+
+            $( "#dialog" ).dialog( "option", "width", dialogwidth );
+
+            $( "#dialog" ).dialog( "option", "height", dialogheight );
+
+            chartheight = ($(window).height()*.75);
+            chartwidth = chartheight*1.40;                          
+            setCurrentChart(currentchart);
+            dashboard.dimensions();
+        });
+        
         var gAppID = '263545480387259';
 
         if (gAppID == 'enter_your_appid_here') {
@@ -308,31 +335,6 @@ function initialize() {
         console.log( exception + " fastclick failed");
     });
 
-    jQuery(window).unload(function() 
-    {
-        deinitialize();
-        console.log('deinitialized');
-    });
-    
-    jQuery(window).resize(function() 
-    { 
-        dialogheight = $(window).height()*.75;
-        dialogwidth = $(window).width()*.80;
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-
-        $( "#dialog" ).dialog( "option", "width", dialogwidth );
-
-        $( "#dialog" ).dialog( "option", "height", dialogheight );
-        
-        chartheight = ($(window).height()*.75);
-        chartwidth = chartheight*1.40;                          
-        setCurrentChart(currentchart);
-        dashboard.dimensions();
-    });
-
     load(); 
 }
 
@@ -391,14 +393,14 @@ function initDevice()
 //                           });
 
         //Track device properties
-        var element = document.getElementById('deviceProperties');
-        TrackButtonClicked('Device', 'Name', device.name, 1);
-        TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-        TrackButtonClicked('Device', 'Platform', device.platform, 1);
-        TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-        TrackButtonClicked('Device', 'Version', device.version, 1);
+//        var element = document.getElementById('deviceProperties');
+//        TrackButtonClicked('Device', 'Name', device.name, 1);
+//        TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
+//        TrackButtonClicked('Device', 'Platform', device.platform, 1);
+//        TrackButtonClicked('Device', 'UUID', device.uuid, 1);
+//        TrackButtonClicked('Device', 'Version', device.version, 1);
         
-        load();
+//        load();
         
         // Hide the splashscreen after loading...
         navigator.splashscreen.hide();
