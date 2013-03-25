@@ -31,64 +31,11 @@
         <script type="text/javascript" src="js/Components/field.js"></script>
         <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
 
-        <script>
-//            function loadScripts()
-//            {
-//                console.log('loadScripts');
-                
-//                jQuery.getScript("js/sammy.js")
-//                .done(function(script, textStatus) {
-//                    console.log( textStatus + " sammy loaded" );
-//                    
-//                    jQuery.getScript("js/pitchpredict.dashboard.js")
-//                    .done(function(script, textStatus) {
-//                        console.log( textStatus + " pitchpredict.dashboard loaded" );
-//                        
-//                        jQuery.getScript("js/util.js")
-//                        .done(function(script, textStatus) {
-//                            console.log( textStatus + " util loaded" );
-//
-//                            jQuery.getScript("js/globalVariables.js")
-//                            .done(function(script, textStatus) {
-//                                console.log( textStatus + " globalVariables loaded....initialize" );
-//                                initialize();
-//                            })
-//                            .fail(function(jqxhr, settings, exception) {
-//                                console.log( exception + " globalVariables failed");
-//                            });
-//                        })
-//                        .fail(function(jqxhr, settings, exception) {
-//                            console.log( exception + " util failed");
-//                        });
-//                    })
-//                    .fail(function(jqxhr, settings, exception) {
-//                        console.log( exception + " pitchpredict.dashboard failed");
-//                    });
-//
-//                    jQuery.getScript("js/googleAnalytics.js")
-//                    .done(function(script, textStatus) {
-//                        console.log( textStatus + " googleAnalytics loaded");
-//                    })
-//                    .fail(function(jqxhr, settings, exception) {
-//                        console.log( exception + " googleAnalytics failed");
-//                    });
-//                })
-//                .fail(function(jqxhr, settings, exception) {
-//                    console.log( exception + " sammy failed");
-//                });
-                   
-//            }
-            
-//            google.load("jquery", "1");
-//            google.load("jqueryui", "1");
-//            google.setOnLoadCallback(loadScripts);
-            
-//            google.load("jqueryui", "1.10.1");
-//            google.load('visualization', '1.0', {'packages':['corechart']});
-        </script>
-
     </head>
     <body onload="initialize();">
+        <!-- This initializes the Facebook JS SDK. -->
+        <div id="fb-root"></div>
+        
         <div id="header">
             <img class="logo" src="images/logo.png"/>
             <!--			<div class="hud">

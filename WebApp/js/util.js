@@ -8,81 +8,126 @@ function initialize() {
 
     load();
     
-//    jQuery.getScript("js/Components/chartFunctions.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " chartFunctions loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " chartFunctions failed");
-//    });
-//
-//    jQuery.getScript("js/Components/login.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " login loaded"); 
-//        jQuery( "#logoutcontainer" ).hide();
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " login failed");
-//    });
-//
-//    jQuery.getScript("js/Components/dialog.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " dialog loaded");
-//        //need to initialize the dialog div so that 
-//        //we can set the resize function    
-//        dialogInit();
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " dialog failed");
-//    });
-//
-//    jQuery.getScript("js/Components/team_lineup.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " team_lineup loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " team_lineup failed");
-//    });
-//
-//    jQuery.getScript("js/Components/scoreboard.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " scoreboard loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " scoreboard failed");
-//    });
-//
-//    jQuery.getScript("js/Components/filters.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " filters loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " filters failed");
-//    });
-//
-//    jQuery.getScript("js/Components/hotzone.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " hotzone loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " hotzone failed");
-//    });
-//
-//    jQuery.getScript("js/Components/field.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " field loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " field failed");
-//    });
-//
-//    jQuery.getScript("js/Components/pitch_recorder.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " pitch_recorder loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " pitch_recorder failed");
-//    });
+    // Check if phonegap, if not load web app functionality
+    jQuery.getScript("phonegap.js")
+    .done(function(script, textStatus) {        
+        alert( textStatus + " phonegap loaded");
+        
+//        jQuery.getScript("cdv-plugin-fb-connect.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+//            
+//            jQuery.getScript("facebook-js-sdk.js")
+//            .done(function(script, textStatus) {
+//                console.log( textStatus + " facebook-js-sdk loaded");
+////                initDevice();
+//            })
+//            .fail(function(jqxhr, settings, exception) {
+//                console.log( exception + " facebook-js-sdk failed");
+//            });
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " cdv-plugin-fb-connect failed");
+//        });
+//        
+//        jQuery.getScript("GAPlugin.js")
+//        .done(function(script, textStatus) {
+//            alert( textStatus + " GAPlugin loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            alert( exception + " GAPlugin failed");
+//        });        
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " phonegap failed");
+        
+        if (gAppID == 'enter_your_appid_here') {
+            console.log('You need to enter your App ID in js/globalVariables.js on line 5.');
+        }
+    
+        jQuery.getScript("js/Components/FB/auth.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " auth loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " auth failed");
+        });
+
+        jQuery.getScript("js/Components/FB/feed.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " feed loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " feed failed");
+        });
+
+        jQuery.getScript("js/Components/FB/graph_api.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " graph_api loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " graph_api failed");
+        });
+
+        jQuery.getScript("js/Components/FB/requests.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " requests loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " requests failed");
+        });
+
+        jQuery.getScript("js/Components/FB/send.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " send loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " send failed");
+        });
+
+        jQuery.getScript("js/Components/FB/credits.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " credits loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " credits failed");
+        });        
+
+        //Initialize the Facebook SDK
+        //See https://developers.facebook.com/docs/reference/javascript/
+        window.fbAsyncInit = function() {
+            FB.init({ 
+                appId: gAppID,
+                status: true,
+                cookie: false,
+                xfbml: true,
+                frictionlessRequests: true,
+                useCachedDialogs: true,
+                oauth: true
+            });
+
+            console.log(FB);
+            
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+        };
+
+        // Load the SDK Asynchronously
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));        
+    });
      
     jQuery.getScript("js/googleAnalytics.js")
     .done(function(script, textStatus) {
@@ -189,7 +234,6 @@ function onDeviceReady()
 
     // Hide the splashscreen after loading...
     navigator.splashscreen.hide();
-    
 }
 
 function onDeviceOnline() 

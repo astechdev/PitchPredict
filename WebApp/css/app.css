@@ -769,10 +769,10 @@ option {
 	height:25px;
 }
 
-body.connected #logincontainer { display: none; }
+/*body.connected #logincontainer { display: none; }
 body.connected #logoutcontainer { display: block; }
 body.not_connected #logincontainer { display: block; }
-body.not_connected #logoutcontainer { display: none; }
+body.not_connected #logoutcontainer { display: none; }*/
 
 /* line 17, ../sass/common/_structure.scss */
 #header .hud img{
