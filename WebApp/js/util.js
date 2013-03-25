@@ -3,84 +3,86 @@ function initialize() {
     document.addEventListener("deviceready", onDeviceReady, false);
     
     dashboard.init();
+    
+    dialogInit();
 
     load();
     
-    jQuery.getScript("js/Components/chartFunctions.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " chartFunctions loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " chartFunctions failed");
-    });
-
-    jQuery.getScript("js/Components/login.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " login loaded"); 
-        jQuery( "#logoutcontainer" ).hide();
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " login failed");
-    });
-
-    jQuery.getScript("js/Components/dialog.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " dialog loaded");
-        //need to initialize the dialog div so that 
-        //we can set the resize function    
-        dialogInit();
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " dialog failed");
-    });
-
-    jQuery.getScript("js/Components/team_lineup.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " team_lineup loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " team_lineup failed");
-    });
-
-    jQuery.getScript("js/Components/scoreboard.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " scoreboard loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " scoreboard failed");
-    });
-
-    jQuery.getScript("js/Components/filters.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " filters loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " filters failed");
-    });
-
-    jQuery.getScript("js/Components/hotzone.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " hotzone loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " hotzone failed");
-    });
-
-    jQuery.getScript("js/Components/field.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " field loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " field failed");
-    });
-
-    jQuery.getScript("js/Components/pitch_recorder.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " pitch_recorder loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " pitch_recorder failed");
-    });
+//    jQuery.getScript("js/Components/chartFunctions.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " chartFunctions loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " chartFunctions failed");
+//    });
+//
+//    jQuery.getScript("js/Components/login.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " login loaded"); 
+//        jQuery( "#logoutcontainer" ).hide();
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " login failed");
+//    });
+//
+//    jQuery.getScript("js/Components/dialog.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " dialog loaded");
+//        //need to initialize the dialog div so that 
+//        //we can set the resize function    
+//        dialogInit();
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " dialog failed");
+//    });
+//
+//    jQuery.getScript("js/Components/team_lineup.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " team_lineup loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " team_lineup failed");
+//    });
+//
+//    jQuery.getScript("js/Components/scoreboard.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " scoreboard loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " scoreboard failed");
+//    });
+//
+//    jQuery.getScript("js/Components/filters.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " filters loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " filters failed");
+//    });
+//
+//    jQuery.getScript("js/Components/hotzone.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " hotzone loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " hotzone failed");
+//    });
+//
+//    jQuery.getScript("js/Components/field.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " field loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " field failed");
+//    });
+//
+//    jQuery.getScript("js/Components/pitch_recorder.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " pitch_recorder loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " pitch_recorder failed");
+//    });
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
@@ -163,47 +165,50 @@ function initialize() {
         dashboard.dimensions();
     });
     
-    // Hide the splashscreen after loading...
-    if(phonegap === "true")
-    {
-        navigator.splashscreen.hide();
-    }
-    else
-    {
-        setTimeout(function(){
-            if(phonegap === "true"){
-                navigator.splashscreen.hide();
-            }
-        },1500)
-}
+//    // Hide the splashscreen after loading...
+//    if(phonegap === "true")
+//    {
+//        navigator.splashscreen.hide();
+//    }
+//    else
+//    {
+//        setTimeout(function(){
+//            if(phonegap === "true"){
+//                navigator.splashscreen.hide();
+//            }
+//        },1500)
+//    }
 }
 
 function onDeviceReady() 
 {
-    console.log('Device Ready');
-    jQuery(window).off('resize');
-    console.log('unbind window resize events');
-    phonegap = 'true';
-    console.log('set phonegap to true');
-    //    loadUserBasedFunctionality();
-    //    console.log('userbased functionaility loaded'); 
-    //    
-    //Remove user preferences on phonegap app since menu button will
-    //contain this functionality.
-    jQuery('#preferences').remove();
+    if(phonegap === "true")
+    {
+        console.log('Device Ready');
+        jQuery(window).off('resize');
+        console.log('unbind window resize events');
+        phonegap = 'true';
+        console.log('set phonegap to true');
+        //    loadUserBasedFunctionality();
+        //    console.log('userbased functionaility loaded'); 
+        //    
+        //Remove user preferences on phonegap app since menu button will
+        //contain this functionality.
+        jQuery('#preferences').remove();
+
+        // Register some event listeners
+        document.addEventListener("online", onDeviceOnline, false);
+        document.addEventListener("offline", onDeviceOffline, false);
+        document.addEventListener("menubutton", onMenuKeyDown, false);
+        
+        // Hide the splashscreen after loading...
+        navigator.splashscreen.hide();
+    }
+    else
+    {
+        setTimeout(onDeviceReady(),1500);
+    }
     
-    // Register some event listeners
-    document.addEventListener("online", onDeviceOnline, false);
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("menubutton", onMenuKeyDown, false);
-    
-    //Track device properties
-    var element = document.getElementById('deviceProperties');
-    TrackButtonClicked('Device', 'Name', device.name, 1);
-    TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-    TrackButtonClicked('Device', 'Platform', device.platform, 1);
-    TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-    TrackButtonClicked('Device', 'Version', device.version, 1);
 }
 
 function onDeviceOnline() 
