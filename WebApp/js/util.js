@@ -605,7 +605,7 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " getTeams failed");
         });
 
@@ -646,7 +646,7 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " awateam getPlayers failed");
         });
 
@@ -686,7 +686,7 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " hometeam getPlayers failed");
         });
         
@@ -708,7 +708,7 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " getPitchTypes failed");
         });
 
@@ -728,7 +728,7 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " getPitchOutcomes failed");
         });
 
@@ -748,23 +748,24 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
-        }).fail(function(jqxhr, settings, exception) {
+        }).fail(function(jqxhr, textStatus, exception) {
                 alert( exception + " getPitchLocations failed");
         });
-    }).fail(function(jqxhr, settings, exception) {
+    }).fail(function(jqxhr, textStatus, exception) {
             alert( exception + " getUserStateVariables failed");
     });
 }
 
 function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired, pitchTypesAquired, pitchLocationsAquired, pitchOutcomesAquired)
 {
-    //    alert("loadComponents " +
-    //"teamsMapAquired "+teamsMapAquired +
-    //"awayTeamMapAquired "+awayTeamMapAquired +
-    //"homeTeamMapAquired "+homeTeamMapAquired +
-    //"pitchTypesAquired "+pitchTypesAquired +
-    //"pitchLocationsAquired "+pitchLocationsAquired +
-    //"pitchOutcomesAquired "+pitchOutcomesAquired);
+//    alert("loadComponents " +
+//    "teamsMapAquired "+teamsMapAquired +
+//    "awayTeamMapAquired "+awayTeamMapAquired +
+//    "homeTeamMapAquired "+homeTeamMapAquired +
+//    "pitchTypesAquired "+pitchTypesAquired +
+//    "pitchLocationsAquired "+pitchLocationsAquired +
+//    "pitchOutcomesAquired "+pitchOutcomesAquired);
+
     if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
     {
         defenseTeamMap = homeTeamMap;
