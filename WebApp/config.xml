@@ -25,7 +25,8 @@
     <preference name="target-device"    value="tablet" />
     <preference name="fullscreen"       value="false" />
     
-    <gap:plugin name="GAPlugin" /> <!-- latest release -->
+    <gap:plugin name="ChildBrowser" />
+    <gap:plugin name="GAPlugin" />
     <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="263545480387259" />
     </gap:plugin>
