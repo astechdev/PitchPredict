@@ -42,13 +42,13 @@ function initialize() {
 //        console.log( exception + " phonegap failed");      
 //    });
      
-    jQuery.getScript("js/googleAnalytics.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " googleAnalytics loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " googleAnalytics failed");
-    }); 
+//    jQuery.getScript("js/googleAnalytics.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " googleAnalytics loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " googleAnalytics failed");
+//    }); 
 
     jQuery(window).unload(function() 
     {

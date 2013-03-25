@@ -24,13 +24,6 @@
     <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="tablet" />
     <preference name="fullscreen"       value="false" />
-    <preference name="detect-data-types" value="false" />
-    <preference name="webviewbounce" value="false" />
-    <preference name="stay-in-webview" value="false" />
-    <preference name="exit-on-suspend" value="false" />
-    <preference name="show-splash-screen-spinner" value="true" />
-    <preference name="splash-screen-duration" value="1000000" />
-    <preference name="auto-hide-splash-screen" value="false" />
     
     <gap:plugin name="GAPlugin" /> <!-- latest release -->
     
