@@ -351,7 +351,7 @@ function initDevice()
     if(phonegap === 'true')
     {
         alert('phonegap = '+phonegap);
-        jQuery(window).off('resize');
+//        jQuery(window).off('resize');
         alert('unbind window resize events');
 
         //    loadUserBasedFunctionality();
@@ -359,7 +359,7 @@ function initDevice()
 
         //Remove user preferences on phonegap app since menu button will
         //contain this functionality.
-        jQuery('#preferences').remove();
+//        jQuery('#preferences').remove();
 
         // Register some event listeners
         document.addEventListener("online", onDeviceOnline, false);
@@ -402,6 +402,8 @@ function initDevice()
         
         // Hide the splashscreen after loading...
         navigator.splashscreen.hide();
+        
+        alert('init device complete');
     }
     else
     {
