@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <widget xmlns     = "http://www.w3.org/ns/widgets"
         xmlns:gap = "http://phonegap.com/ns/1.0"
-        id        = "com.pitchpredict.app"
+        id        = "com.pitchpredict"
         version   = "2.3.0">
     <name>Pitch Predict</name>
 
@@ -21,22 +21,16 @@
 
     <feature name="http://api.phonegap.com/1.0/notification"/>
     
-    <preference name="orientation"       value="landscape" />
-    <preference name="target-device"     value="tablet" />
+    <preference name="orientation"      value="landscape" />
+    <preference name="target-device"    value="tablet" />
+    <preference name="fullscreen"       value="false" />
     <preference name="detect-data-types" value="false" />
     <preference name="webviewbounce" value="false" />
     <preference name="stay-in-webview" value="false" />
-    <!--<preference name="exit-on-suspend" value="false" />-->
-    <!--<preference name="show-splash-screen-spinner" value="true" />-->
-    <!--<preference name="splash-screen-duration" value="1000000" />-->
-    <!--<preference name="auto-hide-splash-screen" value="false" />-->
     
     <gap:plugin name="GAPlugin" /> <!-- latest release -->
-<!--    <gap:plugin name="FacebookConnect">
-        <param name="APP_ID" value="263545480387259" />
-    </gap:plugin>-->
     
-    <access origin="http://pitchpredict.com" subdomains="true" browserOnly="true"/>>
+    <access origin="*"/>
     
     <icon src="images/icons/launcher.png" />
 

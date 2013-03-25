@@ -3,118 +3,318 @@ function initialize() {
     document.addEventListener("deviceready", onDeviceReady, false);
     
     dashboard.init();
-
-    load();
+    dialogInit();
     
-    jQuery.getScript("js/Components/chartFunctions.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " chartFunctions loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " chartFunctions failed");
-    });
+//    jQuery.getScript("js/Components/chartFunctions.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " chartFunctions loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " chartFunctions failed");
+//    });
+//
+//    jQuery.getScript("js/Components/login.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " login loaded"); 
+////        jQuery( "#logoutcontainer" ).hide();
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " login failed");
+//    });
+//
+//    jQuery.getScript("js/Components/dialog.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " dialog loaded");
+//        //need to initialize the dialog div so that 
+//        //we can set the resize function    
+//        dialogInit();
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " dialog failed");
+//    });
+//
+//    jQuery.getScript("js/Components/team_lineup.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " team_lineup loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " team_lineup failed");
+//    });
+//
+//    jQuery.getScript("js/Components/scoreboard.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " scoreboard loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " scoreboard failed");
+//    });
+//
+//    jQuery.getScript("js/Components/filters.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " filters loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " filters failed");
+//    });
+//
+//    jQuery.getScript("js/Components/hotzone.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " hotzone loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " hotzone failed");
+//    });
+//
+//    jQuery.getScript("js/Components/field.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " field loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " field failed");
+//    });
+//
+//    jQuery.getScript("js/Components/pitch_recorder.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " pitch_recorder loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " pitch_recorder failed");
+//    });
 
-    jQuery.getScript("js/Components/login.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " login loaded"); 
-        jQuery( "#logoutcontainer" ).hide();
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " login failed");
-    });
-
-    jQuery.getScript("js/Components/dialog.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " dialog loaded");
-        //need to initialize the dialog div so that 
-        //we can set the resize function    
-        dialogInit();
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " dialog failed");
-    });
-
-    jQuery.getScript("js/Components/team_lineup.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " team_lineup loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " team_lineup failed");
-    });
-
-    jQuery.getScript("js/Components/scoreboard.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " scoreboard loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " scoreboard failed");
-    });
-
-    jQuery.getScript("js/Components/filters.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " filters loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " filters failed");
-    });
-
-    jQuery.getScript("js/Components/hotzone.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " hotzone loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " hotzone failed");
-    });
-
-    jQuery.getScript("js/Components/field.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " field loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " field failed");
-    });
-
-    jQuery.getScript("js/Components/pitch_recorder.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " pitch_recorder loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " pitch_recorder failed");
-    });
-                 
-    jQuery.getScript("js/libs/jquery.hammer.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " jquery.hammer.js loaded");
-
-        var hammertime = $('body').hammer();
-        console.log(hammertime);
-
-        hammertime.on("swipeleft", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            leftSwipeEventHandler();
-        });
-
-        hammertime.on("swiperight", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            rightSwipeEventHandler();
-        });
-
-        hammertime.on("swipeup", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            upSwipeEventHandler();
-        });
-
-        hammertime.on("swipedown", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            downSwipeEventHandler();
-        });
-
-        jQuery.getScript("js/touchEvents.js")
+    load(); 
+    
+    // Check if phonegap, if not load web app functionality
+    jQuery.getScript("phonegap.js")
+    .done(function(script, textStatus) {        
+        alert( textStatus + " phonegap loaded");
+        
+//        jQuery.getScript("cdv-plugin-fb-connect.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+//            
+//            jQuery.getScript("facebook-js-sdk.js")
+//            .done(function(script, textStatus) {
+//                console.log( textStatus + " facebook-js-sdk loaded");
+////                initDevice();
+//            })
+//            .fail(function(jqxhr, settings, exception) {
+//                console.log( exception + " facebook-js-sdk failed");
+//            });
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " cdv-plugin-fb-connect failed");
+//        });
+        
+        jQuery.getScript("GAPlugin.js")
         .done(function(script, textStatus) {
+            alert( textStatus + " GAPlugin loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            alert( exception + " GAPlugin failed");
+        });        
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " phonegap failed");
+
+        jQuery(window).unload(function() 
+        {
+            deinitialize();
+            console.log('deinitialized');
+        });
+
+        jQuery(window).resize(function() 
+        { 
+            dialogheight = $(window).height()*.75;
+            dialogwidth = $(window).width()*.80;
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+
+            $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+
+            $( "#dialog" ).dialog( "option", "width", dialogwidth );
+
+            $( "#dialog" ).dialog( "option", "height", dialogheight );
+
+            chartheight = ($(window).height()*.75);
+            chartwidth = chartheight*1.40;                          
+            setCurrentChart(currentchart);
+            dashboard.dimensions();
+        });
+        
+        var gAppID = '263545480387259';
+
+        if (gAppID == 'enter_your_appid_here') {
+            console.log('You need to enter your App ID in js/util.js on line 37.');
+        }
+    
+        jQuery.getScript("js/Components/FB/auth.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " auth loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " auth failed");
+        });
+
+        jQuery.getScript("js/Components/FB/feed.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " feed loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " feed failed");
+        });
+
+        jQuery.getScript("js/Components/FB/graph_api.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " graph_api loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " graph_api failed");
+        });
+
+        jQuery.getScript("js/Components/FB/requests.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " requests loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " requests failed");
+        });
+
+        jQuery.getScript("js/Components/FB/send.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " send loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " send failed");
+        });
+
+        jQuery.getScript("js/Components/FB/credits.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " credits loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " credits failed");
+        });        
+
+        //Initialize the Facebook SDK
+        //See https://developers.facebook.com/docs/reference/javascript/
+        window.fbAsyncInit = function() {
+            FB.init({ 
+                appId: gAppID,
+                status: true,
+                cookie: false,
+                xfbml: true,
+                frictionlessRequests: true,
+                useCachedDialogs: true,
+                oauth: true
+            });
+
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+
+//            FB.Event.subscribe('auth.login', function(response) {
+//                console.log('auth.login event');
+//            });
+//
+//            FB.Event.subscribe('auth.logout', function(response) {
+//                console.log('auth.logout event');
+//            });
+//
+//            FB.Event.subscribe('auth.sessionChange', function(response) {
+//                console.log('auth.sessionChange event');
+//            });
+//
+//            FB.Event.subscribe('auth.statusChange', function(response) {
+//                console.log('auth.statusChange event');
+//            });
+        };
+
+        // Load the SDK Asynchronously
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+    
+        // Initialize inmobi
+        inmobi_conf = 
+            {
+                siteid : "e807ef51fb1a49379c969a777d83d035",
+                //siteid : "4028cba631d63df10131e1d3191d00cb",
+                slot : "10",
+                test: false,
+                manual: true,
+                onError : function(code) {
+                    console.log(code);
+                    if(code == "nfr") {
+                        document.getElementById("dialog-message").style.display = "none";
+                        // do something else. call to other ad network or logic to display in-house ads, etc. 
+                    }
+                }
+            };
+
+        jQuery.getScript("js/libs/inmobi.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " inmobi loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " inmobi failed");
+        });
+        
+    });
+     
+    jQuery.getScript("js/googleAnalytics.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " googleAnalytics loaded");
+    })
+    .fail(function(jqxhr, settings, exception) {
+        console.log( exception + " googleAnalytics failed");
+    });     
+     
+    jQuery.getScript("js/touchEvents.js")
+    .done(function(script, textStatus) {
+        console.log( textStatus + " touchEvents loaded");
+
+        jQuery.getScript("js/libs/jquery.hammer.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " jquery.hammer loaded");
+            
+            var hammertime = $('body').hammer();
+            
+            console.log(hammertime);
+
+            hammertime.on("swipeleft", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                leftSwipeEventHandler();
+            });
+
+            hammertime.on("swiperight", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                rightSwipeEventHandler();
+            });
+
+            hammertime.on("swipeup", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                upSwipeEventHandler();
+            });
+
+            hammertime.on("swipedown", function(ev) 
+            {
+                if(window.console) { console.log(ev); }
+                downSwipeEventHandler();
+            });
+            
             console.log('hammertime initialized');
         })
         .fail(function(jqxhr, settings, exception) {
@@ -122,7 +322,7 @@ function initialize() {
         });
     })
     .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " jquery.hammer.js failed");
+        console.log( exception + " touchEvents failed");
     });
 
     jQuery.getScript("js/libs/fastclick.js")
@@ -137,73 +337,73 @@ function initialize() {
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " fastclick failed");
     });
-
-    jQuery(window).unload(function() 
-    {
-        deinitialize();
-        console.log('deinitialized');
-    });
-    
-    jQuery(window).resize(function() 
-    { 
-        dialogheight = $(window).height()*.75;
-        dialogwidth = $(window).width()*.80;
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-
-        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-
-        $( "#dialog" ).dialog( "option", "width", dialogwidth );
-
-        $( "#dialog" ).dialog( "option", "height", dialogheight );
-        
-        chartheight = ($(window).height()*.75);
-        chartwidth = chartheight*1.40;                          
-        setCurrentChart(currentchart);
-        dashboard.dimensions();
-    });
-    
-    // Hide the splashscreen after loading...
-    if(phonegap === "true")
-    {
-        navigator.splashscreen.hide();
-    }
-    else
-    {
-        setTimeout(function(){
-            if(phonegap === "true"){
-                navigator.splashscreen.hide();
-            }
-        },1500)
-}
 }
 
 function onDeviceReady() 
 {
-    console.log('Device Ready');
-    jQuery(window).off('resize');
-    console.log('unbind window resize events');
+//    alert('Device Ready');
+//    alert('set phonegap to true');
     phonegap = 'true';
-    console.log('set phonegap to true');
-    //    loadUserBasedFunctionality();
-    //    console.log('userbased functionaility loaded'); 
-    //    
-    //Remove user preferences on phonegap app since menu button will
-    //contain this functionality.
-    jQuery('#preferences').remove();
+    initDevice();
+}
+
+function initDevice() 
+{
+//    alert('initDevice');
     
-    // Register some event listeners
-    document.addEventListener("online", onDeviceOnline, false);
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("menubutton", onMenuKeyDown, false);
-    
-    //Track device properties
-    var element = document.getElementById('deviceProperties');
-    TrackButtonClicked('Device', 'Name', device.name, 1);
-    TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-    TrackButtonClicked('Device', 'Platform', device.platform, 1);
-    TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-    TrackButtonClicked('Device', 'Version', device.version, 1);
+    if(phonegap === 'true')
+    {
+//        alert('phonegap = '+phonegap);
+//        jQuery(window).off('resize');
+//        alert('unbind window resize events');
+
+        //    loadUserBasedFunctionality();
+        //    console.log('userbased functionaility loaded'); 
+
+        //Remove user preferences on phonegap app since menu button will
+        //contain this functionality.
+//        jQuery('#preferences').remove();
+
+        // Register some event listeners
+        document.addEventListener("online", onDeviceOnline, false);
+        document.addEventListener("offline", onDeviceOffline, false);
+        document.addEventListener("menubutton", onMenuKeyDown, false);
+
+//        // Initialize FB plugin
+//        FB._initialized = false;
+//        FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
+//
+//        if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) console.log('Cordova variable does not exist. Check that you have included cordova.js correctly');
+//        if (typeof CDV == 'undefined') console.log('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+//        if (typeof FB == 'undefined') console.log('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+//
+//        FB.Event.subscribe('auth.login', function(response) {
+//                                   console.log('auth.login event');
+//                                   });
+//
+//        FB.Event.subscribe('auth.logout', function(response) {
+//                           console.log('auth.logout event');
+//                           });
+//
+//        FB.Event.subscribe('auth.sessionChange', function(response) {
+//                           console.log('auth.sessionChange event');
+//                           });
+//
+//        FB.Event.subscribe('auth.statusChange', function(response) {
+//                           console.log('auth.statusChange event');
+//                           });
+        
+//        load();
+        
+        // Hide the splashscreen after loading...
+//        navigator.splashscreen.hide();
+        
+//        alert('init device complete');
+    }
+    else
+    {
+        setTimeout(initDevice(),1500);
+    }
 }
 
 function onDeviceOnline() 
@@ -234,6 +434,7 @@ function deinitialize() {
 
 function load()
 {
+//    alert('load');
     //    loadingDialogInit();
     //    $('#filters').hide();
     //reinitialize some maps
@@ -397,6 +598,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " getTeams failed");
         });
 
 
@@ -436,6 +639,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " awateam getPlayers failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theHomeTeamAbbr'], function(data) 
@@ -474,6 +679,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " hometeam getPlayers failed");
         });
         
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchTypes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -494,6 +701,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " getPitchTypes failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchOutcomes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -512,6 +721,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " getPitchOutcomes failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchLocations.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -530,19 +741,24 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, textStatus, exception) {
+                alert( exception + " getPitchLocations failed");
         });
+    }).fail(function(jqxhr, textStatus, exception) {
+            alert( exception + " getUserStateVariables failed");
     });
 }
 
 function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired, pitchTypesAquired, pitchLocationsAquired, pitchOutcomesAquired)
 {
-    //    alert("loadComponents " +
-    //"teamsMapAquired "+teamsMapAquired +
-    //"awayTeamMapAquired "+awayTeamMapAquired +
-    //"homeTeamMapAquired "+homeTeamMapAquired +
-    //"pitchTypesAquired "+pitchTypesAquired +
-    //"pitchLocationsAquired "+pitchLocationsAquired +
-    //"pitchOutcomesAquired "+pitchOutcomesAquired);
+//    alert("loadComponents " +
+//    "teamsMapAquired "+teamsMapAquired +
+//    "awayTeamMapAquired "+awayTeamMapAquired +
+//    "homeTeamMapAquired "+homeTeamMapAquired +
+//    "pitchTypesAquired "+pitchTypesAquired +
+//    "pitchLocationsAquired "+pitchLocationsAquired +
+//    "pitchOutcomesAquired "+pitchOutcomesAquired);
+
     if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
     {
         defenseTeamMap = homeTeamMap;
@@ -901,8 +1117,11 @@ function showAds()
     
     if (chartClicks > numberOfChartClicksBeforeShowAds)
     {
-        adsDialogInit("Advertisment", 10000);
-        chartClicks = 0;
+        if(phonegap != "true")
+        {
+            adsDialogInit("Advertisment", 10000);
+            chartClicks = 0;
+        }
     }
 }
 
@@ -988,7 +1207,7 @@ function pausecomp(millis)
 {
     var date = new Date();
     var curDate = null;
-
+	
     do {
         curDate = new Date();
     }

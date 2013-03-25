@@ -1,4 +1,4 @@
-function dialogInit(iconType, dialogTitle, message)
+function dialogInit()
 {    
     //need to initialize the dialog div so that 
     //we can set the resize function    

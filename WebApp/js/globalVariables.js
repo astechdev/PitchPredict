@@ -2,9 +2,6 @@
 //each chart defines its own var data and var options
 var chart;
 var phonegap = 'false';
-var cordova;
-var CDV;
-var FB;
 var googleAnalyticsInitialized = 'false';
 var gaPlugin;
 var gaAccount = 'UA-29743249-1';

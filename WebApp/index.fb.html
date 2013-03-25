@@ -3,87 +3,50 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <!--<meta name="inmobi-site-verification" content="725722b3ab8d089a966c6b0038b09191" />-->
 
         <title>Pitch Predict</title>
+        
+        <link rel="icon" type="image/png" href="images/icons/launcher.png" />
 
         <link rel="stylesheet" type="text/css" href="css/app.css" /> 
         <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
-        
-        <!--PhoneGap Javascript-->
-        <script src="phonegap.js"></script>
-        <script src="GAPlugin.js"></script>
-        
-        <!--Load the google AJAX API-->
-        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]},{name:jquery,version:1},{name:jqueryui,version:1}]}"></script>
+                
+        <!--Load the google AJAX API, google charts, jquery, jquery ui, and FB js sdk-->
+        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]}]}"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
         
         <script type="text/javascript" src="js/sammy.js"></script>
         <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
+        <script type="text/javascript" src="js/globalVariables.js"></script>	
         <script type="text/javascript" src="js/util.js"></script>
-        <script type="text/javascript" src="js/globalVariables.js"></script>
-
-        <script>
-//            function loadScripts()
-//            {
-//                console.log('loadScripts');
                 
-//                jQuery.getScript("js/sammy.js")
-//                .done(function(script, textStatus) {
-//                    console.log( textStatus + " sammy loaded" );
-//                    
-//                    jQuery.getScript("js/pitchpredict.dashboard.js")
-//                    .done(function(script, textStatus) {
-//                        console.log( textStatus + " pitchpredict.dashboard loaded" );
-//                        
-//                        jQuery.getScript("js/util.js")
-//                        .done(function(script, textStatus) {
-//                            console.log( textStatus + " util loaded" );
-//
-//                            jQuery.getScript("js/globalVariables.js")
-//                            .done(function(script, textStatus) {
-//                                console.log( textStatus + " globalVariables loaded....initialize" );
-//                                initialize();
-//                            })
-//                            .fail(function(jqxhr, settings, exception) {
-//                                console.log( exception + " globalVariables failed");
-//                            });
-//                        })
-//                        .fail(function(jqxhr, settings, exception) {
-//                            console.log( exception + " util failed");
-//                        });
-//                    })
-//                    .fail(function(jqxhr, settings, exception) {
-//                        console.log( exception + " pitchpredict.dashboard failed");
-//                    });
-//
-//                    jQuery.getScript("js/googleAnalytics.js")
-//                    .done(function(script, textStatus) {
-//                        console.log( textStatus + " googleAnalytics loaded");
-//                    })
-//                    .fail(function(jqxhr, settings, exception) {
-//                        console.log( exception + " googleAnalytics failed");
-//                    });
-//                })
-//                .fail(function(jqxhr, settings, exception) {
-//                    console.log( exception + " sammy failed");
-//                });
-                   
-//            }
-            
-//            google.load("jquery", "1");
-//            google.load("jqueryui", "1");
-//            google.setOnLoadCallback(loadScripts);
-            
-//            google.load("jqueryui", "1.10.1");
-//            google.load('visualization', '1.0', {'packages':['corechart']});
-        </script>
+        <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
+        <script type="text/javascript" src="js/Components/login.js"></script>
+        <script type="text/javascript" src="js/Components/dialog.js"></script>
+        <script type="text/javascript" src="js/Components/team_lineup.js"></script>
+        <script type="text/javascript" src="js/Components/scoreboard.js"></script>
+        <script type="text/javascript" src="js/Components/filters.js"></script>
+        <script type="text/javascript" src="js/Components/hotzone.js"></script>
+        <script type="text/javascript" src="js/Components/field.js"></script>
+        <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
+        
+        <!--Phonegap references-->
+        <script src="phonegap.js"></script>
+        <script src="GAPlugin.js"></script>
 
     </head>
     <body onload="initialize();">
+        <!-- This initializes the Facebook JS SDK. -->
+        <div id="fb-root"></div>
+        
         <div id="header">
             <img class="logo" src="images/logo.png"/>
-            <!--			<div class="hud">
-                                            <a onclick="loginDialogInit();" href="#"><img src="images/icons/play_6x8.png"/></a>
-                                    </div>-->
+            <div class="hud">
+                <span id="user-name"></span>
+                <img id="user-picture" src=""/>
+            </div>
         </div>
         <div id="dashboard">
             <div class="navwrap">
@@ -207,18 +170,22 @@
                             <span>Preferences</span>
                             <div id="logincontainer">
                                 <!--<form id="loginForm">-->
-                                    <label>Username:  
+<!--                                    <label>Username:  
                                         <input type="text" id="userName" name="userName" tabindex="1" class="text" />
                                     </label>
                                     <label>Password: 
                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
-                                    </label>
-                                    <button type="Submit" class="helpbuttons" onclick="loginRequest();">Log In</button>
+                                    </label>-->
+                                    <button type="Submit" class="helpbuttons" onclick="promptLogin();">Log In</button>
                                 <!--</form>-->
-                                <input type="Button" class="helpbuttons" onclick="register();" value="Register">
+                                <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
                             </div>
                             <div id="logoutcontainer">
                                 <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
+                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
                             </div>
                         </div>
                         <div data-view="charts" class="view charts">
