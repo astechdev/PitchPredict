@@ -346,10 +346,11 @@ function onDeviceReady()
 
 function initDevice() 
 {
-    alert('initDevice phonegap = '+phonegap);
+    alert('initDevice');
     
     if(phonegap === 'true')
     {
+        alert('phonegap = '+phonegap);
         jQuery(window).off('resize');
         alert('unbind window resize events');
 
@@ -396,6 +397,8 @@ function initDevice()
         TrackButtonClicked('Device', 'Platform', device.platform, 1);
         TrackButtonClicked('Device', 'UUID', device.uuid, 1);
         TrackButtonClicked('Device', 'Version', device.version, 1);
+        
+        load();
         
         // Hide the splashscreen after loading...
         navigator.splashscreen.hide();
