@@ -605,6 +605,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " getTeams failed");
         });
 
 
@@ -644,6 +646,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " awateam getPlayers failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPlayers.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery']+'&TeamAbbr='+stateVariablesMap['theHomeTeamAbbr'], function(data) 
@@ -682,6 +686,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " hometeam getPlayers failed");
         });
         
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchTypes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -702,6 +708,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " getPitchTypes failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchOutcomes.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -720,6 +728,8 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " getPitchOutcomes failed");
         });
 
         jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getPitchLocations.php?callback=?&YearToQuery='+stateVariablesMap['theYearToQuery'], function(data) 
@@ -738,7 +748,11 @@ function load()
                 pitchTypesAquired, 
                 pitchLocationsAquired, 
                 pitchOutcomesAquired);
+        }).fail(function(jqxhr, settings, exception) {
+                alert( exception + " getPitchLocations failed");
         });
+    }).fail(function(jqxhr, settings, exception) {
+            alert( exception + " getUserStateVariables failed");
     });
 }
 
