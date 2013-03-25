@@ -14,13 +14,13 @@ function sendPay() {
         order_info: 'locket'
     },
     function(response) {
-        alert('sendPay response: ', response);
+        console.log('sendPay response: ', response);
     });
 }
 
 //If Hackbook is running from within the Facebook iOS native app, disable Credits
 function checkForCredits() {
-    alert('checkForCredits');
+    console.log('checkForCredits');
     if (FB.UA.nativeApp()) {
         document.getElementById('credits-button').style.display = 'none';
     }

@@ -11,13 +11,13 @@ var permissions = ['user_status', 'publish_checkins', 'user_likes'];
 
 //Detect when Facebook tells us that the user's session has been returned
 function authUser() {
-    alert('authUser');
+    console.log('authUser');
     FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
 // Handle status changes
 function handleStatusChange(session) {
-    alert('Got the user\'s session: ', session);
+    console.log('Got the user\'s session: ', session);
     
     if (session.authResponse) {
         document.body.className = 'connected';
@@ -30,7 +30,7 @@ function handleStatusChange(session) {
             if (!response.error) {
                 user = response;
             
-                alert('Got the user\'s name, email, and picture: ', response);
+                console.log('Got the user\'s name, email, and picture: ', response);
             
                 //Update display of user name and picture
                 if (document.getElementById('user-name')) {
@@ -49,7 +49,7 @@ function handleStatusChange(session) {
         //                userInfoMap.UserName = user.name;
         //                load();
         //            }).error(function(e) { 
-        //                userInfoMap.UserName = "false"; helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); alert(JSON.stringify(e));});
+        //                userInfoMap.UserName = "false"; helpDialogInit("console.log", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e));});
         //          clearAction();
         });
     }
@@ -100,7 +100,7 @@ function checkUserPermissions(permissionToCheck) {
 
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
-    alert('promptLogin');
+    console.log('promptLogin');
     FB.login(null, {
         scope: 'email'
     });

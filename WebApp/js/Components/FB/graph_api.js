@@ -7,7 +7,7 @@
 
 //Detect when Facebook tells us that the user's session has been returned
 function updateAuthElements() {
-    alert('updateAuthElements');
+    console.log('updateAuthElements');
     FB.Event.subscribe('auth.statusChange', function(session) {
         if (session.authResponse) { 
             //The user is logged in, so let's pre-fetch some data and check the current 
@@ -61,7 +61,7 @@ function getCheckIns() {
     setAction('Getting check-ins', false);
   
     FB.api('/me/checkins', function(response) {
-        alert('Got your check-ins: ', response);
+        console.log('Got your check-ins: ', response);
     
         clearAction();
     
@@ -123,13 +123,13 @@ function checkin(id) {
         message: ''
     };
 
-    alert('Checking you into using the following params: ', params);
+    console.log('Checking you into using the following params: ', params);
   
     FB.api('/me/checkins', params,
         function(response) {
             clearAction();
       
-            alert('Checked you into the place, here\'s the response: ', response);
+            console.log('Checked you into the place, here\'s the response: ', response);
       
             setAction("You've successfully checked in!", false);
       
@@ -145,14 +145,14 @@ function getNearby() {
     // First use browser's geolocation API to obtain location
     navigator.geolocation.getCurrentPosition(function(location) {
         curLocation = location;
-        alert(location);
+        console.log(location);
 
         // Use graph API to search nearby places
         var path = '/search?type=place&center=' + location.coords.latitude + ',' + location.coords.longitude + '&distance=1000';
     
         FB.api(path, function(response) {
             clearAction();
-            alert('Got some places near you: ', response);
+            console.log('Got some places near you: ', response);
             if (!response.error) {
                 displayPlaces(response.data, document.getElementById('locations-nearby'));
             }
@@ -198,11 +198,11 @@ function preFetchData() {
                 }
             }
       
-            alert('Got your friend\'s that use the app: ', appFriendIDs);
+            console.log('Got your friend\'s that use the app: ', appFriendIDs);
       
-            alert('Got all of your friends: ', friendIDs);
+            console.log('Got all of your friends: ', friendIDs);
       
-            alert('Got friends that are not using the app yet: ', nonAppFriendIDs);
+            console.log('Got friends that are not using the app yet: ', nonAppFriendIDs);
         });
     });
 }
