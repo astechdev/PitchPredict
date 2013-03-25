@@ -42,13 +42,13 @@ function initialize() {
 //        console.log( exception + " phonegap failed");      
 //    });
      
-    jQuery.getScript("js/googleAnalytics.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " googleAnalytics loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " googleAnalytics failed");
-    }); 
+//    jQuery.getScript("js/googleAnalytics.js")
+//    .done(function(script, textStatus) {
+//        console.log( textStatus + " googleAnalytics loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " googleAnalytics failed");
+//    }); 
 
     jQuery(window).unload(function() 
     {
@@ -144,14 +144,6 @@ function onDeviceReady()
     .fail(function(jqxhr, settings, exception) {
         console.log( exception + " fastclick failed");
     });
-            
-    //Track device properties
-    var element = document.getElementById('deviceProperties');
-    TrackButtonClicked('Device', 'Name', device.name, 1);
-    TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-    TrackButtonClicked('Device', 'Platform', device.platform, 1);
-    TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-    TrackButtonClicked('Device', 'Version', device.version, 1);
 
     // Hide the splashscreen after loading...
 //    navigator.splashscreen.hide();
@@ -175,8 +167,7 @@ function onMenuKeyDown()
 }
 
 function deinitialize() {
-    googleAnalyticsInit();
-    gaPlugin.exit(nativePluginResultHandler, nativePluginErrorHandler);
+    googleAnalyticsDeInit();
 }
 
 //function loadUserBasedFunctionality() {
