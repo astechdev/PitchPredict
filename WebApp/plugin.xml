@@ -15,7 +15,7 @@
     <access origin="*.fbcdn.net" />
     <access origin="*.akamaihd.net" />
     
-    <preference name="263545480387259" />
+    <preference name="APP_ID" />
     
     <engines>
       <engine name="cordova" version=">=2.1.0" />
