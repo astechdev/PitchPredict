@@ -124,7 +124,7 @@ function initialize() {
             FB.init({ 
                 appId: gAppID,
                 status: true,
-                cookie: false,
+                cookie: true,
                 xfbml: true,
                 frictionlessRequests: true,
                 useCachedDialogs: true,
@@ -188,6 +188,12 @@ function onDeviceReady()
     if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
     if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+    
+    FB.getLoginStatus(handleStatusChange);
+
+    authUser();
+    checkForCredits();
+    updateAuthElements();
 
 //    FB.Event.subscribe('auth.login', function(response) {
 //                               console.log('auth.login event');
