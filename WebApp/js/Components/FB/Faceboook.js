@@ -10,20 +10,20 @@ var Facebook = {
         authorize_url += "&scope=publish_stream,offline_access"
  
         // Open Child browser and ask for permissions
-        //        client_browser = ChildBrowser.install();
-        //        client_browser.onLocationChange = function(loc){
-        //            Facebook.facebookLocChanged(loc);
-        //        };
-        //        
-        //        if (client_browser != null) {
-        //            window.plugins.childBrowser.showWebPage(authorize_url);
-        //        }
+        client_browser = ChildBrowser.install();
+        client_browser.onLocationChange = function(loc){
+            Facebook.facebookLocChanged(loc);
+        };
+
+        if (client_browser != null) {
+            window.plugins.childBrowser.showWebPage(authorize_url);
+        }
     
-        // Open InAppBrowser and ask for permissions
-        client_browser = window.open(authorize_url, '_blank', 'location=yes');
-        client_browser.addEventListener('loadstop', function(){
-            Facebook.facebookLocChanged(event.url);
-        });
+//        // Open InAppBrowser and ask for permissions
+//        client_browser = window.open(authorize_url, '_blank', 'location=yes');
+//        client_browser.addEventListener('loadstop', function(){
+//            Facebook.facebookLocChanged(event.url);
+//        });
 
     },
     facebookLocChanged:function(loc){
@@ -41,14 +41,15 @@ var Facebook = {
                     // We store our token in a localStorage Item called facebook_token
                     localStorage.setItem(facebook_token, data.split("=")[1]);
  
-                    //                    window.plugins.childBrowser.close();
-                    client_browser.close();
+                    window.plugins.childBrowser.close();
+//                    client_browser.close();
  
-                    app.init();
+//                    app.init();
+                    load();
                 },
                 error: function(error) {
-                    //                    window.plugins.childBrowser.close();
-                    client_browser.close();
+                    window.plugins.childBrowser.close();
+//                    client_browser.close();
                 }
             });
         }
