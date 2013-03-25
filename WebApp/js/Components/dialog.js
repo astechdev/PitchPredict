@@ -69,9 +69,9 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
         closeOnEscape: false
     });
     
-    console.log('manually get ads');
-    _inmobi.getNewAd(document.getElementById('dialog-message'));
-    console.log('ads should be displayed');
+//    console.log('manually get ads');
+//    _inmobi.getNewAd(document.getElementById('dialog-message'));
+//    console.log('ads should be displayed');
    
 //    $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
    

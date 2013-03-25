@@ -2,140 +2,166 @@ function initialize() {
     // Wait for Cordova to connect with the device
     document.addEventListener("deviceready", onDeviceReady, false);
     
-    jQuery.getScript("phonegap.js")
-    .done(function(script, textStatus) {        
-        console.log( textStatus + " phonegap loaded");
-        
-        jQuery.getScript("cdv-plugin-fb-connect.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " cdv-plugin-fb-connect loaded");
-            
-            jQuery.getScript("facebook-js-sdk.js")
-            .done(function(script, textStatus) {
-                console.log( textStatus + " facebook-js-sdk loaded");
-                initDevice();
-            })
-            .fail(function(jqxhr, settings, exception) {
-                console.log( exception + " facebook-js-sdk failed");
-            });
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " cdv-plugin-fb-connect failed");
-        });
-        
-        jQuery.getScript("GAPlugin.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " GAPlugin loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " GAPlugin failed");
-        });        
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " phonegap failed");
-        var gAppID = '263545480387259';
-
-        if (gAppID == 'enter_your_appid_here') {
-            console.log('You need to enter your App ID in js/util.js on line 37.');
-        }
-
-        //Initialize the Facebook SDK
-        //See https://developers.facebook.com/docs/reference/javascript/
-        window.fbAsyncInit = function() {
-            FB.init({ 
-                appId: gAppID,
-                status: true,
-                cookie: false,
-                xfbml: true,
-                frictionlessRequests: true,
-                useCachedDialogs: true,
-                oauth: true
-            });
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-
-//            FB.Event.subscribe('auth.login', function(response) {
-//                console.log('auth.login event');
+//    jQuery.getScript("phonegap.js")
+//    .done(function(script, textStatus) {        
+//        console.log( textStatus + " phonegap loaded");
+//        
+//        jQuery.getScript("cdv-plugin-fb-connect.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
+//            
+//            jQuery.getScript("facebook-js-sdk.js")
+//            .done(function(script, textStatus) {
+//                console.log( textStatus + " facebook-js-sdk loaded");
+//                initDevice();
+//            })
+//            .fail(function(jqxhr, settings, exception) {
+//                console.log( exception + " facebook-js-sdk failed");
+//            });
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " cdv-plugin-fb-connect failed");
+//        });
+//        
+//        jQuery.getScript("GAPlugin.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " GAPlugin loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " GAPlugin failed");
+//        });        
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " phonegap failed");
+//        var gAppID = '263545480387259';
+//
+//        if (gAppID == 'enter_your_appid_here') {
+//            console.log('You need to enter your App ID in js/util.js on line 37.');
+//        }
+//
+//        //Initialize the Facebook SDK
+//        //See https://developers.facebook.com/docs/reference/javascript/
+//        window.fbAsyncInit = function() {
+//            FB.init({ 
+//                appId: gAppID,
+//                status: true,
+//                cookie: false,
+//                xfbml: true,
+//                frictionlessRequests: true,
+//                useCachedDialogs: true,
+//                oauth: true
 //            });
 //
-//            FB.Event.subscribe('auth.logout', function(response) {
-//                console.log('auth.logout event');
-//            });
+//            FB.getLoginStatus(handleStatusChange);
 //
-//            FB.Event.subscribe('auth.sessionChange', function(response) {
-//                console.log('auth.sessionChange event');
-//            });
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
 //
-//            FB.Event.subscribe('auth.statusChange', function(response) {
-//                console.log('auth.statusChange event');
-//            });
-        };
-
-        // Load the SDK Asynchronously
-        (function(d){
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            ref.parentNode.insertBefore(js, ref);
-        }(document));        
-    });
-    
-    jQuery.getScript("js/Components/FB/auth.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " auth loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " auth failed");
-    });
-    
-    jQuery.getScript("js/Components/FB/feed.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " feed loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " feed failed");
-    });
-    
-    jQuery.getScript("js/Components/FB/graph_api.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " graph_api loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " graph_api failed");
-    });
-    
-    jQuery.getScript("js/Components/FB/requests.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " requests loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " requests failed");
-    });
-    
-    jQuery.getScript("js/Components/FB/send.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " send loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " send failed");
-    });
-    
-    jQuery.getScript("js/Components/FB/credits.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " credits loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " credits failed");
-    });
+////            FB.Event.subscribe('auth.login', function(response) {
+////                console.log('auth.login event');
+////            });
+////
+////            FB.Event.subscribe('auth.logout', function(response) {
+////                console.log('auth.logout event');
+////            });
+////
+////            FB.Event.subscribe('auth.sessionChange', function(response) {
+////                console.log('auth.sessionChange event');
+////            });
+////
+////            FB.Event.subscribe('auth.statusChange', function(response) {
+////                console.log('auth.statusChange event');
+////            });
+//        };
+//
+//        // Load the SDK Asynchronously
+//        (function(d){
+//            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//            if (d.getElementById(id)) {
+//                return;
+//            }
+//            js = d.createElement('script');
+//            js.id = id;
+//            js.async = true;
+//            js.src = "//connect.facebook.net/en_US/all.js";
+//            ref.parentNode.insertBefore(js, ref);
+//        }(document));  
+//    
+//        jQuery.getScript("js/Components/FB/auth.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " auth loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " auth failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/feed.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " feed loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " feed failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/graph_api.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " graph_api loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " graph_api failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/requests.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " requests loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " requests failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/send.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " send loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " send failed");
+//        });
+//
+//        jQuery.getScript("js/Components/FB/credits.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " credits loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " credits failed");
+//        });
+//    
+//        // Initialize inmobi
+//        inmobi_conf = 
+//            {
+//                siteid : "e807ef51fb1a49379c969a777d83d035",
+//                //siteid : "4028cba631d63df10131e1d3191d00cb",
+//                slot : "10",
+//                test: false,
+//                manual: true,
+//                onError : function(code) {
+//                    console.log(code);
+//                    if(code == "nfr") {
+//                        document.getElementById("dialog-message").style.display = "none";
+//                        // do something else. call to other ad network or logic to display in-house ads, etc. 
+//                    }
+//                }
+//            };
+//
+//        jQuery.getScript("js/libs/inmobi.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " inmobi loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " inmobi failed");
+//        });
+//        
+//    });
     
     dashboard.init();
     
@@ -306,31 +332,6 @@ function initialize() {
         setCurrentChart(currentchart);
         dashboard.dimensions();
     });
-    
-    // Initialize inmobi
-    inmobi_conf = 
-        {
-            siteid : "e807ef51fb1a49379c969a777d83d035",
-            //siteid : "4028cba631d63df10131e1d3191d00cb",
-            slot : "10",
-            test: false,
-            manual: true,
-            onError : function(code) {
-                console.log(code);
-                if(code == "nfr") {
-                    document.getElementById("dialog-message").style.display = "none";
-                    // do something else. call to other ad network or logic to display in-house ads, etc. 
-                }
-            }
-        };
-
-    jQuery.getScript("js/libs/inmobi.js")
-    .done(function(script, textStatus) {
-        console.log( textStatus + " inmobi loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " inmobi failed");
-    });
 
     load(); 
 }
@@ -340,6 +341,7 @@ function onDeviceReady()
     console.log('Device Ready');
     console.log('set phonegap to true');
     phonegap = 'true';
+    initDevice();
 }
 
 function initDevice() 
