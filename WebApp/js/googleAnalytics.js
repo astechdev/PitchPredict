@@ -26,14 +26,6 @@ function googleAnalyticsInit()
             gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, gaAccount, 50);
             
             PageButtonClicked(gaDomianName);
-            
-            //Track device properties
-            var element = document.getElementById('deviceProperties');
-            TrackButtonClicked('Device', 'Name', device.name, 1);
-            TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-            TrackButtonClicked('Device', 'Platform', device.platform, 1);
-            TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-            TrackButtonClicked('Device', 'Version', device.version, 1);
         }
         
         googleAnalyticsInitialized = 'true';
