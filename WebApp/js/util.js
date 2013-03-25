@@ -65,40 +65,108 @@ function initialize() {
             setCurrentChart(currentchart);
             dashboard.dimensions();
         });
-    });
-     
-//    jQuery.getScript("js/googleAnalytics.js")
-//    .done(function(script, textStatus) {
-//        console.log( textStatus + " googleAnalytics loaded");
-//    })
-//    .fail(function(jqxhr, settings, exception) {
-//        console.log( exception + " googleAnalytics failed");
-//    }); 
 
-//    jQuery(window).unload(function() 
-//    {
-//        deinitialize();
-//        console.log('deinitialized');
-//    });
-//    
-//    jQuery(window).resize(function() 
-//    { 
-//        dialogheight = $(window).height()*.75;
-//        dialogwidth = $(window).width()*.80;
+        if (gAppID == 'enter_your_appid_here') {
+            console.log('You need to enter your App ID in js/util.js on line 37.');
+        }
+    
+        jQuery.getScript("js/Components/FB/auth.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " auth loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " auth failed");
+        });
+
+        jQuery.getScript("js/Components/FB/feed.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " feed loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " feed failed");
+        });
+
+        jQuery.getScript("js/Components/FB/graph_api.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " graph_api loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " graph_api failed");
+        });
+
+        jQuery.getScript("js/Components/FB/requests.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " requests loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " requests failed");
+        });
+
+        jQuery.getScript("js/Components/FB/send.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " send loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " send failed");
+        });
+
+        jQuery.getScript("js/Components/FB/credits.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " credits loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " credits failed");
+        });        
+
+        //Initialize the Facebook SDK
+        //See https://developers.facebook.com/docs/reference/javascript/
+        window.fbAsyncInit = function() {
+            FB.init({ 
+                appId: gAppID,
+                status: true,
+                cookie: false,
+                xfbml: true,
+                frictionlessRequests: true,
+                useCachedDialogs: true,
+                oauth: true
+            });
+
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+
+//            FB.Event.subscribe('auth.login', function(response) {
+//                console.log('auth.login event');
+//            });
 //
-//        $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+//            FB.Event.subscribe('auth.logout', function(response) {
+//                console.log('auth.logout event');
+//            });
 //
-//        $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+//            FB.Event.subscribe('auth.sessionChange', function(response) {
+//                console.log('auth.sessionChange event');
+//            });
 //
-//        $( "#dialog" ).dialog( "option", "width", dialogwidth );
-//
-//        $( "#dialog" ).dialog( "option", "height", dialogheight );
-//        
-//        chartheight = ($(window).height()*.75);
-//        chartwidth = chartheight*1.40;                          
-//        setCurrentChart(currentchart);
-//        dashboard.dimensions();
-//    });
+//            FB.Event.subscribe('auth.statusChange', function(response) {
+//                console.log('auth.statusChange event');
+//            });
+        };
+
+        // Load the SDK Asynchronously
+        (function(d){
+            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+            if (d.getElementById(id)) {
+                return;
+            }
+            js = d.createElement('script');
+            js.id = id;
+            js.async = true;
+            js.src = "//connect.facebook.net/en_US/all.js";
+            ref.parentNode.insertBefore(js, ref);
+        }(document));
+    });
 }
 
 function onDeviceReady() 

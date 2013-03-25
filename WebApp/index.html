@@ -36,12 +36,15 @@
 
     </head>
     <body onload="initialize();">
+        <!-- This initializes the Facebook JS SDK. -->
+        <div id="fb-root"></div>
         
         <div id="header">
             <img class="logo" src="images/logo.png"/>
-            <!--			<div class="hud">
-                                            <a onclick="loginDialogInit();" href="#"><img src="images/icons/play_6x8.png"/></a>
-                                    </div>-->
+            <div class="hud">
+                <span id="user-name"></span>
+                <img id="user-picture" src=""/>
+            </div>
         </div>
         <div id="dashboard">
             <div class="navwrap">
@@ -165,18 +168,22 @@
                             <span>Preferences</span>
                             <div id="logincontainer">
                                 <!--<form id="loginForm">-->
-                                    <label>Username:  
+<!--                                    <label>Username:  
                                         <input type="text" id="userName" name="userName" tabindex="1" class="text" />
                                     </label>
                                     <label>Password: 
                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
-                                    </label>
-                                    <button type="Submit" class="helpbuttons" onclick="loginRequest();">Log In</button>
+                                    </label>-->
+                                    <button type="Submit" class="helpbuttons" onclick="promptLogin();">Log In</button>
                                 <!--</form>-->
-                                <input type="Button" class="helpbuttons" onclick="register();" value="Register">
+                                <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
                             </div>
                             <div id="logoutcontainer">
                                 <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
+                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
                             </div>
                         </div>
                         <div data-view="charts" class="view charts">
