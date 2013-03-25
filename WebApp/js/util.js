@@ -13,22 +13,55 @@ function initialize() {
     .done(function(script, textStatus) {        
         alert( textStatus + " phonegap loaded");
         
-//        jQuery.getScript("cdv-plugin-fb-connect.js")
-//        .done(function(script, textStatus) {
-//            console.log( textStatus + " cdv-plugin-fb-connect loaded");
-//            
-//            jQuery.getScript("facebook-js-sdk.js")
-//            .done(function(script, textStatus) {
-//                console.log( textStatus + " facebook-js-sdk loaded");
-////                initDevice();
-//            })
-//            .fail(function(jqxhr, settings, exception) {
-//                console.log( exception + " facebook-js-sdk failed");
-//            });
-//        })
-//        .fail(function(jqxhr, settings, exception) {
-//            console.log( exception + " cdv-plugin-fb-connect failed");
-//        });
+        jQuery.getScript("cdv-plugin-fb-connect.js")
+        .done(function(script, textStatus) {
+            alert( textStatus + " cdv-plugin-fb-connect loaded");
+            
+            jQuery.getScript("facebook-js-sdk.js")
+            .done(function(script, textStatus) {
+                alert( textStatus + " facebook-js-sdk loaded");
+
+                // Initialize FB plugin
+                if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+                if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+                if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+
+                if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
+                {
+                    FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+                    alert('Initialize FB plugin');
+
+                    FB.getLoginStatus(handleStatusChange);
+                    alert('FB getLoginStatus');
+
+                    authUser();
+                    checkForCredits();
+                    updateAuthElements();
+
+                //    FB.Event.subscribe('auth.login', function(response) {
+                //                               console.log('auth.login event');
+                //                               });
+                //
+                //    FB.Event.subscribe('auth.logout', function(response) {
+                //                       console.log('auth.logout event');
+                //                       });
+                //
+                //    FB.Event.subscribe('auth.sessionChange', function(response) {
+                //                       console.log('auth.sessionChange event');
+                //                       });
+                //
+                //    FB.Event.subscribe('auth.statusChange', function(response) {
+                //                       console.log('auth.statusChange event');
+                //                       });
+                }
+            })
+            .fail(function(jqxhr, settings, exception) {
+                alert( exception + " facebook-js-sdk failed");
+            });
+        })
+        .fail(function(jqxhr, settings, exception) {
+            alert( exception + " cdv-plugin-fb-connect failed");
+        });
 //        
 //        jQuery.getScript("GAPlugin.js")
 //        .done(function(script, textStatus) {
