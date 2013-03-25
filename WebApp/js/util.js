@@ -199,6 +199,31 @@ function initialize() {
             js.src = "//connect.facebook.net/en_US/all.js";
             ref.parentNode.insertBefore(js, ref);
         }(document));
+        
+        // Initialize inmobi
+        inmobi_conf = 
+            {
+                siteid : "e807ef51fb1a49379c969a777d83d035",
+                //siteid : "4028cba631d63df10131e1d3191d00cb",
+                slot : "10",
+                test: false,
+                manual: true,
+                onError : function(code) {
+                    console.log(code);
+                    if(code == "nfr") {
+                        document.getElementById("dialog-message").style.display = "none";
+                        // do something else. call to other ad network or logic to display in-house ads, etc. 
+                    }
+                }
+            };
+
+        jQuery.getScript("js/libs/inmobi.js")
+        .done(function(script, textStatus) {
+            console.log( textStatus + " inmobi loaded");
+        })
+        .fail(function(jqxhr, settings, exception) {
+            console.log( exception + " inmobi failed");
+        });
     });
 }
 
