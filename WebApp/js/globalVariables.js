@@ -2,6 +2,7 @@
 //each chart defines its own var data and var options
 var chart;
 var phonegap = 'false';
+var gAppID = '263545480387259';
 var googleAnalyticsInitialized = 'false';
 var gaPlugin;
 var gaAccount = 'UA-29743249-1';
