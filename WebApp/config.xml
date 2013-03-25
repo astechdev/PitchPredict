@@ -18,8 +18,6 @@
     <author href="http://astechdev.com" email="astechdev@gmail.com">
         Scott Aslan, AsTech Development
     </author>
-
-    <feature name="http://api.phonegap.com/1.0/notification"/>
     
     <preference name="orientation"      value="landscape" />
     <preference name="target-device"    value="tablet" />
@@ -28,6 +26,7 @@
     <gap:plugin name="FacebookConnect">
         <param name="APP_ID" value="263545480387259" />
     </gap:plugin>
+    <gap:plugin name="GAPlugin" />
     
     <access origin="*"/>
     
