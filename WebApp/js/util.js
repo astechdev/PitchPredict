@@ -400,7 +400,7 @@ function initDevice()
 //        TrackButtonClicked('Device', 'UUID', device.uuid, 1);
 //        TrackButtonClicked('Device', 'Version', device.version, 1);
         
-//        load();
+        load();
         
         // Hide the splashscreen after loading...
         navigator.splashscreen.hide();
