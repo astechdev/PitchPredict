@@ -144,12 +144,12 @@ function onDeviceReady()
         FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
         alert('Initialize FB plugin');
 
-        FB.getLoginStatus(handleStatusChange);
-        alert('FB getLoginStatus');
-
-        authUser();
-        checkForCredits();
-        updateAuthElements();
+//        FB.getLoginStatus(handleStatusChange);
+//        alert('FB getLoginStatus');
+//
+//        authUser();
+//        checkForCredits();
+//        updateAuthElements();
 
 //        FB.Event.subscribe('auth.login', function(response) {
 //                                   console.log('auth.login event');
