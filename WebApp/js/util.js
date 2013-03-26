@@ -142,7 +142,16 @@ function onDeviceReady()
     if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
     {
         FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-        alert('Initialize FB plugin');
+        
+        window.fbAsyncInit = function() {
+            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+        };
 
 //        FB.getLoginStatus(handleStatusChange);
 //        alert('FB getLoginStatus');
