@@ -134,7 +134,7 @@ function promptLogin() {
                 try {
                     uid = response.authResponse.userId;
                 } catch (e) {
-                    main.errorLog(e, "FB.login");
+                    alert("FB.login: "+e);
                 }
 
                 // iOs Hack other property name
@@ -142,16 +142,16 @@ function promptLogin() {
                     try {
                         uid = response.authResponse.userID;
                     } catch (e) {
-                        main.errorLog(e, "FB.login");
+                        alert("FB.login: "+e);
                     }
                 }
 
                 if (response.status == 'connected') {
-                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
-                        fbId : uid,
-                        access_token: response.authResponse.accessToken,
-                        secret: TOP_SECRET_GENERATED_HASH
-                    }, auth.successLogin, auth.errorLogin);
+//                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
+//                        fbId : uid,
+//                        access_token: response.authResponse.accessToken,
+//                        secret: TOP_SECRET_GENERATED_HASH
+//                    }, auth.successLogin, auth.errorLogin);
 
                 } else if (response.status === 'not_authorized') {
                     alert('Error in authentication: not authorized');

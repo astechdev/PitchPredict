@@ -141,10 +141,9 @@ function onDeviceReady()
     
     if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
     {
-        FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-        
         window.fbAsyncInit = function() {
             FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+            alert("FB initialized");
 
             FB.getLoginStatus(handleStatusChange);
 
@@ -152,29 +151,6 @@ function onDeviceReady()
             checkForCredits();
             updateAuthElements();
         };
-
-//        FB.getLoginStatus(handleStatusChange);
-//        alert('FB getLoginStatus');
-//
-//        authUser();
-//        checkForCredits();
-//        updateAuthElements();
-
-//        FB.Event.subscribe('auth.login', function(response) {
-//                                   console.log('auth.login event');
-//                                   });
-//    
-//        FB.Event.subscribe('auth.logout', function(response) {
-//                           console.log('auth.logout event');
-//                           });
-//    
-//        FB.Event.subscribe('auth.sessionChange', function(response) {
-//                           console.log('auth.sessionChange event');
-//                           });
-//    
-//        FB.Event.subscribe('auth.statusChange', function(response) {
-//                           console.log('auth.statusChange event');
-//                           });
     }
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
