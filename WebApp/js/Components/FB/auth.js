@@ -122,7 +122,7 @@ function promptLogin() {
         
         FB.init({
             appId: gAppID, 
-//            nativeInterface: CDV.FB, 
+            nativeInterface: CDV.FB, 
             useCachedDialogs: false
         });
         alert('Initialize FB plugin');
