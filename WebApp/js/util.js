@@ -139,19 +139,19 @@ function onDeviceReady()
     if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
     if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     
-    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
-    {
-        window.fbAsyncInit = function() {
-            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-            alert("FB initialized");
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-        };
-    }
+//    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
+//    {
+//        window.fbAsyncInit = function() {
+//            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+//            alert("FB initialized");
+//
+//            FB.getLoginStatus(handleStatusChange);
+//
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
+//        };
+//    }
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
