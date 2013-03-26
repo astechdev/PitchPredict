@@ -129,7 +129,7 @@ function promptLogin() {
         
         FB.login(
             function(response) {
-
+                alert(response);
                 var uid = null; 
                 try {
                     uid = response.authResponse.userId;
