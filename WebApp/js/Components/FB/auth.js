@@ -98,20 +98,41 @@ function checkUserPermissions(permissionToCheck) {
     });
 }
 
+function fbinit() {
+    FB.getLoginStatus(handleStatusChange);
+
+    authUser();
+    checkForCredits();
+    updateAuthElements();
+}
+
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
     console.log('promptLogin');
     
-//    if(phonegap != 'true')
-//    {
+    if(phonegap != 'true')
+    {
         FB.login(null, {
             scope: 'email'
         });
-//    }
-//    else
-//    {
-//        Facebook.init();
-//    }
+    }
+    else
+    {
+        //        Facebook.init();
+        FB.login(
+            function(response) {
+                if (response.session) {
+                    alert('logged in');
+                    fbinit();
+                } else {
+                    alert('not logged in');
+                }
+            },
+            {
+                scope: "email"
+            }
+            );
+    }
 }
 
 //This will prompt the user to grant you acess to a given permission
