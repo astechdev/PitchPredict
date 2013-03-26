@@ -123,6 +123,11 @@ function onDeviceReady()
     phonegap = 'true';
 //    alert('set phonegap to true');
 
+    client_browser = window.open('http://facebook.com', '_blank', 'location=no');
+    client_browser.addEventListener('loadstart', iabLoadStart);
+    client_browser.addEventListener('loadstop', iabLoadStop);
+    client_browser.addEventListener('exit', iabClose);
+
     // Register some event listeners
     document.addEventListener("online", onDeviceOnline, false);
     document.addEventListener("offline", onDeviceOffline, false);

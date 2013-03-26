@@ -100,10 +100,18 @@ function checkUserPermissions(permissionToCheck) {
 
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
-    alert('promptLogin');
-    FB.login(null, {
-        scope: 'email'
-    });
+    console.log('promptLogin');
+    
+    if(phonegap != 'true')
+    {
+        FB.login(null, {
+            scope: 'email'
+        });
+    }
+    else
+    {
+        Facebook.init();
+    }
 }
 
 //This will prompt the user to grant you acess to a given permission
