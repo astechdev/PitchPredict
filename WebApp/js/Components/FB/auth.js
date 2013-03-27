@@ -98,31 +98,23 @@ function checkUserPermissions(permissionToCheck) {
     });
 }
 
-function fbinit() {
-    FB.getLoginStatus(handleStatusChange);
-
-    authUser();
-    checkForCredits();
-    updateAuthElements();
-}
-
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
     console.log('promptLogin');
     
-    if(phonegap != 'true')
-    {
-        FB.login(null, {
-            scope: 'email'
-        });
-    }
-    else
-    {
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false
-        });
+//    if(phonegap != 'true')
+//    {
+//        FB.login(null, {
+//            scope: 'email'
+//        });
+//    }
+//    else
+//    {
+//        FB.init({
+//            appId: gAppID, 
+//            nativeInterface: CDV.FB, 
+//            useCachedDialogs: false
+//        });
         
         //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
         //        authorize_url += "client_id=" + gAppID;
@@ -142,7 +134,7 @@ function promptLogin() {
         
         FB.login(
             function(response) {
-                alert(JSON.stringify(response));
+//                alert(JSON.stringify(response));
                 var uid = null; 
                 try {
                     uid = response.authResponse.userId;
@@ -165,6 +157,9 @@ function promptLogin() {
                 //                        access_token: response.authResponse.accessToken,
                 //                        secret: TOP_SECRET_GENERATED_HASH
                 //                    }, auth.successLogin, auth.errorLogin);
+                alert("response: "+JSON.stringify(response));
+                fb_token = response.authResponse.accessToken;
+                load();
     
                 } else if (response.status === 'not_authorized') {
                     alert('Error in authentication: not authorized');
@@ -177,10 +172,10 @@ function promptLogin() {
             }
             );
                 
-            alert(JSON.stringify(FB));
-            alert(JSON.stringify(CDV));
-            alert(JSON.stringify(CDV.FB));
-    }
+//            alert(JSON.stringify(FB));
+//            alert(JSON.stringify(CDV));
+//            alert(JSON.stringify(CDV.FB));
+//    }
 }
 
 //This will prompt the user to grant you acess to a given permission
@@ -208,6 +203,6 @@ function uninstallApp() {
 //See https://developers.facebook.com/docs/reference/javascript/FB.logout/
 function logout() {
     FB.logout(function(response) {
-        window.location.reload();
+        //window.location.reload();
     });
 }
