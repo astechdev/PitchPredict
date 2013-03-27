@@ -60,6 +60,57 @@ function handleStatusChange(session) {
     }
 }
 
+function getLoginStatus() {
+    alert('getLoginStatus');
+    alert('phonegap: '+phonegap);
+    if(phonegap === 'true')
+    {
+        FB.init({
+            appId: gAppID, 
+            nativeInterface: CDV.FB, 
+            useCachedDialogs: false
+        });
+        alert('FB.init');
+    
+        FB.getLoginStatus(function(response) {
+            alert("getLoginStatus: "+JSON.stringify(response));
+            if (response.status === 'connected') {
+                alert('logged in');
+                if(phonegap === 'true')
+                {
+                    //Fetch user's id, name, and picture
+                    FB.api('/me', {
+                        fields: 'name, email, picture'
+                    },
+                    function(response) {
+                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
+                        if (!response.error) {
+                            user = response;
+
+                            alert('Got the user\'s name, email, and picture: ', response);
+
+                            //Update display of user name and picture
+                            if (document.getElementById('user-name')) {
+                                document.getElementById('user-name').innerHTML = user.name;
+                            }
+                            if (document.getElementById('user-picture')) {
+                                document.getElementById('user-picture').src = user.picture.data.url;
+                            }
+                        }
+                    });
+                }
+                authUser();
+                checkForCredits();
+                updateAuthElements();
+                load();
+                      
+            } else {
+                alert('not logged in');
+            }
+        });
+    }
+}
+
 //Check the current permissions to set the page elements.
 //Pass back a flag to check for a specific permission, to
 //handle the cancel detection flow.
@@ -112,48 +163,44 @@ function promptLogin() {
     }
         
         
-        //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
-        //        authorize_url += "client_id=" + gAppID;
-        //        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
-        //        authorize_url += "&display=touch";
-        //        authorize_url += "&state=not_connected";
-        //        authorize_url += "&response_type=token";
-        //        authorize_url += "&scope=publish_stream,offline_access";
-        //        
-        //        client_browser = window.open(authorize_url, '_blank', 'location=no');
-        //        client_browser.addEventListener('loadstart', iabLoadStart);
-        //        client_browser.addEventListener('loadstop', iabLoadStop);
-        //        client_browser.addEventListener('exit', iabClose);
+    //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
+    //        authorize_url += "client_id=" + gAppID;
+    //        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
+    //        authorize_url += "&display=touch";
+    //        authorize_url += "&state=not_connected";
+    //        authorize_url += "&response_type=token";
+    //        authorize_url += "&scope=publish_stream,offline_access";
+    //        
+    //        client_browser = window.open(authorize_url, '_blank', 'location=no');
+    //        client_browser.addEventListener('loadstart', iabLoadStart);
+    //        client_browser.addEventListener('loadstop', iabLoadStop);
+    //        client_browser.addEventListener('exit', iabClose);
         
-        //        Facebook.init();
-        //        alert('Initialize FB plugin');
+    //        Facebook.init();
+    //        alert('Initialize FB plugin');
         
-        FB.login(
-            function(response) {
-//                alert(JSON.stringify(response));
-                var uid = null; 
-                try {
-                    uid = response.authResponse.userId;
-                } catch (e) {
-                    alert("FB.login: "+e);
-                }
+    FB.login(
+        function(response) {
+            //                alert(JSON.stringify(response));
+            //                var uid = null; 
+            //                try {
+            //                    uid = response.authResponse.userId;
+            //                } catch (e) {
+            //                    alert("FB.login: "+e);
+            //                }
+            //    
+            //                // iOs Hack other property name
+            //                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
+            //                    try {
+            //                        uid = response.authResponse.userID;
+            //                    } catch (e) {
+            //                        alert("FB.login: "+e);
+            //                    }
+            //                }
     
-                // iOs Hack other property name
-                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
-                    try {
-                        uid = response.authResponse.userID;
-                    } catch (e) {
-                        alert("FB.login: "+e);
-                    }
-                }
-    
-                if (response.status == 'connected') {
-                //                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
-                //                        fbId : uid,
-                //                        access_token: response.authResponse.accessToken,
-                //                        secret: TOP_SECRET_GENERATED_HASH
-                //                    }, auth.successLogin, auth.errorLogin);
-                alert("response: "+JSON.stringify(response));
+            alert("login response: "+JSON.stringify(response));
+            if (response.status == 'connected') 
+            {
                 fb_token = response.authResponse.accessToken;
                 if(phonegap === 'true')
                 {
@@ -162,10 +209,11 @@ function promptLogin() {
                         fields: 'name, email, picture'
                     },
                     function(response) {
+                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
                         if (!response.error) {
                             user = response;
 
-                            console.log('Got the user\'s name, email, and picture: ', response);
+                            alert('Got the user\'s name, email, and picture: ', response);
 
                             //Update display of user name and picture
                             if (document.getElementById('user-name')) {
@@ -182,16 +230,16 @@ function promptLogin() {
                 updateAuthElements();
                 load();
     
-                } else if (response.status === 'not_authorized') {
-                    alert('Error in authentication: not authorized');
-                } else {
-                    alert('Unknown error in authentication');
-                }
-            },
-            {
-                scope: "email"
+            } else if (response.status === 'not_authorized') {
+                alert('Error in authentication: not authorized');
+            } else {
+                alert('Unknown error in authentication');
             }
-            );
+        },
+        {
+            scope: "email"
+        }
+        );
                 
 //            alert(JSON.stringify(FB));
 //            alert(JSON.stringify(CDV));
@@ -225,5 +273,5 @@ function uninstallApp() {
 function logout() {
     FB.logout(function(response) {
         //window.location.reload();
-    });
+        });
 }

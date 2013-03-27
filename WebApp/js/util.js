@@ -121,12 +121,12 @@ function onDeviceReady()
 {
 //    alert('Device Ready');
     phonegap = 'true';
-//    alert('set phonegap to true');
+    alert('set phonegap to true');
     
-    // Initialize FB plugin
-    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-    if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-    if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+//    // Initialize FB plugin
+//    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+//    if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+//    if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
     
 //    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
 //    {
@@ -577,17 +577,10 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadField();
         updateCharts('true');
         
-//        if (phonegap === "true")
-//        {
-//            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-//            alert("FB initialized");
-//
-//            FB.getLoginStatus(handleStatusChange);
-//
-//            authUser();
-//            checkForCredits();
-//            updateAuthElements();
-//        }
+        if (phonegap === "true")
+        {
+            getLoginStatus();
+        }
 
     //        if (jQuery('#resultscontainer').length > 0)
     //        {
