@@ -141,12 +141,12 @@ function checkUserPermissions(permissionToCheck) {
 }
 
 function alertFBvars() {
-//    alert("FB: "+JSON.stringify(FB));
-//    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+    //    alert("FB: "+JSON.stringify(FB));
+    //    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
     for (var key in window.localStorage){
         alert("key: "+key);
         alert("value: "+window.localStorage(key));
-     }
+    }
 }
 
 //Prompt the user to login and ask for the 'email' permission
@@ -179,40 +179,23 @@ function promptLogin() {
     }
     
     FB.Event.subscribe('auth.login', function(response) {
-                        alert('auth.login event');
-                        });
+        alert('auth.login event');
+    });
             
     FB.Event.subscribe('auth.logout', function(response) {
-                       alert('auth.logout event');
-                       });
+        alert('auth.logout event');
+    });
 
     FB.Event.subscribe('auth.sessionChange', function(response) {
-                       alert('auth.sessionChange event');
-                       });
+        alert('auth.sessionChange event');
+    });
 
     FB.Event.subscribe('auth.statusChange', function(response) {
-                       alert('auth.statusChange event');
-                       });
+        alert('auth.statusChange event');
+    });
         
     FB.login(
-        function(response) {
-            //                alert(JSON.stringify(response));
-            //                var uid = null; 
-            //                try {
-            //                    uid = response.authResponse.userId;
-            //                } catch (e) {
-            //                    alert("FB.login: "+e);
-            //                }
-            //    
-            //                // iOs Hack other property name
-            //                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
-            //                    try {
-            //                        uid = response.authResponse.userID;
-            //                    } catch (e) {
-            //                        alert("FB.login: "+e);
-            //                    }
-            //                }
-    
+        function(response) {    
             alert("login response: "+JSON.stringify(response));
             if (response.status == 'connected') 
             {
@@ -259,6 +242,26 @@ function promptLogin() {
     jQuery('#logincontainer').hide();
         
     jQuery('#logoutcontainer').show();
+}
+
+function login() {
+    FB.login(
+        function(response) {
+            if (response.session) {
+                alert('logged in');
+                         
+            
+                jQuery('#logincontainer').hide();
+
+                jQuery('#logoutcontainer').show();
+            } else {
+                alert('not logged in');
+            }
+        },
+        {
+            scope: "email"
+        }
+        );
 }
 
 //This will prompt the user to grant you acess to a given permission
