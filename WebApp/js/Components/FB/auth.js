@@ -159,6 +159,9 @@ function promptLogin() {
                 //                    }, auth.successLogin, auth.errorLogin);
                 alert("response: "+JSON.stringify(response));
                 fb_token = response.authResponse.accessToken;
+                authUser();
+                checkForCredits();
+                updateAuthElements();
                 load();
     
                 } else if (response.status === 'not_authorized') {

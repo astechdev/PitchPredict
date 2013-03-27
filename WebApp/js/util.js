@@ -187,12 +187,12 @@ function onDeviceReady()
 
     jQuery.getScript("js/libs/fastclick.js")
     .done(function(script, textStatus) {
-        alert( textStatus + " fastclick loaded");
-        jQuery(window).load(function() 
-        {
+//        alert( textStatus + " fastclick loaded");
+//        jQuery(window).load(function() 
+//        {
             FastClick.attach(document.body);
             alert('fastclick initialized');
-        });
+//        });
     })
     .fail(function(jqxhr, settings, exception) {
 //        alert( exception + " fastclick failed");
@@ -205,7 +205,7 @@ function onDeviceReady()
     document.addEventListener("online", onDeviceOnline, false);
     document.addEventListener("offline", onDeviceOffline, false);
     document.addEventListener("menubutton", onMenuKeyDown, false);
-//    alert('Register some event listeners');
+    alert('Register some event listeners');
 }
 
 function onDeviceOnline() 
@@ -577,17 +577,17 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadField();
         updateCharts('true');
         
-        if (phonegap === "true")
-        {
-            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-            alert("FB initialized");
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-        }
+//        if (phonegap === "true")
+//        {
+//            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+//            alert("FB initialized");
+//
+//            FB.getLoginStatus(handleStatusChange);
+//
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
+//        }
 
     //        if (jQuery('#resultscontainer').length > 0)
     //        {
