@@ -11,13 +11,13 @@ var permissions = ['user_status', 'publish_checkins', 'user_likes'];
 
 //Detect when Facebook tells us that the user's session has been returned
 function authUser() {
-    console.log('authUser');
+    alert('authUser');
     FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
 // Handle status changes
 function handleStatusChange(session) {
-    console.log('Got the user\'s session: ', session);
+    alert('Got the user\'s session: ', session);
     
     if (session.authResponse) {
         document.body.className = 'connected';
@@ -30,7 +30,7 @@ function handleStatusChange(session) {
             if (!response.error) {
                 user = response;
             
-                console.log('Got the user\'s name, email, and picture: ', response);
+                alert('Got the user\'s name, email, and picture: ', response);
             
                 //Update display of user name and picture
                 if (document.getElementById('user-name')) {
@@ -49,7 +49,7 @@ function handleStatusChange(session) {
         //                userInfoMap.UserName = user.name;
         //                load();
         //            }).error(function(e) { 
-        //                userInfoMap.UserName = "false"; helpDialogInit("console.log", "Error!", "You did not enter a valid user name and password.  "); console.log(JSON.stringify(e));});
+        //                userInfoMap.UserName = "false"; helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); alert(JSON.stringify(e));});
         //          clearAction();
         });
     }
@@ -60,54 +60,45 @@ function handleStatusChange(session) {
     }
 }
 
-function getLoginStatus() {
-    alert('getLoginStatus');
-    alert('phonegap: '+phonegap);
-    if(phonegap === 'true')
-    {
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false
-        });
-        alert('FB.init');
+function fbinit() {
+    alert("fbinit");
     
-        FB.getLoginStatus(function(response) {
-            alert("getLoginStatus: "+JSON.stringify(response));
-            if (response.status === 'connected') {
-                alert('logged in');
-                if(phonegap === 'true')
-                {
-                    //Fetch user's id, name, and picture
-                    FB.api('/me', {
-                        fields: 'name, email, picture'
-                    },
-                    function(response) {
-                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
-                        if (!response.error) {
-                            user = response;
+    alert("FB._initialized: "+FB._initialized);
+    
+    if(FB._initialized = false)
+    {
+        if(phonegap === 'true')
+        {
+            FB.init({
+                appId: gAppID, 
+                nativeInterface: CDV.FB, 
+                useCachedDialogs: false
+            });
+        }
+        else
+        {
+            FB.init({ 
+                appId: gAppID,
+                status: true,
+                cookie: true,
+                xfbml: true,
+                frictionlessRequests: true,
+                useCachedDialogs: true,
+                oauth: true
+            });
+        }
+        alert("FB.init complete");
+         
+        FB.getLoginStatus(handleStatusChange);
 
-                            alert('Got the user\'s name, email, and picture: ', response);
-
-                            //Update display of user name and picture
-                            if (document.getElementById('user-name')) {
-                                document.getElementById('user-name').innerHTML = user.name;
-                            }
-                            if (document.getElementById('user-picture')) {
-                                document.getElementById('user-picture').src = user.picture.data.url;
-                            }
-                        }
-                    });
-                }
-                authUser();
-                checkForCredits();
-                updateAuthElements();
-                load();
-                      
-            } else {
-                alert('not logged in');
-            }
-        });
+        authUser();
+        checkForCredits();
+        updateAuthElements();
+        load();
+    }
+    else
+    {
+        setTimeout(fbinit(),1500);
     }
 }
 
@@ -151,16 +142,7 @@ function checkUserPermissions(permissionToCheck) {
 
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
-    console.log('promptLogin');
-    
-    if(phonegap === 'true')
-    {
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false
-        });
-    }
+    alert('promptLogin');
         
         
     //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
