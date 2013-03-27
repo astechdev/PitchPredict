@@ -122,19 +122,6 @@ function onDeviceReady()
 //    alert('Device Ready');
     phonegap = 'true';
 //    alert('set phonegap to true');
-
-
-        
-//    client_browser = window.open(authorize_url, '_blank', 'location=no');
-//    client_browser.addEventListener('loadstart', iabLoadStart);
-//    client_browser.addEventListener('loadstop', iabLoadStop);
-//    client_browser.addEventListener('exit', iabClose);
-
-    // Register some event listeners
-    document.addEventListener("online", onDeviceOnline, false);
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("menubutton", onMenuKeyDown, false);
-//    alert('Register some event listeners');
     
     // Initialize FB plugin
     if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
@@ -143,7 +130,7 @@ function onDeviceReady()
     
 //    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
 //    {
-//        window.fbAsyncInit = function() {
+        window.fbAsyncInit = function() {
             FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
             alert("FB initialized");
 
@@ -152,12 +139,12 @@ function onDeviceReady()
             authUser();
             checkForCredits();
             updateAuthElements();
-//        };
+        };
 //    }
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
     .done(function(script, textStatus) {
-//        alert( textStatus + " jquery.hammer.js loaded");
+        alert( textStatus + " jquery.hammer.js loaded");
 
         var hammertime = $('body').hammer();
         console.log(hammertime);
@@ -213,6 +200,12 @@ function onDeviceReady()
 
     // Hide the splashscreen after loading...
 //    navigator.splashscreen.hide();
+
+    // Register some event listeners
+    document.addEventListener("online", onDeviceOnline, false);
+    document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("menubutton", onMenuKeyDown, false);
+//    alert('Register some event listeners');
 }
 
 function onDeviceOnline() 
