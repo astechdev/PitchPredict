@@ -25,7 +25,9 @@ var Facebook = {
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=yes');
-        client_browser.addEventListener('loadstart', this.facebookLocChanged);
+        client_browser.addEventListener('loadstart', iabLoadStart);
+        client_browser.addEventListener('loadstop', iabLoadStop);
+        client_browser.addEventListener('exit', iabClose);
 
     },
     facebookLocChanged:function(loc){
