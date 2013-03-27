@@ -102,19 +102,15 @@ function checkUserPermissions(permissionToCheck) {
 function promptLogin() {
     console.log('promptLogin');
     
-//    if(phonegap != 'true')
-//    {
-//        FB.login(null, {
-//            scope: 'email'
-//        });
-//    }
-//    else
-//    {
-//        FB.init({
-//            appId: gAppID, 
-//            nativeInterface: CDV.FB, 
-//            useCachedDialogs: false
-//        });
+    if(phonegap === 'true')
+    {
+        FB.init({
+            appId: gAppID, 
+            nativeInterface: CDV.FB, 
+            useCachedDialogs: false
+        });
+    }
+        
         
         //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
         //        authorize_url += "client_id=" + gAppID;
@@ -159,6 +155,28 @@ function promptLogin() {
                 //                    }, auth.successLogin, auth.errorLogin);
                 alert("response: "+JSON.stringify(response));
                 fb_token = response.authResponse.accessToken;
+                if(phonegap === 'true')
+                {
+                    //Fetch user's id, name, and picture
+                    FB.api('/me', {
+                        fields: 'name, email, picture'
+                    },
+                    function(response) {
+                        if (!response.error) {
+                            user = response;
+
+                            console.log('Got the user\'s name, email, and picture: ', response);
+
+                            //Update display of user name and picture
+                            if (document.getElementById('user-name')) {
+                                document.getElementById('user-name').innerHTML = user.name;
+                            }
+                            if (document.getElementById('user-picture')) {
+                                document.getElementById('user-picture').src = user.picture.data.url;
+                            }
+                        }
+                    });
+                }
                 authUser();
                 checkForCredits();
                 updateAuthElements();
