@@ -164,6 +164,7 @@ function promptLogin() {
     if(phonegap === 'true')
     {
         alert("FB: "+JSON.stringify(FB));
+        alert("CDV: "+JSON.stringify(CDV));
         FB.init({
             appId: gAppID, 
             nativeInterface: CDV.FB, 
@@ -171,6 +172,7 @@ function promptLogin() {
         });
         alert('Initialize FB plugin');
         alert("FB: "+JSON.stringify(FB));
+        alert("CDV: "+JSON.stringify(CDV));
     }
         
     FB.login(
