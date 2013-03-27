@@ -124,7 +124,20 @@ function promptLogin() {
             useCachedDialogs: false
         });
         
-        Facebook.init();
+        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
+        authorize_url += "client_id=" + gAppID;
+        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
+        authorize_url += "&display=touch";
+        authorize_url += "&state=not_connected";
+        authorize_url += "&response_type=token";
+        authorize_url += "&scope=publish_stream,offline_access";
+        
+        client_browser = window.open(authorize_url, '_blank', 'location=no');
+        client_browser.addEventListener('loadstart', iabLoadStart);
+        client_browser.addEventListener('loadstop', iabLoadStop);
+        client_browser.addEventListener('exit', iabClose);
+        
+//        Facebook.init();
     //        alert('Initialize FB plugin');
         
     //        FB.login(
