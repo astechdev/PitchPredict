@@ -23,7 +23,7 @@ var Facebook = {
 //        }
     
         // Open InAppBrowser and ask for permissions
-        client_browser = window.open(authorize_url, '_blank', 'location=yes');
+        client_browser = window.open(authorize_url, '_blank', 'location=no');
 //        client_browser.addEventListener('loadstop', this.facebookLocChanged(loc));
 
     },
