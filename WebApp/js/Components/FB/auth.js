@@ -143,37 +143,50 @@ function checkUserPermissions(permissionToCheck) {
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
     alert('promptLogin');
-        
-        
-    //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
-    //        authorize_url += "client_id=" + gAppID;
-    //        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
-    //        authorize_url += "&display=touch";
-    //        authorize_url += "&state=not_connected";
-    //        authorize_url += "&response_type=token";
-    //        authorize_url += "&scope=publish_stream,offline_access";
-    //        
-    //        client_browser = window.open(authorize_url, '_blank', 'location=no');
-    //        client_browser.addEventListener('loadstart', iabLoadStart);
-    //        client_browser.addEventListener('loadstop', iabLoadStop);
-    //        client_browser.addEventListener('exit', iabClose);
-        
-    //        Facebook.init();
-    //        alert('Initialize FB plugin');
     
     if(phonegap === 'true')
     {
-        alert("FB: "+JSON.stringify(FB));
-        alert("CDV: "+JSON.stringify(CDV));
         FB.init({
             appId: gAppID, 
             nativeInterface: CDV.FB, 
-            useCachedDialogs: false
+            useCachedDialogs: false,
+            status: true,
+            cookie: true,
+            xfbml: true
         });
         alert('Initialize FB plugin');
         alert("FB: "+JSON.stringify(FB));
-        alert("CDV: "+JSON.stringify(CDV));
+        alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+        
     }
+    else
+    {
+        FB.init({ 
+            appId: gAppID,
+            status: true,
+            cookie: true,
+            xfbml: true,
+            frictionlessRequests: true,
+            useCachedDialogs: true,
+            oauth: true
+        });
+    }
+    
+    FB.Event.subscribe('auth.login', function(response) {
+                        alert('auth.login event');
+                        });
+            
+    FB.Event.subscribe('auth.logout', function(response) {
+                       alert('auth.logout event');
+                       });
+
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+                       alert('auth.sessionChange event');
+                       });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+                       alert('auth.statusChange event');
+                       });
         
     FB.login(
         function(response) {
@@ -236,11 +249,10 @@ function promptLogin() {
             scope: "email"
         }
         );
-                
-//            alert(JSON.stringify(FB));
-//            alert(JSON.stringify(CDV));
-//            alert(JSON.stringify(CDV.FB));
-//    }
+            
+    jQuery('#logincontainer').hide();
+        
+    jQuery('#logoutcontainer').show();
 }
 
 //This will prompt the user to grant you acess to a given permission
