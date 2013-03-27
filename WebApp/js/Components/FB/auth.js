@@ -126,7 +126,7 @@ function promptLogin() {
     //            useCachedDialogs: false
     //        });
     //        alert('Initialize FB plugin');
-    //        
+        
     //        FB.login(
     //            function(response) {
     //                alert(response);
@@ -163,34 +163,34 @@ function promptLogin() {
     //                scope: "email"
     //            }
     //            );
-    //    }
     }
+}
 
-    //This will prompt the user to grant you acess to a given permission
-    function promptPermission(permission) {
-        FB.login(function(response) {
-            if (response.authResponse) {
-                checkUserPermissions(permission)
-            }
-        }, {
-            scope: permission
-        });
-    }
+//This will prompt the user to grant you acess to a given permission
+function promptPermission(permission) {
+    FB.login(function(response) {
+        if (response.authResponse) {
+            checkUserPermissions(permission)
+        }
+    }, {
+        scope: permission
+    });
+}
 
-    //See https://developers.facebook.com/docs/reference/api/user/#permissions
-    function uninstallApp() {
-        FB.api('/me/permissions', 'DELETE',
-            function(response) {
-                window.location.reload();
-            // For may instead call logout to clear
-            // cache data, ex: using in a PhoneGap app
-            //logout();
-            });
-    }
-
-    //See https://developers.facebook.com/docs/reference/javascript/FB.logout/
-    function logout() {
-        FB.logout(function(response) {
+//See https://developers.facebook.com/docs/reference/api/user/#permissions
+function uninstallApp() {
+    FB.api('/me/permissions', 'DELETE',
+        function(response) {
             window.location.reload();
+        // For may instead call logout to clear
+        // cache data, ex: using in a PhoneGap app
+        //logout();
         });
-    }
+}
+
+//See https://developers.facebook.com/docs/reference/javascript/FB.logout/
+function logout() {
+    FB.logout(function(response) {
+        window.location.reload();
+    });
+}
