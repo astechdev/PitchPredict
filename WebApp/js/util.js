@@ -123,6 +123,21 @@ function onDeviceReady()
     phonegap = 'true';
     alert('set phonegap to true');
 //    fbinit();
+    FB.Event.subscribe('auth.login', function(response) {
+                        alert('auth.login event');
+                        });
+            
+    FB.Event.subscribe('auth.logout', function(response) {
+                       alert('auth.logout event');
+                       });
+
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+                       alert('auth.sessionChange event');
+                       });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+                       alert('auth.statusChange event');
+                       });
     
 //    // Initialize FB plugin
 //    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
