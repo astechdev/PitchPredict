@@ -118,11 +118,11 @@ function promptLogin() {
     }
     else
     {
-        //        FB.init({
-        //            appId: gAppID, 
-        //            nativeInterface: CDV.FB, 
-        //            useCachedDialogs: false
-        //        });
+        FB.init({
+            appId: gAppID, 
+            nativeInterface: CDV.FB, 
+            useCachedDialogs: false
+        });
         
         Facebook.init();
     //        alert('Initialize FB plugin');

@@ -25,12 +25,6 @@
                 alert(event.type + ' - ' + event.url);
                 if (event.url.indexOf("http://www.app.pitchpredict.com/login_success.html") > -1) 
                 {
-                    FB.init({
-                        appId: gAppID, 
-                        nativeInterface: CDV.FB, 
-                        useCachedDialogs: false
-                    });
-                    
                     client_browser.close();
                 }
             }
