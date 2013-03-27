@@ -11,10 +11,20 @@ var Facebook = {
         authorize_url += "&state=not_connected";
         authorize_url += "&response_type=token";
         authorize_url += "&scope=publish_stream,offline_access";
+ 
+//        // Open Child browser and ask for permissions
+////        client_browser = ChildBrowser.install();
+//        client_browser.onLocationChange = function(loc){
+//            Facebook.facebookLocChanged(loc);
+//        };
+//
+//        if (client_browser != null) {
+//            window.plugins.childBrowser.showWebPage(authorize_url);
+//        }
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=yes');
-        client_browser.addEventListener('loadstop', this.facebookLocChanged(loc));
+//        client_browser.addEventListener('loadstop', this.facebookLocChanged(loc));
 
     },
     facebookLocChanged:function(loc){
@@ -22,7 +32,7 @@ var Facebook = {
         alert("facebookLocChanged ");
         alert("facebookLocChanged "+loc.url);
         // When the childBrowser window changes locations we check to see if that page is our success page.
-        if (loc.url.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
+        if (loc.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
             //            var fbCode = loc.match(/code=(.*)$/)[1]
             //            $.ajax({
             //                url:'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&code='+fbCode+'&redirect_uri=http://www.facebook.com/connect/login_success.html',
@@ -45,11 +55,12 @@ var Facebook = {
             //                    client_browser.close();
             //                }
             //            });
-            localStorage.setItem(fb_token, getURLParameter("access_token"));
-            localStorage.setItem(fb_state, getURLParameter("state"));
-            alert("fb_token "+localStorage.getItem(fb_token));
-            alert("fb_state "+localStorage.getItem(fb_state));
-            client_browser.removeEventListener('loadstop', Facebook.facebookLocChanged);
+//            localStorage.setItem(fb_token, getURLParameter("access_token"));
+//            localStorage.setItem(fb_state, getURLParameter("state"));
+//            alert("fb_token "+localStorage.getItem(fb_token));
+//            alert("fb_state "+localStorage.getItem(fb_state));
+//            client_browser.removeEventListener('loadstop', Facebook.facebookLocChanged);
+//            window.plugins.childBrowser.close();
             client_browser.close();
 //            load();
         }
