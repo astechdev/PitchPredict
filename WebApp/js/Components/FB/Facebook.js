@@ -29,8 +29,9 @@ var Facebook = {
     },
     facebookLocChanged:function(loc){
  
+        alert("facebookLocChanged "+loc.url);
         // When the childBrowser window changes locations we check to see if that page is our success page.
-        if (event.url.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
+        if (loc.url.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
             //            var fbCode = loc.match(/code=(.*)$/)[1]
             //            $.ajax({
             //                url:'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&code='+fbCode+'&redirect_uri=http://www.facebook.com/connect/login_success.html',
@@ -54,6 +55,7 @@ var Facebook = {
             //                }
             //            });
             localStorage.setItem(facebook_token, getURLParameter("access_token"));
+            alert("facebook_token "+localStorage.getItem(facebook_token));
             client_browser.removeEventListener('loadstop', Facebook.facebookLocChanged);
             client_browser.close();
 //            load();
