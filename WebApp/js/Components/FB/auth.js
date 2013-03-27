@@ -143,8 +143,9 @@ function checkUserPermissions(permissionToCheck) {
 function alertFBvars() {
 //    alert("FB: "+JSON.stringify(FB));
 //    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
-    for (var key in localStorage){
-        alert(key);
+    for (var key in window.localStorage){
+        alert("key: "+key);
+        alert("value: "+window.localStorage(key));
      }
 }
 
