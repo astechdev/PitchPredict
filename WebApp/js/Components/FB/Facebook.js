@@ -6,9 +6,9 @@ var Facebook = {
         // Begin Authorization
         //        var authorize_url = "https://graph.facebook.com/oauth/authorize?";
         var authorize_url = "https://www.facebook.com/dialog/oauth/?";
-        authorize_url += "client_id=" + my_client_id;
-        authorize_url += "&redirect_uri=" + my_redirect_uri;
-        authorize_url += "&display=" + my_display;
+        authorize_url += "client_id=" + gAppID;
+        authorize_url += "&redirect_uri=http://www.facebook.com/connect/login_success.html";
+        authorize_url += "&display=touch";
         authorize_url += "&response_type=token";
         authorize_url += "&scope=publish_stream,offline_access";
  
@@ -23,12 +23,13 @@ var Facebook = {
         //        }
     
         // Open InAppBrowser and ask for permissions
-        client_browser = window.open(authorize_url, '_blank', 'location=no');
-        client_browser.addEventListener('loadstop', Facebook.facebookLocChanged);
+        client_browser = window.open(authorize_url, '_blank', 'location=yes');
+        client_browser.addEventListener('loadstop', Facebook.facebookLocChanged(loc));
 
     },
     facebookLocChanged:function(loc){
  
+        alert("facebookLocChanged ");
         alert("facebookLocChanged "+loc.url);
         // When the childBrowser window changes locations we check to see if that page is our success page.
         if (loc.url.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
@@ -54,8 +55,10 @@ var Facebook = {
             //                    client_browser.close();
             //                }
             //            });
-            localStorage.setItem(facebook_token, getURLParameter("access_token"));
-            alert("facebook_token "+localStorage.getItem(facebook_token));
+            localStorage.setItem(fb_token, getURLParameter("access_token"));
+            localStorage.setItem(fb_state, getURLParameter("state"));
+            alert("fb_token "+localStorage.getItem(fb_token));
+            alert("fb_state "+localStorage.getItem(fb_state));
             client_browser.removeEventListener('loadstop', Facebook.facebookLocChanged);
             client_browser.close();
 //            load();
