@@ -141,8 +141,11 @@ function checkUserPermissions(permissionToCheck) {
 }
 
 function alertFBvars() {
-    alert("FB: "+JSON.stringify(FB));
-    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+//    alert("FB: "+JSON.stringify(FB));
+//    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+    for (var key in localStorage){
+        alert(key);
+     }
 }
 
 //Prompt the user to login and ask for the 'email' permission
