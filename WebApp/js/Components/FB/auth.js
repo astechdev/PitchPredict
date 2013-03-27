@@ -140,6 +140,11 @@ function checkUserPermissions(permissionToCheck) {
     });
 }
 
+function alertFBvars() {
+    alert("FB: "+JSON.stringify(FB));
+    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+}
+
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
     alert('promptLogin');
@@ -154,9 +159,6 @@ function promptLogin() {
             cookie: true,
             xfbml: true
         });
-        alert('Initialize FB plugin');
-        alert("FB: "+JSON.stringify(FB));
-        alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
         
     }
     else
@@ -282,4 +284,8 @@ function logout() {
     FB.logout(function(response) {
         //window.location.reload();
         });
+            
+    jQuery('#logincontainer').show();
+        
+    jQuery('#logoutcontainer').hide();
 }
