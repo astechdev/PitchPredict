@@ -163,6 +163,7 @@ function promptLogin() {
     
     if(phonegap === 'true')
     {
+        alert("FB: "+JSON.stringify(FB));
         FB.init({
             appId: gAppID, 
             nativeInterface: CDV.FB, 
