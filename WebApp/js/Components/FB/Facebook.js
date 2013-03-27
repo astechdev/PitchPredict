@@ -4,30 +4,17 @@ var Facebook = {
  
         alert('Facebook.init');
         // Begin Authorization
-        //        var authorize_url = "https://graph.facebook.com/oauth/authorize?";
         var authorize_url = "https://www.facebook.com/dialog/oauth/?";
         authorize_url += "client_id=" + gAppID;
-        authorize_url += "&redirect_uri=http://www.facebook.com/connect/login_success.html";
+        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html";
         authorize_url += "&display=touch";
         authorize_url += "&state=not_connected";
         authorize_url += "&response_type=token";
         authorize_url += "&scope=publish_stream,offline_access";
- 
-        //        // Open Child browser and ask for permissions
-        //        client_browser = ChildBrowser.install();
-        //        client_browser.onLocationChange = function(loc){
-        //            Facebook.facebookLocChanged(loc);
-        //        };
-        //
-        //        if (client_browser != null) {
-        //            window.plugins.childBrowser.showWebPage(authorize_url);
-        //        }
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=yes');
-        client_browser.addEventListener('loadstart', iabLoadStart);
-        client_browser.addEventListener('loadstop', iabLoadStop);
-        client_browser.addEventListener('exit', iabClose);
+        client_browser.addEventListener('loadstop', this.facebookLocChanged(loc));
 
     },
     facebookLocChanged:function(loc){
