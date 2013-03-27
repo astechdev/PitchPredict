@@ -124,58 +124,58 @@ function promptLogin() {
             useCachedDialogs: false
         });
         
-        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
-        authorize_url += "client_id=" + gAppID;
-        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
-        authorize_url += "&display=touch";
-        authorize_url += "&state=not_connected";
-        authorize_url += "&response_type=token";
-        authorize_url += "&scope=publish_stream,offline_access";
+        //        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
+        //        authorize_url += "client_id=" + gAppID;
+        //        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html.html";
+        //        authorize_url += "&display=touch";
+        //        authorize_url += "&state=not_connected";
+        //        authorize_url += "&response_type=token";
+        //        authorize_url += "&scope=publish_stream,offline_access";
+        //        
+        //        client_browser = window.open(authorize_url, '_blank', 'location=no');
+        //        client_browser.addEventListener('loadstart', iabLoadStart);
+        //        client_browser.addEventListener('loadstop', iabLoadStop);
+        //        client_browser.addEventListener('exit', iabClose);
         
-        client_browser = window.open(authorize_url, '_blank', 'location=no');
-        client_browser.addEventListener('loadstart', iabLoadStart);
-        client_browser.addEventListener('loadstop', iabLoadStop);
-        client_browser.addEventListener('exit', iabClose);
+        //        Facebook.init();
+        //        alert('Initialize FB plugin');
         
-//        Facebook.init();
-    //        alert('Initialize FB plugin');
-        
-    //        FB.login(
-    //            function(response) {
-    //                alert(response);
-    //                var uid = null; 
-    //                try {
-    //                    uid = response.authResponse.userId;
-    //                } catch (e) {
-    //                    alert("FB.login: "+e);
-    //                }
-    //
-    //                // iOs Hack other property name
-    //                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
-    //                    try {
-    //                        uid = response.authResponse.userID;
-    //                    } catch (e) {
-    //                        alert("FB.login: "+e);
-    //                    }
-    //                }
-    //
-    //                if (response.status == 'connected') {
-    ////                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
-    ////                        fbId : uid,
-    ////                        access_token: response.authResponse.accessToken,
-    ////                        secret: TOP_SECRET_GENERATED_HASH
-    ////                    }, auth.successLogin, auth.errorLogin);
-    //
-    //                } else if (response.status === 'not_authorized') {
-    //                    alert('Error in authentication: not authorized');
-    //                } else {
-    //                    alert('Unknown error in authentication');
-    //                }
-    //            },
-    //            {
-    //                scope: "email"
-    //            }
-    //            );
+        FB.login(
+            function(response) {
+                alert(response);
+                var uid = null; 
+                try {
+                    uid = response.authResponse.userId;
+                } catch (e) {
+                    alert("FB.login: "+e);
+                }
+    
+                // iOs Hack other property name
+                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
+                    try {
+                        uid = response.authResponse.userID;
+                    } catch (e) {
+                        alert("FB.login: "+e);
+                    }
+                }
+    
+                if (response.status == 'connected') {
+                //                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
+                //                        fbId : uid,
+                //                        access_token: response.authResponse.accessToken,
+                //                        secret: TOP_SECRET_GENERATED_HASH
+                //                    }, auth.successLogin, auth.errorLogin);
+    
+                } else if (response.status === 'not_authorized') {
+                    alert('Error in authentication: not authorized');
+                } else {
+                    alert('Unknown error in authentication');
+                }
+            },
+            {
+                scope: "email"
+            }
+            );
     }
 }
 
