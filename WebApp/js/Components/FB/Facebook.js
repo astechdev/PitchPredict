@@ -9,6 +9,7 @@ var Facebook = {
         authorize_url += "client_id=" + gAppID;
         authorize_url += "&redirect_uri=http://www.facebook.com/connect/login_success.html";
         authorize_url += "&display=touch";
+        authorize_url += "&state=not_connected";
         authorize_url += "&response_type=token";
         authorize_url += "&scope=publish_stream,offline_access";
  
@@ -24,7 +25,7 @@ var Facebook = {
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=yes');
-        client_browser.addEventListener('loadstop', Facebook.facebookLocChanged(loc));
+        client_browser.addEventListener('loadstart', this.facebookLocChanged);
 
     },
     facebookLocChanged:function(loc){

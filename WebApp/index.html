@@ -18,17 +18,20 @@
         <script src="facebook-js-sdk.js"></script>
         <script src="GAPlugin.js"></script>
         
-        <script type="text/javascript" charset="utf-8">
+        <script>
 
             function iabLoadStart(event) {
+                alert(JSON.stringify(event));
                 alert(event.type + ' - ' + event.url);
             }
 
             function iabLoadStop(event) {
+                alert(JSON.stringify(event));
                 alert(event.type + ' - ' + event.url);
             }
 
             function iabClose(event) {
+                 alert(JSON.stringify(event));
                  alert(event.type);
                  client_browser.removeEventListener('loadstart', iabLoadStart);
                  client_browser.removeEventListener('loadstop', iabLoadStop);
