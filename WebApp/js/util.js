@@ -131,14 +131,14 @@ function onDeviceReady()
 //    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
 //    {
 //        window.fbAsyncInit = function() {
-            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-            alert("FB initialized");
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
+//            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+//            alert("FB initialized");
+//
+//            FB.getLoginStatus(handleStatusChange);
+//
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
 //        };
 //    }
                  
