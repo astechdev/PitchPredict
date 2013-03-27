@@ -122,7 +122,7 @@ function onDeviceReady()
 //    alert('Device Ready');
     phonegap = 'true';
     alert('set phonegap to true');
-    fbinit();
+//    fbinit();
     
 //    // Initialize FB plugin
 //    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');

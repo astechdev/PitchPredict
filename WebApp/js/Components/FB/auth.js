@@ -160,6 +160,17 @@ function promptLogin() {
         
     //        Facebook.init();
     //        alert('Initialize FB plugin');
+    
+    if(phonegap === 'true')
+    {
+        FB.init({
+            appId: gAppID, 
+            nativeInterface: CDV.FB, 
+            useCachedDialogs: false
+        });
+        alert('Initialize FB plugin');
+        alert("FB: "+JSON.stringify(FB));
+    }
         
     FB.login(
         function(response) {
