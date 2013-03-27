@@ -10,7 +10,7 @@ var Facebook = {
         authorize_url += "&redirect_uri=" + my_redirect_uri;
         authorize_url += "&display=" + my_display;
         authorize_url += "&response_type=token";
-        authorize_url += "&scope=publish_stream,offline_access"
+        authorize_url += "&scope=publish_stream,offline_access";
  
         //        // Open Child browser and ask for permissions
         //        client_browser = ChildBrowser.install();
@@ -24,15 +24,13 @@ var Facebook = {
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=no');
-        client_browser.addEventListener('loadstop', function(){
-            Facebook.facebookLocChanged(event.url);
-        });
+        client_browser.addEventListener('loadstop', Facebook.facebookLocChanged);
 
     },
     facebookLocChanged:function(loc){
  
         // When the childBrowser window changes locations we check to see if that page is our success page.
-        if (loc.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
+        if (event.url.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
             //            var fbCode = loc.match(/code=(.*)$/)[1]
             //            $.ajax({
             //                url:'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&code='+fbCode+'&redirect_uri=http://www.facebook.com/connect/login_success.html',
@@ -56,8 +54,9 @@ var Facebook = {
             //                }
             //            });
             localStorage.setItem(facebook_token, getURLParameter("access_token"));
+            client_browser.removeEventListener('loadstop', Facebook.facebookLocChanged);
             client_browser.close();
-            load();
+//            load();
         }
     },
     share:function(url){
