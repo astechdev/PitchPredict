@@ -142,7 +142,7 @@ function promptLogin() {
         
         FB.login(
             function(response) {
-                alert(response);
+                alert(JSON.stringify(response));
                 var uid = null; 
                 try {
                     uid = response.authResponse.userId;
@@ -176,6 +176,10 @@ function promptLogin() {
                 scope: "email"
             }
             );
+                
+            alert(JSON.stringify(FB));
+            alert(JSON.stringify(CDV));
+            alert(JSON.stringify(CDV.FB));
     }
 }
 
