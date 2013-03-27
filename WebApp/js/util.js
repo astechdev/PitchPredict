@@ -130,7 +130,7 @@ function onDeviceReady()
     
 //    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
 //    {
-        window.fbAsyncInit = function() {
+//        window.fbAsyncInit = function() {
             FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
             alert("FB initialized");
 
@@ -139,7 +139,7 @@ function onDeviceReady()
             authUser();
             checkForCredits();
             updateAuthElements();
-        };
+//        };
 //    }
                  
     jQuery.getScript("js/libs/jquery.hammer.js")
@@ -187,7 +187,7 @@ function onDeviceReady()
 
     jQuery.getScript("js/libs/fastclick.js")
     .done(function(script, textStatus) {
-//        alert( textStatus + " fastclick loaded");
+        alert( textStatus + " fastclick loaded");
         jQuery(window).load(function() 
         {
             FastClick.attach(document.body);
@@ -576,6 +576,18 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         //loadHotzone();
         loadField();
         updateCharts('true');
+        
+        if (phonegap === "true")
+        {
+            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+            alert("FB initialized");
+
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+        }
 
     //        if (jQuery('#resultscontainer').length > 0)
     //        {
