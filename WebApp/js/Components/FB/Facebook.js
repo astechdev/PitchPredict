@@ -4,21 +4,23 @@ var Facebook = {
  
         alert('Facebook.init');
         // Begin Authorization
-        var authorize_url = "https://graph.facebook.com/oauth/authorize?";
+        //        var authorize_url = "https://graph.facebook.com/oauth/authorize?";
+        var authorize_url = "https://www.facebook.com/dialog/oauth/?";
         authorize_url += "client_id=" + my_client_id;
         authorize_url += "&redirect_uri=" + my_redirect_uri;
         authorize_url += "&display=" + my_display;
+        authorize_url += "&response_type=token";
         authorize_url += "&scope=publish_stream,offline_access"
  
-//        // Open Child browser and ask for permissions
-//        client_browser = ChildBrowser.install();
-//        client_browser.onLocationChange = function(loc){
-//            Facebook.facebookLocChanged(loc);
-//        };
-//
-//        if (client_browser != null) {
-//            window.plugins.childBrowser.showWebPage(authorize_url);
-//        }
+        //        // Open Child browser and ask for permissions
+        //        client_browser = ChildBrowser.install();
+        //        client_browser.onLocationChange = function(loc){
+        //            Facebook.facebookLocChanged(loc);
+        //        };
+        //
+        //        if (client_browser != null) {
+        //            window.plugins.childBrowser.showWebPage(authorize_url);
+        //        }
     
         // Open InAppBrowser and ask for permissions
         client_browser = window.open(authorize_url, '_blank', 'location=no');
@@ -31,28 +33,31 @@ var Facebook = {
  
         // When the childBrowser window changes locations we check to see if that page is our success page.
         if (loc.indexOf("http://www.facebook.com/connect/login_success.html") > -1) {
-            var fbCode = loc.match(/code=(.*)$/)[1]
-            $.ajax({
-                url:'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&code='+fbCode+'&redirect_uri=http://www.facebook.com/connect/login_success.html',
-                data: {},
-                dataType: 'text',
-                type: 'POST',
-                success: function(data, status){
- 
-                    // We store our token in a localStorage Item called facebook_token
-                    localStorage.setItem(facebook_token, data.split("=")[1]);
- 
-//                    window.plugins.childBrowser.close();
-                    client_browser.close();
- 
-//                    app.init();
-                    load();
-                },
-                error: function(error) {
-//                    window.plugins.childBrowser.close();
-                    client_browser.close();
-                }
-            });
+            //            var fbCode = loc.match(/code=(.*)$/)[1]
+            //            $.ajax({
+            //                url:'https://graph.facebook.com/oauth/access_token?client_id='+my_client_id+'&client_secret='+my_secret+'&code='+fbCode+'&redirect_uri=http://www.facebook.com/connect/login_success.html',
+            //                data: {},
+            //                dataType: 'text',
+            //                type: 'POST',
+            //                success: function(data, status){
+            // 
+            //                    // We store our token in a localStorage Item called facebook_token
+            //                    localStorage.setItem(facebook_token, data.split("=")[1]);
+            // 
+            ////                    window.plugins.childBrowser.close();
+            //                    client_browser.close();
+            // 
+            ////                    app.init();
+            //                    load();
+            //                },
+            //                error: function(error) {
+            ////                    window.plugins.childBrowser.close();
+            //                    client_browser.close();
+            //                }
+            //            });
+            localStorage.setItem(facebook_token, getURLParameter("access_token"));
+            client_browser.close();
+            load();
         }
     },
     share:function(url){

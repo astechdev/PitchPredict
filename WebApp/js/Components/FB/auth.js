@@ -118,79 +118,79 @@ function promptLogin() {
     }
     else
     {
-        //        Facebook.init();
+        Facebook.init();
         
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false
-        });
-        alert('Initialize FB plugin');
-        
-        FB.login(
-            function(response) {
-                alert(response);
-                var uid = null; 
-                try {
-                    uid = response.authResponse.userId;
-                } catch (e) {
-                    alert("FB.login: "+e);
-                }
-
-                // iOs Hack other property name
-                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
-                    try {
-                        uid = response.authResponse.userID;
-                    } catch (e) {
-                        alert("FB.login: "+e);
-                    }
-                }
-
-                if (response.status == 'connected') {
-//                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
-//                        fbId : uid,
-//                        access_token: response.authResponse.accessToken,
-//                        secret: TOP_SECRET_GENERATED_HASH
-//                    }, auth.successLogin, auth.errorLogin);
-
-                } else if (response.status === 'not_authorized') {
-                    alert('Error in authentication: not authorized');
-                } else {
-                    alert('Unknown error in authentication');
-                }
-            },
-            {
-                scope: "email"
-            }
-            );
+    //        FB.init({
+    //            appId: gAppID, 
+    //            nativeInterface: CDV.FB, 
+    //            useCachedDialogs: false
+    //        });
+    //        alert('Initialize FB plugin');
+    //        
+    //        FB.login(
+    //            function(response) {
+    //                alert(response);
+    //                var uid = null; 
+    //                try {
+    //                    uid = response.authResponse.userId;
+    //                } catch (e) {
+    //                    alert("FB.login: "+e);
+    //                }
+    //
+    //                // iOs Hack other property name
+    //                if (!uid && navigator.userAgent.match(/(iPhone)/i)) {
+    //                    try {
+    //                        uid = response.authResponse.userID;
+    //                    } catch (e) {
+    //                        alert("FB.login: "+e);
+    //                    }
+    //                }
+    //
+    //                if (response.status == 'connected') {
+    ////                    main.loadAjax(main.ajaxPrefix + '/auth/loginsocial/', {
+    ////                        fbId : uid,
+    ////                        access_token: response.authResponse.accessToken,
+    ////                        secret: TOP_SECRET_GENERATED_HASH
+    ////                    }, auth.successLogin, auth.errorLogin);
+    //
+    //                } else if (response.status === 'not_authorized') {
+    //                    alert('Error in authentication: not authorized');
+    //                } else {
+    //                    alert('Unknown error in authentication');
+    //                }
+    //            },
+    //            {
+    //                scope: "email"
+    //            }
+    //            );
+    //    }
     }
-}
 
-//This will prompt the user to grant you acess to a given permission
-function promptPermission(permission) {
-    FB.login(function(response) {
-        if (response.authResponse) {
-            checkUserPermissions(permission)
-        }
-    }, {
-        scope: permission
-    });
-}
-
-//See https://developers.facebook.com/docs/reference/api/user/#permissions
-function uninstallApp() {
-    FB.api('/me/permissions', 'DELETE',
-        function(response) {
-            window.location.reload();
-        // For may instead call logout to clear
-        // cache data, ex: using in a PhoneGap app
-        //logout();
+    //This will prompt the user to grant you acess to a given permission
+    function promptPermission(permission) {
+        FB.login(function(response) {
+            if (response.authResponse) {
+                checkUserPermissions(permission)
+            }
+        }, {
+            scope: permission
         });
-}
+    }
 
-//See https://developers.facebook.com/docs/reference/javascript/FB.logout/
-function logout() {
-    FB.logout(function(response) {
-        window.location.reload();
-    });
-}
+    //See https://developers.facebook.com/docs/reference/api/user/#permissions
+    function uninstallApp() {
+        FB.api('/me/permissions', 'DELETE',
+            function(response) {
+                window.location.reload();
+            // For may instead call logout to clear
+            // cache data, ex: using in a PhoneGap app
+            //logout();
+            });
+    }
+
+    //See https://developers.facebook.com/docs/reference/javascript/FB.logout/
+    function logout() {
+        FB.logout(function(response) {
+            window.location.reload();
+        });
+    }
