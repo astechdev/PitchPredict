@@ -23,7 +23,7 @@
             function iabLoadStart(event) {
                 alert(JSON.stringify(event));
                 alert(event.type + ' - ' + event.url);
-                if (loc.indexOf("http://www.app.pitchpredict.com/login_success.html") > -1) {
+                if (event.url.indexOf("http://www.app.pitchpredict.com/login_success.html") > -1) {
 
                     client_browser.close();
                 }

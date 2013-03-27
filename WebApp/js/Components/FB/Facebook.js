@@ -6,7 +6,7 @@ var Facebook = {
         // Begin Authorization
         var authorize_url = "https://www.facebook.com/dialog/oauth/?";
         authorize_url += "client_id=" + gAppID;
-        authorize_url += "&redirect_uri=http://www.app.pitchpredict.com/login_success.html";
+        authorize_url += "&redirect_uri=http://www.facebook.com/connect/login_success.html";
         authorize_url += "&display=touch";
         authorize_url += "&state=not_connected";
         authorize_url += "&response_type=token";
