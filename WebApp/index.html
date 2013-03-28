@@ -390,9 +390,8 @@
                 try {
                     alert('Device is ready! Make sure you set your app_id below this alert.');
                     
-                    phonegap = 'true';
-                    
                     FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
+                    alert('FB.init.');
                  
                     jQuery.getScript("js/libs/jquery.hammer.js")
                     .done(function(script, textStatus) {
