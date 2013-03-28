@@ -179,7 +179,7 @@
                                                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
                                                                     </label>-->
                                 <input type="Button" class="helpbuttons" onclick="login();" value="Log In">
-                                <!--<input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">-->
+                                <input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">
                                 <!--<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>-->
                                 <!--</form>-->
                                 <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
@@ -190,7 +190,7 @@
                                 <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
                                 <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
                                 <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
-                                <!--<input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">-->
+                                <input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">
                             </div>
                         </div>
                         <div data-view="charts" class="view charts">
@@ -330,18 +330,6 @@
                 alert("logout");
                 FB.logout(function(response) {
                     alert('logged out');
-            
-                    jQuery('#logincontainer').show();
-
-                    jQuery('#logoutcontainer').hide();
-            
-                    //Update display of user name and picture
-                    if (document.getElementById('user-name')) {
-                        document.getElementById('user-name').innerHTML = "";
-                    }
-                    if (document.getElementById('user-picture')) {
-                        jQuery('#user-picture').hide();
-                    }
                 });
             }
             
@@ -351,9 +339,6 @@
                 function(response) {
                     if (response.session) {
                         alert('logged in');
-                        jQuery('#logoutcontainer').show();
-                        jQuery('#logincontainer').hide();
-                        
                     } else {
                         alert('not logged in');
                     }
