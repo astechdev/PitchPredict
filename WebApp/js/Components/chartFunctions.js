@@ -244,7 +244,7 @@ function setCurrentChart(chart)
     
     updateCharts('false');
     
-    if(phonegap != 'true')
+    if((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
     {
         showAds();
     }

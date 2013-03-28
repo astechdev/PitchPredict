@@ -1,44 +1,44 @@
-function googleAnalyticsInit() 
-{
-    //    console.log('gaInit');
-    if(googleAnalyticsInitialized != 'true')
-    {
-        if(phonegap != 'true')
-        {
-            _gaq.push(['_setAccount', gaAccount]);
-            _gaq.push(['_setDomainName', gaDomianName]);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script');
-                ga.type = 'text/javascript';
-                ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(ga, s);
-            })();
-            console.log('Google Analytics Initialized');
-        }
-        else
-        {
-            gaPlugin = window.plugins.gaPlugin;        
-            //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
-            gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, gaAccount, 50);
-            
-            PageButtonClicked(gaDomianName);
-            
-            //Track device properties
-            var element = document.getElementById('deviceProperties');
-            TrackButtonClicked('Device', 'Name', device.name, 1);
-            TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
-            TrackButtonClicked('Device', 'Platform', device.platform, 1);
-            TrackButtonClicked('Device', 'UUID', device.uuid, 1);
-            TrackButtonClicked('Device', 'Version', device.version, 1);
-        }
-        
-        googleAnalyticsInitialized = 'true';
-    }
-}
+//function googleAnalyticsInit() 
+//{
+//    //    console.log('gaInit');
+//    if(googleAnalyticsInitialized != 'true')
+//    {
+//        if((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
+//        {
+//            _gaq.push(['_setAccount', gaAccount]);
+//            _gaq.push(['_setDomainName', gaDomianName]);
+//            _gaq.push(['_trackPageview']);
+//
+//            (function() {
+//                var ga = document.createElement('script');
+//                ga.type = 'text/javascript';
+//                ga.async = true;
+//                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+//                var s = document.getElementsByTagName('script')[0];
+//                s.parentNode.insertBefore(ga, s);
+//            })();
+//            console.log('Google Analytics Initialized');
+//        }
+//        else
+//        {
+//            gaPlugin = window.plugins.gaPlugin;        
+//            //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
+//            gaPlugin.init(nativePluginResultHandler, nativePluginErrorHandler, gaAccount, 50);
+//            
+//            PageButtonClicked(gaDomianName);
+//            
+//            //Track device properties
+//            var element = document.getElementById('deviceProperties');
+//            TrackButtonClicked('Device', 'Name', device.name, 1);
+//            TrackButtonClicked('Device', 'Cordova', device.cordova, 1);
+//            TrackButtonClicked('Device', 'Platform', device.platform, 1);
+//            TrackButtonClicked('Device', 'UUID', device.uuid, 1);
+//            TrackButtonClicked('Device', 'Version', device.version, 1);
+//        }
+//        
+//        googleAnalyticsInitialized = 'true';
+//    }
+//}
 
 //function permissionCallback (button) {
 //    if (button === 1)
@@ -51,30 +51,16 @@ function googleAnalyticsInit()
 //}
 
 function nativePluginResultHandler (result) {
-    if(phonegap != 'true')
-    {
-        console.log('nativePluginResultHandler: '+error);
-    }
-    else
-    {
-        debug.log('nativePluginResultHandler: '+error);
-    }
+    console.log('nativePluginResultHandler: '+error);
 }
 
 function nativePluginErrorHandler (error) {
-    if(phonegap != 'true')
-    {
-        console.log('nativePluginErrorHandler: '+error);
-    }
-    else
-    {
-        debug.log('nativePluginErrorHandler: '+error);
-    }
+    console.log('nativePluginErrorHandler: '+error);
 }
 
 function TrackButtonClicked(category, action, label, value) {
-    googleAnalyticsInit();
-    if(phonegap != 'true')
+//    googleAnalyticsInit();
+    if((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
     {
         _gaq.push(['_trackEvent', category, action, label]);
     }
@@ -85,8 +71,8 @@ function TrackButtonClicked(category, action, label, value) {
 }
 
 function googleAnalyticsDeInit() {
-    googleAnalyticsInit();
-    if(phonegap != 'true')
+//    googleAnalyticsInit();
+    if((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
     {
         
     }
@@ -102,7 +88,7 @@ function googleAnalyticsDeInit() {
 //            }
 
 function PageButtonClicked(url) {
-    googleAnalyticsInit();
+//    googleAnalyticsInit();
     gaPlugin.trackPage( nativePluginResultHandler, nativePluginErrorHandler, url);
 }
 

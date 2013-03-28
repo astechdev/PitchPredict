@@ -5,14 +5,27 @@
 //
 //////////////////////////
 
-var user = [];
 
-var permissions = ['user_status', 'publish_checkins', 'user_likes'];
 
-//Detect when Facebook tells us that the user's session has been returned
-function authUser() {
-    alert('authUser');
-    FB.Event.subscribe('auth.statusChange', handleStatusChange);
+////Detect when Facebook tells us that the user's session has been returned
+//function authUser() {
+//    alert('authUser');
+//    FB.Event.subscribe('auth.statusChange', handleStatusChange);
+//}
+
+function getLoginStatus() {
+    alert("getLoginStatus");
+    FB.getLoginStatus(function(response) {
+        if (response.status == 'connected') {
+            alert('logged in');
+            jQuery('#logoutcontainer').show();
+            jQuery('#logincontainer').hide();
+        } else {
+            alert('not logged in');
+            jQuery('#logoutcontainer').hide();
+            jQuery('#logincontainer').show();
+        }
+    });
 }
 
 // Handle status changes
@@ -66,48 +79,6 @@ function handleStatusChange(session) {
     }
 }
 
-function fbinit() {
-    alert("fbinit");
-    
-    alert("FB._initialized: "+FB._initialized);
-    
-    if(FB._initialized = false)
-    {
-        if(phonegap === 'true')
-        {
-            FB.init({
-                appId: gAppID, 
-                nativeInterface: CDV.FB, 
-                useCachedDialogs: false
-            });
-        }
-        else
-        {
-            FB.init({ 
-                appId: gAppID,
-                status: true,
-                cookie: true,
-                xfbml: true,
-                frictionlessRequests: true,
-                useCachedDialogs: true,
-                oauth: true
-            });
-        }
-        alert("FB.init complete");
-         
-        FB.getLoginStatus(handleStatusChange);
-
-        authUser();
-        checkForCredits();
-        updateAuthElements();
-        load();
-    }
-    else
-    {
-        setTimeout(fbinit(),1500);
-    }
-}
-
 //Check the current permissions to set the page elements.
 //Pass back a flag to check for a specific permission, to
 //handle the cancel detection flow.
@@ -146,109 +117,113 @@ function checkUserPermissions(permissionToCheck) {
     });
 }
 
-function alertFBvars() {
-    alert("FB: "+JSON.stringify(FB));
-    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
-//    for (var key in window.localStorage){
-//        alert("key: "+key);
-//        alert("value: "+window.localStorage(key));
-//    }
-}
-
-//Prompt the user to login and ask for the 'email' permission
-function promptLogin() {
-    alert('promptLogin');
-    
-    FB.Event.subscribe('auth.login', function(response) {
-        alert('auth.login event');
-    });
-            
-    FB.Event.subscribe('auth.logout', function(response) {
-        alert('auth.logout event');
-    });
-
-    FB.Event.subscribe('auth.sessionChange', function(response) {
-        alert('auth.sessionChange event');
-    });
-
-    FB.Event.subscribe('auth.statusChange', function(response) {
-        alert('auth.statusChange event');
-    });
-    
-    if(phonegap === 'true')
-    {
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false,
-            status: true,
-            cookie: true,
-            xfbml: true
-        });
-        
-    }
-    else
-    {
-        FB.init({ 
-            appId: gAppID,
-            status: true,
-            cookie: true,
-            xfbml: true,
-            frictionlessRequests: true,
-            useCachedDialogs: true,
-            oauth: true
-        });
-    }
-        
+//Prompt the user to login and ask for the 'email' permission           
+function login() {
+    alert("login");
     FB.login(
-        function(response) {    
-            alert("login response: "+JSON.stringify(response));
-            if (response.status == 'connected') 
-            {
-                fb_token = response.authResponse.accessToken;
-                if(phonegap === 'true')
-                {
-                    //Fetch user's id, name, and picture
-                    FB.api('/me', {
-                        fields: 'name, email, picture'
-                    },
-                    function(response) {
-                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
-                        if (!response.error) {
-                            user = response;
-
-                            alert('Got the user\'s name, email, and picture: ', response);
-
-                            //Update display of user name and picture
-                            if (document.getElementById('user-name')) {
-                                document.getElementById('user-name').innerHTML = user.name;
-                            }
-                            if (document.getElementById('user-picture')) {
-                                document.getElementById('user-picture').src = user.picture.data.url;
-                            }
-                        }
-                    });
-                }
-                authUser();
-                checkForCredits();
-                updateAuthElements();
-                load();
-    
-            } else if (response.status === 'not_authorized') {
-                alert('Error in authentication: not authorized');
-            } else {
-                alert('Unknown error in authentication');
-            }
-        },
-        {
-            scope: "email"
+    function(response) {
+        if (response.session) {
+            alert('logged in');
+        } else {
+            alert('not logged in');
         }
-        );
-            
-    jQuery('#logincontainer').hide();
-        
-    jQuery('#logoutcontainer').show();
+    },
+    { scope: "email" }
+);
 }
+//function promptLogin() {
+//    alert('promptLogin');
+//    
+//    FB.Event.subscribe('auth.login', function(response) {
+//        alert('auth.login event');
+//    });
+//            
+//    FB.Event.subscribe('auth.logout', function(response) {
+//        alert('auth.logout event');
+//    });
+//
+//    FB.Event.subscribe('auth.sessionChange', function(response) {
+//        alert('auth.sessionChange event');
+//    });
+//
+//    FB.Event.subscribe('auth.statusChange', function(response) {
+//        alert('auth.statusChange event');
+//    });
+//    
+//    if(phonegap === 'true')
+//    {
+//        FB.init({
+//            appId: gAppID, 
+//            nativeInterface: CDV.FB, 
+//            useCachedDialogs: false,
+//            status: true,
+//            cookie: true,
+//            xfbml: true
+//        });
+//        
+//    }
+//    else
+//    {
+//        FB.init({ 
+//            appId: gAppID,
+//            status: true,
+//            cookie: true,
+//            xfbml: true,
+//            frictionlessRequests: true,
+//            useCachedDialogs: true,
+//            oauth: true
+//        });
+//    }
+//        
+//    FB.login(
+//        function(response) {    
+//            alert("login response: "+JSON.stringify(response));
+//            if (response.status == 'connected') 
+//            {
+//                fb_token = response.authResponse.accessToken;
+//                if(phonegap === 'true')
+//                {
+//                    //Fetch user's id, name, and picture
+//                    FB.api('/me', {
+//                        fields: 'name, email, picture'
+//                    },
+//                    function(response) {
+//                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
+//                        if (!response.error) {
+//                            user = response;
+//
+//                            alert('Got the user\'s name, email, and picture: ', response);
+//
+//                            //Update display of user name and picture
+//                            if (document.getElementById('user-name')) {
+//                                document.getElementById('user-name').innerHTML = user.name;
+//                            }
+//                            if (document.getElementById('user-picture')) {
+//                                document.getElementById('user-picture').src = user.picture.data.url;
+//                            }
+//                        }
+//                    });
+//                }
+//                authUser();
+//                checkForCredits();
+//                updateAuthElements();
+//                load();
+//    
+//            } else if (response.status === 'not_authorized') {
+//                alert('Error in authentication: not authorized');
+//            } else {
+//                alert('Unknown error in authentication');
+//            }
+//        },
+//        {
+//            scope: "email"
+//        }
+//        );
+//            
+//    jQuery('#logincontainer').hide();
+//        
+//    jQuery('#logoutcontainer').show();
+//}
 
 //This will prompt the user to grant you acess to a given permission
 function promptPermission(permission) {
@@ -272,7 +247,15 @@ function uninstallApp() {
         });
 }
 
-////See https://developers.facebook.com/docs/reference/javascript/FB.logout/
+//See https://developers.facebook.com/docs/reference/javascript/FB.logout/            
+function logout() {
+    alert("logout");
+    FB.logout(function(response) {
+        alert('logged out');
+    });
+}
+
+//
 //function logout() {
 //    FB.logout(function(response) {
 //        //window.location.reload();

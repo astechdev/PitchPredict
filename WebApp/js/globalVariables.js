@@ -1,16 +1,31 @@
-//global chart variable for dynamically loading charts of all kinds
+//global google chart variable for dynamically loading charts of all kinds
 //each chart defines its own var data and var options
 var chart;
-var phonegap = 'false';
+
+//Facebook vars
 var gAppID = '263545480387259';
-var fb_state; // Holds Facebook state
-var fb_token; // OUR TOKEN KEEPER
-var client_browser;
-var googleAnalyticsInitialized = 'false';
+//var fb_state; // Holds Facebook state
+//var fb_token; // OUR TOKEN KEEPER
+var friendIDs = [];
+var fdata;
+var user = [];
+var permissions = ['user_status', 'publish_checkins', 'user_likes'];
+var nonAppFriendIDs = [];
+var appFriendIDs = [];
+var friendIDs = [];
+var friendsInfo = [];
+
+//Google Analytics vars
+//var googleAnalyticsInitialized = 'false';
 var gaPlugin;
 var _gaq = _gaq || [];
 var gaAccount = 'UA-29743249-1';
 var gaDomianName = 'pitchpredict.com';
+
+//Child/InAppBrowser var
+var client_browser;
+
+
 var chartClicks = 0;
 var numberOfChartClicksBeforeShowAds = 5;
 var inmobi_conf;
