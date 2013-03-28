@@ -2,18 +2,18 @@
 //each chart defines its own var data and var options
 var chart;
 
-//Facebook vars
-var gAppID = '263545480387259';
-//var fb_state; // Holds Facebook state
-//var fb_token; // OUR TOKEN KEEPER
-var friendIDs = [];
-var fdata;
-var user = [];
-var permissions = ['user_status', 'publish_checkins', 'user_likes'];
-var nonAppFriendIDs = [];
-var appFriendIDs = [];
-var friendIDs = [];
-var friendsInfo = [];
+////Facebook vars
+//var gAppID = '263545480387259';
+////var fb_state; // Holds Facebook state
+////var fb_token; // OUR TOKEN KEEPER
+//var friendIDs = [];
+//var fdata;
+//var user = [];
+//var permissions = ['user_status', 'publish_checkins', 'user_likes'];
+//var nonAppFriendIDs = [];
+//var appFriendIDs = [];
+//var friendIDs = [];
+//var friendsInfo = [];
 
 //Google Analytics vars
 //var googleAnalyticsInitialized = 'false';
