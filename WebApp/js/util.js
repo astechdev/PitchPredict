@@ -119,98 +119,98 @@ function initialize() {
     });
 }
 
-function onDeviceReady() 
-{
-//    alert('Device Ready');
-    phonegap = 'true';
-    alert('set phonegap to true');
-//    fbinit();
-    
-    
-//    // Initialize FB plugin
-//    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-//    if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-//    if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
-    
-//    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
-//    {
-//        window.fbAsyncInit = function() {
-//            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
-//            alert("FB initialized");
+//function onDeviceReady() 
+//{
+////    alert('Device Ready');
+//    phonegap = 'true';
+//    alert('set phonegap to true');
+////    fbinit();
+//    
+//    
+////    // Initialize FB plugin
+////    if ((typeof cordova === 'undefined') && (typeof Cordova === 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+////    if (typeof CDV === 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+////    if (typeof FB === 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+//    
+////    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined') && (typeof CDV != 'undefined') && (typeof FB != 'undefined'))
+////    {
+////        window.fbAsyncInit = function() {
+////            FB.init({ appId: gAppID, nativeInterface: CDV.FB, useCachedDialogs: false });
+////            alert("FB initialized");
+////
+////            FB.getLoginStatus(handleStatusChange);
+////
+////            authUser();
+////            checkForCredits();
+////            updateAuthElements();
+////        };
+////    }
+//                 
+//    jQuery.getScript("js/libs/jquery.hammer.js")
+//    .done(function(script, textStatus) {
+//        alert( textStatus + " jquery.hammer.js loaded");
 //
-//            FB.getLoginStatus(handleStatusChange);
+//        var hammertime = $('body').hammer();
+//        console.log(hammertime);
 //
-//            authUser();
-//            checkForCredits();
-//            updateAuthElements();
-//        };
-//    }
-                 
-    jQuery.getScript("js/libs/jquery.hammer.js")
-    .done(function(script, textStatus) {
-        alert( textStatus + " jquery.hammer.js loaded");
-
-        var hammertime = $('body').hammer();
-        console.log(hammertime);
-
-        hammertime.on("swipeleft", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            leftSwipeEventHandler();
-        });
-
-        hammertime.on("swiperight", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            rightSwipeEventHandler();
-        });
-
-        hammertime.on("swipeup", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            upSwipeEventHandler();
-        });
-
-        hammertime.on("swipedown", function(ev) 
-        {
-            if(window.console) { console.log(ev); }
-            downSwipeEventHandler();
-        });
-
-        jQuery.getScript("js/touchEvents.js")
-        .done(function(script, textStatus) {
-//            alert('touchEvents loaded');
-        })
-        .fail(function(jqxhr, settings, exception) {
-//            alert( exception + " touchEvents loaded");
-        });
-    })
-    .fail(function(jqxhr, settings, exception) {
-//        alert( exception + " jquery.hammer.js failed");
-    });
-
-    jQuery.getScript("js/libs/fastclick.js")
-    .done(function(script, textStatus) {
-//        alert( textStatus + " fastclick loaded");
-//        jQuery(window).load(function() 
+//        hammertime.on("swipeleft", function(ev) 
 //        {
-            FastClick.attach(document.body);
-            alert('fastclick initialized');
+//            if(window.console) { console.log(ev); }
+//            leftSwipeEventHandler();
 //        });
-    })
-    .fail(function(jqxhr, settings, exception) {
-//        alert( exception + " fastclick failed");
-    });
-
-    // Hide the splashscreen after loading...
-//    navigator.splashscreen.hide();
-
-    // Register some event listeners
-    document.addEventListener("online", onDeviceOnline, false);
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("menubutton", onMenuKeyDown, false);
-    alert('Register some event listeners');
-}
+//
+//        hammertime.on("swiperight", function(ev) 
+//        {
+//            if(window.console) { console.log(ev); }
+//            rightSwipeEventHandler();
+//        });
+//
+//        hammertime.on("swipeup", function(ev) 
+//        {
+//            if(window.console) { console.log(ev); }
+//            upSwipeEventHandler();
+//        });
+//
+//        hammertime.on("swipedown", function(ev) 
+//        {
+//            if(window.console) { console.log(ev); }
+//            downSwipeEventHandler();
+//        });
+//
+//        jQuery.getScript("js/touchEvents.js")
+//        .done(function(script, textStatus) {
+////            alert('touchEvents loaded');
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+////            alert( exception + " touchEvents loaded");
+//        });
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+////        alert( exception + " jquery.hammer.js failed");
+//    });
+//
+//    jQuery.getScript("js/libs/fastclick.js")
+//    .done(function(script, textStatus) {
+////        alert( textStatus + " fastclick loaded");
+////        jQuery(window).load(function() 
+////        {
+//            FastClick.attach(document.body);
+//            alert('fastclick initialized');
+////        });
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+////        alert( exception + " fastclick failed");
+//    });
+//
+//    // Hide the splashscreen after loading...
+////    navigator.splashscreen.hide();
+//
+//    // Register some event listeners
+//    document.addEventListener("online", onDeviceOnline, false);
+//    document.addEventListener("offline", onDeviceOffline, false);
+//    document.addEventListener("menubutton", onMenuKeyDown, false);
+//    alert('Register some event listeners');
+//}
 
 function onDeviceOnline() 
 {
