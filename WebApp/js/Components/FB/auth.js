@@ -22,6 +22,9 @@ function handleStatusChange(session) {
     if (session.authResponse) {
         document.body.className = 'connected';
         
+        jQuery('#logoutcontainer').show();
+        jQuery('#logincontainer').hide();
+        
         //Fetch user's id, name, and picture
         FB.api('/me', {
             fields: 'name, email, picture'
@@ -55,6 +58,9 @@ function handleStatusChange(session) {
     }
     else  {
         document.body.className = 'not_connected';
+        
+        jQuery('#logoutcontainer').hide();
+        jQuery('#logincontainer').show();
     
     //      clearAction();
     }
@@ -266,13 +272,21 @@ function uninstallApp() {
         });
 }
 
-//See https://developers.facebook.com/docs/reference/javascript/FB.logout/
-function logout() {
-    FB.logout(function(response) {
-        //window.location.reload();
-        });
-            
-    jQuery('#logincontainer').show();
-        
-    jQuery('#logoutcontainer').hide();
-}
+////See https://developers.facebook.com/docs/reference/javascript/FB.logout/
+//function logout() {
+//    FB.logout(function(response) {
+//        //window.location.reload();
+//        });
+//            
+//    jQuery('#logincontainer').show();
+//        
+//    jQuery('#logoutcontainer').hide();
+//            
+//    //Update display of user name and picture
+//    if (document.getElementById('user-name')) {
+//        document.getElementById('user-name').innerHTML = "";
+//    }
+//    if (document.getElementById('user-picture')) {
+//        document.getElementById('user-picture').src = "";
+//    }
+//}
