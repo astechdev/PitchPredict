@@ -141,17 +141,33 @@ function checkUserPermissions(permissionToCheck) {
 }
 
 function alertFBvars() {
-    //    alert("FB: "+JSON.stringify(FB));
-    //    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
-    for (var key in window.localStorage){
-        alert("key: "+key);
-        alert("value: "+window.localStorage(key));
-    }
+    alert("FB: "+JSON.stringify(FB));
+    alert("CDV: "+JSON.stringify(localStorage.getItem('cdv_fb_session')));
+//    for (var key in window.localStorage){
+//        alert("key: "+key);
+//        alert("value: "+window.localStorage(key));
+//    }
 }
 
 //Prompt the user to login and ask for the 'email' permission
 function promptLogin() {
     alert('promptLogin');
+    
+    FB.Event.subscribe('auth.login', function(response) {
+        alert('auth.login event');
+    });
+            
+    FB.Event.subscribe('auth.logout', function(response) {
+        alert('auth.logout event');
+    });
+
+    FB.Event.subscribe('auth.sessionChange', function(response) {
+        alert('auth.sessionChange event');
+    });
+
+    FB.Event.subscribe('auth.statusChange', function(response) {
+        alert('auth.statusChange event');
+    });
     
     if(phonegap === 'true')
     {
@@ -177,22 +193,6 @@ function promptLogin() {
             oauth: true
         });
     }
-    
-    FB.Event.subscribe('auth.login', function(response) {
-        alert('auth.login event');
-    });
-            
-    FB.Event.subscribe('auth.logout', function(response) {
-        alert('auth.logout event');
-    });
-
-    FB.Event.subscribe('auth.sessionChange', function(response) {
-        alert('auth.sessionChange event');
-    });
-
-    FB.Event.subscribe('auth.statusChange', function(response) {
-        alert('auth.statusChange event');
-    });
         
     FB.login(
         function(response) {    
@@ -242,66 +242,6 @@ function promptLogin() {
     jQuery('#logincontainer').hide();
         
     jQuery('#logoutcontainer').show();
-}
-
-function login() {
-    
-    
-    FB.Event.subscribe('auth.login', function(response) {
-        alert('auth.login event');
-    });
-            
-    FB.Event.subscribe('auth.logout', function(response) {
-        alert('auth.logout event');
-    });
-
-    FB.Event.subscribe('auth.sessionChange', function(response) {
-        alert('auth.sessionChange event');
-    });
-
-    FB.Event.subscribe('auth.statusChange', function(response) {
-        alert('auth.statusChange event');
-    });
-    
-    if(phonegap === 'true')
-    {
-        FB.init({
-            appId: gAppID, 
-            nativeInterface: CDV.FB, 
-            useCachedDialogs: false
-        });
-        
-    }
-    else
-    {
-        FB.init({ 
-            appId: gAppID,
-            status: true,
-            cookie: true,
-            xfbml: true,
-            frictionlessRequests: true,
-            useCachedDialogs: true,
-            oauth: true
-        });
-    }
-    
-    FB.login(
-        function(response) {
-            if (response.session) {
-                alert('logged in');
-                         
-            
-                jQuery('#logincontainer').hide();
-
-                jQuery('#logoutcontainer').show();
-            } else {
-                alert('not logged in');
-            }
-        },
-        {
-            scope: "email"
-        }
-        );
 }
 
 //This will prompt the user to grant you acess to a given permission
