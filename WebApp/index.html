@@ -180,11 +180,6 @@
                                                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
                                                                     </label>-->
                                 <input type="Button" class="helpbuttons" onclick="login();" value="Log In Facebook">
-                                <div id="customBtn">
-                                    <input type="Button" class="helpbuttons" value="Log In Google+">
-                                    <!--<span class="icon"></span>-->
-                                    <!--<span class="buttonText">Google</span>-->
-                                </div>
                                 <!--<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>-->
                                 <!--</form>-->
                                 <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
@@ -348,25 +343,6 @@
                     js.src = "//connect.facebook.net/en_US/all.js";
                     ref.parentNode.insertBefore(js, ref);
                 }(document));
-                
-                // Load the Google + SDK Asynchronously
-                (function() {
-                    var po = document.createElement('script');
-                    po.type = 'text/javascript'; po.async = true;
-                    po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(po, s);
-                })();
-
-                function render() {
-                    gapi.signin.render('customBtn', {
-                        'callback': 'signinCallback',
-                        'clientid': '473871818038.apps.googleusercontent.com',
-                        'cookiepolicy': 'single_host_origin',
-                        'requestvisibleactions': 'http://schemas.google.com/AddActivity',
-                        'scope': 'https://www.googleapis.com/auth/plus.login'
-                    });
-                }
 
                 // Initialize inmobi
                 inmobi_conf = 
@@ -414,23 +390,6 @@
                     FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
                     alert('FB.init.');
                     authUser();
-                
-                    // Load the Google + SDK Asynchronously
-                    (function() {
-                        var po = document.createElement('script');
-                        po.type = 'text/javascript'; po.async = true;
-                        po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
-                        var s = document.getElementsByTagName('script')[0];
-                        s.parentNode.insertBefore(po, s);
-                    })();
-
-                    function render() {
-                        gapi.signin.render('customBtn', {
-                            'callback': 'signinCallback',
-                            'clientid': '473871818038-b59em2ve1ekffp4e3t5hap811hp29jbh.apps.googleusercontent.com',
-                            'cookiepolicy': 'none'
-                        });
-                    }
                     
                     gaPlugin = window.plugins.gaPlugin;        
                     //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
