@@ -1,157 +1,450 @@
 <!DOCTYPE html>
 <html>
-	<head>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+        <meta name="inmobi-site-verification" content="725722b3ab8d089a966c6b0038b09191" />
+
+        <title>Pitch Predict</title>
+
+        <link rel="icon" type="image/png" href="images/icons/launcher.png" />
+
+        <link rel="stylesheet" type="text/css" href="css/app.css" /> 
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.10.0.custom.css" />
+
+        <!--Load the google AJAX API-->
+        <script type="text/javascript" src="http://www.google.com/jsapi?autoload={modules:[{name:visualization,version:1,packages:[corechart]},{name:jquery,version:1},{name:jqueryui,version:1}]}"></script>
+
+        <script type="text/javascript" src="js/sammy.js"></script>
+        <script type="text/javascript" src="js/pitchpredict.dashboard.js"></script>
+        <script type="text/javascript" src="js/globalVariables.js"></script>
+        <script type="text/javascript" src="js/util.js"></script>
+        <script type="text/javascript" src="js/googleAnalytics.js"></script>
+
+        <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
+        <script type="text/javascript" src="js/Components/login.js"></script>
+        <script type="text/javascript" src="js/Components/dialog.js"></script>
+        <script type="text/javascript" src="js/Components/team_lineup.js"></script>
+        <script type="text/javascript" src="js/Components/scoreboard.js"></script>
+        <script type="text/javascript" src="js/Components/filters.js"></script>
+        <script type="text/javascript" src="js/Components/hotzone.js"></script>
+        <script type="text/javascript" src="js/Components/field.js"></script>
+        <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
+
     </head>
-	<body>
-		<button onclick="login()">Login</button>
-		<button onclick="me()">Me</button>
-		<!--<button onclick="getSession()">Get session</button>-->
-		<button onclick="getLoginStatus()">Get login</button>
-		<button onclick="logout()">Logout</button>
-		<button onclick="facebookWallPost()">facebookWallPost</button>
-		<button onclick="publishStoryFriend()">friendstory</button>
-        
-        <div id="data">loading ...</div>
-        
-        <!--<script src="http://localhost:8080/target/target-script-min.js#anonymous"></script>-->
+    <body onload="initialize();">
+        <!-- This initializes the Facebook JS SDK. -->
         <div id="fb-root"></div>
-        <!-- cordova -->
-		<script src="phonegap.js"></script>
-	    <!-- cordova facebook plugin -->
-		<script src="cdv-plugin-fb-connect.js"></script>
-	    <!-- facebook js sdk -->
-		<script src="facebook-js-sdk.js"></script>
+
+        <div id="header">
+            <img class="logo" src="images/logo.png"/>
+            <div class="hud">
+                <span id="user-name"></span>
+                <img id="user-picture" src=""/>
+            </div>
+        </div>
+        <div id="dashboard">
+            <div class="navwrap">
+                <ul class="nav">
+                    <li id="preferences"><a onclick="TrackButtonClicked('Navigation', 'viewed', 'User', 1);vibrateFeedback();" data-view="user"><img src="images/icons/profile.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Scoreboard', 1);vibrateFeedback();" data-view="scoreboard"><img src="images/icons/scoreboard.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Away Lineup', 1);vibrateFeedback();" data-view="awaylineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Home Lineup', 1);vibrateFeedback();" data-view="homelineup"><img src="images/icons/list_16x14.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Field', 1);vibrateFeedback();" data-view="field"><img src="images/icons/base.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Pitch Selection', 1);vibrateFeedback();" data-view="pitchselection"><img src="images/icons/baseball.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Filters', 1);vibrateFeedback();" data-view="filters"><img src="images/icons/filter.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Hotzone', 1);vibrateFeedback();" data-view="hotzone"><img src="images/icons/zone.png"/><span></span></a></li>
+                    <li><a onclick="TrackButtonClicked('Navigation', 'viewed', 'Help', 1);vibrateFeedback();" data-view="help"><img src="images/icons/help.png"/><span></span></a></li>
+                    <!--<li class="hidden-desktop hidden-tablet visible-phone"><a data-view="charts"><img src="images/icons/image_16x16.png"/><span></span></a></li>-->
+                </ul>
+            </div>
+            <div class="content">
+                <div class="leftcol">
+                    <div class="inner">
+                        <div data-view="scoreboard" class="view">
+                            <span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario', 1);">Game Scenario<span onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);" class="ui-icon ui-icon-help"></span></span>                                                    
+                            <div id="yearselectid" class="selectioncontainer"></div>
+                            <div id="inningselectid" class="selectioncontainer"></div>
+                            <div id="toporbottomhalfselectid" class="selectioncontainer"></div>
+                            <div id="awayteamnameselectid" class="selectioncontainer"></div>
+                            <div id="awayteamscoreselectid" class="selectioncontainer"></div>
+                            <div id="hometeamnameselectid" class="selectioncontainer"></div>
+                            <div id="hometeamscoreselectid" class="selectioncontainer"></div>
+                            <div id="ballsselectid" class="selectioncontainer"></div>
+                            <div id="strikesselectid" class="selectioncontainer"></div>
+                            <div id="outsselectid" class="selectioncontainer"></div>
+                        </div>
+                        <div data-view="awaylineup" class="view">
+                            <span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Away Team Lineups', 1);">Away Team Lineup<span onclick="helpDialogInit('info', 'Away Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <!--<div id="awayteamlineupcontent">-->
+                            <div id="awayteamlineupheadercolumn"></div>
+                            <div id="awayteamfirstbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamsecondbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamthirdbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamfourthbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamfifthbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamsixthbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamseventhbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteameighthbatterselectid" class="selectioncontainer"></div>
+                            <div id="awayteamninthbatterselectid" class="selectioncontainer"></div>
+                            <!--</div>-->
+                        </div>
+                        <div data-view="homelineup" class="view">
+                            <span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Home Team Lineups', 1);">Home Team Lineup<span onclick="helpDialogInit('info', 'Home Team Lineups', teamlineupHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <!--<div id="hometeamlineupcontent">-->
+                            <div id="hometeamlineupheadercolumn"></div>
+                            <div id="hometeamfirstbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamsecondbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamthirdbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamfourthbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamfifthbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamsixthbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamseventhbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeameighthbatterselectid" class="selectioncontainer"></div>
+                            <div id="hometeamninthbatterselectid" class="selectioncontainer"></div>
+                            <!--</div>-->
+                        </div>
+                        <div data-view="field" class="view">
+                            <span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation', 1);">Game Situation<span onclick="helpDialogInit('info', 'Game Situation', fieldHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <div id="pitcherselectid" class="selectioncontainer"></div>
+                            <div id="catcherselectid" class="selectioncontainer"></div>
+                            <div id="hitterselectid" class="selectioncontainer"></div>
+                            <div id="hitterrightorleftselectid" class="selectioncontainer"></div>
+                            <div id="runneronfirstselectid" class="selectioncontainer"></div>
+                            <div id="runneronsecondselectid" class="selectioncontainer"></div>
+                            <div id="runneronthirdselectid" class="selectioncontainer"></div>
+                            <!--<div id="atbatnumberselectid"></div>-->
+                        </div>
+                        <div data-view="pitchselection" class="view">
+                            <span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Sequence', 1);">Add Pitch Sequence<span onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <div id="pitchtypeselectid" class="selectioncontainer"></div>
+                            <div id="pitchlocationselectid" class="selectioncontainer"></div>
+                            <div id="pitchoutcomeselectid" class="selectioncontainer"></div>
+
+                            <input type="Button" onclick="addToPitchSequences();" id="submitPitch" value="Add" class="buttons">
+                            <input type="Button" onclick="revertPitchSequences();saveState();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="revertpitchcounterpitchbutton" value="Undo" class="buttons">
+                            <input type="Button" onclick="resetPitchSequences();$( '#pitchcounterdialogcontainer' ).dialog('open');" id="resetpitchcounterpitchbutton" value="Reset" class="buttons">
+                            <!--<input type="Button" onclick="$( '#pitchcounterdialogcontainer' ).dialog('open');" id="viewpitchsequencebutton" value="View" class="buttons">-->
+
+                            <div id="pitchcounterdialogcontainer">
+                                <img id="pitchrecorderajaxloader" src="images/ajax-loader.gif">
+                                <table id="pitchrecordertable" class="teamlineuptable">
+                                    <tbody id="pitchrecordertabletbody">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div data-view="filters" class="view">
+                            <span onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters', 1);">Filter Results<span onclick="helpDialogInit('info', 'Filters', filtersHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <div id="filterspitchtypeselectid" class="selectioncontainer"></div>
+                            <div id="filterspitchoutcomeselectid" class="selectioncontainer"></div>
+                            <div id="pitcherbatterselectid" class="selectioncontainer"></div>
+                            <div id="pitchertypeselectid" class="selectioncontainer"></div>
+                            <div id="catchertypeselectid" class="selectioncontainer"></div>
+                            <div id="battertypeselectid" class="selectioncontainer"></div>
+                            <div id="batterondecktypeselectid" class="selectioncontainer"></div>
+                            <div id="baserunnertypeselectid" class="selectioncontainer"></div>
+                        </div>
+                        <div data-view="hotzone" class="view">
+                            <span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);TrackButtonClicked('Help', 'viewed', 'Hot Zone', 1);">Hotzone<span onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);" class="ui-icon ui-icon-help"></span></span>
+                            <div id="hotzonecontainer">
+                                <img id="hotzoneajaxloader" src="images/ajax-loader.gif">
+                            </div>
+                        </div>
+                        <div data-view="help" class="view">
+                            <span>Help</span>
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Pitch Predict', pitchpredictHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Predict Info', 1);" value="Pitch Predict Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Scenario', scoreboardHelp);TrackButtonClicked('Help', 'viewed', 'Game Scenario Info', 1);" value="Game Scenario Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Team Lineups', teamlineupHelp);TrackButtonClicked('Help', 'viewed', 'Team Lineups Info', 1);" value="Team Lineup Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Game Situation', fieldHelp);TrackButtonClicked('Help', 'viewed', 'Game Situation Info', 1);" value="Game Situation Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Pitch Sequence', pitchsequenceHelp);TrackButtonClicked('Help', 'viewed', 'Pitch Sequence Info', 1);" value="Pitch Sequence Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Filters', filtersHelp);TrackButtonClicked('Help', 'viewed', 'Filters Info', 1);" value="Filters Info">
+                            <input type="Button" class="helpbuttons" onclick="helpDialogInit('info', 'Hot Zone', hotzoneHelp);TrackButtonClicked('Help', 'viewed', 'Hotzone Info', 1);" value="Hotzone Info">
+                        </div>
+                        <div data-view="user" class="view">
+                            <span>Preferences</span>
+                            <div id="logincontainer">
+                                <!--<form id="loginForm">-->
+                                <!--                                    <label>Username:  
+                                                                        <input type="text" id="userName" name="userName" tabindex="1" class="text" />
+                                                                    </label>
+                                                                    <label>Password: 
+                                                                        <input type="password" id="password" name="password" tabindex="2" class="text" />
+                                                                    </label>-->
+                                <input type="Button" class="helpbuttons" onclick="promptLogin();" value="Log In">
+                                <input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">
+                                <!--<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>-->
+                                <!--</form>-->
+                                <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
+                            </div>
+                            <div id="logoutcontainer">
+                                <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
+                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
+                                <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="alertFBvars();" value="Facebook Vars">
+                            </div>
+                        </div>
+                        <div data-view="charts" class="view charts">
+                            <div class="tabs">
+                                <a data-chart="chart1" class="active" href="#chart1"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart2" href="#chart2"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart3" href="#chart3"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart4" href="#chart4"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart5" href="#chart5"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart6" href="#chart6"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <a data-chart="chart7" href="#chart7"><span><img src="images/icons/image_16x16.png"/></span></a>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="inner">
+                                <div data-chart="chart1" class="chart">Chart 1</div>
+                                <div data-chart="chart2" class="chart">Chart 2</div>
+                                <div data-chart="chart3" class="chart">Chart 3</div>
+                                <div data-chart="chart4" class="chart">Chart 4</div>
+                                <div data-chart="chart5" class="chart">Chart 5</div>
+                                <div data-chart="chart6" class="chart">Chart 6</div>
+                                <div data-chart="chart7" class="chart">Chart 7</div>
+                            </div>						
+                        </div>
+                    </div>
+                </div>
+                <div class="rightcol charts hidden-phone">
+                    <div class="tabs padHeader">
+                        <a onclick="setCurrentChart('Pitch Type');TrackButtonClicked('Chart', 'viewed', 'Pitch Type', 1);" data-chart="chart1" class="active"><span class="chartbuttons">Pitch Predict</span></a>
+                        <a onclick="setCurrentChart('Outcome');TrackButtonClicked('Chart', 'viewed', 'Outcome', 1);" data-chart="chart2"><span class="chartbuttons">Outcome Predict</span></a>
+                        <a onclick="setCurrentChart('Probability');TrackButtonClicked('Chart', 'viewed', 'Probability', 1);" data-chart="chart3"><span class="chartbuttons">Probabilities</span></a>
+                        <a onclick="setCurrentChart('Pitch Chart');TrackButtonClicked('Chart', 'viewed', 'Pitch Chart', 1);" data-chart="chart4"><span class="chartbuttons">Pitch Chart</span></a>
+                        <a onclick="setCurrentChart('Vertical');TrackButtonClicked('Chart', 'viewed', 'Vertical', 1);" data-chart="chart5"><span class="chartbuttons">Virtual V</span></a>
+                        <a onclick="setCurrentChart('Horizontal');TrackButtonClicked('Chart', 'viewed', 'Horizontal', 1);" data-chart="chart6"><span class="chartbuttons">Virtual H</span></a>
+                        <a onclick="setCurrentChart('Hit Chart');TrackButtonClicked('Chart', 'viewed', 'Hit Chart', 1);" data-chart="chart7"><span class="chartbuttons">Spray Chart</span></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="inner">
+                        <div data-chart="chart1" class="chart"><div id="pitchtypepercentagechartcontainer"></div></div>
+                        <div data-chart="chart2" class="chart"><div id="outcomepercentagechartcontainer"></div></div>
+                        <div data-chart="chart3" class="chart"><div id="resultspercentagechartcontainer"></div></div>
+                        <div data-chart="chart4" class="chart"><div id="pitchchartcontainer"></div></div>
+                        <div data-chart="chart5" class="chart"><div id="verticalchartcontainer"></div><div id="sidepitchvirtualizationchartcontainer"></div></div>
+                        <div data-chart="chart6" class="chart"><div id="horizontalchartcontainer"></div><div id="toppitchvirtualizationchartcontainer"></div></div>
+                        <div data-chart="chart7" class="chart"><div id="hitchartcontainer"></div></div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear">
+                <!--dialog popup div-->
+                <div id="dialog">
+                    <p id="dialog-message"></p>
+                </div>
+            </div>
+        </div>
         
-		<script>
+        <!-- cordova -->
+        <script src="phonegap.js"></script>
+        <!-- cordova facebook plugin -->
+        <script src="cdv-plugin-fb-connect.js"></script>
+        <!-- facebook js sdk -->
+        <script src="facebook-js-sdk.js"></script>
+        <!-- google analytics -->
+        <script src="GAPlugin.js"></script>
+
+        <script>
             
             if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
             if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
             if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
             
             FB.Event.subscribe('auth.login', function(response) {
-                               alert('auth.login event');
-                               });
+                alert('auth.login event');
+            });
             
             FB.Event.subscribe('auth.logout', function(response) {
-                               alert('auth.logout event');
-                               });
+                alert('auth.logout event');
+            });
             
             FB.Event.subscribe('auth.sessionChange', function(response) {
-                               alert('auth.sessionChange event');
-                               });
+                alert('auth.sessionChange event');
+            });
             
             FB.Event.subscribe('auth.statusChange', function(response) {
-                               alert('auth.statusChange event');
-                               });
+                alert('auth.statusChange event');
+            });
             
             /*function getSession() {
-                alert("session: " + JSON.stringify(FB.getSession()));
-            }
-            */
+        alert("session: " + JSON.stringify(FB.getSession()));
+    }
+             */
             function getLoginStatus() {
                 FB.getLoginStatus(function(response) {
-                                  if (response.status == 'connected') {
-                                  alert('logged in');
-                                  } else {
-                                  alert('not logged in');
-                                  }
-                                  });
+                    if (response.status == 'connected') {
+                        alert('logged in');
+                    } else {
+                        alert('not logged in');
+                    }
+                });
             }
             var friendIDs = [];
-			var fdata;
+            var fdata;
             function me() {
                 FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
-                       if (response.error) {
-                       alert(JSON.stringify(response.error));
-                       } else {
-                       var data = document.getElementById('data');
-					   fdata=response.data;
-					   console.log("fdata: "+fdata);
-                       response.data.forEach(function(item) {
-                                             var d = document.createElement('div');
-                                             d.innerHTML = "<img src="+item.picture+"/>"+item.name;
-                                             data.appendChild(d);
-                                             });
-                       }
-					var friends = response.data;
-					console.log(friends.length); 
-					for (var k = 0; k < friends.length && k < 200; k++) {
-				        var friend = friends[k];
-				        var index = 1;
+                    if (response.error) {
+                        alert(JSON.stringify(response.error));
+                    } else {
+                        var data = document.getElementById('data');
+                        fdata=response.data;
+                        console.log("fdata: "+fdata);
+                        response.data.forEach(function(item) {
+                            var d = document.createElement('div');
+                            d.innerHTML = "<img src="+item.picture+"/>"+item.name;
+                            data.appendChild(d);
+                        });
+                    }
+                    var friends = response.data;
+                    console.log(friends.length); 
+                    for (var k = 0; k < friends.length && k < 200; k++) {
+                        var friend = friends[k];
+                        var index = 1;
 
-				        friendIDs[k] = friend.id;
-				        //friendsInfo[k] = friend;
-					}
-					console.log("friendId's: "+friendIDs);
-                       });
+                        friendIDs[k] = friend.id;
+                        //friendsInfo[k] = friend;
+                    }
+                    console.log("friendId's: "+friendIDs);
+                });
             }
             
             function logout() {
                 FB.logout(function(response) {
-                          alert('logged out');
-                          });
+                    alert('logged out');
+                });
             }
             
             function login() {
                 FB.login(
-                         function(response) {
-                         if (response.session) {
-                         alert('logged in');
-                         } else {
-                         alert('not logged in');
-                         }
-                         },
-                         { scope: "email" }
-                         );
+                function(response) {
+                    if (response.session) {
+                        alert('logged in');
+                    } else {
+                        alert('not logged in');
+                    }
+                },
+                { scope: "email" }
+            );
             }
 
 
-			function facebookWallPost() {
-			    console.log('Debug 1');
-				var params = {
-				    method: 'feed',
-				    name: 'Facebook Dialogs',
-				    link: 'https://developers.facebook.com/docs/reference/dialogs/',
-				    picture: 'http://fbrell.com/f8.jpg',
-				    caption: 'Reference Documentation',
-				    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-				  };
-				console.log(params);
-			    FB.ui(params, function(obj) { console.log(obj);});
-			}
+            function facebookWallPost() {
+                console.log('Debug 1');
+                var params = {
+                    method: 'feed',
+                    name: 'Facebook Dialogs',
+                    link: 'https://developers.facebook.com/docs/reference/dialogs/',
+                    picture: 'http://fbrell.com/f8.jpg',
+                    caption: 'Reference Documentation',
+                    description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+                };
+                console.log(params);
+                FB.ui(params, function(obj) { console.log(obj);});
+            }
             
-			function publishStoryFriend() {
-				randNum = Math.floor ( Math.random() * friendIDs.length ); 
+            function publishStoryFriend() {
+                randNum = Math.floor ( Math.random() * friendIDs.length ); 
 
-				var friendID = friendIDs[randNum];
-				if (friendID == undefined){
-					alert('please click the me button to get a list of friends first');
-				}else{
-			    	console.log("friend id: " + friendID );
-			        console.log('Opening a dialog for friendID: ', friendID);
-			        var params = {
-			        	method: 'feed',
-			            to: friendID.toString(),
-			            name: 'Facebook Dialogs',
-			            link: 'https://developers.facebook.com/docs/reference/dialogs/',
-			            picture: 'http://fbrell.com/f8.jpg',
-			            caption: 'Reference Documentation',
-			            description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-			     	};
-					FB.ui(params, function(obj) { console.log(obj);});
-			    }
-			}
+                var friendID = friendIDs[randNum];
+                if (friendID == undefined){
+                    alert('please click the me button to get a list of friends first');
+                }else{
+                    console.log("friend id: " + friendID );
+                    console.log('Opening a dialog for friendID: ', friendID);
+                    var params = {
+                        method: 'feed',
+                        to: friendID.toString(),
+                        name: 'Facebook Dialogs',
+                        link: 'https://developers.facebook.com/docs/reference/dialogs/',
+                        picture: 'http://fbrell.com/f8.jpg',
+                        caption: 'Reference Documentation',
+                        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+                    };
+                    FB.ui(params, function(obj) { console.log(obj);});
+                }
+            }
             
             document.addEventListener('deviceready', function() {
-                                      try {
-                                      alert('Device is ready! Make sure you set your app_id below this alert.');
-                                      FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
-                                      document.getElementById('data').innerHTML = "";
-                                      } catch (e) {
-                                      alert(e);
-                                      }
-                                      }, false);
-            </script>
-        <div id="log"></div>
-	</body>
+                try {
+                    alert('Device is ready! Make sure you set your app_id below this alert.');
+                    
+                    phonegap = 'true';
+                    
+                    FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
+                 
+                    jQuery.getScript("js/libs/jquery.hammer.js")
+                    .done(function(script, textStatus) {
+                        alert( textStatus + " jquery.hammer.js loaded");
+
+                        var hammertime = $('body').hammer();
+                        console.log(hammertime);
+
+                        hammertime.on("swipeleft", function(ev) 
+                        {
+                            if(window.console) { console.log(ev); }
+                            leftSwipeEventHandler();
+                        });
+
+                        hammertime.on("swiperight", function(ev) 
+                        {
+                            if(window.console) { console.log(ev); }
+                            rightSwipeEventHandler();
+                        });
+
+                        hammertime.on("swipeup", function(ev) 
+                        {
+                            if(window.console) { console.log(ev); }
+                            upSwipeEventHandler();
+                        });
+
+                        hammertime.on("swipedown", function(ev) 
+                        {
+                            if(window.console) { console.log(ev); }
+                            downSwipeEventHandler();
+                        });
+
+                        jQuery.getScript("js/touchEvents.js")
+                        .done(function(script, textStatus) {
+                //            alert('touchEvents loaded');
+                        })
+                        .fail(function(jqxhr, settings, exception) {
+                //            alert( exception + " touchEvents loaded");
+                        });
+                    })
+                    .fail(function(jqxhr, settings, exception) {
+                //        alert( exception + " jquery.hammer.js failed");
+                    });
+
+                    jQuery.getScript("js/libs/fastclick.js")
+                    .done(function(script, textStatus) {
+                //        alert( textStatus + " fastclick loaded");
+                //        jQuery(window).load(function() 
+                //        {
+                            FastClick.attach(document.body);
+                            alert('fastclick initialized');
+                //        });
+                    })
+                    .fail(function(jqxhr, settings, exception) {
+                //        alert( exception + " fastclick failed");
+                    });
+
+                    // Hide the splashscreen after loading...
+                //    navigator.splashscreen.hide();
+
+                    // Register some event listeners
+                    document.addEventListener("online", onDeviceOnline, false);
+                    document.addEventListener("offline", onDeviceOffline, false);
+                    document.addEventListener("menubutton", onMenuKeyDown, false);
+                    alert('Register some event listeners');
+                } catch (e) {
+                    alert(e);
+                }
+            }, false);
+        </script>
+    </body>
 </html>
