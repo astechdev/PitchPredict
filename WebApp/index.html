@@ -414,6 +414,25 @@
                     FB.init({ appId: "263545480387259", nativeInterface: CDV.FB, useCachedDialogs: false });
                     alert('FB.init.');
                     authUser();
+                
+                    // Load the Google + SDK Asynchronously
+                    (function() {
+                        var po = document.createElement('script');
+                        po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/client:plusone.js?onload=render';
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(po, s);
+                    })();
+
+                    function render() {
+                        gapi.signin.render('customBtn', {
+                            'callback': 'signinCallback',
+                            'clientid': '473871818038-gcdrsgcmo77r6ucdhroupte3uk4qn573.apps.googleusercontent.com',
+                            'cookiepolicy': 'none',
+                            'requestvisibleactions': 'http://schemas.google.com/AddActivity',
+                            'scope': 'https://www.googleapis.com/auth/plus.login'
+                        });
+                    }
                     
                     gaPlugin = window.plugins.gaPlugin;        
                     //    navigator.notification.confirm('GA_PLUGIN would like your permission to collect usage data. No personal or user identifiable data will be collected.', permissionCallback, 'Attention', 'Allow,Deny');
