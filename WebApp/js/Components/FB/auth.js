@@ -14,16 +14,11 @@
 //}
 
 function getLoginStatus() {
-    alert("getLoginStatus");
     FB.getLoginStatus(function(response) {
         if (response.status == 'connected') {
             alert('logged in');
-            jQuery('#logoutcontainer').show();
-            jQuery('#logincontainer').hide();
         } else {
             alert('not logged in');
-            jQuery('#logoutcontainer').hide();
-            jQuery('#logincontainer').show();
         }
     });
 }
@@ -129,60 +124,20 @@ function checkUserPermissions(permissionToCheck) {
 
 //Prompt the user to login and ask for the 'email' permission           
 function login() {
-    alert("login");
     FB.login(
-    function(response) {
-        if (response.session) {
-            alert('logged in');
-        
-            jQuery('#logoutcontainer').show();
-            jQuery('#logincontainer').hide();
-
-            //Fetch user's id, name, and picture
-            FB.api('/me', {
-                fields: 'name, email, picture'
-            },
-            function(response) {
-                if (!response.error) {
-                    user = response;
-
-                    alert('Got the user\'s name, email, and picture: ', response);
-                    
-                    //Update display of user name and picture
-                    if (document.getElementById('user-name')) {
-                        document.getElementById('user-name').innerHTML = user.name;
-                    }
-
-                    jQuery('#profileInfo').append('<img id="user-picture" src=""/>');
-
-                    if (document.getElementById('user-picture')) {
-                        document.getElementById('user-picture').src = user.picture.data.url;
-                    }
-                }
-
-            //register users so that PitchPredict can store state variables and track subscription level
-            //          var url = 'http://www.pitchpredict.com/PitchPredict/Services/register.php?UserName='+user.name+'&email='+user.email;
-            //          
-            //          jQuery.getJSON(url, function(data) 
-            //            {
-            //                userInfoMap.UserName = user.name;
-            //                load();
-            //            }).error(function(e) { 
-            //                userInfoMap.UserName = "false"; helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); alert(JSON.stringify(e));});
-            //          clearAction();
-            });
-        } else {
-            alert('not logged in');
-            document.body.className = 'not_connected';
-
-            jQuery('#logoutcontainer').hide();
-            jQuery('#logincontainer').show();
-            jQuery('#user-picture').remove();
+        function(response) {
+            if (response.session) {
+                alert('logged in');
+            } else {
+                alert('not logged in');
+            }
+        },
+        {
+            scope: "email"
         }
-    },
-    { scope: "email" }
-);
+        );
 }
+            
 //function promptLogin() {
 //    alert('promptLogin');
 //    
@@ -301,20 +256,8 @@ function uninstallApp() {
 
 //See https://developers.facebook.com/docs/reference/javascript/FB.logout/            
 function logout() {
-    alert("logout");
     FB.logout(function(response) {
         alert('logged out');
-        document.body.className = 'not_connected';
-        
-        jQuery('#logoutcontainer').hide();
-        jQuery('#logincontainer').show();
-            
-        //Update display of user name and picture
-        if (document.getElementById('user-name')) {
-            document.getElementById('user-name').innerHTML = "";
-        }
-
-        jQuery('#user-picture').remove();
     });
 }
 
