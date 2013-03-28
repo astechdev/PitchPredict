@@ -185,9 +185,9 @@
                             <div id="logoutcontainer">
                                 <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
                                 <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
-                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
+                                <!--<input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">-->
                                 <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
-                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
+<!--                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">-->
                             </div>
                         </div>
                         <div data-view="charts" class="view charts">
@@ -320,6 +320,8 @@
                     setCurrentChart(currentchart);
                     dashboard.dimensions();
                 });
+                
+                jQuery('#logoutcontainer').append('<input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">');
 
                 //Initialize the Facebook SDK
                 //See https://developers.facebook.com/docs/reference/javascript/

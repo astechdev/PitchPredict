@@ -13,7 +13,7 @@ function publishStory() {
         caption: 'Pitch Predict.',
         description: 'Check out Pitch Predict to start analyzing MLB\'s gameday pitch f/x data.',
         link: 'http://pitchpredict.com/',
-        picture: 'http://www.app.pitchpredict.com/images/icon/launcher.png',
+        picture: 'http://www.app.pitchpredict.com/images/icons/launcher.png',
         actions: [{
             name: 'Get Started', 
             link: 'http://pitchpredict.com/'
@@ -23,22 +23,22 @@ function publishStory() {
         console.log('publishStory UI response: ', response);
     });
 }
-function facebookWallPost() {
-    alert("facebookWallPost");
-    console.log('Debug 1');
-    var params = {
-        method: 'feed',
-        name: 'Facebook Dialogs',
-        link: 'https://developers.facebook.com/docs/reference/dialogs/',
-        picture: 'http://fbrell.com/f8.jpg',
-        caption: 'Reference Documentation',
-        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
-    };
-    console.log(params);
-    FB.ui(params, function(obj) {
-        console.log(obj);
-    });
-}
+//function facebookWallPost() {
+//    alert("facebookWallPost");
+//    console.log('Debug 1');
+//    var params = {
+//        method: 'feed',
+//        name: 'Facebook Dialogs',
+//        link: 'https://developers.facebook.com/docs/reference/dialogs/',
+//        picture: 'http://fbrell.com/f8.jpg',
+//        caption: 'Reference Documentation',
+//        description: 'Dialogs provide a simple, consistent interface for applications to interface with users.'
+//    };
+//    console.log(params);
+//    FB.ui(params, function(obj) {
+//        console.log(obj);
+//    });
+//}
 
 //Publish a story to the pitchpredict's wall
 function publishStoryFriend() {
@@ -55,7 +55,7 @@ function publishStoryFriend() {
         caption: 'Pitch Predict.',
         description: 'Check out Pitch Predict to start analyzing MLB\'s gameday pitch f/x data.',
         link: 'http://pitchpredict.com/',
-        picture: 'http://www.app.pitchpredict.com/images/icon/launcher.png',
+        picture: 'http://www.app.pitchpredict.com/images/icons/launcher.png',
         actions: [{
             name: 'Get Started', 
             link: 'http://pitchpredict.com/'
