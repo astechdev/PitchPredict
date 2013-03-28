@@ -1,137 +1,137 @@
-function initialize() {
-    // Wait for Cordova to connect with the device
-//    document.addEventListener("deviceready", onDeviceReady, false);
-    
-    jQuery('#logoutcontainer').hide();
-    
-    dashboard.init();
-    
-    dialogInit();
-
-    load();
-    
-    // Check if phonegap, if not load web app functionality
-    jQuery.getScript("phonegap.js")
-    .done(function(script, textStatus) {        
-//        alert( textStatus + " phonegap loaded");
-    })
-    .fail(function(jqxhr, settings, exception) {
-        console.log( exception + " phonegap failed....adding WebApp ONLY functionality");
-        
-        jQuery(window).unload(function() 
-        {
-            deinitialize();
-            console.log('deinitialized');
-        });
-
-        jQuery(window).resize(function() 
-        { 
-            dialogheight = $(window).height()*.75;
-            dialogwidth = $(window).width()*.80;
-
-            $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
-
-            $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
-
-            $( "#dialog" ).dialog( "option", "width", dialogwidth );
-
-            $( "#dialog" ).dialog( "option", "height", dialogheight );
-
-            chartheight = ($(window).height()*.75);
-            chartwidth = chartheight*1.40;                          
-            setCurrentChart(currentchart);
-            dashboard.dimensions();
-        });
-        
-        //Initialize the Facebook SDK
-        //See https://developers.facebook.com/docs/reference/javascript/
-        window.fbAsyncInit = function() {
-            FB.init({ 
-                appId: gAppID,
-                status: true,
-                cookie: true,
-                xfbml: true,
-                frictionlessRequests: true,
-                useCachedDialogs: true,
-                oauth: true
-            });
-
-            FB.getLoginStatus(handleStatusChange);
-
-            authUser();
-            checkForCredits();
-            updateAuthElements();
-
-//            FB.Event.subscribe('auth.login', function(response) {
-//                console.log('auth.login event');
+//function initialize() {
+//    // Wait for Cordova to connect with the device
+////    document.addEventListener("deviceready", onDeviceReady, false);
+//    
+//    jQuery('#logoutcontainer').hide();
+//    
+//    dashboard.init();
+//    
+//    dialogInit();
+//
+//    load();
+//    
+//    // Check if phonegap, if not load web app functionality
+//    jQuery.getScript("phonegap.js")
+//    .done(function(script, textStatus) {        
+////        alert( textStatus + " phonegap loaded");
+//    })
+//    .fail(function(jqxhr, settings, exception) {
+//        console.log( exception + " phonegap failed....adding WebApp ONLY functionality");
+//        
+//        jQuery(window).unload(function() 
+//        {
+//            deinitialize();
+//            console.log('deinitialized');
+//        });
+//
+//        jQuery(window).resize(function() 
+//        { 
+//            dialogheight = $(window).height()*.75;
+//            dialogwidth = $(window).width()*.80;
+//
+//            $( "#pitchcounterdialogcontainer" ).dialog( "option", "width", dialogwidth );
+//
+//            $( "#pitchcounterdialogcontainer" ).dialog( "option", "height", dialogheight );
+//
+//            $( "#dialog" ).dialog( "option", "width", dialogwidth );
+//
+//            $( "#dialog" ).dialog( "option", "height", dialogheight );
+//
+//            chartheight = ($(window).height()*.75);
+//            chartwidth = chartheight*1.40;                          
+//            setCurrentChart(currentchart);
+//            dashboard.dimensions();
+//        });
+//        
+//        //Initialize the Facebook SDK
+//        //See https://developers.facebook.com/docs/reference/javascript/
+//        window.fbAsyncInit = function() {
+//            FB.init({ 
+//                appId: gAppID,
+//                status: true,
+//                cookie: true,
+//                xfbml: true,
+//                frictionlessRequests: true,
+//                useCachedDialogs: true,
+//                oauth: true
 //            });
 //
-//            FB.Event.subscribe('auth.logout', function(response) {
-//                console.log('auth.logout event');
-//            });
+//            FB.getLoginStatus(handleStatusChange);
 //
-//            FB.Event.subscribe('auth.sessionChange', function(response) {
-//                console.log('auth.sessionChange event');
-//            });
+//            authUser();
+//            checkForCredits();
+//            updateAuthElements();
 //
-//            FB.Event.subscribe('auth.statusChange', function(response) {
-//                console.log('auth.statusChange event');
-//            });
-        };
-        
-        // Load the SDK Asynchronously
-        (function(d){
-            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
-            if (d.getElementById(id)) {
-                return;
-            }
-            js = d.createElement('script');
-            js.id = id;
-            js.async = true;
-            js.src = "//connect.facebook.net/en_US/all.js";
-            ref.parentNode.insertBefore(js, ref);
-        }(document));
-        
-        // Initialize inmobi
-        inmobi_conf = 
-            {
-//                siteid : "e807ef51fb1a49379c969a777d83d035",
-                siteid : "4028cba631d63df10131e1d3191d00cb",
-                slot : "10",
-                test: true,
-                manual: true,
-                onError : function(code) {
-                    console.log(code);
-//                    if(code == "nfr") {
-//                        document.getElementById("dialog-message").style.display = "none";
-//                        // do something else. call to other ad network or logic to display in-house ads, etc. 
-//                    }
-                }
-            };
-
-        jQuery.getScript("js/libs/inmobi.js")
-        .done(function(script, textStatus) {
-            console.log( textStatus + " inmobi loaded");
-        })
-        .fail(function(jqxhr, settings, exception) {
-            console.log( exception + " inmobi failed");
-        });
-        
-        _gaq.push(['_setAccount', gaAccount]);
-        _gaq.push(['_setDomainName', gaDomianName]);
-        _gaq.push(['_trackPageview']);
-
-        (function() {
-            var ga = document.createElement('script');
-            ga.type = 'text/javascript';
-            ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(ga, s);
-        })();
-        console.log('Google Analytics Initialized');
-    });
-}
+////            FB.Event.subscribe('auth.login', function(response) {
+////                console.log('auth.login event');
+////            });
+////
+////            FB.Event.subscribe('auth.logout', function(response) {
+////                console.log('auth.logout event');
+////            });
+////
+////            FB.Event.subscribe('auth.sessionChange', function(response) {
+////                console.log('auth.sessionChange event');
+////            });
+////
+////            FB.Event.subscribe('auth.statusChange', function(response) {
+////                console.log('auth.statusChange event');
+////            });
+//        };
+//        
+//        // Load the SDK Asynchronously
+//        (function(d){
+//            var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+//            if (d.getElementById(id)) {
+//                return;
+//            }
+//            js = d.createElement('script');
+//            js.id = id;
+//            js.async = true;
+//            js.src = "//connect.facebook.net/en_US/all.js";
+//            ref.parentNode.insertBefore(js, ref);
+//        }(document));
+//        
+//        // Initialize inmobi
+//        inmobi_conf = 
+//            {
+////                siteid : "e807ef51fb1a49379c969a777d83d035",
+//                siteid : "4028cba631d63df10131e1d3191d00cb",
+//                slot : "10",
+//                test: true,
+//                manual: true,
+//                onError : function(code) {
+//                    console.log(code);
+////                    if(code == "nfr") {
+////                        document.getElementById("dialog-message").style.display = "none";
+////                        // do something else. call to other ad network or logic to display in-house ads, etc. 
+////                    }
+//                }
+//            };
+//
+//        jQuery.getScript("js/libs/inmobi.js")
+//        .done(function(script, textStatus) {
+//            console.log( textStatus + " inmobi loaded");
+//        })
+//        .fail(function(jqxhr, settings, exception) {
+//            console.log( exception + " inmobi failed");
+//        });
+//        
+//        _gaq.push(['_setAccount', gaAccount]);
+//        _gaq.push(['_setDomainName', gaDomianName]);
+//        _gaq.push(['_trackPageview']);
+//
+//        (function() {
+//            var ga = document.createElement('script');
+//            ga.type = 'text/javascript';
+//            ga.async = true;
+//            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+//            var s = document.getElementsByTagName('script')[0];
+//            s.parentNode.insertBefore(ga, s);
+//        })();
+//        console.log('Google Analytics Initialized');
+//    });
+//}
 
 //function onDeviceReady() 
 //{
@@ -228,17 +228,17 @@ function initialize() {
 
 function onDeviceOnline() 
 {
-//    alert('onDeviceOnline');  
+    alert('onDeviceOnline');  
 }
 
 function onDeviceOffline() 
 {
-//    alert('onDeviceOffline');  
+    alert('onDeviceOffline');  
 }
 
 function onMenuKeyDown() 
 {
-//    alert('onMenuKeyDown');
+    alert('onMenuKeyDown');
     helpDialogInit(null, "Menu", "Manage your saved queries.");
     vibrateFeedback();
 }
