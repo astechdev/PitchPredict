@@ -287,17 +287,6 @@
                 FB.getLoginStatus(function(response) {
                     if (response.status == 'connected') {
                         alert('logged in');
-                        user = response;
-            
-                        alert('Got the user\'s name, email, and picture: ', response);
-
-                        //Update display of user name and picture
-                        if (document.getElementById('user-name')) {
-                            document.getElementById('user-name').innerHTML = user.name;
-                        }
-                        if (document.getElementById('user-picture')) {
-                            document.getElementById('user-picture').src = user.picture.data.url;
-                        }
                         jQuery('#logoutcontainer').show();
                         jQuery('#logincontainer').hide();
                     } else {
@@ -362,21 +351,8 @@
                 function(response) {
                     if (response.session) {
                         alert('logged in');
-                        user = response;
-            
-                        alert('Got the user\'s name, email, and picture: ', response);
-
-                        //Update display of user name and picture
-                        if (document.getElementById('user-name')) {
-                            document.getElementById('user-name').innerHTML = user.name;
-                        }
-                        if (document.getElementById('user-picture')) {
-                            document.getElementById('user-picture').src = user.picture.data.url;
-                        }
-                        
                         jQuery('#logoutcontainer').show();
                         jQuery('#logincontainer').hide();
-                        jQuery('#user-picture').show();
                         
                     } else {
                         alert('not logged in');
