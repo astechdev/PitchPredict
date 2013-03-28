@@ -595,10 +595,10 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadField();
         updateCharts('true');
         
-        if (phonegap === "true")
-        {
-            getLoginStatus();
-        }
+//        if (phonegap === "true")
+//        {
+//            getLoginStatus();
+//        }
 
     //        if (jQuery('#resultscontainer').length > 0)
     //        {
@@ -1030,12 +1030,12 @@ function isEmpty(map) {
 
 function vibrateFeedback()
 {
-    if (phonegap === "true")
+    if ((typeof cordova != 'undefined') && (typeof Cordova != 'undefined'))
     {
-        navigator.notification.vibrate(100);
+        navigator.notification.vibrate(500);
     }
 }
 
-function getURLParameter(name) {
-    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
-}
+//function getURLParameter(name) {
+//    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+//}
