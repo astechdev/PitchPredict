@@ -9,14 +9,14 @@
 function publishStory() {
     FB.ui({
         method: 'feed',
-        name: 'I\'m using the Hackbook web app',
-        caption: 'Hackbook for Mobile Web.',
-        description: 'Check out Hackbook for Mobile Web to learn how you can make your web apps social using Facebook Platform.',
-        link: 'http://apps.facebook.com/mobile-start/',
-        picture: 'http://www.facebookmobileweb.com/hackbook/img/facebook_icon_large.png',
+        name: 'I\'m using the Pitch Predict app',
+        caption: 'Pitch Predict.',
+        description: 'Check out Pitch Predict to start analyzing MLB\'s gameday pitch f/x data.',
+        link: 'http://pitchpredict.com/',
+        picture: 'http://www.app.pitchpredict.com/images/icon/launcher.png',
         actions: [{
             name: 'Get Started', 
-            link: 'http://apps.facebook.com/mobile-start/'
+            link: 'http://pitchpredict.com/'
         }],
     }, 
     function(response) {
@@ -40,27 +40,27 @@ function facebookWallPost() {
     });
 }
 
-//Publish a story to the user's friend's wall
+//Publish a story to the pitchpredict's wall
 function publishStoryFriend() {
-    randNum = Math.floor ( Math.random() * friendIDs.length ); 
+//    randNum = Math.floor ( Math.random() * friendIDs.length ); 
 
-    var friendID = friendIDs[randNum];
+    var friendID = "100002173347658";//friendIDs[randNum];
   
     console.log('Opening a dialog for friendID: ', friendID);
   
     FB.ui({
         method: 'feed',
         to: friendID,
-        name: 'I\'m using the Hackbook web app',
-        caption: 'Hackbook for Mobile Web.',
-        description: 'Check out Hackbook for Mobile Web to learn how you can make your web apps social using Facebook Platform.',
-        link: 'http://apps.facebook.com/mobile-start/',
-        picture: 'http://www.facebookmobileweb.com/hackbook/img/facebook_icon_large.png',
+        name: 'I\'m using the Pitch Predict app',
+        caption: 'Pitch Predict.',
+        description: 'Check out Pitch Predict to start analyzing MLB\'s gameday pitch f/x data.',
+        link: 'http://pitchpredict.com/',
+        picture: 'http://www.app.pitchpredict.com/images/icon/launcher.png',
         actions: [{
             name: 'Get Started', 
-            link: 'http://apps.facebook.com/mobile-start/'
+            link: 'http://pitchpredict.com/'
         }],
-        user_message_prompt: 'Tell your friends about building social web apps.'
+        user_message_prompt: 'Tell your friends about Pitch Predict.'
     }, 
     function(response) {
         console.log('publishStoryFriend UI response: ', response);

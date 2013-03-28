@@ -21,7 +21,7 @@ function sendRequestInvite() {
     FB.ui({
         method: 'apprequests',
         suggestions: nonAppFriendIDs,
-        message: 'Learn how to make your mobile web app social',
+        message: 'Come check out Pitch Predict!  It is a baseball analytics tool that data mines MLB\'s free gameday XML and builds an interface that enables users to analyze possible outcomes for a given situation. It\'s target audience is baseball fans and stat enthusiasts.',
     }, function(response) {
         console.log('sendRequestInvite UI response: ', response);
     });
