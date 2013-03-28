@@ -1,6 +1,6 @@
 function initialize() {
     // Wait for Cordova to connect with the device
-    document.addEventListener("deviceready", onDeviceReady, false);
+//    document.addEventListener("deviceready", onDeviceReady, false);
     
     jQuery('#logoutcontainer').hide();
     
@@ -45,40 +45,40 @@ function initialize() {
         
         //Initialize the Facebook SDK
         //See https://developers.facebook.com/docs/reference/javascript/
-//        window.fbAsyncInit = function() {
-//            FB.init({ 
-//                appId: gAppID,
-//                status: true,
-//                cookie: true,
-//                xfbml: true,
-//                frictionlessRequests: true,
-//                useCachedDialogs: true,
-//                oauth: true
+        window.fbAsyncInit = function() {
+            FB.init({ 
+                appId: gAppID,
+                status: true,
+                cookie: true,
+                xfbml: true,
+                frictionlessRequests: true,
+                useCachedDialogs: true,
+                oauth: true
+            });
+
+            FB.getLoginStatus(handleStatusChange);
+
+            authUser();
+            checkForCredits();
+            updateAuthElements();
+
+//            FB.Event.subscribe('auth.login', function(response) {
+//                console.log('auth.login event');
 //            });
 //
-//            FB.getLoginStatus(handleStatusChange);
+//            FB.Event.subscribe('auth.logout', function(response) {
+//                console.log('auth.logout event');
+//            });
 //
-//            authUser();
-//            checkForCredits();
-//            updateAuthElements();
+//            FB.Event.subscribe('auth.sessionChange', function(response) {
+//                console.log('auth.sessionChange event');
+//            });
 //
-////            FB.Event.subscribe('auth.login', function(response) {
-////                console.log('auth.login event');
-////            });
-////
-////            FB.Event.subscribe('auth.logout', function(response) {
-////                console.log('auth.logout event');
-////            });
-////
-////            FB.Event.subscribe('auth.sessionChange', function(response) {
-////                console.log('auth.sessionChange event');
-////            });
-////
-////            FB.Event.subscribe('auth.statusChange', function(response) {
-////                console.log('auth.statusChange event');
-////            });
-//        };
-//        fbinit();
+//            FB.Event.subscribe('auth.statusChange', function(response) {
+//                console.log('auth.statusChange event');
+//            });
+        };
+        
         // Load the SDK Asynchronously
         (function(d){
             var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
