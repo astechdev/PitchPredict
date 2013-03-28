@@ -258,9 +258,9 @@
 
         <script>
             
-            if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
-            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
-            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
+//            if ((typeof cordova == 'undefined') && (typeof Cordova == 'undefined')) alert('Cordova variable does not exist. Check that you have included cordova.js correctly');
+//            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
+//            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');
             
             FB.Event.subscribe('auth.login', function(response) {
                 alert('auth.login event');
@@ -283,6 +283,7 @@
     }
              */
             function getLoginStatus() {
+                alert("getLoginStatus");
                 FB.getLoginStatus(function(response) {
                     if (response.status == 'connected') {
                         alert('logged in');
@@ -294,6 +295,7 @@
             var friendIDs = [];
             var fdata;
             function me() {
+                alert("me");
                 FB.api('/me/friends', { fields: 'id, name, picture' },  function(response) {
                     if (response.error) {
                         alert(JSON.stringify(response.error));
@@ -321,12 +323,14 @@
             }
             
             function logout() {
+                alert("logout");
                 FB.logout(function(response) {
                     alert('logged out');
                 });
             }
             
             function login() {
+                alert("login");
                 FB.login(
                 function(response) {
                     if (response.session) {
@@ -341,6 +345,7 @@
 
 
             function facebookWallPost() {
+                alert("facebookWallPost");
                 console.log('Debug 1');
                 var params = {
                     method: 'feed',
@@ -355,6 +360,7 @@
             }
             
             function publishStoryFriend() {
+                alert("publishStoryFriend");
                 randNum = Math.floor ( Math.random() * friendIDs.length ); 
 
                 var friendID = friendIDs[randNum];
