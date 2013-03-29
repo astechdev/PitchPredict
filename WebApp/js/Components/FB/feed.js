@@ -24,7 +24,7 @@ function publishStory() {
     });
 }
 //function facebookWallPost() {
-//    alert("facebookWallPost");
+//    //alert("facebookWallPost");
 //    console.log('Debug 1');
 //    var params = {
 //        method: 'feed',
@@ -68,12 +68,12 @@ function publishStoryFriend() {
 }
             
 //function publishStoryFriend() {
-//    alert("publishStoryFriend");
+//    //alert("publishStoryFriend");
 //    randNum = Math.floor ( Math.random() * friendIDs.length ); 
 //
 //    var friendID = friendIDs[randNum];
 //    if (friendID == undefined){
-//        alert('please click the me button to get a list of friends first');
+//        //alert('please click the me button to get a list of friends first');
 //    }else{
 //        console.log("friend id: " + friendID );
 //        console.log('Opening a dialog for friendID: ', friendID);

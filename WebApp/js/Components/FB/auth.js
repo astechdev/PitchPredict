@@ -6,26 +6,25 @@
 //////////////////////////
 
 
-
 //Detect when Facebook tells us that the user's session has been returned
 function authUser() {
-    alert('authUser');
+    //alert('authUser');
     FB.Event.subscribe('auth.statusChange', handleStatusChange);
 }
 
 function getLoginStatus() {
     FB.getLoginStatus(function(response) {
         if (response.status == 'connected') {
-            alert('logged in');
+            //alert('logged in');
         } else {
-            alert('not logged in');
+            //alert('not logged in');
         }
     });
 }
 
 // Handle status changes
 function handleStatusChange(session) {
-    alert('Got the user\'s session: ', session);
+    //alert('Got the user\'s session: ', session);
     
     if (session.authResponse) {
         document.body.className = 'connected';
@@ -41,7 +40,7 @@ function handleStatusChange(session) {
             if (!response.error) {
                 user = response;
             
-                alert('Got the user\'s name, email, and picture: ', response);
+                //alert('Got the user\'s name, email, and picture: ', response);
             
                 //Update display of user name and picture
                 if (document.getElementById('user-name')) {
@@ -63,7 +62,7 @@ function handleStatusChange(session) {
         //                userInfoMap.UserName = user.name;
         //                load();
         //            }).error(function(e) { 
-        //                userInfoMap.UserName = "false"; helpDialogInit("alert", "Error!", "You did not enter a valid user name and password.  "); alert(JSON.stringify(e));});
+        //                userInfoMap.UserName = "false"; helpDialogInit("//alert", "Error!", "You did not enter a valid user name and password.  "); //alert(JSON.stringify(e));});
         //          clearAction();
         });
     }
@@ -127,9 +126,9 @@ function login() {
     FB.login(
         function(response) {
             if (response.session) {
-                alert('logged in');
+                //alert('logged in');
             } else {
-                alert('not logged in');
+                //alert('not logged in');
             }
         },
         {
@@ -139,22 +138,22 @@ function login() {
 }
             
 //function promptLogin() {
-//    alert('promptLogin');
+//    //alert('promptLogin');
 //    
 //    FB.Event.subscribe('auth.login', function(response) {
-//        alert('auth.login event');
+//        //alert('auth.login event');
 //    });
 //            
 //    FB.Event.subscribe('auth.logout', function(response) {
-//        alert('auth.logout event');
+//        //alert('auth.logout event');
 //    });
 //
 //    FB.Event.subscribe('auth.sessionChange', function(response) {
-//        alert('auth.sessionChange event');
+//        //alert('auth.sessionChange event');
 //    });
 //
 //    FB.Event.subscribe('auth.statusChange', function(response) {
-//        alert('auth.statusChange event');
+//        //alert('auth.statusChange event');
 //    });
 //    
 //    if(phonegap === 'true')
@@ -184,7 +183,7 @@ function login() {
 //        
 //    FB.login(
 //        function(response) {    
-//            alert("login response: "+JSON.stringify(response));
+//            //alert("login response: "+JSON.stringify(response));
 //            if (response.status == 'connected') 
 //            {
 //                fb_token = response.authResponse.accessToken;
@@ -195,11 +194,11 @@ function login() {
 //                        fields: 'name, email, picture'
 //                    },
 //                    function(response) {
-//                        alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
+//                        //alert("Fetch user's id, name, and picture: "+JSON.stringify(response));
 //                        if (!response.error) {
 //                            user = response;
 //
-//                            alert('Got the user\'s name, email, and picture: ', response);
+//                            //alert('Got the user\'s name, email, and picture: ', response);
 //
 //                            //Update display of user name and picture
 //                            if (document.getElementById('user-name')) {
@@ -217,9 +216,9 @@ function login() {
 //                load();
 //    
 //            } else if (response.status === 'not_authorized') {
-//                alert('Error in authentication: not authorized');
+//                //alert('Error in authentication: not authorized');
 //            } else {
-//                alert('Unknown error in authentication');
+//                //alert('Unknown error in authentication');
 //            }
 //        },
 //        {
@@ -247,17 +246,14 @@ function promptPermission(permission) {
 function uninstallApp() {
     FB.api('/me/permissions', 'DELETE',
         function(response) {
-            window.location.reload();
-        // For may instead call logout to clear
-        // cache data, ex: using in a PhoneGap app
-        //logout();
+        logout();
         });
 }
 
 //See https://developers.facebook.com/docs/reference/javascript/FB.logout/            
 function logout() {
     FB.logout(function(response) {
-        alert('logged out');
+        //alert('logged out');
     });
 }
 
