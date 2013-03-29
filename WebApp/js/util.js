@@ -256,7 +256,7 @@ function load()
     //    loadingDialogInit();
     //    $('#filters').hide();
     //reinitialize some maps
-    //    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
+    //    if(user.name != "" && user.name != null && user.name != "undefined")
     //    {
     //        for(var stateVariablesKey in stateVariablesMap) 
     //        {
@@ -337,9 +337,11 @@ function load()
     //    alert(JSON.stringify(homeTeamMap));
     //    alert(JSON.stringify(awayTeamMap));
     
-    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?callback=?&UserName='+userInfoMap.UserName, function(data) 
+    console.log("user: "+JSON.stringify(user));
+    
+    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?callback=?&UserName='+user.name, function(data) 
     {
-        if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
+        if(user.name != "" && user.name != null && user.name != "undefined")
         {
             stateVariablesMap = data;
             //            jQuery.each(data, function(key, val) 
@@ -595,10 +597,10 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadField();
         updateCharts('true');
         
-//        if (phonegap === "true")
-//        {
-//            getLoginStatus();
-//        }
+    //        if (phonegap === "true")
+    //        {
+    //            getLoginStatus();
+    //        }
 
     //        if (jQuery('#resultscontainer').length > 0)
     //        {
@@ -784,7 +786,7 @@ function getParamsString()
     //            }
     //        }
         
-    params = "UserName=" + encodeURIComponent(userInfoMap.UserName)+
+    params = "UserName=" + encodeURIComponent(user.name)+
     "&Inning=" + encodeURIComponent(stateVariablesMap['theInning']) +
     "&TopOrBottomHalf=" + encodeURIComponent(stateVariablesMap['theTopOrBottomHalf'])+
     "&Balls=" + encodeURIComponent(stateVariablesMap['theBalls'])+
@@ -894,7 +896,7 @@ function saveState()
     //    alertStateVariables();
 
     //dont save state if not logged in/registered 
-    if(userInfoMap.UserName != "" && userInfoMap.UserName != null && userInfoMap.UserName != "undefined")
+    if(user.name != "" && user.name != null && user.name != "undefined")
     {
         jQuery.ajax(
         {

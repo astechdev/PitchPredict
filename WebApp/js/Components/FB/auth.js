@@ -15,9 +15,9 @@ function authUser() {
 function getLoginStatus() {
     FB.getLoginStatus(function(response) {
         if (response.status == 'connected') {
-            //alert('logged in');
+        //alert('logged in');
         } else {
-            //alert('not logged in');
+        //alert('not logged in');
         }
     });
 }
@@ -39,7 +39,8 @@ function handleStatusChange(session) {
         function(response) {
             if (!response.error) {
                 user = response;
-            
+                console.log("user: "+JSON.stringify(user));
+                
                 //alert('Got the user\'s name, email, and picture: ', response);
             
                 //Update display of user name and picture
@@ -54,20 +55,28 @@ function handleStatusChange(session) {
                 }
             }
           
-        //register users so that PitchPredict can store state variables and track subscription level
-        //          var url = 'http://www.pitchpredict.com/PitchPredict/Services/register.php?UserName='+user.name+'&email='+user.email;
-        //          
-        //          jQuery.getJSON(url, function(data) 
-        //            {
-        //                userInfoMap.UserName = user.name;
-        //                load();
-        //            }).error(function(e) { 
-        //                userInfoMap.UserName = "false"; helpDialogInit("//alert", "Error!", "You did not enter a valid user name and password.  "); //alert(JSON.stringify(e));});
-        //          clearAction();
+            //register users so that PitchPredict can store state variables and track subscription level
+            var url = 'http://www.pitchpredict.com/PitchPredict/Services/register.php?UserName='+user.name+'&email='+user.email;
+
+            jQuery.getJSON(url, function(data) 
+            {
+                load();
+            }).error(function(e) { 
+                helpDialogInit("alert", "Error!", "There was an error signing in.  Please try again later.");
+                logout();
+                console.log(JSON.stringify(e));
+            });
         });
     }
     else  {
         document.body.className = 'not_connected';
+        
+        user = {
+            "name":null,
+            "email":null,
+            "id":null,
+            "picture":null
+        };
         
         jQuery('#logoutcontainer').hide();
         jQuery('#logincontainer').show();
@@ -126,9 +135,15 @@ function login() {
     FB.login(
         function(response) {
             if (response.session) {
-                //alert('logged in');
+            //alert('logged in');
             } else {
                 //alert('not logged in');
+                user = {
+                    "name":null,
+                    "email":null,
+                    "id":null,
+                    "picture":null
+                };
             }
         },
         {
@@ -246,7 +261,7 @@ function promptPermission(permission) {
 function uninstallApp() {
     FB.api('/me/permissions', 'DELETE',
         function(response) {
-        logout();
+            logout();
         });
 }
 
@@ -254,6 +269,12 @@ function uninstallApp() {
 function logout() {
     FB.logout(function(response) {
         //alert('logged out');
+        user = {
+            "name":null,
+            "email":null,
+            "id":null,
+            "picture":null
+        };
     });
 }
 

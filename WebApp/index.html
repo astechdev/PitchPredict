@@ -187,11 +187,11 @@
                             </div>
                             <div id="logoutcontainer">
                                 <input type="Button" class="helpbuttons" onclick="logout();" value="Log Out">
-                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
-                                <input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">
-                                <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
                                 <input type="Button" class="helpbuttons" onclick="uninstallApp();" value="Uninstall Facebook App">
-                                <input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
+                                <!--<input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">-->
+                                <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
+                                <!--<input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">-->
                             </div>
                         </div>
                         <div data-view="charts" class="view charts">
@@ -259,12 +259,6 @@
 
         <script>    
             jQuery('#logoutcontainer').hide();
-
-            dashboard.init();
-
-            dialogInit();
-
-            load();
             
             //Facebook vars
             var gAppID = '263545480387259';
@@ -272,12 +266,18 @@
             //var fb_token; // OUR TOKEN KEEPER
             var friendIDs = [];
             var fdata;
-            var user = [];
+            var user = {"name":null,"email":null,"id":null,"picture":null};
             var permissions = ['user_status', 'publish_checkins', 'user_likes'];
             var nonAppFriendIDs = [];
             var appFriendIDs = [];
             var friendIDs = [];
             var friendsInfo = [];
+
+            dashboard.init();
+
+            dialogInit();
+
+            load();
             
 //            if (typeof CDV == 'undefined') alert('CDV variable does not exist. Check that you have included cdv-plugin-fb-connect.js correctly');
 //            if (typeof FB == 'undefined') alert('FB variable does not exist. Check that you have included the Facebook JS SDK file.');

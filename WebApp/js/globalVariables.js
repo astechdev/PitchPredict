@@ -34,7 +34,7 @@ var youTubePlayListIndex = 1;
 var youTubePlayListLength = 7;
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
-var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};
+//var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};
 var stateVariablesMap = {
     "theUserName":"",
     "thePassword":"",
