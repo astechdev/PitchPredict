@@ -13,7 +13,6 @@ function sendMessage() {
     }
     else
     {
-        
         var authorize_url = "https://www.facebook.com/dialog/send?";
         authorize_url += "app_id=" + gAppID;
         authorize_url += "&redirect_uri=http://www.facebook.com/connect/login_success.html";
