@@ -12,7 +12,7 @@ function publishStory() {
         name: 'I\'m using the Pitch Predict app',
         caption: 'Pitch Predict.',
         description: 'Check out Pitch Predict to start analyzing MLB\'s gameday pitch f/x data.',
-        link: 'http://pitchpredict.com/',
+        link: 'https://www.facebook.com/PitchPredict',
         picture: 'http://www.app.pitchpredict.com/images/icons/launcher.png',
         actions: [{
             name: 'Get Started', 

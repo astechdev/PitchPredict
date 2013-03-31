@@ -59,14 +59,18 @@ class StateVariables
 //            public $theRunsRecorded;
 //            public $theOutsRecorded;
 
-    public function __construct()
+    public function __construct($username)
     {
         include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DBProxies/PostedVariablesDbProxy.php';
 
-        if (isset($_REQUEST['UserName']))
-        {
-            $this->theUserName = $_REQUEST['UserName'];
-        }
+//        if (isset($_REQUEST['UserName']))
+//        {
+//            $this->theUserName = $_REQUEST['UserName'];
+//        }
+//        else 
+//        {
+            $this->theUserName = $username;
+//        }
         
 //        echo $this->theUserName;
         
@@ -80,7 +84,7 @@ class StateVariables
 
     public function initialize()
     {        
-//        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_jml1');
+//        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
 //        //check to see if the user has a row in the posted_variables_table db table, if not create one        
 //        $result = $aPostedVariablesDbProxyObject->getPostedVariables($this->theUserName);
@@ -191,7 +195,7 @@ class StateVariables
     {
         include $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/Util/StringUtil.php';
         
-        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_jml1');
+        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
         if ($this->theUserName != "null")
         { 
@@ -784,14 +788,14 @@ class StateVariables
                             
         echo $update;
         
-        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_jml1');
+        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
         $aPostedVariablesDbProxyObject->dbProxyQuery($update);
         
         $aPostedVariablesDbProxyObject->dbProxyClose();
     }
     
-    public function expose() 
+    public function expose()
     {
         include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DataTypes/Team.php';
         include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DataTypes/Player.php';

@@ -6,7 +6,8 @@ function sendMessage() {
         FB.ui({
             method: 'send',
             name: 'PitchPredict',
-            link: 'http://app.pitchpredict.com'
+            link: 'https://www.facebook.com/PitchPredict',
+            picture: 'http://www.app.pitchpredict.com/images/icons/launcher.png',
         }, function(response) {
             console.log('sendMessage UI response: ', response);
         });

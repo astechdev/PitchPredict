@@ -21,6 +21,8 @@ function sendRequestInvite() {
     FB.ui({
         method: 'apprequests',
         suggestions: nonAppFriendIDs,
+        picture: 'http://www.app.pitchpredict.com/images/icons/launcher.png',
+        link: 'https://www.facebook.com/PitchPredict',
         message: 'Check out Pitch Predict!  It\'s a baseball analytics tool that mines MLB\'s gameday XML and builds an interface that enables users to analyze the data.',
     }, function(response) {
         console.log('sendRequestInvite UI response: ', response);

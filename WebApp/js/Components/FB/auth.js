@@ -56,15 +56,15 @@ function handleStatusChange(session) {
             }
           
             //register users so that PitchPredict can store state variables and track subscription level
-            var url = 'http://www.pitchpredict.com/PitchPredict/Services/register.php?UserName='+user.name+'&email='+user.email;
+            var url = 'http://www.pitchpredict.com/PitchPredict/Services/register.php?UserName='+user.name+'&email='+user.email+'&id='+user.id;
 
             jQuery.getJSON(url, function(data) 
             {
                 load();
             }).error(function(e) { 
+                console.log(JSON.stringify(e));
                 helpDialogInit("alert", "Error!", "There was an error signing in.  Please try again later.");
                 logout();
-                console.log(JSON.stringify(e));
             });
         });
     }

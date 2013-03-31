@@ -138,7 +138,7 @@ function loadingDialogClose()
     $( "#dialog" ).dialog("close");
 }
 
-function registerDialogInit()
+function subscribeDialogInit()
 {
     $( "#dialog-message" ).empty();
    
@@ -149,182 +149,26 @@ function registerDialogInit()
         width: dialogwidth,
         resizable: false,
         draggable: false,
-        title: "Register",
+        title: "Subscriptions",
         closeOnEscape: false,
         buttons: {
-            Register: function() {  
-                vibrateFeedback();
-                //            if(phonegap != "false")
-                //            {
-                //                navigator.app.loadUrl('http://www.pitchpredict.com/index.php?option=com_users&view=registration', {openExternal:true});
-                //            }
-                //            else
-                //            {
-                //                window.open('http://www.pitchpredict.com/index.php?option=com_users&view=registration', '_blank');
-                //            } 
-                TrackButtonClicked('Register', 'clicked', 'Attempt to Register', 1);
-            
-                //            jQuery.validator.setDefaults(
-                //            {
-                //                submitHandler: function() 
-                //                    {
-                //                        var url = "http://www.pitchpredict.com/index.php?option=com_users&amp;task=registration.register"; // the script where you handle the form input.
-                //
-                //                        jQuery.ajax(
-                //                        {
-                //                            type: "POST",
-                //                            url: url,
-                //                            data: jQuery("#registrationForm").serialize(), // serializes the form's elements.
-                //                            success: function(data)
-                //                            {
-                ////                                alert(data); // show response from the php script.           
-                //                 
-                //                                jQuery( this ).dialog( "close" );
-                //                            }
-                //                        });
-                //                    }
-                //            });
-                //            
-                //            jQuery("#registrationForm").validate(
-                //            {
-                //                rules: {
-                //                        "jform[name]": "required",
-                //                        "jform[username]": {
-                //                                required: true,
-                //                                minlength: 2
-                //                        },
-                //                        "jform[password1]": {
-                //                                required: true,
-                //                                minlength: 5
-                //                        },
-                //                        "jform[password2]": {
-                //                                required: true,
-                //                                minlength: 5,
-                //				equalTo: "#jform[password1]"
-                //                        },
-                //                        "jform[email1]": {
-                //                                required: true,
-                //                                email: true
-                //                        },
-                //                        "jform[email2]": {
-                //                                required: true,
-                //                                email: true,
-                //				equalTo: "#jform[email2]"
-                //                        }
-                //                },
-                //                messages: {
-                //                        "jform[name]": "Please enter your name",
-                //                        "jform[username]": {
-                //                                required: "Please enter a username",
-                //                                minlength: "Your username must consist of at least 2 characters"
-                //                        },
-                //                        "jform[password1]": {
-                //                                required: "Please provide a password",
-                //                                minlength: "Your password must be at least 5 characters long"
-                //                        },
-                //                        "jform[password2]": {
-                //                                required: "Please provide a password",
-                //                                minlength: "Your password must be at least 5 characters long",
-                //                                equalTo: "Please enter the same password as above"
-                //                        },
-                //                        "jform[email1]": { 
-                //                                required: "Please enter a valid email address"
-                //                        },
-                //                        "jform[email2]": { 
-                //                                required: "Please enter a valid email address",
-                //                                equalTo: "Please enter the same email as above"
-                //                        }
-                //                }
-                //            }); 
-            
-                var url = "http://www.pitchpredict.com/index.php?option=com_users&amp;task=registration.register"; // the script where you handle the form input.
-
-                jQuery.ajax(
-                {
-                    type: "POST",
-                    url: url,
-                    data: jQuery("#registrationForm").serialize(), // serializes the form's elements.
-                    success: function(data)
-                    {
-                    //                                alert(data); // show response from the php script.
-                    }
-                });     
-
+            Premium: function() {
+                $('#os0').val('Premium');
+                openPayPalWindow();
                 jQuery( this ).dialog( "close" );
             },
-            Close: function() {
-                vibrateFeedback();
+            Plus: function() {
+                $('#os0').val('Premium Plus');
+                openPayPalWindow();
+                jQuery( this ).dialog( "close" );
+            },
+            Cancel: function() {
                 jQuery( this ).dialog( "close" );
             }
         }
     });
    
-    $( "#dialog-message" ).append('<form id="registrationForm" name="btl-formregistration" class="btl-formregistration">'+
-        '<div class="btl-note"><span>Fields marked with an asterisk (*) are required.</span></div>'+
-        '<div id="btl-registration-error" class="btl-error"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Name</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-name" type="text" name="jform[name]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Username</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-username1" type="text" name="jform[username]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Password</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-password1" type="password" name="jform[password1]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Verify password</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-password2" type="password" name="jform[password2]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Email</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-email1" type="text" name="jform[email1]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-field">'+
-        '<div class="btl-label">Verify email</div>'+
-        '<div class="btl-input">'+
-        '<input id="btl-input-email2" type="text" name="jform[email2]">'+
-        '</div>'+
-        '</div>'+
-        '<div class="clear"></div>'+
-        '<div class="btl-buttonsubmit">'+
-        '<input type="hidden" name="option" value="com_users"> '+
-        '<input type="hidden" name="task" value="registration.register"> '+
-        '<input type="hidden" name="54b829d2e82c2bfa7c1d0473595e40fb" value="1">'+
-        '</div>'+
-        '</form>');
-//    if(userInfoMap.UserName === "" || userInfoMap.UserName === null || userInfoMap.UserName === "undefined" || userInfoMap.UserName === "false")
-//    {
-//        $( "#dialog-message" ).append("<div id=\"logincontainer\"></div>");   
-//
-//        $( "#logincontainer" ).append("<label>Username:  \n"+
-//                                "<input type=\"text\" id=\"userName\" name=\"userName\" tabindex=\"1\" class=\"text\" />\n"+  
-//                                "</label>\n"+
-//                                "<label>Password: \n"+
-//                                       "<input type=\"password\" id=\"password\" name=\"password\" tabindex=\"2\" class=\"text\" />"+
-//                                       //"<input onclick=\"loginRequest();\" type=\"submit\" name=\"Submit\" value=\"Log In\" tabindex=\"3\" class=\"buttons\" />  "+
-//                                "</label>");
-//    }
-//    else
-//    {
-//        $( "#dialog" ).dialog( "option", "title", "Logout" );
-//        $( "#dialog" ).dialog( "option", "buttons", [ { text: "Logout", click: function() { logout();$( this ).dialog( "close" ); } }, { text: "Close", click: function() { $( this ).dialog( "close" ); } } ] );
-//    }           
+    $( "#dialog-message" ).append('');
+                                
+    $('#custom').val(JSON.stringify(user));
 }

@@ -4,6 +4,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
         <meta name="inmobi-site-verification" content="725722b3ab8d089a966c6b0038b09191" />
+        <meta property="og:title" content="PitchPredict Premium" />
+        <meta property="og:image" content="http://app.pitchpredict.com/images/icons/launcher.png" />
+        <meta property="og:description" content="Premium subscribers gain access to more charts and ..." />
+        <meta property="fbpayment:price" content="1.99 USD" />
+        <meta property="fbpayment:alternate_price" content=".99 EUR" />
+        <meta property="fbpayment:alternate_price" content=".99 GBP" />
+        <meta property="fbpayment:billing_period" content="12 months" />
+        <meta property="fb:app_id" content="214417841952278" />
+        <meta property="og:type" content="fbpayment:subscription" />
 
         <title>Pitch Predict</title>
 
@@ -22,7 +31,7 @@
         <script type="text/javascript" src="js/googleAnalytics.js"></script>
 
         <script type="text/javascript" src="js/Components/chartFunctions.js"></script>
-        <script type="text/javascript" src="js/Components/login.js"></script>
+        <!--<script type="text/javascript" src="js/Components/login.js"></script>-->
         <script type="text/javascript" src="js/Components/dialog.js"></script>
         <script type="text/javascript" src="js/Components/team_lineup.js"></script>
         <script type="text/javascript" src="js/Components/scoreboard.js"></script>
@@ -31,14 +40,17 @@
         <script type="text/javascript" src="js/Components/field.js"></script>
         <script type="text/javascript" src="js/Components/pitch_recorder.js"></script>
 
-        <script type="text/javascript" src="js/Components/Google/auth.js"></script>
+        <!--<script type="text/javascript" src="js/Components/Google/auth.js"></script>-->
 
         <script type="text/javascript" src="js/Components/FB/auth.js"></script>
         <script type="text/javascript" src="js/Components/FB/feed.js"></script>
         <script type="text/javascript" src="js/Components/FB/graph_api.js"></script>
         <script type="text/javascript" src="js/Components/FB/requests.js"></script>
         <script type="text/javascript" src="js/Components/FB/send.js"></script>
+        <!--<script type="text/javascript" src="js/Components/FB/pay.js"></script>-->
         <script type="text/javascript" src="js/Components/FB/credits.js"></script>
+        
+        <script type="text/javascript" src="js/Components/PayPal/util.js"></script>
 
     </head>
     <body>
@@ -180,7 +192,7 @@
                                                                         <input type="password" id="password" name="password" tabindex="2" class="text" />
                                                                     </label>-->
                                 <input type="Button" class="helpbuttons" onclick="login();" value="Log In Facebook">
-                                <input type="Button" class="helpbuttons" onclick="uninstallApp();" value="Uninstall Facebook App">
+                                <!--<input type="Button" class="helpbuttons" onclick="uninstallApp();" value="Uninstall Facebook App">-->
                                 <!--<div class="fb-login-button" data-show-faces="true" data-width="200" data-max-rows="1"></div>-->
                                 <!--</form>-->
                                 <!--<input type="Button" class="helpbuttons" onclick="register();" value="Register">-->
@@ -191,6 +203,24 @@
                                 <input type="Button" class="helpbuttons" onclick="publishStory();" value="Post To My Facebook Wall">
                                 <!--<input type="Button" class="helpbuttons" onclick="publishStoryFriend();" value="Post To PitchPredict Facebook Wall">-->
                                 <input type="Button" class="helpbuttons" onclick="sendRequestInvite();" value="Invite Facebook Friends">
+                                <input type="Button" class="helpbuttons" onclick="subscribeDialogInit();" value="Upgrade your experience">
+                                <form id="paypalForm" target="_blank" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                                    <input id="cmd" type="hidden" name="cmd" value="_s-xclick">
+                                    <input id="hosted_button_id" type="hidden" name="hosted_button_id" value="MHHXU4G2F26QG">
+<!--                                    <table>
+                                    <tr><td><input id="on0" type="hidden" name="on0" value="Levels">Levels</td></tr><tr><td><select id="os0" name="os0">
+                                            <option value="Premium">Premium : $1.99 USD - yearly</option>
+                                            <option value="Premium Plus">Premium Plus : $4.99 USD - yearly</option>
+                                    </select> </td></tr>
+                                    </table>-->
+                                    <input id="on0" type="hidden" name="on0" value="">
+                                    <input id="os0" type="hidden" name="os0" >
+                                    <input id="currency_code" type="hidden" name="currency_code" value="USD">
+                                    <input id="custom" type="hidden" name="custom" >
+<!--                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">-->
+                                </form>
+                                <input type="Button" class="helpbuttons" onclick="unsubscribe();" value="Unsubscribe">
                                 <!--<input type="Button" class="helpbuttons" onclick="sendMessage();" value="Message Facebook Friends">-->
                             </div>
                         </div>
