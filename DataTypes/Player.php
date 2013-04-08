@@ -57,8 +57,18 @@ class Player
 
     public function printVariable()
     {
-        echo"this->theId:". $theId;
-        echo"this->theName:". $theName;
+        echo"this->theId:". $this->theId;
+        echo"this->theName:". $this->theName;
+        echo"this->theBoxName:". $this->theBoxName;
+        echo"this->thePosition:". $this->thePosition;
+        echo"this->theTeamName:". $this->theTeamName;
+        echo"this->theTeamAbbr:". $this->theTeamAbbr;
+        echo"this->theThrows:". $this->theThrows;
+        echo"this->thePathToImage:". $this->thePathToImage;
+        echo"this->thePitcherType:". $this->thePitcherType;
+        echo"this->theCatcherType:". $this->theCatcherType;
+        echo"this->theBatterType:". $this->theBatterType;
+        echo"this->theSpeedType:". $this->theSpeedType;
     }
 }
 ?>

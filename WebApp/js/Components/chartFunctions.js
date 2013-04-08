@@ -246,7 +246,10 @@ function setCurrentChart(chart)
     
     if((typeof cordova == 'undefined') && (typeof Cordova == 'undefined'))
     {
-        showAds();
+        if(user.subscription > 0)
+        {
+            showAds();
+        }
     }
 }
 

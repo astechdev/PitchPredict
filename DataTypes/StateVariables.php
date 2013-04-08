@@ -2,7 +2,7 @@
 class StateVariables
 { 
 //    public $thePostedVariablesDbProxyObject;
-    public $theUserName;
+    public $theUserId;
     public $thePassword;
     public $theAwayTeamId;
     public $theAwayTeamName;
@@ -59,20 +59,20 @@ class StateVariables
 //            public $theRunsRecorded;
 //            public $theOutsRecorded;
 
-    public function __construct($username)
+    public function __construct($userid)
     {
         include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DBProxies/PostedVariablesDbProxy.php';
 
-//        if (isset($_REQUEST['UserName']))
+//        if (isset($_REQUEST['UserId']))
 //        {
-//            $this->theUserName = $_REQUEST['UserName'];
+//            $this->theUserId = $_REQUEST['UserId'];
 //        }
 //        else 
 //        {
-            $this->theUserName = $username;
+            $this->theUserId = $userid;
 //        }
         
-//        echo $this->theUserName;
+//        echo $this->theUserId;
         
         $this->initialize();
 //        $this->update();
@@ -87,14 +87,14 @@ class StateVariables
 //        $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
 //        //check to see if the user has a row in the posted_variables_table db table, if not create one        
-//        $result = $aPostedVariablesDbProxyObject->getPostedVariables($this->theUserName);
+//        $result = $aPostedVariablesDbProxyObject->getPostedVariables($this->theUserId);
 //        
 //        $num_rows = $aPostedVariablesDbProxyObject->dbProxyNumResults($result);
 //        
-//        if ($num_rows == 0 && $this->theUserName != NULL)
+//        if ($num_rows == 0 && $this->theUserId != NULL)
 //        {   
             //create the row
-//            $insert = "INSERT INTO posted_variables_table (user_ID_entering_data_ID) VALUES ('$this->theUserName')";
+//            $insert = "INSERT INTO posted_variables_table (user_ID_entering_data_ID) VALUES ('$this->theUserId')";
 //            
 //            $aPostedVariablesDbProxyObject->dbProxyQuery($insert);
             
@@ -170,7 +170,7 @@ class StateVariables
         print_r($this->theAwayTeamBattingOrderBatterIds);
         echo "theInning $this->theInning";
         echo "theTopOrBottomHalf $this->theTopOrBottomHalf";
-        echo "theUserName $this->theUserName";
+        echo "theUserId $this->theUserId";
         echo "thePitcherOrBatter $this->thePitcherOrBatter";
         echo "theBaseRunnerType $this->theBaseRunnerType";
         echo "thePitcherType $this->thePitcherType";
@@ -188,7 +188,7 @@ class StateVariables
 
     public function getStateVariablesAsUrlParams()
     {
-        return "UserName=$this->theUserName&YearToQuery=$this->theYearToQuery&AtBatNumber=$this->theAtBatNumber&Inning=$this->theInning&TopOrBottomHalf=$this->theTopOrBottomHalf&HomeTeamBattingOrderBatterIds=$this->theHomeTeamBattingOrderBatterIds&AwayTeamBattingOrderBatterIds=$this->theAwayTeamBattingOrderBatterIds&On1BId=$this->theOn1bId&On2BId=$this->theOn2bId&On3BId=$this->theOn3bId&CatcherId=$this->theCatcherId&BatterId=$this->theBatterId&BatterTeamId=$this->theBatterTeamId&BatterRightOrLeft=$this->theBatterRightOrLeft&BatterOnDeckId=$this->theBatterOnDeckId&PitcherId=$this->thePitcherId&PitcherTeamId=$this->thePitcherTeamId&AwayTeamId=$this->theAwayTeamId&AwayTeamScore=$this->theAwayTeamScore&HomeTeamId=$this->theHomeTeamId&HomeTeamScore=$this->theHomeTeamScore&Balls=$this->theBalls&Strikes=$this->theStrikes&Outs=$this->theOuts&PitcherOrBatter=$this->thePitcherOrBatter&BaseRunnerType=$this->theBaseRunnerType&PitcherType=$this->thePitcherType&CatcherType=$this->theCatcherType&BatterType=$this->theBatterType&OnDeckBatterType=$this->theOnDeckBatterType&OutcomeType=$this->theOutcomeType&PitchType=$this->thePitchType&HotZone=$this->theHotZone&PitchTypeSequence=".implode(",", $this->thePitchTypeSequence)."&PitchLocationSequence=".implode(",", $this->thePitchLocationSequence)."&PitchOutcomeSequence=".implode(",", $this->thePitchOutcomeSequence);
+        return "UserId=$this->theUserId&YearToQuery=$this->theYearToQuery&AtBatNumber=$this->theAtBatNumber&Inning=$this->theInning&TopOrBottomHalf=$this->theTopOrBottomHalf&HomeTeamBattingOrderBatterIds=$this->theHomeTeamBattingOrderBatterIds&AwayTeamBattingOrderBatterIds=$this->theAwayTeamBattingOrderBatterIds&On1BId=$this->theOn1bId&On2BId=$this->theOn2bId&On3BId=$this->theOn3bId&CatcherId=$this->theCatcherId&BatterId=$this->theBatterId&BatterTeamId=$this->theBatterTeamId&BatterRightOrLeft=$this->theBatterRightOrLeft&BatterOnDeckId=$this->theBatterOnDeckId&PitcherId=$this->thePitcherId&PitcherTeamId=$this->thePitcherTeamId&AwayTeamId=$this->theAwayTeamId&AwayTeamScore=$this->theAwayTeamScore&HomeTeamId=$this->theHomeTeamId&HomeTeamScore=$this->theHomeTeamScore&Balls=$this->theBalls&Strikes=$this->theStrikes&Outs=$this->theOuts&PitcherOrBatter=$this->thePitcherOrBatter&BaseRunnerType=$this->theBaseRunnerType&PitcherType=$this->thePitcherType&CatcherType=$this->theCatcherType&BatterType=$this->theBatterType&OnDeckBatterType=$this->theOnDeckBatterType&OutcomeType=$this->theOutcomeType&PitchType=$this->thePitchType&HotZone=$this->theHotZone&PitchTypeSequence=".implode(",", $this->thePitchTypeSequence)."&PitchLocationSequence=".implode(",", $this->thePitchLocationSequence)."&PitchOutcomeSequence=".implode(",", $this->thePitchOutcomeSequence);
     }
 
     public function retrieveDBStateVariables()
@@ -197,182 +197,87 @@ class StateVariables
         
         $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
-        if ($this->theUserName != "null")
+        if ($this->theUserId != "null")
         { 
-            $result = $aPostedVariablesDbProxyObject->getPostedVariables($this->theUserName);
+            $result = $aPostedVariablesDbProxyObject->getPostedVariables($this->theUserId);
 
             $num_rows = $aPostedVariablesDbProxyObject->dbProxyNumResults($result);
         
             //should only ever be 1 row...
             while($row = $aPostedVariablesDbProxyObject->dbProxyFetchAssocArray($result))
             {
-//                echo $row['current_posted_variables'];
                 $object = json_decode($row['current_posted_variables']);
-    //                $this->theAwayTeamId = $row['away_team_id'];
-    //                $this->theAwayTeamScore = $row['away_team_score'];
-    //                $this->theHomeTeamId = $row['home_team_id'];
-    //                $this->theHomeTeamScore = $row['home_team_score'];
-    //                $this->theBalls = $row['balls'];
-    //                $this->theStrikes = $row['strikes'];
-    //                $this->theOuts = $row['outs'];
-    //                $this->theAtBatNumber = $row['at_bat_number'];
-    //                $this->theYearToQuery = $row['year_to_query'];
-    //                $this->thePitcherId = $row['pitcher_id'];
-    //                $this->thePitcherTeamId = $row['pitcher_team_name'];
-    //                $this->theCatcherId = $row['catcher_id'];
-    //                $this->theBatterId = $row['batter_id'];
-    //                $this->theBatterRightOrLeft = $row['batter_stand'];
-    //                $this->theBatterOnDeckId = $row['batter_on_deck_id'];
-    //                $this->theBatterTeamId = $row['batter_team_name'];
-    //                $this->theOn1bId = $row['on1b'];
-    //                $this->theOn2bId = $row['on2b'];
-    //                $this->theOn3bId = $row['on3b'];
-    //                $this->theHomeTeamBattingOrderBatterIds = explode(",", $row['home_team_batting_order']);
-    //                $this->theAwayTeamBattingOrderBatterIds = explode(",", $row['away_team_batting_order']);
-    ////                    $this->theRunsRecorded = $row['runs_recorded'];
-    ////                    $this->theOutsRecorded = $row['outs_recorded'];
-    //                $this->theInning = $row['inning'];
-    //                $this->theTopOrBottomHalf = $row['top_or_bottom_half'];
-    //                $this->thePitchType = $row['pitch_type'];
-    //                $this->theOutcomeType = $row['outcome_type'];
-    //                $this->thePitcherType = $row['pitcher_type'];
-    //                $this->theCatcherType = $row['catcher_type'];
-    //                $this->theBatterType = $row['batter_type'];
-    //                $this->theOnDeckBatterType = $row['batter_ondeck_type'];
-    //                $this->theBaseRunnerType = $row['baserunner_type'];
-    //                $this->thePitcherOrBatter = $row['pitcher_or_batter'];
-    //                $this->theHotZone = $row['hotzone'];
-    //
-//                    if(strlen($row['pitch_type_sequence']) > 1)
-//                    {
-//                        $this->thePitchTypeSequence = explode(",", $row['pitch_type_sequence']);
-//                    }
-//                    else 
-//                    {
-//                        $this->thePitchTypeSequence = array();
-//                    }
-//    
-//                    if(strlen($row['pitch_location_sequence']) > 1)
-//                    {
-//                        $this->thePitchLocationSequence = explode(",", $row['pitch_location_sequence']);
-//                    }
-//                    else 
-//                    {
-//                        $this->thePitchLocationSequence = array();
-//                    }
-//    
-//                    if(strlen($row['pitch_outcome_sequence']) > 1)
-//                    {
-//                        $this->thePitchOutcomeSequence = explode(",", $row['pitch_outcome_sequence']);
-//                    }
-//                    else 
-//                    {
-//                        $this->thePitchOutcomeSequence = array();
-//                    }
+                
+                break;
+            }
+                
+            $this->theUserId = $object->theUserId;
+            $this->thePassword = $object->thePassword;
+            $this->theAwayTeamId = $object->theAwayTeamId;
+            $this->theAwayTeamName = $object->theAwayTeamName;
+            $this->theAwayTeamAbbr = $object->theAwayTeamAbbr;
+            $this->theAwayTeamScore = $object->theAwayTeamScore;
+            $this->theHomeTeamId = $object->theHomeTeamId;
+            $this->theHomeTeamName = $object->theHomeTeamName;
+            $this->theHomeTeamAbbr = $object->theHomeTeamAbbr;
+            $this->theHomeTeamScore = $object->theHomeTeamScore;
+            $this->theBalls = $object->theBalls;
+            $this->theStrikes = $object->theStrikes;
+            $this->theOuts = $object->theOuts;
+            $this->thePitcherId = $object->thePitcherId;
+            $this->thePitcherName = $object->thePitcherName;
+            $this->thePitcherTeamId = $object->thePitcherTeamId;
+            $this->thePitcherTeamName = $object->thePitcherTeamName;
+            $this->thePitcherTeamAbbr = $object->thePitcherTeamAbbr;
+            $this->theCatcherId = $object->theCatcherId;
+            $this->theCatcherName = $object->theCatcherName;
+            $this->theBatterId = $object->theBatterId;
+            $this->theBatterName = $object->theBatterName;
+            $this->theBatterRightOrLeft = $object->theBatterRightOrLeft;
+            $this->theBatterTeamId = $object->theBatterTeamId;
+            $this->theBatterTeamName = $object->theBatterTeamName;
+            $this->theBatterTeamAbbr = $object->theBatterTeamAbbr;
+            $this->theBatterOnDeckId = $object->theBatterOnDeckId;
+            $this->theBatterOnDeckName = $object->theBatterOnDeckName;
+            $this->theOn1bId = $object->theOn1bId;
+            $this->theOn1bName = $object->theOn1bName;
+            $this->theOn2bId = $object->theOn2bId;
+            $this->theOn2bName = $object->theOn2bName;
+            $this->theOn3bId = $object->theOn3bId;
+            $this->theOn3bName = $object->theOn3bName;
+            $this->thePitchTypeSequence = $object->thePitchTypeSequence;
+            $this->thePitchLocationSequence = $object->thePitchLocationSequence;
+            $this->thePitchOutcomeSequence = $object->thePitchOutcomeSequence;
+            $this->theHomeTeamBattingOrderBatterIds = $object->theHomeTeamBattingOrderBatterIds;
+            $this->theAwayTeamBattingOrderBatterIds = $object->theAwayTeamBattingOrderBatterIds;
+            $this->theInning = $object->theInning;
+            $this->theTopOrBottomHalf = $object->theTopOrBottomHalf;
+            $this->thePitcherOrBatter = $object->thePitcherOrBatter;
+            $this->theBaseRunnerType = $object->theBaseRunnerType;
+            $this->thePitcherType = $object->thePitcherType;
+            $this->theCatcherType = $object->theCatcherType;
+            $this->theBatterType = $object->theBatterType;
+            $this->theOnDeckBatterType = $object->theOnDeckBatterType;
+            $this->theOutcomeType = $object->theOutcomeType;
+            $this->thePitchType = $object->thePitchType;
+            $this->theHotZone = $object->theHotZone;
+            $this->theAtBatNumber = $object->theAtBatNumber;
+            $this->theYearToQuery = $object->theYearToQuery;
 
-                        break;
-                }
-
-    //        $object = json_decode( $jsonString );
-//            echo "object->theUserName: ".$object->theUserName;
-                $this->theUserName = $object->theUserName;
-                $this->thePassword = $object->thePassword;
-                $this->theAwayTeamId = $object->theAwayTeamId;
-                $this->theAwayTeamName = $object->theAwayTeamName;
-                $this->theAwayTeamAbbr = $object->theAwayTeamAbbr;
-                $this->theAwayTeamScore = $object->theAwayTeamScore;
-                $this->theHomeTeamId = $object->theHomeTeamId;
-                $this->theHomeTeamName = $object->theHomeTeamName;
-                $this->theHomeTeamAbbr = $object->theHomeTeamAbbr;
-                $this->theHomeTeamScore = $object->theHomeTeamScore;
-                $this->theBalls = $object->theBalls;
-                $this->theStrikes = $object->theStrikes;
-                $this->theOuts = $object->theOuts;
-                $this->thePitcherId = $object->thePitcherId;
-                $this->thePitcherName = $object->thePitcherName;
-                $this->thePitcherTeamId = $object->thePitcherTeamId;
-                $this->thePitcherTeamName = $object->thePitcherTeamName;
-                $this->thePitcherTeamAbbr = $object->thePitcherTeamAbbr;
-                $this->theCatcherId = $object->theCatcherId;
-                $this->theCatcherName = $object->theCatcherName;
-                $this->theBatterId = $object->theBatterId;
-                $this->theBatterName = $object->theBatterName;
-                $this->theBatterRightOrLeft = $object->theBatterRightOrLeft;
-                $this->theBatterTeamId = $object->theBatterTeamId;
-                $this->theBatterTeamName = $object->theBatterTeamName;
-                $this->theBatterTeamAbbr = $object->theBatterTeamAbbr;
-                $this->theBatterOnDeckId = $object->theBatterOnDeckId;
-                $this->theBatterOnDeckName = $object->theBatterOnDeckName;
-                $this->theOn1bId = $object->theOn1bId;
-                $this->theOn1bName = $object->theOn1bName;
-                $this->theOn2bId = $object->theOn2bId;
-                $this->theOn2bName = $object->theOn2bName;
-                $this->theOn3bId = $object->theOn3bId;
-                $this->theOn3bName = $object->theOn3bName;
-            
-//            echo 'object->thePitchTypeSequence: '.$object->thePitchTypeSequence;
-//            if(strlen($object->thePitchTypeSequence) != NULL)
-//            {
-//                $this->thePitchTypeSequence = explode(",", $object->thePitchTypeSequence);
-//            }
-//            else 
-//            {
-//                $this->thePitchTypeSequence = array();
-//            }
-//
-//            if(strlen($object->thePitchLocationSequence) != NULL)
-//            {
-//                $this->thePitchLocationSequence = explode(",", $object->thePitchLocationSequence);
-//            }
-//            else 
-//            {
-//                $this->thePitchLocationSequence = array();
-//            }
-//
-//            if(strlen($object->thePitchOutcomeSequence) != NULL)
-//            {
-//                $this->thePitchOutcomeSequence = explode(",", $object->thePitchOutcomeSequence);
-//            }
-//            else 
-//            {
-//                $this->thePitchOutcomeSequence = array();
-//            }
-                $this->thePitchTypeSequence = $object->thePitchTypeSequence;
-                $this->thePitchLocationSequence = $object->thePitchLocationSequence;
-                $this->thePitchOutcomeSequence = $object->thePitchOutcomeSequence;
-                $this->theHomeTeamBattingOrderBatterIds = $object->theHomeTeamBattingOrderBatterIds;
-                $this->theAwayTeamBattingOrderBatterIds = $object->theAwayTeamBattingOrderBatterIds;
-                $this->theInning = $object->theInning;
-                $this->theTopOrBottomHalf = $object->theTopOrBottomHalf;
-                $this->thePitcherOrBatter = $object->thePitcherOrBatter;
-                $this->theBaseRunnerType = $object->theBaseRunnerType;
-                $this->thePitcherType = $object->thePitcherType;
-                $this->theCatcherType = $object->theCatcherType;
-                $this->theBatterType = $object->theBatterType;
-                $this->theOnDeckBatterType = $object->theOnDeckBatterType;
-                $this->theOutcomeType = $object->theOutcomeType;
-                $this->thePitchType = $object->thePitchType;
-                $this->theHotZone = $object->theHotZone;
-                $this->theAtBatNumber = $object->theAtBatNumber;
-                $this->theYearToQuery = $object->theYearToQuery;
-
-                if (startsWith($this->theTopOrBottomHalf, 'TOP'))
-                {
-                    $this->thePitcherTeamId = $this->theHomeTeamId;
-                    $this->thePitcherTeamScore = $this->theHomeTeamScore;
-                    $this->theBatterTeamId = $this->theAwayTeamId;
-                    $this->theBatterTeamScore = $this->theAwayTeamScore;
-                }
-                else
-                {
-                    $this->thePitcherTeamId = $this->theAwayTeamId;
-                    $this->thePitcherTeamScore = $this->theAwayTeamScore;
-                    $this->theBatterTeamId = $this->theHomeTeamId;
-                    $this->theBatterTeamScore = $this->theHomeTeamScore;
-                }
-
-    //        $this->printStateVariables();
-//        }
+            if (startsWith($this->theTopOrBottomHalf, 'TOP'))
+            {
+                $this->thePitcherTeamId = $this->theHomeTeamId;
+                $this->thePitcherTeamScore = $this->theHomeTeamScore;
+                $this->theBatterTeamId = $this->theAwayTeamId;
+                $this->theBatterTeamScore = $this->theAwayTeamScore;
+            }
+            else
+            {
+                $this->thePitcherTeamId = $this->theAwayTeamId;
+                $this->thePitcherTeamScore = $this->theAwayTeamScore;
+                $this->theBatterTeamId = $this->theHomeTeamId;
+                $this->theBatterTeamScore = $this->theHomeTeamScore;
+            }
         }
         
         $aPostedVariablesDbProxyObject->dbProxyClose();
@@ -382,13 +287,13 @@ class StateVariables
     {
         include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/Util/SQL_validation_functions.php';
         
-        if (verifyString($_REQUEST['UserName']) == false)
+        if (verifyString($_REQUEST['UserId']) == false)
         {
             die('Invalid user name.');
         }
-        else if (verifyString($_REQUEST['UserName'])&&isset($_REQUEST['UserName']))
+        else if (verifyString($_REQUEST['UserId'])&&isset($_REQUEST['UserId']))
         {
-            $this->theUserName = $_REQUEST['UserName'];
+            $this->theUserId = $_REQUEST['UserId'];
         }
 
         if (verifyString($_REQUEST['password']) == false)
@@ -743,54 +648,10 @@ class StateVariables
     }
 
     public function update()
-    {
-//        $update = "UPDATE posted_variables_table SET " .
-//                    "away_team_id = '$this->theAwayTeamId', " .
-//                    "away_team_score = '$this->theAwayTeamScore', " .
-//                    "home_team_id = '$this->theHomeTeamId', " .
-//                    "home_team_score = '$this->theHomeTeamScore', " .
-//                    "balls = '$this->theBalls', " .
-//                    "strikes = '$this->theStrikes', " .
-//                    "outs = '$this->theOuts', " .
-//                    "at_bat_number = '$this->theAtBatNumber', " .
-//                    "year_to_query = '$this->theYearToQuery', " .
-//                    "pitcher_id = '$this->thePitcherId', " .
-//                    "pitcher_team_id = '$this->thePitcherTeamId', " .
-//                    "catcher_id = '$this->theCatcherId', " .
-//                    "batter_id = '$this->theBatterId', " .
-//                    "batter_stand = '$this->theBatterRightOrLeft', " .
-//                    "batter_team_id = '$this->theBatterTeamId', " .
-//                    "batter_on_deck_id = '$this->theBatterOnDeckId', " .
-//                    "on1b = '$this->theOn1bId', " .
-//                    "on2b = '$this->theOn2bId', " .
-//                    "on3b = '$this->theOn3bId', " .
-//                    "pitch_type_sequence = '$this->thePitchTypeSequence', " .
-//                    "pitch_location_sequence = '$this->thePitchLocationSequence', " .
-//                    "pitch_outcome_sequence = '$this->thePitchOutcomeSequence', " .
-//                    "home_team_batting_order = '$this->theHomeTeamBattingOrderBatterIds', " .
-//                    "away_team_batting_order = '$this->theAwayTeamBattingOrderBatterIds', " .
-//                    "inning = '$this->theInning', " .
-//                    "top_or_bottom_half = '$this->theTopOrBottomHalf', " .
-//                    "pitch_type = '$this->thePitchType', " .
-//                    "outcome_type = '$this->theOutcomeType', " .
-//                    "pitcher_type = '$this->thePitcherType', " .
-//                    "catcher_type = '$this->theCatcherType', " .
-//                    "batter_type = '$this->theBatterType', " .
-//                    "batter_ondeck_type = '$this->theOnDeckBatterType', " .
-//                    "baserunner_type = '$this->theBaseRunnerType', " .
-//                    "pitcher_or_batter = '$this->thePitcherOrBatter', " .
-//                    "hotzone = '$this->theHotZone' " .
-//                    "WHERE user_ID_entering_data_ID = '$this->theUserName'";
-//                    
-        $update = "UPDATE jml_users SET " .
-        "current_posted_variables = '".json_encode( (array)$this )."' " .
-        "WHERE username = '$this->theUserName'";
-                            
-        echo $update;
-        
+    {        
         $aPostedVariablesDbProxyObject = new PostedVariablesDbProxy('pitchpre_user_db');
         
-        $aPostedVariablesDbProxyObject->dbProxyQuery($update);
+        $aPostedVariablesDbProxyObject->updatePostedVariables($this);
         
         $aPostedVariablesDbProxyObject->dbProxyClose();
     }

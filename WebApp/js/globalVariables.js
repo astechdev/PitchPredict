@@ -34,9 +34,11 @@ var youTubePlayListIndex = 1;
 var youTubePlayListLength = 7;
 ////var anyOutcomeType = "ANY";
 //var anyPitchType = "ANY";
-//var userInfoMap = { "UserName": null, "Email": null,  "AdvertisingThreshold": null};
+//var userInfoMap = { "UserId": null, "Email": null,  "AdvertisingThreshold": null};
+var urlParameters;
+var savedUserScenariosMap;
 var stateVariablesMap = {
-    "theUserName":"",
+    "theUserId":"",
     "thePassword":"",
     "theAwayTeamId":"0",
     "theAwayTeamName":"Select Team",
@@ -152,6 +154,16 @@ var pitchpredictHelp = "The Pitch Predict Web App is a baseball analytics tool t
 "of a given situation. PitchPredict has a singular api that allows other developers "+
 "to hook into via ajax and create there own widgets/charts and graphs for study. "+
 "It's target audience is baseball fans and stat enthusiasts.";
+var pitchpredictUpgrade = "The Pitch Predict Web App offers an annual "+
+"subscription for $2.99<br><br>"+
+"The development of the Pitch Predict app and API is ongoing and as "+
+"such there are associated costs.  If you like the work we are doing "+
+"and would like to see what we are dreaming up next, please subscibe.  "+
+"Your subscription will help fund the equipment we need to host this "+
+"app as well as the developers who are working on new algorithms for "+
+"analyzing the MLB pitch f/x data.<br><br>Premium subscribers "+
+"get additional charts and data analysis tools, their current scenario is persisted for a better user "+
+"experience, no ads, and users are provided the ability to save, load, delete, and share queries with other premium users.";
 //var pitchTypeSequenceArray = new Array();
 //var pitchLocationSequenceArray = new Array();
 //var pitchOutcomeSequenceArray = new Array();

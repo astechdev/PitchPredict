@@ -3,7 +3,7 @@
 
     include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DataTypes/StateVariables.php';
 
-    $aStateVariablesObject = new StateVariables($_REQUEST['UserName']);
+    $aStateVariablesObject = new StateVariables($_REQUEST['UserId']);
     $aStateVariablesObject->retrieveDBStateVariables();
 //    $aStateVariablesObject->printStateVariables();
     

@@ -724,13 +724,13 @@ option {
     width: 60%;
 }
 
-#pitchcountercontainer {
+.tablecontainer {
     position: relative;
     margin-right: auto;
     margin-left: auto;
 }
 
-#pitchrecordertable {
+.table {
     border-collapse: collapse;
     position: relative;
     text-align: left;
@@ -738,7 +738,7 @@ option {
     width: 100%;
 }
 
-#pitchrecordertable td {
+.table td {
     width:25%;
 }
 

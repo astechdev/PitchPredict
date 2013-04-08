@@ -253,10 +253,10 @@ function deinitialize() {
 
 function load()
 {
-    //    loadingDialogInit();
+        loadingDialogInit();
     //    $('#filters').hide();
     //reinitialize some maps
-    //    if(user.name != "" && user.name != null && user.name != "undefined")
+    //    if(user.id != "" && user.id != null && user.id != "undefined")
     //    {
     //        for(var stateVariablesKey in stateVariablesMap) 
     //        {
@@ -339,9 +339,9 @@ function load()
     
     console.log("user: "+JSON.stringify(user));
     
-    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?callback=?&UserName='+user.name, function(data) 
+    jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserStateVariables.php?callback=?&UserId='+user.id, function(data) 
     {
-        if(user.name != "" && user.name != null && user.name != "undefined")
+        if(user.id != "" && user.id != null && user.id != "undefined")
         {
             stateVariablesMap = data;
             //            jQuery.each(data, function(key, val) 
@@ -365,9 +365,32 @@ function load()
 
             stateVariablesMap['theHomeTeamBattingOrderBatterIds'] = stateVariablesMap['theHomeTeamBattingOrderBatterIds'].split(",");
             stateVariablesMap['theAwayTeamBattingOrderBatterIds'] = stateVariablesMap['theAwayTeamBattingOrderBatterIds'].split(",");
+            
+            jQuery.getJSON('http://www.pitchpredict.com/PitchPredict/Services/getUserSavedScenarios.php?callback=?&UserId='+user.id, function(data) 
+            {
+                savedUserScenariosMap = data;
+                
+                for (var i = 0, j = savedUserScenariosMap['theScenarioNamesArray'].length; i < j; i++) 
+                {
+                    if(savedUserScenariosMap['theStateVariablesArray'][i]['thePitchTypeSequence'] === 'underfined' || savedUserScenariosMap['theStateVariablesArray'][i]['thePitchTypeSequence'] === null)
+                    {
+                        savedUserScenariosMap['theStateVariablesArray'][i]['thePitchTypeSequence'] = new Array();
+                    }
+                    if(savedUserScenariosMap['theStateVariablesArray'][i]['thePitchLocationSequence'] === 'underfined' || savedUserScenariosMap['theStateVariablesArray'][i]['thePitchLocationSequence'] === null)
+                    {
+                        savedUserScenariosMap['theStateVariablesArray'][i]['thePitchLocationSequence'] = new Array();
+                    }
+                    if(savedUserScenariosMap['theStateVariablesArray'][i]['thePitchOutcomeSequence'] === 'underfined' || savedUserScenariosMap['theStateVariablesArray'][i]['thePitchOutcomeSequence'] === null)
+                    {
+                        savedUserScenariosMap['theStateVariablesArray'][i]['thePitchOutcomeSequence'] = new Array();
+                    }
+                }
+        
+                console.log('savedUserScenariosMap: '+JSON.stringify(savedUserScenariosMap));
+            });
         }
         else
-        {
+        {            
             if(stateVariablesMap['theTopOrBottomHalf'] === "TOP")
             {
                 stateVariablesMap['thePitcherTeamId'] = stateVariablesMap['theHomeTeamId'];
@@ -597,6 +620,16 @@ function loadComponents(teamsMapAquired, awayTeamMapAquired, homeTeamMapAquired,
         loadField();
         updateCharts('true');
         
+        if(urlParameters.length > 0)
+        {
+            //This is an iframe widget
+            console.log('This is an iframe widget');
+        }
+        else
+        {
+            
+        }
+        
     //        if (phonegap === "true")
     //        {
     //            getLoginStatus();
@@ -786,7 +819,7 @@ function getParamsString()
     //            }
     //        }
         
-    params = "UserName=" + encodeURIComponent(user.name)+
+    params = "UserId=" + encodeURIComponent(user.id)+
     "&Inning=" + encodeURIComponent(stateVariablesMap['theInning']) +
     "&TopOrBottomHalf=" + encodeURIComponent(stateVariablesMap['theTopOrBottomHalf'])+
     "&Balls=" + encodeURIComponent(stateVariablesMap['theBalls'])+
@@ -896,7 +929,7 @@ function saveState()
     //    alertStateVariables();
 
     //dont save state if not logged in/registered 
-    if(user.name != "" && user.name != null && user.name != "undefined")
+    if(user.id != "" && user.id != null && user.id != "undefined")
     {
         jQuery.ajax(
         {
@@ -1038,6 +1071,159 @@ function vibrateFeedback()
     }
 }
 
-//function getURLParameter(name) {
-//    return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.search)||[,""])[1].replace(/\+/g, '%20'))||null;
+//function getURLParameter(parameter,url) {
+//    url = (url) ? url : window.location.search;
+//    var re = new RegExp('&amp;'+parameter+'=([^&amp;]*)','i');
+//    return (url=url.replace(/^\?/,'&amp;').match(re)) ?url=url[1] :url='';
 //}
+
+$.extend({
+  getUrlVars: function(){
+    urlParameters = [];
+    var hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1, window.location.href.indexOf('#')).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+      hash = hashes[i].split('=');
+      urlParameters.push(hash[0]);
+      urlParameters[hash[0]] = hash[1];
+    }
+    
+    if (urlParameters["Inning"] != null)
+    {
+        stateVariablesMap['theInning'] = urlParameters["Inning"];
+    }            
+    if (urlParameters["TopOrBottomHalf"] != null)
+    {
+        stateVariablesMap['theTopOrBottomHalf'] = urlParameters["TopOrBottomHalf"];
+    }  
+    if (urlParameters["Balls"] != null)
+    {
+        stateVariablesMap['theBalls'] = urlParameters["Balls"];
+    }            
+    if (urlParameters["Strikes"] != null)
+    {
+        stateVariablesMap['theStrikes'] = urlParameters["Strikes"];
+    }            
+    if (urlParameters["Outs"] != null)
+    {
+        stateVariablesMap['theOuts'] = urlParameters["Outs"];
+    }            
+    if (urlParameters["AtBatNumber"] != null)
+    {
+        stateVariablesMap['theAtBatNumber'] = urlParameters["AtBatNumber"];
+    }            
+    if (urlParameters["YearToQuery"] != null)
+    {
+        stateVariablesMap['theYearToQuery'] = urlParameters["YearToQuery"];
+    }            
+    if (urlParameters["AwayTeamId"] != null)
+    {
+        stateVariablesMap['theAwayTeamId'] = urlParameters["AwayTeamId"];
+    }            
+    if (urlParameters["AwayTeamScore"] != null)
+    {
+        stateVariablesMap['theAwayTeamScore'] = urlParameters["AwayTeamScore"];
+    }            
+    if (urlParameters["HomeTeamId"] != null)
+    {
+        stateVariablesMap['theHomeTeamId'] = urlParameters["HomeTeamId"];
+    }            
+    if (urlParameters["HomeTeamScore"] != null)
+    {
+        stateVariablesMap['theHomeTeamScore'] = urlParameters["HomeTeamScore"];
+    }            
+    if (urlParameters["PitcherId"] != null)
+    {
+        stateVariablesMap['thePitcherId'] = urlParameters["PitcherId"];
+    }            
+    if (urlParameters["CatcherId"] != null)
+    {
+        stateVariablesMap['theCatcherId'] = urlParameters["CatcherId"];
+    }            
+    if (urlParameters["BatterId"] != null)
+    {
+        stateVariablesMap['theBatterId'] = urlParameters["BatterId"];
+    }            
+    if (urlParameters["BatterOnDeckId"] != null)
+    {
+        stateVariablesMap['theBatterOnDeckId'] = urlParameters["BatterOnDeckId"];
+    }            
+    if (urlParameters["BatterRightOrLeft"] != null)
+    {
+        stateVariablesMap['theBatterRightOrLeft'] = urlParameters["BatterRightOrLeft"];
+    }            
+    if (urlParameters["On1bId"] != null)
+    {
+        stateVariablesMap['theOn1bId'] = urlParameters["On1bId"];
+    }            
+    if (urlParameters["On2bId"] != null)
+    {
+        stateVariablesMap['theOn2bId'] = urlParameters["On2bId"];
+    }            
+    if (urlParameters["On3bId"] != null)
+    {
+        stateVariablesMap['theOn3bId'] = urlParameters["On3bId"];
+    }            
+    if (urlParameters["HomeTeamBattingOrderBatterIds"] != null)
+    {
+        stateVariablesMap['theHomeTeamBattingOrderBatterIds'] = urlParameters["HomeTeamBattingOrderBatterIds"];
+    }            
+    if (urlParameters["AwayTeamBattingOrderBatterIds"] != null)
+    {
+        stateVariablesMap['theAwayTeamBattingOrderBatterIds'] = urlParameters["AwayTeamBattingOrderBatterIds"];
+    }            
+    if (urlParameters["PitchType"] != null)
+    {
+        stateVariablesMap['thePitchType'] = urlParameters["PitchType"];
+    }            
+    if (urlParameters["OutcomeType"] != null)
+    {
+        stateVariablesMap['theOutcomeType'] = urlParameters["OutcomeType"];
+    }            
+    if (urlParameters["PitcherType"] != null)
+    {
+        stateVariablesMap['thePitcherType'] = urlParameters["PitcherType"];
+    }            
+    if (urlParameters["CatcherType"] != null)
+    {
+        stateVariablesMap['theCatcherType'] = urlParameters["CatcherType"];
+    }            
+    if (urlParameters["BatterType"] != null)
+    {
+        stateVariablesMap['theBatterType'] = urlParameters["BatterType"];
+    }            
+    if (urlParameters["OnDeckBatterType"] != null)
+    {
+        stateVariablesMap['theOnDeckBatterType'] = urlParameters["OnDeckBatterType"];
+    }            
+    if (urlParameters["BaseRunnerType"] != null)
+    {
+        stateVariablesMap['theBaseRunnerType'] = urlParameters["BaseRunnerType"];
+    }            
+    if (urlParameters["PitcherOrBatter"] != null)
+    {
+        stateVariablesMap['thePitcherOrBatter'] = urlParameters["PitcherOrBatter"];
+    }            
+    if (urlParameters["HotZone"] != null)
+    {
+        stateVariablesMap['theHotZone'] = urlParameters["HotZone"];
+    }            
+    if (urlParameters["PitchTypeSequence"] != null)
+    {
+        stateVariablesMap['thePitchTypeSequence'] = urlParameters["PitchTypeSequence"];
+    }            
+    if (urlParameters["PitchLocationSequence"] != null)
+    {
+        stateVariablesMap['thePitchLocationSequence'] = urlParameters["PitchLocationSequence"];
+    }            
+    if (urlParameters["PitchOutcomeSequence"] != null)
+    {
+        stateVariablesMap['thePitchOutcomeSequence'] = urlParameters["PitchOutcomeSequence"];
+    }
+//    return urlParameters;
+  }//,
+//  getUrlVar: function(name){
+//    return urlParameters[name];
+//  }
+});

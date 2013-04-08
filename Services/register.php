@@ -6,7 +6,7 @@
 //
 //    $aPitchPredictUserDbProxyObject = new UserDbProxy('pitchpre_jml4');
 //	
-//    $userName =  $_REQUEST['UserName'];
+//    $userName =  $_REQUEST['UserId'];
 //    $password =  $_REQUEST['password'];
 //    
 //    $result = $aPitchPredictUserDbProxyObject->getUser($userName);
@@ -25,13 +25,13 @@
 //    
 //    if ( md5($password.$salt) != $hash)
 //    {
-////            echo '{ UserName: false }';
-//            $json = array("UserName" => "false");
+////            echo '{ UserId: false }';
+//            $json = array("UserId" => "false");
 //    }
 //    else
 //    {
-////            echo '{ UserName: ' . $userName . ' }';
-//            $json = array("UserName" => $userName);
+////            echo '{ UserId: ' . $userName . ' }';
+//            $json = array("UserId" => $userName);
 //    }
 //    
 //    $aPitchPredictUserDbProxyObject->dbProxyClose();
@@ -42,7 +42,7 @@
     include_once $_SERVER['DOCUMENT_ROOT'].'/PitchPredict/DataTypes/User.php';
 
     $aUserObject = new User($_REQUEST['id'], $_REQUEST['UserName'], $_REQUEST['email'], 'pitchpre_user_db');
-    
+//    $aUserObject->printVariable();
     $json = array("name" => $aUserObject->theUserName, "email" => $aUserObject->theEmail, "id" => $aUserObject->theId);
     
     echo json_encode($json);

@@ -19,8 +19,15 @@ class UserDbProxy extends DbProxy
     
     public function updateUserLastVisit($id, $username, $email)
     { 
-        $query = "UPDATE jml_users SET lastvisitDate=NOW() WHERE id = '$id' AND username = '$username' AND email = '$email'";
+        $query = "UPDATE jml_users SET lastvisitDate = NOW() WHERE id = '$id' AND username = '$username' AND email = '$email'";
 //        echo $query;
+        return $this->dbProxyQuery($query);
+    } 
+    
+    public function updateSubscription($id, $email, $subscriptionLevel, $txn_id)
+    { 
+        $query = "UPDATE jml_users SET subscription_level = '$subscriptionLevel', subscription_start_date = NOW(), txn_id = '$txn_id' WHERE id = '$id' AND email = '$email'";
+        echo $query;
         return $this->dbProxyQuery($query);
     } 
     
@@ -79,7 +86,7 @@ class UserDbProxy extends DbProxy
             "theAtBatNumber":"ANY",
             "theYearToQuery":"2009"}');
         
-        $query = "INSERT INTO jml_users (id, username, email, registerDate, current_posted_variables) VALUES ('$id', '$username', '$email', NOW(), '$initialStateVariables')";
+        $query = "INSERT INTO jml_users (id, username, email, registerDate, current_posted_variables, subscription_level, subscription_start_date) VALUES ('$id', '$username', '$email', NOW(), '$initialStateVariables', '0', NOW())";
 //        echo $query;
         return $this->dbProxyQuery($query);
     } 

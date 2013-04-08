@@ -29,8 +29,8 @@ function handleStatusChange(session) {
     if (session.authResponse) {
         document.body.className = 'connected';
         
-        jQuery('#logoutcontainer').show();
-        jQuery('#logincontainer').hide();
+//        jQuery('#logoutcontainer').show();
+//        jQuery('#logincontainer').hide();
         
         //Fetch user's id, name, and picture
         FB.api('/me', {

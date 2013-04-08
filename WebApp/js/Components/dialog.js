@@ -57,7 +57,16 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
     $( "#dialog" ).dialog( "option", "buttons", [  ] );
     
     $( "#dialog-message" ).empty();
+    
+    $( "#dialog-message" ).append(pitchpredictUpgrade);
    
+//    $( "#dialog-message" ).append("<form action=\"https://www.paypal.com/cgi-bin/webscr\" method=\"post\" target=\"_blank\">"+
+//                                    "<input type=\"hidden\" name=\"cmd\" value=\"_s-xclick\">"+
+//                                    "<input type=\"hidden\" name=\"hosted_button_id\" value=\"MHHXU4G2F26QG\">"+
+//                                    "<input type=\"image\" src=\"https://www.paypalobjects.com/en_US/i/btn/btn_subscribe_SM.gif\" border=\"0\" name=\"submit\" alt=\"PayPal - The safer, easier way to pay online!\">"+
+//                                    "<img alt=\"\" border=\"0\" src=\"https://www.paypalobjects.com/en_US/i/scr/pixel.gif\" width=\"1\" height=\"1\">"+
+//                                    "</form>");
+    
     $( "#dialog" ).dialog({
         autoOpen: true,
         modal: true,
@@ -66,12 +75,21 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
         resizable: false,
         draggable: false,
         title: dialogTitle,
-        closeOnEscape: false
+        closeOnEscape: false,
+        buttons: {
+            'Premium Subscription': function() {
+//                $('#os0').val('Premium');
+                $('#item_name').val('1');
+                $('#custom').val(JSON.stringify(user));
+                openPayPalWindow();
+                jQuery( this ).dialog( "close" );
+            }
+        }
     });
     
-    console.log('manually get ads');
-    _inmobi.getNewAd(document.getElementById('dialog-message'));
-    console.log('ads should be displayed');
+//    console.log('manually get ads');
+//    _inmobi.getNewAd(document.getElementById('dialog-message'));
+//    console.log('ads should be displayed');
    
 //    $( "#dialog-message" ).append('<iframe width="'+$('#dialog').width()+'" height="'+$('#dialog').height()*.92+'" src="http://www.youtube.com/embed/videoseries?list='+youTubePlayList+'&disablekb=1&controls=0&autoplay=1&index='+youTubePlayListIndex+'" frameborder="0"></iframe>'); 
    
@@ -93,6 +111,16 @@ function adsDialogInit(dialogTitle, timeInMilliseconds)
         //        $dialogCloseBtn.fadeIn(100);
         
         $( "#dialog" ).dialog( "option", "buttons", [ {
+            text: "Premium Subscription", 
+            click: function() {
+//                $('#os0').val('Premium');
+                $('#item_name').val('1');
+                $('#custom').val(JSON.stringify(user));
+                openPayPalWindow();
+                jQuery( this ).dialog( "close" );
+            }
+        },
+        {
             text: "Close", 
             click: function() {
                 vibrateFeedback();
@@ -152,23 +180,25 @@ function subscribeDialogInit()
         title: "Subscriptions",
         closeOnEscape: false,
         buttons: {
-            Premium: function() {
-                $('#os0').val('Premium');
+            'Premium Subscription': function() {
+//                $('#os0').val('Premium');
+                $('#item_name').val('1');
+                $('#custom').val(JSON.stringify(user));
                 openPayPalWindow();
                 jQuery( this ).dialog( "close" );
             },
-            Plus: function() {
-                $('#os0').val('Premium Plus');
-                openPayPalWindow();
-                jQuery( this ).dialog( "close" );
-            },
+//            Plus: function() {
+//                $('#os0').val('Premium Plus');
+//                $('#item_name').val('2');
+//                $('#custom').val(JSON.stringify(user));
+//                openPayPalWindow();
+//                jQuery( this ).dialog( "close" );
+//            },
             Cancel: function() {
                 jQuery( this ).dialog( "close" );
             }
         }
     });
    
-    $( "#dialog-message" ).append('');
-                                
-    $('#custom').val(JSON.stringify(user));
+    $( "#dialog-message" ).append(pitchpredictUpgrade);
 }
